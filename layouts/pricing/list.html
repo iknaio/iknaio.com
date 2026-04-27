@@ -1,0 +1,116 @@
+{{ define "main" }}
+<section class="hero section" aria-labelledby="pricing-heading">
+  <div class="container hero-inner">
+    <h1 id="pricing-heading" class="hero-title">Plans for every<br> team size</h1>
+    <p class="hero-subtitle">From individual investigators to organization-wide deployments — pick the access level that fits, then talk to us.</p>
+  </div>
+</section>
+
+<section class="section section-pricing" aria-labelledby="pricing-tiers-heading">
+  <div class="container">
+    <h2 id="pricing-tiers-heading" class="sr-only">Pricing Tiers</h2>
+    <div class="grid grid-3 pricing-grid">
+      {{ range .Site.Data.pricing.tiers }}
+      <div class="card pricing-card{{ if .highlight }} pricing-card-highlight{{ end }}">
+        {{ if .highlight }}<span class="pricing-highlight-badge">Recommended</span>{{ end }}
+        <h3 class="pricing-name">{{ .name }}</h3>
+        <p class="pricing-for">{{ .audience }}</p>
+        <p class="pricing-accounts">{{ .accounts }}</p>
+        <div class="pricing-callout-slot">
+          {{ with .callout }}<p class="pricing-callout">{{ . }}</p>{{ end }}
+        </div>
+        {{ with .features }}
+        {{ $features := . }}
+        <ul class="pricing-features">
+          {{ range $.Site.Data.pricing.feature_rows }}
+          {{ $value := index $features .key }}
+          <li class="pricing-feature{{ if not $value }} pricing-feature-unavailable{{ end }}">
+            {{ if $value }}
+            <svg class="icon-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 4.5l-7 7L3 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {{ else }}
+            <svg class="icon-x" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {{ end }}
+            <span{{ with .tooltip }} title="{{ . }}" class="has-tooltip"{{ end }}>{{ .label }}</span>
+          </li>
+          {{ end }}
+        </ul>
+        {{ end }}
+        <a href="{{ "contact/" | relURL }}" class="btn {{ if .highlight }}btn-primary{{ else }}btn-secondary{{ end }} pricing-cta">{{ .cta_text | default "Get Started" }}</a>
+      </div>
+      {{ end }}
+    </div>
+
+    <p class="pricing-note">All plans include access to the Pathfinder investigation dashboard.</p>
+  </div>
+</section>
+
+{{ with .Site.Data.pricing.comparison }}
+<section class="section section-comparison" aria-labelledby="comparison-heading">
+  <div class="container">
+    <h2 id="comparison-heading" class="section-title">Compare Plans</h2>
+    <div class="comparison-table-wrap">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th class="comparison-feature-col">Feature</th>
+            <th>Free</th>
+            <th class="comparison-highlight-col">Professional</th>
+            <th>Institutional</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range . }}
+          <tr>
+            <td class="comparison-feature-name">{{ .feature }}</td>
+            {{- partial "pricing/comparison-cell.html" (dict "value" .free) -}}
+            {{- partial "pricing/comparison-cell.html" (dict "value" .professional "highlight" true) -}}
+            {{- partial "pricing/comparison-cell.html" (dict "value" .institutional) -}}
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+<section class="section section-pricing-trust">
+  <div class="container">
+    <p class="pricing-trust-text">Trusted by law enforcement and compliance teams across Europe</p>
+    <div class="logo-row logo-row-pricing">
+      {{ range .Site.Data.partners.customers }}
+      <div class="logo-item">
+        <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
+      </div>
+      {{ end }}
+    </div>
+    <blockquote class="pricing-trust-quote">
+      <p>&ldquo;We would never have conducted this investigation without Iknaio.&rdquo;</p>
+      <footer><cite>Bavarian Central Office for the Prosecution of Cybercrime (ZCB)</cite></footer>
+    </blockquote>
+  </div>
+</section>
+
+<section class="section section-faq" aria-labelledby="faq-heading">
+  <div class="container text-container">
+    <h2 id="faq-heading" class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      {{ range .Site.Data.pricing.faq }}
+      <details class="faq-item">
+        <summary class="faq-question">{{ .question }}</summary>
+        <p class="faq-answer">{{ .answer }}</p>
+      </details>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ with .Site.Data.pricing.faq }}
+{{- $entities := slice -}}
+{{- range . -}}
+  {{- $entities = $entities | append (dict "@type" "Question" "name" .question "acceptedAnswer" (dict "@type" "Answer" "text" .answer)) -}}
+{{- end -}}
+{{- $schema := dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $entities -}}
+<script type="application/ld+json">{{ $schema | jsonify (dict "indent" "  ") | safeJS }}</script>
+{{ end }}
+{{ end }}

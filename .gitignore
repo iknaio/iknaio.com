@@ -1,0 +1,26 @@
+# Hugo build output
+public/
+resources/
+.hugo_build.lock
+
+# Node / Playwright (QA only)
+node_modules/
+
+# QA artifacts
+qa-screenshots/
+
+# Local tooling config (Claude Code, editors)
+CLAUDE.md
+.claude/
+docs/superpowers/
+.vscode/
+.idea/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Logs & env
+*.log
+.env
+.env.*

@@ -1,0 +1,107 @@
+tiers:
+  - name: Free
+    audience: "Verified users"
+    accounts: "1 seat"
+    cta_text: "Apply for access"
+    features:
+      Pathfinder: true
+      "Full attribution data": false
+      "API access": false
+      "MCP server": false
+      "QuickLock": false
+      "CaseConnect": false
+
+  - name: Professional
+    audience: "Solo practitioners"
+    accounts: "1 seat"
+    highlight: true
+    cta_text: "Contact sales"
+    features:
+      Pathfinder: true
+      "Full attribution data": true
+      "API access": true
+      "MCP server": true
+      "QuickLock": true
+      "CaseConnect": false
+
+  - name: Institutional
+    audience: "Authorities & Compliance"
+    accounts: "Unlimited seats — one price for your entire team"
+    cta_text: "Contact sales"
+    features:
+      Pathfinder: true
+      "Full attribution data": true
+      "API access": true
+      "MCP server": true
+      "QuickLock": true
+      "CaseConnect": true
+
+feature_rows:
+  - key: Pathfinder
+    label: Pathfinder dashboard
+    tooltip: "Visual investigation dashboard for tracing cryptoasset transactions."
+  - key: "Full attribution data"
+    label: "Entity attribution database"
+    tooltip: "Proprietary dataset that identifies wallet owners and entities across blockchains."
+  - key: "API access"
+    label: "API access"
+    tooltip: "Programmatic REST API for automating investigations and integrations."
+  - key: "MCP server"
+    label: "MCP server"
+    tooltip: "Model Context Protocol interface for connecting AI agents to Iknaio data and tools."
+  - key: "QuickLock"
+    label: "QuickLock"
+    tooltip: "Automated forensic report generation in minutes."
+  - key: "CaseConnect"
+    label: "CaseConnect"
+    tooltip: "Automated case deconfliction across investigators."
+
+comparison:
+  - feature: "Pathfinder"
+    free: true
+    professional: true
+    institutional: true
+  - feature: "Entity attribution database"
+    free: false
+    professional: true
+    institutional: true
+  - feature: "API access"
+    free: false
+    professional: true
+    institutional: true
+  - feature: "MCP server"
+    free: false
+    professional: true
+    institutional: true
+  - feature: "QuickLock"
+    free: false
+    professional: true
+    institutional: true
+  - feature: "CaseConnect"
+    free: false
+    professional: false
+    institutional: true
+  - feature: "Seats"
+    free: "1"
+    professional: "1"
+    institutional: "Unlimited"
+  - feature: "Onboarding"
+    free: false
+    professional: "Guided session"
+    institutional: "Dedicated CSM"
+  - feature: "SLA"
+    free: false
+    professional: false
+    institutional: true
+
+faq:
+  - question: "Is there a free trial?"
+    answer: "The Free tier gives you ongoing access to Pathfinder with public attribution data. For paid tiers, contact us to arrange a trial or personalized demo."
+  - question: "Can I upgrade my plan later?"
+    answer: "Yes. You can upgrade at any time and we will pro-rate the difference. Contact us to arrange the switch."
+  - question: "How does institutional licensing work?"
+    answer: "One license covers your entire organization — unlimited seats for investigators, analysts, and compliance officers. Pricing is based on organization size and needs. Contact us for a tailored quote."
+  - question: "Is Iknaio GDPR-compliant, and where is customer data stored?"
+    answer: "Iknaio operates under EU data-protection rules and all customer investigation data is processed and stored within the EU. Institutional customers receive a Data Processing Agreement (DPA) as part of their licensing contract. For details on deployment options (shared vs. dedicated environments) or specific compliance documentation, please contact us."
+  - question: "What does the vetting process for the Free tier involve?"
+    answer: "We verify that applicants are researchers, public-sector analysts, or other professionals with a legitimate use case. The process typically involves confirming your identity and institutional affiliation."

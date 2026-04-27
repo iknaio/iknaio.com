@@ -1,0 +1,42 @@
+{{ define "main" }}
+<article class="section section-article" aria-labelledby="article-heading">
+  <div class="container text-container">
+    <a href="{{ "insights/" | relURL }}" class="back-link">&larr; Back to Insights</a>
+    {{ with .Params.image }}
+    <figure class="article-cover">
+      <img src="{{ . | relURL }}" alt="{{ $.Title }}">
+    </figure>
+    {{ end }}
+    <header class="article-header">
+      <h1 id="article-heading" class="article-title">{{ .Title }}</h1>
+      <div class="article-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        {{ with .Params.author }}
+        <span class="article-author">by {{ . }}</span>
+        {{ end }}
+        <span class="article-reading-time">{{ .ReadingTime }} min read</span>
+      </div>
+    </header>
+    <div class="content">
+      {{ .Content }}
+    </div>
+
+    {{ if or .PrevInSection .NextInSection }}
+    <nav class="post-nav" aria-label="Insight navigation">
+      {{ with .PrevInSection }}
+      <a class="post-nav-link post-nav-prev" href="{{ .RelPermalink }}">
+        <span class="post-nav-direction">&larr; Older post</span>
+        <span class="post-nav-title">{{ .Title }}</span>
+      </a>
+      {{ end }}
+      {{ with .NextInSection }}
+      <a class="post-nav-link post-nav-next" href="{{ .RelPermalink }}">
+        <span class="post-nav-direction">Newer post &rarr;</span>
+        <span class="post-nav-title">{{ .Title }}</span>
+      </a>
+      {{ end }}
+    </nav>
+    {{ end }}
+  </div>
+</article>
+{{ end }}

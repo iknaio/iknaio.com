@@ -1,0 +1,29 @@
+customers:
+  - name: BIS
+    logo: images/partners/bis.png
+  - name: INTERPOL
+    logo: images/partners/interpol.png
+  - name: ZCB - Zentralstelle Cybercrime Bayern
+    logo: images/partners/zcb.png
+
+research:
+  - name: Complexity Science Hub Vienna
+    logo: images/partners/csh-black.png
+  - name: AIT - Austrian Institute of Technology
+    logo: images/partners/ait-black.png
+  - name: TNO
+    logo: images/partners/tno.png
+
+resellers:
+  - name: CFLW Cyber Strategies
+    logo: images/partners/cfwl.png
+
+funding:
+  - name: Austria Wirtschaftsservice
+    logo: images/partners/aws.png
+  - name: BMAW
+    logo: images/partners/bmaw.png
+  - name: BMK
+    logo: images/partners/bmk.png
+  - name: FFG
+    logo: images/partners/ffg.png

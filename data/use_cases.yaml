@@ -1,0 +1,64 @@
+- slug: investigate
+  title: Investigate
+  headline: Automate complex cryptoasset investigations
+  audience: Law enforcement, prosecutors, financial intelligence units
+  pain: >
+    Manual tracing of cryptoasset flows does not scale. Existing commercial tools are prohibitively expensive
+    for most public authorities, and basic block explorers lack the analytical depth needed for
+    court-admissible evidence.
+  solution: >
+    Pathfinder, QuickLock, and CaseConnect automate the entire investigation workflow —
+    from initial address lookup to final forensic report. Automate entire workflows using our powerful API.
+  tools:
+    - Pathfinder
+    - QuickLock
+    - CaseConnect
+    - Tailored Reports
+  bullets:
+    - "Trace transactions across 7+ blockchains with research-grade clustering"
+    - "Generate initial forensic reports in minutes (QuickLock)"
+    - "Avoid duplicate work via cross-case deconfliction (CaseConnect)"
+    - "Court-grade narrative reports written by our analysts (Tailored Reports)"
+
+- slug: comply
+  title: Comply
+  headline: On-chain and off-chain screening, tailored to your needs
+  audience: Banks, crypto exchanges, payment service providers, regulators
+  pain: >
+    Many illicit transactions pass existing transaction monitoring approaches. Conventional AML systems
+    treat crypto transactions as unstructured data, missing the on-chain intelligence that reveals
+    the true risk profile.
+  solution: >
+    We follow a combined on- and off-chain screening approach tailored to customer needs.
+    API-based screening integrates directly into your existing AML stack, enriching
+    transaction monitoring with deep blockchain intelligence.
+  tools:
+    - API & MCP
+    - Pathfinder
+    - Tailored Reports
+  bullets:
+    - "On-chain + off-chain risk screening tailored to your AML stack"
+    - "REST API integrates directly into existing transaction monitoring"
+    - "Suspicious-activity reporting with full evidentiary chain"
+    - "Tailored compliance reports for regulator-facing submissions"
+
+- slug: advise
+  title: Advise
+  headline: Affordable tools for professional advisors
+  audience: Lawyers, tax advisors, security consultants
+  pain: >
+    Institutional-grade cryptoasset analytics tools are too expensive and too complex for
+    individual professionals. Advisory work on crypto cases often relies on ad-hoc
+    block-explorer research that is neither defensible nor reproducible.
+  solution: >
+    Affordable tiers with an intuitive UI for non-technical users. Organize case work using
+    CaseConnect. Use our API for workflow automation.
+  tools:
+    - Pathfinder
+    - Tailored Reports
+    - Learning & Trainings
+  bullets:
+    - "Affordable single-user licenses for solo practitioners"
+    - "Reproducible, defensible analysis suitable for client deliverables"
+    - "On-demand expert reports for complex matters"
+    - "Workshops to upskill staff on cryptoasset investigation methods"

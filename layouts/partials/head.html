@@ -1,0 +1,105 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {{- /* Theme init: runs before CSS to avoid flash of wrong theme */ -}}
+  <script>(function(){try{var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){}})();</script>
+
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | Iknaio{{ end }}</title>
+  <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+  {{- /* Per-page OG image: post hero if set, else site default */ -}}
+  {{- $ogImage := printf "%simages/og-default.png" .Site.BaseURL -}}
+  {{- with .Params.image -}}
+    {{- $ogImage = . | absURL -}}
+  {{- end }}
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+  <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta property="og:image" content="{{ $ogImage }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+  <meta name="twitter:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta name="twitter:image" content="{{ $ogImage }}">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ .Permalink }}">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="{{ "favicon/favicon.svg" | relURL }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon/favicon-32.png" | relURL }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "favicon/favicon-180.png" | relURL }}">
+  <link rel="manifest" href="{{ "favicon/site.webmanifest" | relURL }}">
+
+  <!-- Preload critical fonts -->
+  <link rel="preload" as="font" type="font/woff2" href="{{ "fonts/roboto/Roboto-VariableFont_wdth,wght.woff2" | relURL }}" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="{{ "fonts/general-sans/GeneralSans-Medium.woff2" | relURL }}" crossorigin>
+
+  <!-- RSS Feed -->
+  {{ with .OutputFormats.Get "RSS" }}
+  <link rel="alternate" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
+  {{ end }}
+
+  <!-- CSS -->
+  {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+
+  <!-- dotlottie player -->
+  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
+  <!-- JSON-LD Organization Schema (homepage only) -->
+  {{ if .IsHome }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Iknaio Cryptoasset Analytics GmbH",
+    "url": "{{ .Site.BaseURL }}",
+    "logo": "{{ .Site.BaseURL }}images/logos/iknaio-logo.svg",
+    "description": "{{ .Site.Params.description }}",
+    "sameAs": [
+      "{{ .Site.Params.linkedin }}",
+      "{{ .Site.Params.github }}",
+      "{{ .Site.Params.youtube }}"
+    ]
+  }
+  </script>
+  {{ end }}
+
+  <!-- JSON-LD Article Schema (insights posts) -->
+  {{ if and (eq .Kind "page") (eq .Section "insights") }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ .Title | htmlEscape }}",
+    "description": "{{ with .Params.description }}{{ . | htmlEscape }}{{ else }}{{ .Summary | truncate 200 | htmlEscape }}{{ end }}",
+    "image": "{{ $ogImage }}",
+    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+    "author": {
+      "@type": "Organization",
+      "name": "Iknaio Cryptoasset Analytics GmbH",
+      "url": "{{ .Site.BaseURL }}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Iknaio Cryptoasset Analytics GmbH",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ .Site.BaseURL }}images/logos/iknaio-logo.svg"
+      }
+    },
+    "mainEntityOfPage": "{{ .Permalink }}"
+  }
+  </script>
+  {{ end }}
+</head>

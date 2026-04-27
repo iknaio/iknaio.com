@@ -1,0 +1,45 @@
+{{ define "main" }}
+<section class="hero section" aria-labelledby="services-heading">
+  <div class="container hero-inner">
+    <h1 id="services-heading" class="hero-title">Solutions</h1>
+    <p class="hero-subtitle">For law enforcement, financial institutions, and professional advisors</p>
+  </div>
+</section>
+
+<section class="section section-capabilities" aria-labelledby="capabilities-heading">
+  <div class="container">
+    <h2 id="capabilities-heading" class="section-title">Three application areas. One platform.</h2>
+    <p class="section-subtitle">Iknaio serves three communities with a shared need for defensible, affordable cryptoasset analytics.</p>
+    <div class="grid grid-3">
+      {{ range .Site.Data.use_cases }}
+      <div class="card capability-card" id="{{ .slug }}">
+        <h3 class="capability-name">{{ .title }}</h3>
+        <p class="capability-headline">{{ .headline }}</p>
+        <p class="capability-audience"><strong>For:</strong> {{ .audience }}</p>
+        <p class="capability-solution">{{ .solution }}</p>
+        {{ with .tools }}
+        <p class="capability-tools"><strong>Includes:</strong> {{ delimit . ", " }}</p>
+        {{ end }}
+        {{ with .bullets }}
+        <ul class="capability-bullets">
+          {{ range . }}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="section section-cta" aria-labelledby="services-cta-heading">
+  <div class="container cta-inner">
+    <h2 id="services-cta-heading" class="cta-title">Find the right solution for your team</h2>
+    <div class="cta-actions">
+      <a href="{{ "contact/" | relURL }}" class="btn btn-primary">Request a Demo</a>
+      <a href="{{ "pricing/" | relURL }}" class="btn btn-secondary">View Pricing</a>
+    </div>
+  </div>
+</section>
+{{ end }}

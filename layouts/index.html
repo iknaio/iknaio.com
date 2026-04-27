@@ -1,0 +1,200 @@
+{{ define "main" }}
+
+{{ with .Params.hero }}
+<section class="hero section" aria-labelledby="hero-heading">
+  <dotlottie-player src="{{ "lottie/hero-animation.lottie" | relURL }}" autoplay="true" background="rgba(0, 85, 255, 0)" speed="1" direction="1" class="hero-animation"></dotlottie-player>
+  <div class="container hero-inner" style="position: relative;">
+    <div style="position: relative; z-index: 1;">
+      <h1 id="hero-heading" class="hero-title">{{ .title | safeHTML }}</h1>
+      <p class="hero-subtitle">{{ .subtitle }}</p>
+      <div class="hero-actions">
+        <a href="{{ .cta.url | relURL }}" class="btn btn-primary">{{ .cta.text }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.products }}
+<section class="section section-products" aria-labelledby="products-heading">
+    <div class="section-products-header">
+      <div class="container">
+        <h2 id="products-heading" class="section-title accent">{{ .title }}</h2>
+        <p class="section-subtitle">{{ .subtitle | markdownify }}</p>
+      </div>
+    </div>
+  <div class="container">
+
+    {{ range .groups }}
+    <div class="product-group">
+      <h3 class="product-group-name">{{ .name }}</h3>
+      <div class="product-cards">
+        {{ range .items }}
+        <div class="product-showcase-card">
+          <div class="product-showcase-image">
+            <img src="{{ .image | relURL }}" alt="{{ .alt }}" loading="lazy">
+          </div>
+          <div class="product-showcase-body">
+            <h4>{{ .name }}</h4>
+            {{ with .headline }}<p class="product-showcase-headline">{{ . }}</p>{{ end }}
+            {{ with .bullets }}
+            <ul class="product-showcase-bullets">
+              {{ range . }}
+              <li>{{ . }}</li>
+              {{ end }}
+            </ul>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.secondary_audience }}
+<section class="section section-secondary-audience" aria-labelledby="secondary-audience-heading">
+  <div class="container text-container">
+    <h2 id="secondary-audience-heading" class="section-title">{{ .title }}</h2>
+    <p class="section-body">{{ .body | markdownify }}</p>
+    <div class="section-actions">
+      {{ range .actions }}
+      <a href="{{ .url | relURL }}" class="btn btn-secondary">{{ .text }}</a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.why }}
+<section class="section section-why" aria-labelledby="why-heading">
+  <div class="container">
+    <h2 id="why-heading" class="section-title">{{ .title }}</h2>
+    <p class="section-subtitle">{{ .subtitle }}</p>
+    <div class="why-grid">
+      {{ range .items }}
+      <div class="why-item">
+        <img class="why-icon" src="{{ .icon | relURL }}" alt="" aria-hidden="true" width="48" height="48">
+        <h3 class="why-item-title">{{ .title }}</h3>
+        <p>{{ .body }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.trust }}
+<section class="section section-trust section-dark" aria-labelledby="trust-heading">
+  <div class="container">
+    <h2 id="trust-heading" class="section-title">{{ .title }}</h2>
+
+    {{ with .stat }}<p class="social-proof-stat">{{ . }}</p>{{ end }}
+
+    <div class="logo-marquee">
+      <div class="logo-marquee-track">
+        {{ range $.Site.Data.partners.customers }}
+        <div class="logo-item">
+          <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
+        </div>
+        {{ end }}
+        {{ range $.Site.Data.partners.research }}
+        <div class="logo-item">
+          <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
+        </div>
+        {{ end }}
+        {{ range $.Site.Data.partners.resellers }}
+        <div class="logo-item">
+          <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
+        </div>
+        {{ end }}
+        {{ range $.Site.Data.partners.funding }}
+        <div class="logo-item">
+          <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
+        </div>
+        {{ end }}
+        <!-- Duplicate for seamless loop -->
+        {{ range $.Site.Data.partners.customers }}
+        <div class="logo-item">
+          <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
+        </div>
+        {{ end }}
+        {{ range $.Site.Data.partners.research }}
+        <div class="logo-item">
+          <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.case_study }}
+<section class="section section-case-study" aria-labelledby="case-study-heading">
+  <div class="container">
+    <h2 id="case-study-heading" class="section-title">{{ .title }}</h2>
+
+    <div class="case-study-banner">
+      <img src="{{ .image | relURL }}" alt="{{ .image_alt }}" loading="lazy">
+    </div>
+
+    <div class="case-study-stats">
+      {{ range .stats }}
+      <div class="case-study-stat">
+        <span class="stat-number">{{ .number }}</span>
+        <span class="stat-label">{{ .label }}</span>
+      </div>
+      {{ end }}
+    </div>
+
+    <blockquote class="case-study-quote">
+      <p>&ldquo;{{ .quote }}&rdquo;</p>
+      <footer><cite>{{ .attribution }}</cite></footer>
+    </blockquote>
+
+    {{ with .link }}
+    <p class="case-study-link-wrap">
+      <a class="case-study-link" href="{{ . | relURL }}">{{ $.Params.case_study.link_text | default "Read the case study" }} &rarr;</a>
+    </p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.press }}
+<section class="section section-press" aria-labelledby="press-heading">
+  <div class="container">
+    <h2 id="press-heading" class="section-title">{{ .title }}</h2>
+    <div class="logo-row logo-row-press">
+      {{ range $.Site.Data.press.international }}
+      <div class="logo-item">
+        <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="press-logo" loading="lazy">
+      </div>
+      {{ end }}
+      {{ range $.Site.Data.press.dach }}
+      <div class="logo-item">
+        <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="press-logo" loading="lazy">
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ with .Params.cta }}
+<section class="section section-cta" aria-labelledby="cta-heading">
+  <div class="container cta-inner">
+    <h2 id="cta-heading" class="cta-title">{{ .title | safeHTML }}</h2>
+    <div class="cta-actions">
+      {{ range .actions }}
+      <a href="{{ .url | relURL }}" class="btn btn-{{ .style }}">{{ .text }}</a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ end }}

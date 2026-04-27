@@ -1,0 +1,19 @@
+international:
+  - name: Infosecurity Magazine
+    logo: images/press/infosecurity-magazine.png
+  - name: CyberNews
+    logo: images/press/cybernews.png
+  - name: Security Affairs
+    logo: images/press/security-affairs.png
+
+dach:
+  - name: DerStandard
+    logo: images/press/der-standard.png
+  - name: ORF
+    logo: images/press/orf.png
+  - name: Kronen Zeitung
+    logo: images/press/kronen-zeitung.png
+  - name: brutkasten
+    logo: images/press/brutkasten_logo.png
+  - name: Trending Topics
+    logo: images/press/trending-topics.png

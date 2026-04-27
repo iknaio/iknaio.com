@@ -1,0 +1,12 @@
+{{ define "main" }}
+<section class="hero section" aria-labelledby="notfound-heading">
+  <div class="container hero-inner">
+    <h1 id="notfound-heading" class="hero-title">Page not found</h1>
+    <p class="hero-subtitle">The page you're looking for has moved or doesn't exist.</p>
+    <div class="hero-actions">
+      <a href="{{ "insights/" | relURL }}" class="btn btn-primary">Browse Insights</a>
+      <a href="{{ .Site.BaseURL }}" class="btn btn-secondary">Go Home</a>
+    </div>
+  </div>
+</section>
+{{ end }}

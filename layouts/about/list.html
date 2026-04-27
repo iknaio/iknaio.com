@@ -1,0 +1,80 @@
+{{ define "main" }}
+<section class="hero section" aria-labelledby="about-heading">
+  <div class="container hero-inner">
+    <h1 id="about-heading" class="hero-title">About Iknaio</h1>
+  </div>
+</section>
+
+<section class="section section-story">
+  <div class="container text-container">
+    <div class="content">
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+
+{{ with .Site.Data.team }}
+<section class="section section-team" aria-labelledby="team-heading">
+  <div class="container">
+    <h2 id="team-heading" class="section-title">Our Team</h2>
+
+    <div class="grid grid-3">
+      {{ range .founders }}
+      {{ $person := . }}
+      <div class="card team-card">
+        {{ with .photo }}
+        <img src="{{ . | relURL }}" alt="Photo of {{ $person.name }}" class="team-photo" width="200" height="200" loading="lazy">
+        {{ end }}
+        <h3 class="team-name">{{ .name }}</h3>
+        <p class="team-role">{{ .role }}</p>
+        {{ with .bio }}
+        <p class="team-bio">{{ . }}</p>
+        {{ end }}
+        {{ with .email }}
+        <a href="mailto:{{ . }}" class="team-email">{{ . }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+
+    {{ with .team }}
+    <div class="grid grid-3 team-grid-rest">
+      {{ range . }}
+      {{ $person := . }}
+      <div class="card team-card team-card-compact">
+        {{ with .photo }}
+        <img src="{{ . | relURL }}" alt="Photo of {{ $person.name }}" class="team-photo" width="200" height="200" loading="lazy">
+        {{ end }}
+        <h3 class="team-name">{{ .name }}</h3>
+        <p class="team-role">{{ .role }}</p>
+        {{ with .bio }}
+        <p class="team-bio">{{ . }}</p>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ with .advisors }}
+    <hr class="team-divider">
+    <h3 class="team-section-label">Advisors</h3>
+    <div class="grid grid-3">
+      {{ range . }}
+      {{ $person := . }}
+      <div class="card team-card team-card-compact">
+        {{ with .photo }}
+        <img src="{{ . | relURL }}" alt="Photo of {{ $person.name }}" class="team-photo" width="200" height="200" loading="lazy">
+        {{ end }}
+        <h3 class="team-name">{{ .name }}</h3>
+        <p class="team-role">{{ .role }}</p>
+        {{ with .bio }}
+        <p class="team-bio">{{ . }}</p>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+{{ end }}

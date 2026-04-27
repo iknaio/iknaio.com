@@ -1,0 +1,63 @@
+founders:
+  - name: Karl Zettl
+    role: Co-Founder & CEO
+    photo: images/team/karl.png
+    bio: >
+      15+ years in business development and international sales.
+
+  - name: Bernhard Haslhofer
+    role: Co-Founder & Research Lead
+    photo: images/team/bernhard.png
+    bio: >
+      Created GraphSense in 2015. Leads digital currency research
+      at the Complexity Science Hub Vienna.
+
+  - name: Michael Fröwis
+    role: Development Lead
+    photo: images/team/michael.png
+    bio: >
+      Specialist in program analysis with 5+ years in
+      cryptoasset analytics.
+
+team:
+  - name: Rainer Stuetz
+    role: Lead Data Scientist
+    photo: images/team/rainer.png
+    bio: >
+      Expert in large-scale analytics and backend development.
+
+  - name: Adva Eshel
+    role: Product Designer
+    photo: images/team/adva.png
+    bio: >
+      Creates user-centered interfaces for crypto analytics.
+
+  - name: Matthias Rella
+    role: Frontend Developer
+    photo: images/team/matthias.png
+    bio: >
+      Web technologies expert managing the dashboard and REST API.
+
+  - name: Thomas Niedermayer
+    role: Data Scientist
+    photo: images/team/thomas.png
+    bio: >
+      Backend engineer focusing on mass crypto data processing.
+
+  - name: Patrick Schreiner
+    role: LEA Specialist
+    photo: images/team/patrick.png
+    bio: >
+      Law enforcement analytics and investigation workflow expert.
+
+  - name: Ross King
+    role: Advisor & Co-Founder
+    photo: images/team/ross.png
+    bio: >
+      Co-initiated the GraphSense research project at AIT.
+
+  - name: Frederik Skiera
+    role: Data Scientist
+    photo: images/team/frederik.png
+    bio: >
+      Cryptoasset analyst implementing novel detection algorithms.

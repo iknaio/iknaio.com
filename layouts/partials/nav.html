@@ -1,0 +1,50 @@
+<header class="nav" role="banner">
+  <div class="nav-inner container">
+    <a href="{{ .Site.BaseURL }}" class="nav-logo" aria-label="Iknaio home">
+      <img src="{{ "images/logos/iknaio-logo.svg" | relURL }}" alt="Iknaio" class="nav-logo-img" width="152" height="32">
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <nav id="nav-menu" class="nav-menu" aria-label="Main navigation">
+      <ul class="nav-list">
+        {{- range .Site.Menus.main }}
+          {{- if not .Params.group }}
+            <li class="nav-item">
+              <a href="{{ .URL | relURL }}" class="nav-link{{ if $.IsMenuCurrent "main" . }} is-active{{ end }}">{{ .Name }}</a>
+            </li>
+          {{- end }}
+        {{- end }}
+
+        <!-- Company dropdown -->
+        <li class="nav-item nav-dropdown">
+          <button class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Company
+            <svg class="nav-dropdown-icon" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+              <path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <ul class="nav-dropdown-menu" role="menu">
+            {{- range .Site.Menus.main }}
+              {{- if eq (index (.Params) "group") "company" }}
+                <li role="none">
+                  <a href="{{ .URL | relURL }}" class="nav-dropdown-link" role="menuitem">{{ .Name }}</a>
+                </li>
+              {{- end }}
+            {{- end }}
+          </ul>
+        </li>
+      </ul>
+
+      <button type="button" class="theme-toggle" aria-label="Switch theme">
+        <svg class="theme-toggle-icon theme-toggle-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="theme-toggle-icon theme-toggle-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a href="{{ "contact/" | relURL }}" class="btn btn-primary nav-cta">Request a Demo</a>
+    </nav>
+  </div>
+</header>

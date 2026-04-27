@@ -1,0 +1,46 @@
+{{ define "main" }}
+<section class="hero section" aria-labelledby="insights-heading">
+  <div class="container hero-inner">
+    <h1 id="insights-heading" class="hero-title">Insights</h1>
+    <p class="hero-subtitle">Research, product updates, and announcements from the Iknaio team.</p>
+  </div>
+</section>
+
+<section class="section section-insights" aria-labelledby="insights-feed-heading">
+  <div class="container">
+    <h2 id="insights-feed-heading" class="sr-only">All posts</h2>
+    {{ if .Pages }}
+    <div class="grid grid-3 post-grid">
+      {{ range .Pages.ByDate.Reverse }}
+      <article class="card post-card">
+        <div class="post-card-image">
+          {{ with .Params.image }}
+          <img src="{{ . | relURL }}" alt="" loading="lazy">
+          {{ else }}
+          <div class="post-card-image-placeholder" aria-hidden="true"></div>
+          {{ end }}
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-meta">
+            <span class="post-card-kind">{{ if eq .Params.posttype "news" }}News{{ else if eq .Params.posttype "case-study" }}Case Study{{ else }}Insight{{ end }}</span>
+            <time class="post-card-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+          </div>
+          <h3 class="post-card-title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h3>
+          {{ with .Description }}
+          <p class="post-card-summary">{{ . }}</p>
+          {{ else }}
+          <p class="post-card-summary">{{ .Summary | truncate 140 }}</p>
+          {{ end }}
+          <span class="post-card-link" aria-hidden="true">Read more &rarr;</span>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+    {{ else }}
+    <p class="no-content">Nothing here yet. Check back soon.</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
