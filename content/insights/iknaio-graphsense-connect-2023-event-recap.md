@@ -8,7 +8,7 @@ posttype: "news"
 aliases: ["/news/iknaio-graphsense-connect-2023-event-recap/"]
 ---
 
-On November 9th, the [Complexity Science Hub Vienna](https://csh.ac.at/) hosted the first [GraphSense Connect meeting](https://www.ikna.io/events/gsconnect2023.html).
+On November 9th, the [Complexity Science Hub Vienna](https://csh.ac.at/) hosted the first GraphSense Connect meeting.
 
 "Open source, collaboration, and co-creation are fundamental principles that have driven the development of the [GraphSense Cryptoasset Analytics platform](https://graphsense.org/) over the years."
 
