@@ -61,8 +61,8 @@ products:
             - "Iknaio analysts handle the tracing, attribution, and write-up"
             - "Delivered under contract; turnaround agreed up front"
         - name: "Learning & Trainings"
-          image: "images/screenshots/screenshot-learning.png"
-          alt: "Learning & Trainings placeholder image"
+          image: "images/screenshots/screenshot-learning.svg"
+          alt: "Abstract illustration of a learning network: connected knowledge nodes rising from an open book"
           headline: "Workshops and trainings for cryptoasset investigators."
           bullets:
             - "On-site or remote training for investigation, compliance, and reporting workflows"
