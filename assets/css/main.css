@@ -9,7 +9,7 @@
 /* Brawler */
 @font-face {
   font-family: 'Brawler';
-  src: url('/fonts/brawler/Brawler-Regular.woff2') format('woff2');
+  src: url('../fonts/brawler/Brawler-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: 'Brawler';
-  src: url('/fonts/brawler/Brawler-Bold.woff2') format('woff2');
+  src: url('../fonts/brawler/Brawler-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -26,7 +26,7 @@
 /* General Sans */
 @font-face {
   font-family: 'General Sans';
-  src: url('/fonts/general-sans/GeneralSans-Regular.woff2') format('woff2');
+  src: url('../fonts/general-sans/GeneralSans-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -34,7 +34,7 @@
 
 @font-face {
   font-family: 'General Sans';
-  src: url('/fonts/general-sans/GeneralSans-Medium.woff2') format('woff2');
+  src: url('../fonts/general-sans/GeneralSans-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -42,7 +42,7 @@
 
 @font-face {
   font-family: 'General Sans';
-  src: url('/fonts/general-sans/GeneralSans-Semibold.woff2') format('woff2');
+  src: url('../fonts/general-sans/GeneralSans-Semibold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -50,7 +50,7 @@
 
 @font-face {
   font-family: 'General Sans';
-  src: url('/fonts/general-sans/GeneralSans-Bold.woff2') format('woff2');
+  src: url('../fonts/general-sans/GeneralSans-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -59,7 +59,7 @@
 /* Roboto (variable) */
 @font-face {
   font-family: 'Roboto';
-  src: url('/fonts/roboto/Roboto-VariableFont_wdth,wght.woff2') format('woff2-variations');
+  src: url('../fonts/roboto/Roboto-VariableFont_wdth,wght.woff2') format('woff2-variations');
   font-weight: 100 900;
   font-stretch: 75% 100%;
   font-style: normal;
@@ -2763,9 +2763,12 @@ hr {
   margin: 1.5rem 0;
 }
 
+.content .figure-center img,
 .figure-center img {
   max-width: 100%;
   height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .post-card {

@@ -5,7 +5,7 @@ description: "Taking You Behind the Scenes of Our Latest Release (25.09)"
 tags: []
 image: "images/blog/tracing-dexs-bridges-cross-chain-clusters/cover.jpg"
 posttype: "insight"
-aliases: ["/blog/tracing-dexs-bridges-cross-chain-clusters/"]
+aliases: ["/blog/tracing-dexs-bridges-cross-chain-clusters/", "/news/tracing-through-dexs-over-bridges-and-cross-chain-address-clusters/"]
 ---
 
 Decentralized Finance (DeFi) has evolved into a multi-blockchain ecosystem where users seamlessly swap tokens and transfer assets across networks. Decentralized exchanges (DEXs) and bridging services have become essential infrastructure, enabling everything from simple ETH-to-USDT swaps to complex cross-chain transfers.
