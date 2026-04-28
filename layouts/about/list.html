@@ -1,79 +1,155 @@
 {{ define "main" }}
-<section class="hero section" aria-labelledby="about-heading">
-  <div class="container hero-inner">
-    <h1 id="about-heading" class="hero-title">About Iknaio</h1>
+{{ $linkedinIcon := `<svg class="linkedin-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>` }}
+
+{{/* hero */}}
+{{ with .Params.hero }}
+<section class="section section-about-hero" aria-labelledby="about-hero-heading">
+  <div class="container about-hero-inner">
+    <h1 id="about-hero-heading" class="about-hero-title">{{ .title }}</h1>
+    {{ with .subtitle }}<h2 class="about-hero-subtitle">{{ . }}</h2>{{ end }}
+    {{ with .body }}<div class="about-hero-body">{{ . | markdownify }}</div>{{ end }}
+
+    {{ with .timeline }}
+    {{ with $.Params.hero.timeline_title }}<h3 class="about-timeline-title">{{ . }}</h3>{{ end }}
+    <ol class="about-timeline">
+      {{ range . }}
+      <li class="about-timeline-item">
+        <span class="about-timeline-year">{{ .year }}</span>
+        <p class="about-timeline-text">{{ .text | markdownify }}</p>
+      </li>
+      {{ end }}
+    </ol>
+    {{ end }}
   </div>
 </section>
+{{ end }}
 
-<section class="section section-story">
-  <div class="container text-container">
-    <div class="content">
-      {{ .Content }}
+{{/* mission */}}
+{{ with .Params.mission }}
+<section class="section section-about-mission section-dark" aria-labelledby="about-mission-heading">
+  <div class="container about-mission-inner">
+    <h2 id="about-mission-heading" class="about-mission-title">{{ .title }}</h2>
+    {{ with .body_html }}<div class="about-mission-body">{{ . | safeHTML }}</div>{{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{/* values */}}
+{{ with .Params.values }}
+<section class="section section-about-values" aria-labelledby="about-values-heading">
+  <div class="container about-values-inner">
+    <div class="about-values-header">
+      <h2 id="about-values-heading" class="about-values-title">{{ .title }}</h2>
+      <img class="about-values-mark" src="{{ "images/about/values-mark.svg" | relURL }}" alt="" aria-hidden="true">
     </div>
+    <ul class="about-values-list">
+      {{ range .items }}
+      <li class="about-value">
+        <div class="about-value-icon" aria-hidden="true">
+          {{ if eq .icon "graph" }}
+          <img src="{{ "images/about/icons/science.svg" | relURL }}" alt="">
+          {{ else if eq .icon "layers" }}
+          <img src="{{ "images/about/icons/transparency.svg" | relURL }}" alt="">
+          {{ else if eq .icon "arrows" }}
+          <img src="{{ "images/about/icons/collaborative.svg" | relURL }}" alt="">
+
+          {{ else if eq .icon "dots" }}
+          <img src="{{ "images/about/icons/diversity.svg" | relURL }}" alt="">
+          {{ end }}
+        </div>
+        <h3 class="about-value-name">{{ .name }}</h3>
+        <p class="about-value-body">{{ .body }}</p>
+      </li>
+      {{ end }}
+    </ul>
   </div>
 </section>
+{{ end }}
 
+{{/* contact CTA (dark) */}}
+{{ with .Params.contact }}
+<section class="section section-about-contact section-dark" aria-labelledby="about-contact-heading">
+  <div class="container about-contact-inner">
+    <h2 id="about-contact-heading" class="about-contact-title">{{ .title }}</h2>
+    {{ with .subtitle }}<p class="about-contact-subtitle">{{ . }}</p>{{ end }}
+    <a class="btn btn-primary" href="{{ .cta_url | relURL }}">{{ .cta_text }}</a>
+  </div>
+</section>
+{{ end }}
+
+{{/* team */}}
 {{ with .Site.Data.team }}
-<section class="section section-team" aria-labelledby="team-heading">
+<section class="section section-about-team" aria-labelledby="about-team-heading">
   <div class="container">
-    <h2 id="team-heading" class="section-title">Our Team</h2>
+    <h2 id="about-team-heading" class="about-team-title">{{ $.Params.team.title | default "Meet the Team" }}</h2>
 
-    <div class="grid grid-3">
+    {{ if .founders }}
+    <div class="team-grid">
       {{ range .founders }}
       {{ $person := . }}
-      <div class="card team-card">
-        {{ with .photo }}
-        <img src="{{ . | relURL }}" alt="Photo of {{ $person.name }}" class="team-photo" width="200" height="200" loading="lazy">
-        {{ end }}
-        <h3 class="team-name">{{ .name }}</h3>
+      <article class="team-member{{ if .highlight }} team-member--highlight{{ end }}">
+        <div class="team-photo-wrap">
+          {{ with .photo }}<img src="{{ . | relURL }}" alt="Photo of {{ $person.name }}" class="team-photo" loading="lazy">{{ end }}
+        </div>
+        <h3 class="team-name">
+          <span>{{ .name }}</span>
+          {{ with .linkedin }}<a class="team-linkedin" href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $person.name }} on LinkedIn">{{ $linkedinIcon | safeHTML }}</a>{{ end }}
+        </h3>
         <p class="team-role">{{ .role }}</p>
-        {{ with .bio }}
-        <p class="team-bio">{{ . }}</p>
-        {{ end }}
-        {{ with .email }}
-        <a href="mailto:{{ . }}" class="team-email">{{ . }}</a>
-        {{ end }}
-      </div>
-      {{ end }}
-    </div>
-
-    {{ with .team }}
-    <div class="grid grid-3 team-grid-rest">
-      {{ range . }}
-      {{ $person := . }}
-      <div class="card team-card team-card-compact">
-        {{ with .photo }}
-        <img src="{{ . | relURL }}" alt="Photo of {{ $person.name }}" class="team-photo" width="200" height="200" loading="lazy">
-        {{ end }}
-        <h3 class="team-name">{{ .name }}</h3>
-        <p class="team-role">{{ .role }}</p>
-        {{ with .bio }}
-        <p class="team-bio">{{ . }}</p>
-        {{ end }}
-      </div>
+        {{ with .bio }}<p class="team-bio">{{ . }}</p>{{ end }}
+      </article>
       {{ end }}
     </div>
     {{ end }}
 
-    {{ with .advisors }}
-    <hr class="team-divider">
-    <h3 class="team-section-label">Advisors</h3>
-    <div class="grid grid-3">
-      {{ range . }}
+    {{ if .team }}
+    <div class="team-grid">
+      {{ range .team }}
       {{ $person := . }}
-      <div class="card team-card team-card-compact">
-        {{ with .photo }}
-        <img src="{{ . | relURL }}" alt="Photo of {{ $person.name }}" class="team-photo" width="200" height="200" loading="lazy">
-        {{ end }}
-        <h3 class="team-name">{{ .name }}</h3>
+      <article class="team-member{{ if .highlight }} team-member--highlight{{ end }}">
+        <div class="team-photo-wrap">
+          {{ with .photo }}<img src="{{ . | relURL }}" alt="Photo of {{ $person.name }}" class="team-photo" loading="lazy">{{ end }}
+        </div>
+        <h3 class="team-name">
+          <span>{{ .name }}</span>
+          {{ with .linkedin }}<a class="team-linkedin" href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $person.name }} on LinkedIn">{{ $linkedinIcon | safeHTML }}</a>{{ end }}
+        </h3>
         <p class="team-role">{{ .role }}</p>
-        {{ with .bio }}
-        <p class="team-bio">{{ . }}</p>
-        {{ end }}
-      </div>
+        {{ with .bio }}<p class="team-bio">{{ . }}</p>{{ end }}
+      </article>
       {{ end }}
     </div>
     {{ end }}
+
+    {{ if .advisors }}
+    <div class="team-grid">
+      {{ range .advisors }}
+      {{ $person := . }}
+      <article class="team-member">
+        <div class="team-photo-wrap">
+          {{ with .photo }}<img src="{{ . | relURL }}" alt="Photo of {{ $person.name }}" class="team-photo" loading="lazy">{{ end }}
+        </div>
+        <h3 class="team-name">
+          <span>{{ .name }}</span>
+          {{ with .linkedin }}<a class="team-linkedin" href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $person.name }} on LinkedIn">{{ $linkedinIcon | safeHTML }}</a>{{ end }}
+        </h3>
+        <p class="team-role">{{ .role }}</p>
+        {{ with .bio }}<p class="team-bio">{{ . }}</p>{{ end }}
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{/* security & compliance */}}
+{{ with .Params.security }}
+<div class="section-divider" aria-hidden="true"></div>
+<section class="section section-about-security" aria-labelledby="about-security-heading">
+  <div class="container about-security-inner">
+    <h2 id="about-security-heading" class="about-security-title">{{ .title }}</h2>
+    {{ with .body }}<div class="about-security-body">{{ . | markdownify }}</div>{{ end }}
   </div>
 </section>
 {{ end }}
