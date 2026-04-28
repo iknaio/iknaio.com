@@ -76,4 +76,32 @@
       }
     }, { passive: true });
   }
+
+  // Platform scroll-spy: highlight the tab matching the section currently in view.
+  // The trigger band sits just below the sticky tab strip and covers the upper
+  // ~40% of the viewport, so a section becomes "active" as its heading scrolls
+  // into the area where the user is reading.
+  var tabs = document.querySelectorAll('.platform-tab');
+  var tools = document.querySelectorAll('.platform-tool');
+  if (tabs.length && tools.length && 'IntersectionObserver' in window) {
+    var visible = new Set();
+    function setActive(slug) {
+      tabs.forEach(function (t) {
+        t.classList.toggle('is-active', t.getAttribute('href') === '#' + slug);
+      });
+    }
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) visible.add(e.target);
+        else visible.delete(e.target);
+      });
+      if (visible.size === 0) return;
+      var top = null;
+      visible.forEach(function (el) {
+        if (!top || el.getBoundingClientRect().top < top.getBoundingClientRect().top) top = el;
+      });
+      if (top) setActive(top.id);
+    }, { rootMargin: '-130px 0px -60% 0px', threshold: 0 });
+    tools.forEach(function (t) { spy.observe(t); });
+  }
 })();

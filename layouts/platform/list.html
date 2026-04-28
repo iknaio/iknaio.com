@@ -1,0 +1,70 @@
+{{ define "main" }}
+{{ with .Params.hero }}
+<section class="platform-hero" aria-labelledby="platform-hero-heading">
+  <div class="container platform-hero-inner">
+    <div class="platform-hero-text">
+      <h1 id="platform-hero-heading" class="platform-hero-title">{{ .title }}</h1>
+      <p class="platform-hero-subtitle">{{ .subtitle }}</p>
+    </div>
+    {{ with .image }}
+    <div class="platform-hero-image">
+      <img src="{{ . | relURL }}" alt="{{ $.Params.hero.alt }}" loading="eager">
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+<section class="section section-platform" aria-label="Platform tools">
+  {{ with .Params.tools }}
+  <nav class="platform-tabs" aria-label="Platform tools">
+    <div class="container">
+      {{ range . }}
+      <a class="platform-tab" href="#{{ .slug }}">{{ .name }}</a>
+      {{ end }}
+    </div>
+  </nav>
+
+  {{ range $i, $tool := . }}
+  {{ if gt $i 0 }}<div class="platform-divider" aria-hidden="true"></div>{{ end }}
+  <article id="{{ .slug }}" class="platform-tool">
+    <div class="container">
+      <header class="platform-tool-header">
+        <div class="platform-tool-title">
+          {{ with .icon }}<img class="platform-tool-icon" src="{{ . | relURL }}" alt="" aria-hidden="true">{{ end }}
+          <h2 class="platform-tool-name">{{ .name }}</h2>
+        </div>
+        {{ with .headline }}<p class="platform-tool-headline">{{ . }}</p>{{ end }}
+      </header>
+
+      {{ with .tagline }}
+      <p class="platform-tool-tagline">{{ . }}</p>
+      {{ end }}
+
+      {{ range .rows }}
+      <div class="platform-row platform-row--{{ .layout }}">
+        <div class="platform-row-image">
+          <img src="{{ .image | relURL }}" alt="{{ .alt }}" loading="lazy">
+        </div>
+        <div class="platform-row-text">{{ .text | markdownify }}</div>
+      </div>
+      {{ end }}
+    </div>
+  </article>
+  {{ end }}
+  {{ end }}
+</section>
+
+{{ with .Params.cta }}
+<section class="section section-cta" aria-labelledby="platform-cta-heading">
+  <div class="container cta-inner">
+    <h2 id="platform-cta-heading" class="cta-title">{{ .title | safeHTML }}</h2>
+    <div class="cta-actions">
+      {{ range .actions }}
+      <a href="{{ .url | relURL }}" class="btn btn-{{ .style }}">{{ .text }}</a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}

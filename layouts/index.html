@@ -44,6 +44,9 @@
               {{ end }}
             </ul>
             {{ end }}
+            {{ with .learn_more_url }}
+            <p class="product-showcase-readmore"><a class="product-showcase-link" href="{{ . | relURL }}">Read more &rarr;</a></p>
+            {{ end }}
           </div>
         </div>
         {{ end }}

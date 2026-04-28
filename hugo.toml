@@ -25,9 +25,14 @@ disableKinds = ["taxonomy", "term"]
   priority = 0.5
 
 [[menus.main]]
+  name = "Platform"
+  url = "/platform/"
+  weight = 1
+
+[[menus.main]]
   name = "Solutions"
   url = "/solutions/"
-  weight = 1
+  weight = 2
 
 [[menus.main]]
   name = "Pricing"
