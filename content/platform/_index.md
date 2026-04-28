@@ -36,7 +36,7 @@ tools:
     tagline: "Link, track, and consolidate cases across your organization. CaseConnect leverages collaborative intelligence by connecting related cases, ensuring coordinated efforts and improved efficiency."
     rows:
       - layout: "image-left"
-        image: "images/platform/caseconnect.png"
+        image: "images/screenshots/screenshot-caseconnect.png"
         alt: "CaseConnect investigation platform for cryptoasset cases, fostering collaboration and shared insights to improve blockchain analysis and investigative efficiency."
         text: |
           CaseConnect is designed to streamline case management and enhance collaboration within your organization. By linking case details to cryptoasset addresses, you can easily track and consolidate investigations.

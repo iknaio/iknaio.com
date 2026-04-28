@@ -18,7 +18,7 @@ Cryptoasset investigations have surged, particularly in areas like cyberfraud an
 
 Our study’s analysis of 34 cyberfraud and 1,793 sextortion spam cases revealed remarkable connectivity within these domains:
 
-**41%** of cyberfraud cases and ** 96.9%** of sextortion cases could be linked, indicating shared addresses, networks, or patterns among incidents.
+**41%** of cyberfraud cases and **96.9%** of sextortion cases could be linked, indicating shared addresses, networks, or patterns among incidents.
 
 - Leveraging these connections saves time and resources by enabling investigators to recognize patterns and connect dots across otherwise isolated cases.
 

@@ -21,7 +21,7 @@ During the webinar, participants will have the unique opportunity to engage in p
 
 This webinar is exclusively available to vetted Iknaio users. We encourage you to share this invitation with trusted colleagues who could benefit from the insights and skills shared during the session.
 
-To get trial access to **Iknaio Pathfinder**, simply [contact us](https://contact@ikna.io). For **Dark Web Monitor** trial access, please reach out to CFLW at [community@cflw.com](mailto:community@cflw.com).
+To get trial access to **Iknaio Pathfinder**, simply [contact us](mailto:contact@iknaio.com). For **Dark Web Monitor** trial access, please reach out to CFLW at [community@cflw.com](mailto:community@cflw.com).
 
 Don't miss this chance to strengthen your investigative capabilities and stay ahead in the world of crypto-asset investigations.
 

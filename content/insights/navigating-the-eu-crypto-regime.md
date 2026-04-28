@@ -8,7 +8,7 @@ posttype: "insight"
 aliases: ["/blog/navigating-the-eu-crypto-regime/"]
 ---
 
-The EU is rolling out a comprehensive set of rules for cryptoassets in 2024–2025. Key new laws include **MiCAR** (Markets in Crypto-Assets Regulation), the ** Transfer of Funds Regulation** (TFR, or “crypto Travel Rule”), the ** Sixth Anti-Money Laundering Directive (AMLD6)**, and ** DAC8** (cryptoasset reporting under the amended Administrative Cooperation Directive). These build on (and overlap with) existing frameworks like PSD2 and upcoming payment regulation (PSD3/PSR). Together they impose licensing, disclosure, reporting, monitoring and risk-management obligations on exchanges, wallet providers, and institutional crypto actors. In this post, we outline the main obligations and challenges each framework brings, and show how Iknaio’s blockchain analytics tools can help meet them.
+The EU is rolling out a comprehensive set of rules for cryptoassets in 2024–2025. Key new laws include **MiCAR** (Markets in Crypto-Assets Regulation), the **Transfer of Funds Regulation** (TFR, or “crypto Travel Rule”), the **Sixth Anti-Money Laundering Directive (AMLD6)**, and **DAC8** (cryptoasset reporting under the amended Administrative Cooperation Directive). These build on (and overlap with) existing frameworks like PSD2 and upcoming payment regulation (PSD3/PSR). Together they impose licensing, disclosure, reporting, monitoring and risk-management obligations on exchanges, wallet providers, and institutional crypto actors. In this post, we outline the main obligations and challenges each framework brings, and show how Iknaio’s blockchain analytics tools can help meet them.
 
 ## **MiCAR: Uniform Rules for Crypto-Asset Issuers and Service Providers**
 
@@ -36,11 +36,9 @@ In parallel, Regulation (EU) 2023/1113 (the Transfer of Funds Regulation – TFR
 
 **Obligations & exemptions:**
 
-- Under **Regulation (EU) 2023/1113**, CASPs must attach originator and beneficiary information to all crypto‑asset transfers - reflecting the EU’s implementation of the FATF Travel Rule. However, the ** EBA's Travel Rule Guidelines (EBA/GL/2024/11)** also define specific ** exceptions** and ** derogations** that CASPs may apply:** Low-value transfers (≤ €1,000):** Transfers below or equal to €1,000, including those involving self-hosted wallets, are ** not required to be verified** - only the information must be collected. No ownership verification using technical means is needed in this bracket.
+- Under **Regulation (EU) 2023/1113**, CASPs must attach originator and beneficiary information to all crypto‑asset transfers — reflecting the EU's implementation of the FATF Travel Rule. However, the **EBA's Travel Rule Guidelines (EBA/GL/2024/11)** also define specific **exceptions** and **derogations** that CASPs may apply.
 
-Under **Regulation (EU) 2023/1113**, CASPs must attach originator and beneficiary information to all crypto‑asset transfers - reflecting the EU’s implementation of the FATF Travel Rule. However, the ** EBA's Travel Rule Guidelines (EBA/GL/2024/11)** also define specific ** exceptions** and ** derogations** that CASPs may apply:
-
-**Low-value transfers (≤ €1,000):** Transfers below or equal to €1,000, including those involving self-hosted wallets, are ** not required to be verified** - only the information must be collected. No ownership verification using technical means is needed in this bracket.
+- **Low-value transfers (≤ €1,000):** Transfers below or equal to €1,000, including those involving self-hosted wallets, are **not required to be verified** — only the information must be collected. No ownership verification using technical means is needed in this bracket.
 
 - **Linked transfers:** A set of transfers may be treated as a single event (thus benefiting from thresholds) if they share originator, beneficiary, and timeframe - based on a CASP’s risk-based detection of linked activity.
 
@@ -70,31 +68,31 @@ The main challenge is data handling. Crypto firms must build or integrate system
 
 ## **Payments Framework: PSD2/PSD3 and the Interplay with MiCA**
 
-A key area of regulatory overlap lies between the **Markets in Crypto-Assets Regulation (MiCAR)** and the ** EU payments framework**, currently governed by PSD2 and soon evolving into ** PSD3/PSR**.
+A key area of regulatory overlap lies between the **Markets in Crypto-Assets Regulation (MiCAR)** and the **EU payments framework**, currently governed by PSD2 and soon evolving into **PSD3/PSR**.
 
-Under MiCAR, **Electronic Money Tokens (EMTs)** are explicitly treated as electronic money. This means issuers of EMTs must be authorised under the E-Money Directive (EMD2), and their services may fall within the scope of PSD2 - even though MiCA authorises EMT issuance itself. What remained unclear was whether a ** MiCA-authorised Crypto-Asset Service Provider (CASP)** may also provide ** payment services** without needing separate PSD2 authorisation.
+Under MiCAR, **Electronic Money Tokens (EMTs)** are explicitly treated as electronic money. This means issuers of EMTs must be authorised under the E-Money Directive (EMD2), and their services may fall within the scope of PSD2 - even though MiCA authorises EMT issuance itself. What remained unclear was whether a **MiCA-authorised Crypto-Asset Service Provider (CASP)** may also provide **payment services** without needing separate PSD2 authorisation.
 
-On **10 June 2025**, the ** European Banking Authority (EBA)** published its ** No Action Letter** clarifying this overlap. The opinion was issued at the request of the European Commission (in December 2024) and provides both short‑term relief and long‑term direction for authorities and CASPs.
+On **10 June 2025**, the **European Banking Authority (EBA)** published its **No Action Letter** clarifying this overlap. The opinion was issued at the request of the European Commission (in December 2024) and provides both short‑term relief and long‑term direction for authorities and CASPs.
 
 ### **Key advice from the EBA No Action Letter:**
 
-- NCAs should treat the **transfer, custody and administration of EMTs** (when provided on behalf of clients, especially via custodial wallets that enable third-party transfers) as ** payment services under PSD2**.
+- NCAs should treat the **transfer, custody and administration of EMTs** (when provided on behalf of clients, especially via custodial wallets that enable third-party transfers) as **payment services under PSD2**.
 
-- **Exchange services** - meaning exchanging cryptoassets for fiat or other cryptoassets, including intermediation of such exchanges - ** should not** be treated as payment services and therefore ** do not require PSD2 authorisation**.
+- **Exchange services** - meaning exchanging cryptoassets for fiat or other cryptoassets, including intermediation of such exchanges - **should not** be treated as payment services and therefore **do not require PSD2 authorisation**.
 
-- A **transitional period** is granted until ** 2 March 2026**, during which NCAs are ** not required** to enforce PSD2 authorisation for EMT-related services meeting the defined criteria.
+- A **transitional period** is granted until **2 March 2026**, during which NCAs are **not required** to enforce PSD2 authorisation for EMT-related services meeting the defined criteria.
 
 - The **EBA does not recommend a “no action” approach**, but rather urges competent authorities to enforce the existing legal framework to avoid gaps in consumer protection and financial supervision.
 
-- For entities that do require authorisation after the transition period, **NCAs are advised to use streamlined procedures**- leveraging MiCA application data - to avoid duplicative processes.
+- For entities that do require authorisation after the transition period, **NCAs are advised to use streamlined procedures** - leveraging MiCA application data - to avoid duplicative processes.
 
-- Post‑authorisation by PSD2, NCAs can **de-prioritise enforcement** of certain PSD2 provisions such as safeguarding, consumer fee disclosures, and open banking requirements; but must still enforce ** strong customer authentication**, fraud reporting, and ** own-funds/capital** requirements.
+- Post‑authorisation by PSD2, NCAs can **de-prioritise enforcement** of certain PSD2 provisions such as safeguarding, consumer fee disclosures, and open banking requirements; but must still enforce **strong customer authentication**, fraud reporting, and **own-funds/capital** requirements.
 
 ### **Implications for CASPs:**
 
 - CASPs offering EMT-related services must assess whether those services fall into PSD2’s payment service definitions.
 
-- They should **plan for potential dual authorisation** under both MiCA and PSD2 or partner with a regulated ** Payment Service Provider (PSP)** - unless they can rely on the transitional relief period.
+- They should **plan for potential dual authorisation** under both MiCA and PSD2 or partner with a regulated **Payment Service Provider (PSP)** - unless they can rely on the transitional relief period.
 
 - Organisations needing PSD2 authorisation post‑March 2026 must **ensure strong compliance** with SCA, fraud reporting, and capital frameworks.
 
@@ -102,15 +100,15 @@ On **10 June 2025**, the ** European Banking Authority (EBA)** published its ** 
 
 - Long‑term resolution is expected in the **PSD3/PSR legislative process**, where MiCA may be amended to avoid unnecessary dual licensing or overlap.
 
-In practice, this means compliance teams at CASPs will need to **map out their service offerings** against PSD2 categories and ensure that ** consumer protection, security, fraud prevention, and capital requirements** under PSD2 are not overlooked. The EBA’s stance reinforces that cryptoassets, especially when used for payments, are ** not operating in a regulatory vacuum**.
+In practice, this means compliance teams at CASPs will need to **map out their service offerings** against PSD2 categories and ensure that **consumer protection, security, fraud prevention, and capital requirements** under PSD2 are not overlooked. The EBA’s stance reinforces that cryptoassets, especially when used for payments, are **not operating in a regulatory vacuum**.
 
 ## **The Big Picture: Overlaps and Implementation Challenges**
 
 In combination, these regulations impose a heavy compliance burden. Some overlaps and intersections:
 
-- **AML/CFT rules:** MiCA incorporates and extends AMLD requirements, while TFR’s travel rule is a crypto-specific implementation of AMLD provisions on data sharing. All CASPs will be obliged entities under the strengthened AMLD6 rules, subject to customer due diligence, ** transaction monitoring, sanctions screening**, and strict record-keeping.
+- **AML/CFT rules:** MiCA incorporates and extends AMLD requirements, while TFR’s travel rule is a crypto-specific implementation of AMLD provisions on data sharing. All CASPs will be obliged entities under the strengthened AMLD6 rules, subject to customer due diligence, **transaction monitoring, sanctions screening**, and strict record-keeping.
 
-- **Data and reporting:** AMLD6/TFR and DAC8 both require ** gathering more customer and transaction data** – for different end goals (crime vs tax). Firms will need to reconcile these regimes: e.g. the customer identifiers used in tax reporting may overlap with KYC IDs used for AML.
+- **Data and reporting:** AMLD6/TFR and DAC8 both require **gathering more customer and transaction data** – for different end goals (crime vs tax). Firms will need to reconcile these regimes: e.g. the customer identifiers used in tax reporting may overlap with KYC IDs used for AML.
 
 - **Consumer protections:** MiCA’s investor safeguards (whitepapers, disclosure, reserve audits) echo PSD2’s and e-money rules on protecting end users and ensuring funds safety. A CASP issuing tokens that act like deposits or payments will need to implement features like segregated reserves, capital buffers, and customer complaint procedures.
 
@@ -126,7 +124,7 @@ Key compliance needs addressed by Iknaio:
 
 - **Proof-of-Funds & Source-of-Funds:** Investigators and compliance officers can use our tracing tools to verify that incoming funds originate from legitimate sources. Pathfinder’s “monitor transactions at aggregated levels” feature lets you follow a deposit’s path through the network, checking whether funds came from clean wallets or flagged actors. This supports AMLD/CFT diligence and MiCA’s requirement to understand an account’s funds.
 
-- **Holistic transaction monitoring:** Beyond simple pattern alerts, Iknaio enables ** network-level analysis**. For example, simultaneous spikes, cross-chain movements, or links to known criminal clusters can be detected. We integrate multiple data streams (blockchain, transaction metadata, 3rd party sources) so a compliance team gains a consolidated risk view. This complements – not replaces – standard monitors, filling gaps where on-chain insights are needed.
+- **Holistic transaction monitoring:** Beyond simple pattern alerts, Iknaio enables **network-level analysis**. For example, simultaneous spikes, cross-chain movements, or links to known criminal clusters can be detected. We integrate multiple data streams (blockchain, transaction metadata, 3rd party sources) so a compliance team gains a consolidated risk view. This complements – not replaces – standard monitors, filling gaps where on-chain insights are needed.
 
 - **Proof-of-Reserves:** Exchanges and custodians can leverage on-chain transparency to prove they hold the crypto they owe. Iknaio can audit an entity’s wallet cluster to sum total balances and track reserves over time. Any discrepancy (e.g. customer deposits missing on-chain) becomes apparent. This helps satisfy MiCA’s auditing requirements for token issuers and builds trust for custodial services.
 

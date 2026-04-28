@@ -5,7 +5,7 @@ description: "New Research Reveals Widespread Key Reuse Between UTXO and Account
 tags: []
 image: "images/blog/cross-chain-kexy-reuse/cover.png"
 posttype: "insight"
-aliases: ["/blog/cross-chain-kexy-reuse/"]
+aliases: ["/blog/cross-chain-kexy-reuse/", "/insights/cross-chain-key-reuse/", "/blog/cross-chain-key-reuse/"]
 ---
 
 ## The Privacy Assumption That Doesn't Hold
@@ -54,7 +54,7 @@ Beyond quantifying reuse, the paper introduces a novel cross-chain clustering me
 
 This method does not rely on heuristics for the cross-chain link itself. The connection between addresses on different chains is cryptographically exact — it is based on proof of knowledge of the same private key.
 
-Using this technique, the authors were able to cluster **497,289 Ethereum addresses into 62,681 clusters** and ** 305,019 Tron addresses into 19,242 clusters**, by transferring Bitcoin's multi-input clustering across the chain boundary.
+Using this technique, the authors were able to cluster **497,289 Ethereum addresses into 62,681 clusters** and **305,019 Tron addresses into 19,242 clusters**, by transferring Bitcoin's multi-input clustering across the chain boundary.
 
 ![](/images/blog/cross-chain-kexy-reuse/figure-3.png)
 
