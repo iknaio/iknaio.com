@@ -15,46 +15,50 @@
 </section>
 {{ end }}
 
-{{ with .Params.products }}
-<section class="section section-products" aria-labelledby="products-heading">
-    <div class="section-products-header">
-      <div class="container">
-        <h2 id="products-heading" class="section-title accent">{{ .title }}</h2>
-        <p class="section-subtitle">{{ .subtitle | markdownify }}</p>
-      </div>
-    </div>
-  <div class="container">
-
-    {{ range .groups }}
-    <div class="product-group">
-      <h3 class="product-group-name">{{ .name }}</h3>
-      <div class="product-cards">
-        {{ range .items }}
-        <div class="product-showcase-card">
-          <div class="product-showcase-image">
-            <img src="{{ .image | relURL }}" alt="{{ .alt }}" loading="lazy">
-          </div>
-          <div class="product-showcase-body">
-            <h4>{{ .name }}</h4>
-            {{ with .headline }}<p class="product-showcase-headline">{{ . }}</p>{{ end }}
-            {{ with .bullets }}
-            <ul class="product-showcase-bullets">
-              {{ range . }}
-              <li>{{ . }}</li>
-              {{ end }}
-            </ul>
-            {{ end }}
-            {{ with .learn_more_url }}
-            <p class="product-showcase-readmore"><a class="product-showcase-link" href="{{ . | relURL }}">Read more &rarr;</a></p>
-            {{ end }}
-          </div>
+{{ with .Params.tools }}
+  {{ partial "tools.html" . }}
+{{ else }}
+  {{ with .Params.products }}
+  <section class="section section-products" aria-labelledby="products-heading">
+      <div class="section-products-header">
+        <div class="container">
+          <h2 id="products-heading" class="section-title accent">{{ .title }}</h2>
+          <p class="section-subtitle">{{ .subtitle | markdownify }}</p>
         </div>
-        {{ end }}
       </div>
+    <div class="container">
+
+      {{ range .groups }}
+      <div class="product-group">
+        <h3 class="product-group-name">{{ .name }}</h3>
+        <div class="product-cards">
+          {{ range .items }}
+          <div class="product-showcase-card">
+            <div class="product-showcase-image">
+              <img src="{{ .image | relURL }}" alt="{{ .alt }}" loading="lazy">
+            </div>
+            <div class="product-showcase-body">
+              <h4>{{ .name }}</h4>
+              {{ with .headline }}<p class="product-showcase-headline">{{ . }}</p>{{ end }}
+              {{ with .bullets }}
+              <ul class="product-showcase-bullets">
+                {{ range . }}
+                <li>{{ . }}</li>
+                {{ end }}
+              </ul>
+              {{ end }}
+              {{ with .learn_more_url }}
+              <p class="product-showcase-readmore"><a class="product-showcase-link" href="{{ . | relURL }}">Read more &rarr;</a></p>
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
     </div>
-    {{ end }}
-  </div>
-</section>
+  </section>
+  {{ end }}
 {{ end }}
 
 {{ with .Params.secondary_audience }}

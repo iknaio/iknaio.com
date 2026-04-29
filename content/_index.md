@@ -9,65 +9,42 @@ hero:
     text: "Request a Demo"
     url: contact/
 
-products:
-  title: "Tools and services for cryptoasset investigations"
-  subtitle: "Designed to remove bottlenecks and scale investigations across your organization."
-  groups:
-    - name: "Tools"
-      items:
-        - name: "Pathfinder"
-          image: "images/screenshots/screenshot-pathfinder.png"
-          alt: "Pathfinder investigation dashboard showing Bitcoin transaction flow graph"
-          headline: "A simple yet powerful tracing tool on every desk."
-          bullets:
-            - "Visual exploration of cryptoasset flows across Bitcoin, Ethereum, Tron, and more"
-            - "Cluster heuristics and entity attribution from a decade of research"
-            - "Side-by-side support for multiple investigations"
-          learn_more_url: "platform/#pathfinder"
-        - name: "CaseConnect"
-          image: "images/screenshots/screenshot-caseconnect.png"
-          alt: "CaseConnect dashboard showing linked investigation cases"
-          headline: "Automated case deconfliction across your organization."
-          bullets:
-            - "Detect overlapping investigations through shared addresses and transaction patterns"
-            - "Avoid duplicate work; coordinate jurisdictions earlier"
-            - "Optional cross-organization mode for federated investigation networks"
-          learn_more_url: "platform/#caseconnect"
-        - name: "QuickLock"
-          image: "images/screenshots/screenshot-quicklock.png"
-          alt: "QuickLock automated forensic report generation interface"
-          headline: "Trace funds in minutes, not days."
-          bullets:
-            - "Fill in a simple form, get an automated initial forensic report"
-            - "Chain-of-evidence tracking suitable for triage and early-stage filings"
-            - "Reusable templates for repeat scenarios (theft, scam, ransomware)"
-          learn_more_url: "platform/#quicklock"
-        - name: "API & MCP"
-          image: "images/screenshots/screenshot-api.png"
-          alt: "API interface for automated investigation workflows"
-          headline: "Automate complex workflows; build agentic pipelines that scale."
-          bullets:
-            - "REST API over the same data Pathfinder uses"
-            - "Model Context Protocol (MCP) interface for connecting AI agents"
-            - "Integrates into existing AML, case-management, and analytics stacks"
-    - name: "Services"
-      items:
-        - name: "Tailored Reports"
-          image: "images/screenshots/screenshot-tailored-reports.png"
-          alt: "Tailored Reports placeholder image"
-          headline: "Bespoke forensic and intelligence reports, written by our analysts."
-          bullets:
-            - "Court-grade narrative reports for cases too large or sensitive to self-serve"
-            - "Iknaio analysts handle the tracing, attribution, and write-up"
-            - "Delivered under contract; turnaround agreed up front"
-        - name: "Learning & Trainings"
-          image: "images/screenshots/screenshot-learning.svg"
-          alt: "Abstract illustration of a learning network: connected knowledge nodes rising from an open book"
-          headline: "Workshops and trainings for cryptoasset investigators."
-          bullets:
-            - "On-site or remote training for investigation, compliance, and reporting workflows"
-            - "Curriculum tailored to your team's tooling and case mix"
-            - "Designed and delivered by Iknaio research and product staff"
+tools:
+  eyebrow: "Our productivity tools"
+  title: "Maximize your efficiency in analyzing <em>fund flows.</em>"
+  subtitle: "A comprehensive suite of tools purpose-built for cryptoasset investigators, compliance teams, and forensic accountants."
+  read_more_text: "Read more"
+  tabs:
+    - Pathfinder
+    - CaseConnect
+    - QuickLock
+    - TaxReport
+  panels:
+    - name: Pathfinder
+      description: "Simplify cryptoasset payment flow analysis. Pathfinder puts simple but powerful tracing capabilities at everyone's desk, making it easier than ever to follow cryptoasset transactions without organizational bottlenecks."
+      read_more_url: "platform/#pathfinder"
+    - name: CaseConnect
+      description: "Foster collaboration among investigators working on related cases. CaseConnect promotes smarter work by leveraging shared insights, making every investigation more efficient through collective intelligence."
+      read_more_url: "platform/#caseconnect"
+    - name: QuickLock
+      description: "Streamline your transaction tracing process. QuickLock automates the generation of detailed forensics reports, enabling you to analyze money flows effortlessly. Avoid repetitive manual tasks and boost your efficiency."
+      read_more_url: "platform/#quicklock"
+    - name: TaxReport
+      description: "Compute taxable gains and losses automatically. TaxReport allows you to quickly compute taxable gains and losses considering jurisdiction-specific tax regulations. You can also request a fully detailed tax report."
+      read_more_url: "platform/#taxreport"
+      assets:
+        - icon: "images/crypto/bitcoin.png"
+          name: "Bitcoin"
+          txs: "842 txs"
+        - icon: "images/crypto/ethereum.png"
+          name: "Ethereum"
+          txs: "391 txs"
+        - icon: "images/crypto/tether.png"
+          name: "Tether (USDT)"
+          txs: "214 txs"
+        - icon: "images/crypto/usdc.png"
+          name: "USDC"
+          txs: "112 txs"
 
 secondary_audience:
   title: "Also for compliance teams and advisors"
