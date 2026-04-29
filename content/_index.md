@@ -15,10 +15,14 @@ tools:
   subtitle: "A comprehensive suite of tools purpose-built for cryptoasset investigators, compliance teams, and forensic accountants."
   read_more_text: "Read more"
   tabs:
-    - Pathfinder
-    - CaseConnect
-    - QuickLock
-    - TaxReport
+    - name: Pathfinder
+      icon: "images/platform/icons/pathfinder.svg"
+    - name: CaseConnect
+      icon: "images/platform/icons/caseconnect.svg"
+    - name: QuickLock
+      icon: "images/platform/icons/quicklock.svg"
+    - name: TaxReport
+      icon: "images/platform/icons/taxreport.svg"
   panels:
     - name: Pathfinder
       description: "Simplify cryptoasset payment flow analysis. Pathfinder puts simple but powerful tracing capabilities at everyone's desk, making it easier than ever to follow cryptoasset transactions without organizational bottlenecks."

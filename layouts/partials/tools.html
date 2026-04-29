@@ -13,10 +13,13 @@ So the context (.) is already the tools object
   /* TOOLS SECTION STYLES - from homepage/index.html */
     .tools-section { background: #F7F7F5; }
     .tools-tabs { display: flex; gap: 4px; border-bottom: 1px solid #E3E3DF; margin: 0 auto 48px; max-width: 800px; flex-wrap: wrap; justify-content: center; }
-    .tools-tab { background: transparent; border: none; padding: 16px 24px; font-family: 'Brawler', Georgia, serif; font-size: clamp(18px, 2.5vw, 22px); font-weight: 400; color: #A8A8A8; cursor: pointer; position: relative; transition: color 200ms; letter-spacing: -0.01em; }
+    .tools-tab { background: transparent; border: none; padding: 16px 24px; font-family: 'Brawler', Georgia, serif; font-size: clamp(18px, 2.5vw, 22px); font-weight: 400; color: #A8A8A8; cursor: pointer; position: relative; transition: color 200ms; letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 10px; }
     .tools-tab:hover { color: #2A2A2A; }
     .tools-tab.active { color: #2A2A2A; }
     .tools-tab.active::after { content: ''; position: absolute; left: 24px; right: 24px; bottom: -1px; height: 3px; background: var(--color-primary); border-radius: 2px 2px 0 0; }
+    .tool-tab-icon { width: 24px; height: 24px; opacity: 0.7; transition: opacity 200ms; }
+    .tools-tab:hover .tool-tab-icon,
+    .tools-tab.active .tool-tab-icon { opacity: 1; }
     .tool-panel { display: none; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; min-height: 440px; }
     .tool-panel.active { display: grid; }
     .tool-panel p { font-family: 'Roboto', sans-serif; font-size: 17px; line-height: 1.6; color: #4A4A4A; margin: 0 0 28px; max-width: 460px; }
@@ -100,7 +103,10 @@ So the context (.) is already the tools object
 
     <div class="tools-tabs" role="tablist">
       {{ range .tabs }}
-      <button class="tools-tab" data-tool="{{ . | urlize }}" role="tab">{{ . }}</button>
+      <button class="tools-tab" data-tool="{{ .name | urlize }}" role="tab">
+        <img src="{{ .icon | relURL }}" alt="{{ .name }}" class="tool-tab-icon" loading="lazy">
+        {{ .name }}
+      </button>
       {{ end }}
     </div>
 
