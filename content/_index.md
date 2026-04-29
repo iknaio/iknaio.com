@@ -27,15 +27,19 @@ tools:
     - name: Pathfinder
       description: "Simplify cryptoasset payment flow analysis. Pathfinder puts simple but powerful tracing capabilities at everyone's desk, making it easier than ever to follow cryptoasset transactions without organizational bottlenecks."
       read_more_url: "platform/#pathfinder"
+      screenshot: "images/screenshots/screenshot-pathfinder.png"
     - name: CaseConnect
       description: "Foster collaboration among investigators working on related cases. CaseConnect promotes smarter work by leveraging shared insights, making every investigation more efficient through collective intelligence."
       read_more_url: "platform/#caseconnect"
+      screenshot: "images/screenshots/screenshot-caseconnect.png"
     - name: QuickLock
       description: "Streamline your transaction tracing process. QuickLock automates the generation of detailed forensics reports, enabling you to analyze money flows effortlessly. Avoid repetitive manual tasks and boost your efficiency."
       read_more_url: "platform/#quicklock"
+      screenshot: "images/screenshots/screenshot-quicklock.png"
     - name: TaxReport
       description: "Compute taxable gains and losses automatically. TaxReport allows you to quickly compute taxable gains and losses considering jurisdiction-specific tax regulations. You can also request a fully detailed tax report."
       read_more_url: "platform/#taxreport"
+      screenshot: "images/screenshots/screenshot-tailored-reports.png"
       assets:
         - icon: "images/crypto/bitcoin.png"
           name: "Bitcoin"

@@ -121,6 +121,9 @@ So the context (.) is already the tools object
           {{ end }}
         </div>
         <div class="tool-mockup">
+          {{ with $panel.screenshot }}
+          <img src="{{ . | relURL }}" alt="{{ $panel.name }} screenshot" loading="lazy" style="width:100%;display:block;border-radius:0 0 14px 14px;">
+          {{ else }}
           <div class="chrome"><span></span><span></span><span></span></div>
           <div class="tool-mockup-body">
             {{/* Pathfinder Mockup */}}
@@ -269,6 +272,7 @@ So the context (.) is already the tools object
             </div>
             {{ end }}
           </div>
+          {{ end }}
         </div>
       </div>
       {{ end }}
