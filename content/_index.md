@@ -21,8 +21,8 @@ tools:
       icon: "images/platform/icons/caseconnect.svg"
     - name: QuickLock
       icon: "images/platform/icons/quicklock.svg"
-    - name: TaxReport
-      icon: "images/platform/icons/taxreport.svg"
+    - name: "API & MCP"
+      icon: "images/platform/icons/automator.svg"
   panels:
     - name: Pathfinder
       description: "Simplify cryptoasset payment flow analysis. Pathfinder puts simple but powerful tracing capabilities at everyone's desk, making it easier than ever to follow cryptoasset transactions without organizational bottlenecks."
@@ -36,23 +36,10 @@ tools:
       description: "Streamline your transaction tracing process. QuickLock automates the generation of detailed forensics reports, enabling you to analyze money flows effortlessly. Avoid repetitive manual tasks and boost your efficiency."
       read_more_url: "platform/#quicklock"
       screenshot: "images/screenshots/screenshot-quicklock.png"
-    - name: TaxReport
-      description: "Compute taxable gains and losses automatically. TaxReport allows you to quickly compute taxable gains and losses considering jurisdiction-specific tax regulations. You can also request a fully detailed tax report."
-      read_more_url: "platform/#taxreport"
-      screenshot: "images/screenshots/screenshot-tailored-reports.png"
-      assets:
-        - icon: "images/crypto/bitcoin.png"
-          name: "Bitcoin"
-          txs: "842 txs"
-        - icon: "images/crypto/ethereum.png"
-          name: "Ethereum"
-          txs: "391 txs"
-        - icon: "images/crypto/tether.png"
-          name: "Tether (USDT)"
-          txs: "214 txs"
-        - icon: "images/crypto/usdc.png"
-          name: "USDC"
-          txs: "112 txs"
+    - name: "API & MCP"
+      description: "Automate complex workflows; build agentic pipelines that scale. REST API over the same data Pathfinder uses. Model Context Protocol (MCP) interface for connecting AI agents. Integrates into existing AML, case-management, and analytics stacks."
+      read_more_url: "platform/#api-mcp"
+      screenshot: "images/screenshots/screenshot-api.png"
 
 secondary_audience:
   title: "Also for compliance teams and advisors"
