@@ -1424,7 +1424,7 @@ hr {
 }
 
 .footer a:hover {
-  color: var(--color-white);
+  color: var(--text-dark-primary);
 }
 
 .footer-grid {
