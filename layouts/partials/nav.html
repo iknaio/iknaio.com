@@ -1,4 +1,4 @@
-<header class="nav" role="banner">
+<header class="nav{{ if not .IsHome }} nav--not-home{{ end }}" role="banner">
   <div class="nav-inner container">
     <a href="{{ .Site.Home.RelPermalink }}" class="nav-logo" aria-label="Iknaio home">
       <img src="{{ "images/logos/iknaio-logo.svg" | relURL }}" alt="Iknaio" class="nav-logo-img" width="180" height="37">

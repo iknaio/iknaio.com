@@ -446,6 +446,10 @@ hr {
   height: 75.2px;
 }
 
+.nav--not-home {
+  background-color: var(--color-white);
+}
+
 .nav .container {
   display: flex;
   align-items: center;
