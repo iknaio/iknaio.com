@@ -11,92 +11,92 @@ So the context (.) is already the tools object
 {{/* Inline the CSS for tools section from old homepage */}}
 <style>
   /* TOOLS SECTION STYLES - from homepage/index.html */
-    .tools-heading { background: var(--color-gray-light); padding: 32px; }
-    .tools-heading .container { display: flex; align-items: center; gap: 32px; }
+    .tools-heading { background: var(--color-gray-light); padding: var(--spacing-xl); }
+    .tools-heading .container { display: flex; align-items: center; gap: var(--spacing-xl); }
     .tools-heading-flex { flex: 1; }
-    .tools-heading-title { font-family: 'Brawler', Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.1; color: #2A2A2A; letter-spacing: -0.02em; margin: 0; }
-    .tools-heading-subtitle { font-family: 'General Sans', 'General Sans Placeholder', sans-serif; font-weight: 500; font-size: 20px; line-height: 1.4; text-align: left; color: #4A4A4A; margin: 0; }
+    .tools-heading-title { font-family: var(--font-accent); font-weight: 400; font-size: 32px; line-height: 1.1; color: var(--color-dark); letter-spacing: -0.02em; margin: 0; }
+    .tools-heading-subtitle { font-family: var(--font-primary); font-weight: 500; font-size: 20px; line-height: 1.4; text-align: left; color: var(--color-dark-soft); margin: 0; }
     .tools-heading .eyebrow { margin: 0; }
-    .tool-screenshot { width: 100%; display: block; border-radius: 0 0 14px 14px; }
-    .tools-section { background: var(--color-white); padding-top: var(--spacing-md)}
-    .tools-tabs { display: flex; gap: 4px; border-bottom: 1px solid #E3E3DF; margin: 0 auto 48px; max-width: 800px; flex-wrap: wrap; justify-content: center; }
-    .tools-tab { background: transparent; border: none; padding: 16px 24px; font-family: 'Brawler', Georgia, serif; font-size: clamp(18px, 2.5vw, 22px); font-weight: 400; color: #A8A8A8; cursor: pointer; position: relative; transition: color 200ms; letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 10px; }
-    .tools-tab:hover { color: #2A2A2A; }
-    .tools-tab.active { color: #2A2A2A; }
-    .tools-tab.active::after { content: ''; position: absolute; left: 24px; right: 24px; bottom: -1px; height: 3px; background: var(--color-primary); border-radius: 2px 2px 0 0; }
-    .tool-tab-icon { width: 24px; height: 24px; opacity: 0.4; transition: opacity 200ms; }
+    .tool-screenshot { width: 100%; display: block; border-radius: 0 0 var(--radius-md) var(--radius-md); }
+    .tools-section { background: var(--color-white); padding-top: var(--spacing-md); }
+    .tools-tabs { display: flex; gap: var(--spacing-xs); border-bottom: 1px solid var(--color-gray); margin: 0 auto var(--spacing-2xl); max-width: 800px; flex-wrap: wrap; justify-content: center; }
+    .tools-tab { background: transparent; border: none; padding: var(--spacing-md) var(--spacing-lg); font-family: var(--font-accent); font-size: clamp(18px, 2.5vw, 22px); font-weight: 400; color: var(--text-dark-muted); cursor: pointer; position: relative; transition: color var(--duration-base) var(--easing-default); letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 10px; }
+    .tools-tab:hover { color: var(--color-dark); }
+    .tools-tab.active { color: var(--color-dark); }
+    .tools-tab.active::after { content: ''; position: absolute; left: var(--spacing-lg); right: var(--spacing-lg); bottom: -1px; height: 3px; background: var(--color-primary); border-radius: 2px 2px 0 0; }
+    .tool-tab-icon { width: 24px; height: 24px; opacity: 0.4; transition: opacity var(--duration-base) var(--easing-default); }
     .tools-tab:hover .tool-tab-icon,
     .tools-tab.active .tool-tab-icon { opacity: 1; }
     .tool-panel { display: none; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; min-height: 440px; }
     .tool-panel.active { display: grid; }
-    .tool-panel p { font-family: 'Roboto', sans-serif; font-size: 17px; line-height: 1.6; color: #4A4A4A; margin: 0 0 28px; max-width: 460px; }
-    .tool-panel h3 { font-family: 'Brawler', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.1; margin: 0 0 20px; color: #2A2A2A; letter-spacing: -0.02em; }
-    .tool-panel .read-more { font-family: 'General Sans', system-ui, sans-serif; font-weight: 600; font-size: 14px; color: #2A2A2A; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding-bottom: 3px; border-bottom: 1.5px solid var(--color-primary); transition: color 200ms; }
+    .tool-panel p { font-family: var(--font-secondary); font-size: 17px; line-height: 1.6; color: var(--color-dark-soft); margin: 0 0 28px; max-width: 460px; }
+    .tool-panel h3 { font-family: var(--font-accent); font-weight: 400; font-size: 40px; line-height: 1.1; margin: 0 0 20px; color: var(--color-dark); letter-spacing: -0.02em; }
+    .tool-panel .read-more { font-family: var(--font-primary); font-weight: 600; font-size: 14px; color: var(--color-dark); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding-bottom: 3px; border-bottom: 1.5px solid var(--color-primary); transition: color var(--duration-base) var(--easing-default); }
     .tool-panel .read-more:hover { color: var(--color-primary); }
-    .tool-panel .read-more::after { content: '\2192'; transition: transform 200ms; }
+    .tool-panel .read-more::after { content: '\2192'; transition: transform var(--duration-base) var(--easing-default); }
     .tool-panel .read-more:hover::after { transform: translateX(3px); }
-    .tool-mockup { background: #fff; border-radius: 14px; padding: 0; box-shadow: 0 30px 60px -30px rgba(42,42,42,0.22), 0 10px 30px -10px rgba(42,42,42,0.08); position: relative; overflow: hidden; margin: 0 auto; max-width: 600px; }
-    .tool-mockup .chrome { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #F4F4F4; border-bottom: 1px solid #EDEDED; }
-    .tool-mockup .chrome span { width: 10px; height: 10px; border-radius: 50%; background: #E3E3E3; }
-    .tool-mockup-body { padding: 0; background: #F4F4F4; }
+    .tool-mockup { background: var(--color-white); border-radius: var(--radius-md); padding: 0; box-shadow: 0 30px 60px -30px rgba(42,42,42,0.22), 0 10px 30px -10px rgba(42,42,42,0.08); position: relative; overflow: hidden; margin: 0 auto; max-width: 600px; }
+    .tool-mockup .chrome { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: var(--color-gray-light); border-bottom: 1px solid var(--color-gray); }
+    .tool-mockup .chrome span { width: 10px; height: 10px; border-radius: 50%; background: var(--color-gray); }
+    .tool-mockup-body { padding: 0; background: var(--color-gray-light); }
     /* Pathfinder mockup */
     .mp { display: grid; grid-template-columns: 170px 1fr; min-height: 360px; }
-    .mp-side { background: #1F1F1F; color: #F4F4F4; padding: 16px 12px; font-family: 'General Sans', system-ui, sans-serif; font-size: 12px; }
-    .mp-side .brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; padding: 4px 8px; margin-bottom: 16px; }
+    .mp-side { background: var(--bg-dark); color: var(--text-dark-primary); padding: var(--spacing-sm) var(--spacing-xs); font-family: var(--font-primary); font-size: 12px; }
+    .mp-side .brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; padding: 4px 8px; margin-bottom: var(--spacing-md); }
     .mp-side .brand img { width: 18px; height: 18px; filter: invert(1) brightness(1.5); }
-    .mp-side-item { padding: 8px 10px; border-radius: 4px; margin-bottom: 2px; color: #A8A8A8; display: flex; align-items: center; gap: 8px; }
-    .mp-side-item.a { background: #333; color: #fff; }
+    .mp-side-item { padding: 8px 10px; border-radius: var(--radius-sm); margin-bottom: 2px; color: var(--text-dark-muted); display: flex; align-items: center; gap: 8px; }
+    .mp-side-item.a { background: var(--surface-dark); color: var(--text-dark-primary); }
     .mp-side-item.a::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--color-primary); }
-    .mp-graph { background: #F4F4F4; padding: 12px; display: flex; flex-direction: column; }
+    .mp-graph { background: var(--color-gray-light); padding: 12px; display: flex; flex-direction: column; }
     .mp-toolbar { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
-    .mp-pill { background: #fff; border-radius: 999px; padding: 4px 12px; font-family: 'General Sans', system-ui, sans-serif; font-size: 11px; font-weight: 500; color: #4A4A4A; border: 1px solid #EDEDED; display: inline-flex; align-items: center; gap: 6px; }
-    .mp-pill.green { background: var(--color-primary); border-color: var(--color-primary); color: #1F1F1F; }
-    .mp-canvas { flex: 1; background: #fff; border-radius: 8px; position: relative; overflow: hidden; }
-    .mp-grid-bg { position: absolute; inset: 0; background-image: radial-gradient(#E3E3E3 1px, transparent 1px); background-size: 18px 18px; opacity: 0.5; }
+    .mp-pill { background: var(--color-white); border-radius: 999px; padding: 4px 12px; font-family: var(--font-primary); font-size: 11px; font-weight: 500; color: var(--color-dark-soft); border: 1px solid var(--color-gray); display: inline-flex; align-items: center; gap: 6px; }
+    .mp-pill.green { background: var(--color-primary); border-color: var(--color-primary); color: var(--bg-dark); }
+    .mp-canvas { flex: 1; background: var(--color-white); border-radius: var(--radius-md); position: relative; overflow: hidden; }
+    .mp-grid-bg { position: absolute; inset: 0; background-image: radial-gradient(var(--color-gray) 1px, transparent 1px); background-size: 18px 18px; opacity: 0.5; }
     /* CaseConnect mockup */
-    .cc { padding: 18px; background: #F4F4F4; min-height: 360px; font-family: 'General Sans', system-ui, sans-serif; }
+    .cc { padding: 18px; background: var(--color-gray-light); min-height: 360px; font-family: var(--font-primary); }
     .cc-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-    .cc-head .title { font-weight: 600; font-size: 13px; color: #4A4A4A; text-transform: uppercase; letter-spacing: 0.08em; }
-    .cc-head .count { font-size: 11px; color: #A8A8A8; background: #fff; padding: 3px 8px; border-radius: 999px; }
-    .cc-item { background: #fff; border-radius: 6px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; margin-bottom: 8px; border-left: 3px solid #D9D9D9; }
+    .cc-head .title { font-weight: 600; font-size: 13px; color: var(--color-dark-soft); text-transform: uppercase; letter-spacing: 0.08em; }
+    .cc-head .count { font-size: 11px; color: var(--text-dark-muted); background: var(--color-white); padding: 3px 8px; border-radius: 999px; }
+    .cc-item { background: var(--color-white); border-radius: 6px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; margin-bottom: 8px; border-left: 3px solid var(--color-gray); }
     .cc-item.active { border-left-color: var(--color-primary); }
-    .cc-avatar { width: 32px; height: 32px; border-radius: 50%; background: #F4F4F4; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 11px; color: #4A4A4A; flex-shrink: 0; }
+    .cc-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--color-gray-light); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 11px; color: var(--color-dark-soft); flex-shrink: 0; }
     .cc-meta { flex: 1; min-width: 0; }
-    .cc-name { font-weight: 600; font-size: 13px; color: #2A2A2A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .cc-sub { font-family: 'Roboto', sans-serif; font-size: 11px; color: #A8A8A8; margin-top: 2px; }
-    .cc-status { font-weight: 500; font-size: 10px; color: #4A4A4A; background: #F4F4F4; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em; flex-shrink: 0; }
+    .cc-name { font-weight: 600; font-size: 13px; color: var(--color-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cc-sub { font-family: var(--font-secondary); font-size: 11px; color: var(--text-dark-muted); margin-top: 2px; }
+    .cc-status { font-weight: 500; font-size: 10px; color: var(--color-dark-soft); background: var(--color-gray-light); padding: 4px 8px; border-radius: var(--radius-sm); text-transform: uppercase; letter-spacing: 0.06em; flex-shrink: 0; }
     .cc-status.on { background: rgba(43,221,150,0.15); color: #0E8A5F; }
     /* QuickLock mockup */
-    .ql { padding: 24px; min-height: 360px; font-family: 'General Sans', system-ui, sans-serif; }
-    .ql h4 { font-family: 'Brawler', serif; font-weight: 400; font-size: 20px; margin: 0 0 2px; color: #2A2A2A; }
-    .ql .meta { font-family: 'Roboto', sans-serif; font-size: 12px; color: #A8A8A8; margin-bottom: 18px; }
-    .ql-row { display: flex; padding: 10px 0; border-bottom: 1px solid #F4F4F4; align-items: center; gap: 12px; }
+    .ql { padding: 24px; min-height: 360px; font-family: var(--font-primary); }
+    .ql h4 { font-family: var(--font-accent); font-weight: 400; font-size: 20px; margin: 0 0 2px; color: var(--color-dark); }
+    .ql .meta { font-family: var(--font-secondary); font-size: 12px; color: var(--text-dark-muted); margin-bottom: 18px; }
+    .ql-row { display: flex; padding: 10px 0; border-bottom: 1px solid var(--color-gray-light); align-items: center; gap: 12px; }
     .ql-row:last-of-type { border-bottom: 0; }
-    .ql-dot { width: 22px; height: 22px; border-radius: 50%; background: #F4F4F4; color: #A8A8A8; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 10px; flex-shrink: 0; }
-    .ql-row.done .ql-dot { background: var(--color-primary); color: #2A2A2A; }
-    .ql-row .label { flex: 1; font-weight: 500; font-size: 13px; color: #2A2A2A; }
-    .ql-row.queued .label { color: #A8A8A8; }
-    .ql-row .state { font-family: 'Roboto', sans-serif; font-size: 11px; color: #A8A8A8; }
+    .ql-dot { width: 22px; height: 22px; border-radius: 50%; background: var(--color-gray-light); color: var(--text-dark-muted); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 10px; flex-shrink: 0; }
+    .ql-row.done .ql-dot { background: var(--color-primary); color: var(--color-dark); }
+    .ql-row .label { flex: 1; font-weight: 500; font-size: 13px; color: var(--color-dark); }
+    .ql-row.queued .label { color: var(--text-dark-muted); }
+    .ql-row .state { font-family: var(--font-secondary); font-size: 11px; color: var(--text-dark-muted); }
     .ql-footer { margin-top: 18px; display: flex; justify-content: flex-end; }
     /* TaxReport mockup */
-    .tr { padding: 22px; min-height: 360px; font-family: 'General Sans', system-ui, sans-serif; }
+    .tr { padding: 22px; min-height: 360px; font-family: var(--font-primary); }
     .tr-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
-    .tr-head h4 { font-family: 'Brawler', serif; font-weight: 400; font-size: 22px; margin: 0; color: #2A2A2A; }
-    .tr-head .sub { font-family: 'Roboto', sans-serif; font-size: 12px; color: #A8A8A8; margin-top: 2px; }
+    .tr-head h4 { font-family: var(--font-accent); font-weight: 400; font-size: 22px; margin: 0; color: var(--color-dark); }
+    .tr-head .sub { font-family: var(--font-secondary); font-size: 12px; color: var(--text-dark-muted); margin-top: 2px; }
     .tr-pill { font-size: 10px; font-weight: 600; text-transform: uppercase; color: #0E8A5F; background: rgba(43,221,150,0.15); padding: 4px 10px; border-radius: 999px; letter-spacing: 0.06em; }
     .tr-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-    .tr-card { background: #F4F4F4; border-radius: 6px; padding: 14px; }
-    .tr-card .lbl { font-size: 10px; color: #4A4A4A; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
-    .tr-card .val { font-family: 'Brawler', serif; font-weight: 400; font-size: 22px; color: #0E8A5F; letter-spacing: -0.01em; }
+    .tr-card { background: var(--color-gray-light); border-radius: 6px; padding: 14px; }
+    .tr-card .lbl { font-size: 10px; color: var(--color-dark-soft); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .tr-card .val { font-family: var(--font-accent); font-weight: 400; font-size: 22px; color: #0E8A5F; letter-spacing: -0.01em; }
     .tr-card .val.neg { color: #B54848; }
-    .tr-list { background: #F4F4F4; border-radius: 6px; padding: 14px; }
-    .tr-list .lbl { font-weight: 600; font-size: 11px; margin-bottom: 10px; color: #2A2A2A; text-transform: uppercase; letter-spacing: 0.06em; }
+    .tr-list { background: var(--color-gray-light); border-radius: 6px; padding: 14px; }
+    .tr-list .lbl { font-weight: 600; font-size: 11px; margin-bottom: 10px; color: var(--color-dark); text-transform: uppercase; letter-spacing: 0.06em; }
     .tr-list .row { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
     .tr-list .row img { width: 20px; height: 20px; }
-    .tr-list .row .a { flex: 1; font-size: 13px; color: #2A2A2A; }
-    .tr-list .row .n { font-family: 'Roboto', sans-serif; font-size: 12px; color: #4A4A4A; }
+    .tr-list .row .a { flex: 1; font-size: 13px; color: var(--color-dark); }
+    .tr-list .row .n { font-family: var(--font-secondary); font-size: 12px; color: var(--color-dark-soft); }
     @media (max-width: 960px) {
-      .tool-panel { grid-template-columns: 1fr; gap: 32px; }
+      .tool-panel { grid-template-columns: 1fr; gap: var(--spacing-xl); }
       .mp { grid-template-columns: 1fr; }
       .mp-side { display: none; }
     }
@@ -133,155 +133,6 @@ So the context (.) is already the tools object
         <div class="tool-mockup">
           {{ with $panel.screenshot }}
           <img src="{{ . | relURL }}" alt="{{ $panel.name }} screenshot" loading="lazy" class="tool-screenshot">
-          {{ else }}
-          <div class="chrome"><span></span><span></span><span></span></div>
-          <div class="tool-mockup-body">
-            {{/* Pathfinder Mockup */}}
-            {{ if eq $panel.name "Pathfinder" }}
-            <div class="mp">
-              <div class="mp-side">
-                <div class="brand"><img src="{{ "images/logos/iknaio-icon.png" | relURL }}" alt="Iknaio"> Pathfinder</div>
-                <div class="mp-side-item a">Investigation</div>
-                <div class="mp-side-item">Cases</div>
-                <div class="mp-side-item">Tags</div>
-                <div class="mp-side-item">Export</div>
-                <div class="mp-side-item">Settings</div>
-              </div>
-              <div class="mp-graph">
-                <div class="mp-toolbar">
-                  <span class="mp-pill">1A1zP1…DivfNa</span>
-                  <span class="mp-pill green">+ Add address</span>
-                  <span class="mp-pill">BTC</span>
-                </div>
-                <div class="mp-canvas">
-                  <div class="mp-grid-bg"></div>
-                  <svg viewBox="0 0 380 300" style="position:absolute;inset:0;width:100%;height:100%;">
-                    <defs><marker id="arp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2A2A2A"/></marker></defs>
-                    <path d="M 70 150 C 130 90, 160 90, 200 150" stroke="#2A2A2A" stroke-width="1.4" fill="none" marker-end="url(#arp)"/>
-                    <path d="M 70 150 C 130 210, 160 210, 200 150" stroke="#2A2A2A" stroke-width="1.4" fill="none" marker-end="url(#arp)"/>
-                    <path d="M 200 150 C 250 90, 280 90, 320 110" stroke="var(--color-primary)" stroke-width="2.5" fill="none" marker-end="url(#arp)"/>
-                    <path d="M 200 150 C 250 210, 280 210, 320 190" stroke="#2A2A2A" stroke-width="1.4" fill="none" marker-end="url(#arp)"/>
-                    <g><circle cx="70" cy="150" r="20" fill="#fff" stroke="var(--color-primary)" stroke-width="2.2"/><circle cx="70" cy="150" r="5" fill="var(--color-primary)"/><text x="70" y="188" font-family="General Sans" font-weight="600" font-size="10" fill="#2A2A2A" text-anchor="middle">Source</text><text x="70" y="200" font-family="Roboto" font-size="8" fill="#A8A8A8" text-anchor="middle">1A1z…vfNa</text></g>
-                    <g><circle cx="200" cy="150" r="20" fill="#fff" stroke="#2A2A2A" stroke-width="1.4"/><rect x="182" y="174" width="36" height="13" rx="6" fill="#4A4A4A"/><text x="200" y="183" font-family="General Sans" font-weight="600" font-size="9" fill="#fff" text-anchor="middle">Mixer</text></g>
-                    <g><circle cx="320" cy="110" r="20" fill="#fff" stroke="#2A2A2A" stroke-width="1.4"/><rect x="290" y="134" width="60" height="13" rx="6" fill="var(--color-primary)"/><text x="320" y="143" font-family="General Sans" font-weight="600" font-size="9" fill="#2A2A2A" text-anchor="middle">Exchange</text></g>
-                    <g><circle cx="320" cy="190" r="20" fill="#fff" stroke="#2A2A2A" stroke-width="1.4"/><text x="320" y="224" font-family="General Sans" font-weight="600" font-size="10" fill="#A8A8A8" text-anchor="middle">Unknown</text></g>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            {{ end }}
-            
-            {{/* CaseConnect Mockup */}}
-            {{ if eq $panel.name "CaseConnect" }}
-            <div class="cc">
-              <div class="cc-head">
-                <div class="title">Cases on this address</div>
-                <div class="count">4 matches</div>
-              </div>
-              <div class="cc-item active">
-                <div class="cc-avatar">AK</div>
-                <div class="cc-meta">
-                  <div class="cc-name">Exchange cluster 2024-A</div>
-                  <div class="cc-sub">Anna K. · 2 days ago</div>
-                </div>
-                <div class="cc-status on">Active</div>
-              </div>
-              <div class="cc-item">
-                <div class="cc-avatar">TL</div>
-                <div class="cc-meta">
-                  <div class="cc-name">Romance scam ring</div>
-                  <div class="cc-sub">Tom L. · 1 week ago</div>
-                </div>
-                <div class="cc-status on">Active</div>
-              </div>
-              <div class="cc-item">
-                <div class="cc-avatar">JS</div>
-                <div class="cc-meta">
-                  <div class="cc-name">Ransomware payouts</div>
-                  <div class="cc-sub">Juan S. · 1 week ago</div>
-                </div>
-                <div class="cc-status">Closed</div>
-              </div>
-              <div class="cc-item active">
-                <div class="cc-avatar">MR</div>
-                <div class="cc-meta">
-                  <div class="cc-name">Sanctioned entity</div>
-                  <div class="cc-sub">Mary R. · 3 weeks ago</div>
-                </div>
-                <div class="cc-status on">Active</div>
-              </div>
-            </div>
-            {{ end }}
-            
-            {{/* QuickLock Mockup */}}
-            {{ if eq $panel.name "QuickLock" }}
-            <div class="ql">
-              <h4>Forensic Report #2026-0412</h4>
-              <div class="meta">Generated Apr 12, 2026 · 47 pages</div>
-              <div class="ql-row done">
-                <div class="ql-dot">✓</div>
-                <div class="label">Executive summary</div>
-                <div class="state">Complete</div>
-              </div>
-              <div class="ql-row done">
-                <div class="ql-dot">✓</div>
-                <div class="label">Address trace chain (4 hops)</div>
-                <div class="state">Complete</div>
-              </div>
-              <div class="ql-row done">
-                <div class="ql-dot">✓</div>
-                <div class="label">Entity attribution</div>
-                <div class="state">Complete</div>
-              </div>
-              <div class="ql-row done">
-                <div class="ql-dot">✓</div>
-                <div class="label">Risk scoring</div>
-                <div class="state">Complete</div>
-              </div>
-              <div class="ql-row progress">
-                <div class="ql-dot">5</div>
-                <div class="label">Counterparty analysis</div>
-                <div class="state">Generating…</div>
-              </div>
-              <div class="ql-row queued">
-                <div class="ql-dot">6</div>
-                <div class="label">Appendix: raw transactions</div>
-                <div class="state">Queued</div>
-              </div>
-              <div class="ql-footer">
-                <a href="#" class="btn btn-primary" style="font-size:12px;padding:9px 16px;">
-                  Download PDF
-                  <svg style="width:14px;height:14px;" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v10M4 8l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
-              </div>
-            </div>
-            {{ end }}
-            
-            {{/* TaxReport Mockup */}}
-            {{ if eq $panel.name "TaxReport" }}
-            <div class="tr">
-              <div class="tr-head">
-                <div>
-                  <h4>Tax year 2025</h4>
-                  <div class="sub">Austria · FIFO method</div>
-                </div>
-                <span class="tr-pill">Draft</span>
-              </div>
-              <div class="tr-grid">
-                <div class="tr-card"><div class="lbl">Realized gains</div><div class="val">€34,812</div></div>
-                <div class="tr-card"><div class="lbl">Realized losses</div><div class="val neg">€8,204</div></div>
-                <div class="tr-card"><div class="lbl">Taxable amount</div><div class="val">€26,608</div></div>
-              </div>
-              <div class="tr-list">
-                <div class="lbl">Transactions by asset</div>
-                <div class="row"><img src="{{ "images/crypto/bitcoin.png" | relURL }}" alt="Bitcoin"><div class="a">Bitcoin</div><div class="n">842 txs</div></div>
-                <div class="row"><img src="{{ "images/crypto/ethereum.png" | relURL }}" alt="Ethereum"><div class="a">Ethereum</div><div class="n">391 txs</div></div>
-                <div class="row"><img src="{{ "images/crypto/tether.png" | relURL }}" alt="Tether"><div class="a">Tether (USDT)</div><div class="n">214 txs</div></div>
-                <div class="row"><img src="{{ "images/crypto/usdc.png" | relURL }}" alt="USDC"><div class="a">USDC</div><div class="n">112 txs</div></div>
-              </div>
-            </div>
-            {{ end }}
-          </div>
           {{ end }}
         </div>
       </div>
