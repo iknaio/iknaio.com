@@ -8,37 +8,6 @@ So the context (.) is already the tools object
 
 {{/* . is the tools object from Params */}}
 
-{{/* Inline the CSS for tools section from old homepage */}}
-<style>
-  /* TOOLS SECTION STYLES */
-    .tools-heading { background: var(--color-gray-light); padding: var(--spacing-xl); }
-    .tools-heading .container { display: flex; align-items: center; gap: var(--spacing-xl); }
-    .tools-heading-title { font-family: var(--font-accent); font-weight: 400; font-size: 32px; line-height: 1.1; color: var(--color-dark); letter-spacing: -0.02em; margin: 0; }
-    .tools-heading-subtitle { font-family: var(--font-primary); font-weight: 500; font-size: 20px; line-height: 1.4; text-align: left; color: var(--color-dark-soft); margin: 0; }
-    .tool-screenshot { width: 100%; display: block; border-radius: 0 0 var(--radius-md) var(--radius-md); }
-    .tools-section { background: var(--color-white); padding-top: var(--spacing-md); }
-    .tools-tabs { display: flex; gap: var(--spacing-xs); border-bottom: 1px solid var(--color-gray); margin: 0 auto var(--spacing-2xl); max-width: 800px; flex-wrap: wrap; justify-content: center; }
-    .tools-tab { background: transparent; border: none; padding: var(--spacing-md) var(--spacing-lg); font-family: var(--font-accent); font-size: clamp(18px, 2.5vw, 22px); font-weight: 400; color: var(--text-dark-muted); cursor: pointer; position: relative; transition: color var(--duration-base) var(--easing-default); letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 10px; }
-    .tools-tab:hover { color: var(--color-dark); }
-    .tools-tab.active { color: var(--color-dark); }
-    .tools-tab.active::after { content: ''; position: absolute; left: var(--spacing-lg); right: var(--spacing-lg); bottom: -1px; height: 3px; background: var(--color-primary); border-radius: 2px 2px 0 0; }
-    .tool-tab-icon { width: 24px; height: 24px; opacity: 0.4; transition: opacity var(--duration-base) var(--easing-default); }
-    .tools-tab:hover .tool-tab-icon,
-    .tools-tab.active .tool-tab-icon { opacity: 1; }
-    .tool-panel { display: none; grid-template-columns: 5fr 7fr; gap: 56px; align-items: center; min-height: 440px; }
-    .tool-panel.active { display: grid; }
-    .tool-panel p { font-family: var(--font-secondary); font-size: 17px; line-height: 1.6; color: var(--color-dark-soft); margin: 0 0 28px; max-width: 460px; }
-    .tool-panel h3 { font-family: var(--font-accent); font-weight: 400; font-size: 40px; line-height: 1.1; margin: 0 0 20px; color: var(--color-dark); letter-spacing: -0.02em; }
-    .tool-panel .read-more { font-family: var(--font-primary); font-weight: 600; font-size: 14px; color: var(--color-dark); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding-bottom: 3px; border-bottom: 1.5px solid var(--color-primary); transition: color var(--duration-base) var(--easing-default); }
-    .tool-panel .read-more:hover { color: var(--color-primary); }
-    .tool-panel .read-more::after { content: '\2192'; transition: transform var(--duration-base) var(--easing-default); }
-    .tool-panel .read-more:hover::after { transform: translateX(3px); }
-    .tool-mockup { background: var(--color-white); border-radius: var(--radius-md); padding: 0; box-shadow: 0 30px 60px -30px rgba(42,42,42,0.22), 0 10px 30px -10px rgba(42,42,42,0.08); position: relative; overflow: hidden; margin: 0 auto; max-width: 600px; }
-    @media (max-width: 960px) {
-      .tool-panel { grid-template-columns: 1fr; gap: var(--spacing-xl); }
-    }
-  </style>
-
 <section class="tools-heading">
   <div class="container">
     <h2 id="tools-heading" class="tools-heading-title">{{ .title | safeHTML }}</h2>
