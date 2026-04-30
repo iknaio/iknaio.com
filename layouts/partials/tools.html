@@ -11,7 +11,14 @@ So the context (.) is already the tools object
 {{/* Inline the CSS for tools section from old homepage */}}
 <style>
   /* TOOLS SECTION STYLES - from homepage/index.html */
-    .tools-section { background: #F7F7F5; }
+    .tools-heading { background: var(--color-gray-light); padding: 32px; }
+    .tools-heading .container { display: flex; align-items: center; gap: 32px; }
+    .tools-heading-flex { flex: 1; }
+    .tools-heading-title { font-family: 'Brawler', Georgia, serif; font-weight: 400; font-size: 32px; line-height: 1.1; color: #2A2A2A; letter-spacing: -0.02em; margin: 0; }
+    .tools-heading-subtitle { font-family: 'General Sans', 'General Sans Placeholder', sans-serif; font-weight: 500; font-size: 20px; line-height: 1.4; text-align: left; color: #4A4A4A; margin: 0; }
+    .tools-heading .eyebrow { margin: 0; }
+    .tool-screenshot { width: 100%; display: block; border-radius: 0 0 14px 14px; }
+    .tools-section { background: var(--color-white); }
     .tools-tabs { display: flex; gap: 4px; border-bottom: 1px solid #E3E3DF; margin: 0 auto 48px; max-width: 800px; flex-wrap: wrap; justify-content: center; }
     .tools-tab { background: transparent; border: none; padding: 16px 24px; font-family: 'Brawler', Georgia, serif; font-size: clamp(18px, 2.5vw, 22px); font-weight: 400; color: #A8A8A8; cursor: pointer; position: relative; transition: color 200ms; letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 10px; }
     .tools-tab:hover { color: #2A2A2A; }
@@ -95,12 +102,15 @@ So the context (.) is already the tools object
     }
   </style>
 
+<section class="tools-heading">
+  <div class="container">
+    <h2 id="tools-heading" class="tools-heading-title">{{ .title | safeHTML }}</h2>
+    <p class="tools-heading-subtitle">{{ .subtitle | markdownify }}</p>
+  </div>
+</section>
+
 <section class="tools-section">
   <div class="container">
-    <p class="eyebrow">{{ .eyebrow | default "Our productivity tools" }}</p>
-    <h2 class="section-title">{{ .title | safeHTML }}</h2>
-    <p class="section-lede">{{ .subtitle | markdownify }}</p>
-
     <div class="tools-tabs" role="tablist">
       {{ range .tabs }}
       <button class="tools-tab" data-tool="{{ .name | urlize }}" role="tab">
@@ -122,7 +132,7 @@ So the context (.) is already the tools object
         </div>
         <div class="tool-mockup">
           {{ with $panel.screenshot }}
-          <img src="{{ . | relURL }}" alt="{{ $panel.name }} screenshot" loading="lazy" style="width:100%;display:block;border-radius:0 0 14px 14px;">
+          <img src="{{ . | relURL }}" alt="{{ $panel.name }} screenshot" loading="lazy" class="tool-screenshot">
           {{ else }}
           <div class="chrome"><span></span><span></span><span></span></div>
           <div class="tool-mockup-body">

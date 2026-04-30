@@ -10,9 +10,8 @@ hero:
     url: contact/
 
 tools:
-  eyebrow: "Our productivity tools"
-  title: "Maximize your efficiency in analyzing <em>fund flows.</em>"
-  subtitle: "A comprehensive suite of tools purpose-built for cryptoasset investigators, compliance teams, and forensic accountants."
+  title: "Tools and services for cryptoasset investigations"
+  subtitle: "Designed to remove bottlenecks and scale investigations across your organization."
   read_more_text: "Read more"
   tabs:
     - name: Pathfinder
