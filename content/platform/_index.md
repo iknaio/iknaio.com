@@ -57,19 +57,19 @@ tools:
 
           The tool allows investigators to automatically generate comprehensive reports of these traces, speeding up the process and improving accessibility.
 
-  - slug: "taxreport"
-    name: "TaxReport"
-    icon: "images/platform/icons/taxreport.svg"
-    headline: "Automatically calculate your crypto taxes."
-    tagline: "Calculate crypto taxes with ease. Our TaxReport tool handles jurisdiction-specific tax requirements, allowing you to generate detailed, reliable tax reports for any crypto asset address."
-    rows:
-      - layout: "image-left"
-        image: "images/platform/taxreport.png"
-        alt: "TaxReport crypto tax solution for calculating taxable gains and losses, generating detailed reports tailored to jurisdiction-specific regulations."
-        text: |
-          Iknaio TaxReport, powered by [BlockPit](https://www.blockpit.io/), the European leader in crypto tax computation, allows you to efficiently calculate taxable gains and losses for specific cryptoasset addresses.
-
-          You can also generate comprehensive tax reports with ease.
+#  - slug: "taxreport"
+#    name: "TaxReport"
+#    icon: "images/platform/icons/taxreport.svg"
+#    headline: "Automatically calculate your crypto taxes."
+#    tagline: "Calculate crypto taxes with ease. Our TaxReport tool handles jurisdiction-specific tax requirements, allowing you to generate detailed, reliable tax reports for any crypto asset address."
+#    rows:
+#      - layout: "image-left"
+#        image: "images/platform/taxreport.png"
+#        alt: "TaxReport crypto tax solution for calculating taxable gains and losses, generating detailed reports tailored to jurisdiction-specific regulations."
+#        text: |
+#          Iknaio TaxReport, powered by [BlockPit](https://www.blockpit.io/), the European leader in crypto tax computation, allows you to efficiently calculate taxable gains and losses for specific cryptoasset addresses.
+#
+#          You can also generate comprehensive tax reports with ease.
 
 cta:
   title: "Ready to investigate crypto money flows.<br>More efficiently?"
