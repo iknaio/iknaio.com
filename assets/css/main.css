@@ -2638,6 +2638,16 @@ hr {
   color: var(--text-dark-muted);
 }
 
+.insights-hero {
+    display: flex;
+    gap: var(--spacing-3xl);
+}
+
+.insights-hero img {
+    max-width: 500px;
+    border-radius: 16px;
+}
+
 /* Post card (insights, blog, news listings) */
 .post-card {
   padding: 0;

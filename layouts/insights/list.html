@@ -1,12 +1,31 @@
 {{ define "main" }}
-<section class="hero section" aria-labelledby="insights-heading">
-  <div class="container hero-inner">
-    <h1 id="insights-heading" class="hero-title">Insights</h1>
-    <p class="hero-subtitle">Research, product updates, and announcements from the Iknaio team.</p>
+<section class="platform-hero" aria-labelledby="platform-hero-heading">
+{{ if .Pages }}
+  {{ $first := index .Pages.ByDate.Reverse 0 }}
+  <div class="container">
+    <h1 class="platform-hero-title" id="insights-heading">Insights</h1>
+    <div class="insights-hero">
+      {{ with $first.Params.image }}
+      <img src="{{ . | relURL }}" alt="" loading="lazy" class="insights-hero-image">
+      {{ end }}
+      <div class="insights-hero-text">
+        {{ with $first.Date }}
+        <time class="insights-hero-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>
+        {{ end }}
+        <h3 class="insights-hero-title">{{ $first.Title }}</h3>
+        {{ with $first.Description }}
+        <p class="insights-hero-description">{{ . }}</p>
+        {{ else }}
+        <p class="insights-hero-description">{{ $first.Summary | truncate 140 }}</p>
+        {{ end }}
+        <a href="{{ $first.RelPermalink }}" class="btn btn-secondary">Read more</a>
+      </div>
+    </div>
   </div>
+{{ end }}
 </section>
 
-<section class="section section-insights" aria-labelledby="insights-feed-heading">
+<section class="section section-insights-list" aria-labelledby="insights-feed-heading">
   <div class="container">
     <h2 id="insights-feed-heading" class="sr-only">All posts</h2>
     {{ if .Pages }}
