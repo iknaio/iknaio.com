@@ -2071,24 +2071,31 @@ hr {
 }
 
 .section-why div.deco-dot-frame {
-    width: 150px;
-    height: 150px;
-    position: absolute;
-    bottom: -75px;
-    left: -27px;
-    border-radius: 100%;
-    border: 6px solid var(--color-black);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: none;
 }
 
-.section-why div.deco-dot {
-    width: 50%;
-    height: 50%;
-    background: var(--color-primary);
-    border-radius: 100%;
+@media (min-width: 768px) {
+    .section-why div.deco-dot-frame {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        bottom: -75px;
+        left: -27px;
+        border-radius: 100%;
+        border: 6px solid var(--color-black);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .section-why div.deco-dot {
+        width: 50%;
+        height: 50%;
+        background: var(--color-primary);
+        border-radius: 100%;
+    }
 }
+
 
 /* Header-only sections (no subtitle) need explicit space under the h2. */
 .section-comparison .section-title,
@@ -3838,8 +3845,16 @@ hr {
 
 .tools-heading .container {
   display: flex;
-  align-items: center;
-  gap: var(--spacing-xl);
+  flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .tools-heading .container {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-xl);
+  }
 }
 
 .tools-heading-title {
