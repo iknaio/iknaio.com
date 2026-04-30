@@ -10,13 +10,11 @@ So the context (.) is already the tools object
 
 {{/* Inline the CSS for tools section from old homepage */}}
 <style>
-  /* TOOLS SECTION STYLES - from homepage/index.html */
+  /* TOOLS SECTION STYLES */
     .tools-heading { background: var(--color-gray-light); padding: var(--spacing-xl); }
     .tools-heading .container { display: flex; align-items: center; gap: var(--spacing-xl); }
-    .tools-heading-flex { flex: 1; }
     .tools-heading-title { font-family: var(--font-accent); font-weight: 400; font-size: 32px; line-height: 1.1; color: var(--color-dark); letter-spacing: -0.02em; margin: 0; }
     .tools-heading-subtitle { font-family: var(--font-primary); font-weight: 500; font-size: 20px; line-height: 1.4; text-align: left; color: var(--color-dark-soft); margin: 0; }
-    .tools-heading .eyebrow { margin: 0; }
     .tool-screenshot { width: 100%; display: block; border-radius: 0 0 var(--radius-md) var(--radius-md); }
     .tools-section { background: var(--color-white); padding-top: var(--spacing-md); }
     .tools-tabs { display: flex; gap: var(--spacing-xs); border-bottom: 1px solid var(--color-gray); margin: 0 auto var(--spacing-2xl); max-width: 800px; flex-wrap: wrap; justify-content: center; }
@@ -36,69 +34,8 @@ So the context (.) is already the tools object
     .tool-panel .read-more::after { content: '\2192'; transition: transform var(--duration-base) var(--easing-default); }
     .tool-panel .read-more:hover::after { transform: translateX(3px); }
     .tool-mockup { background: var(--color-white); border-radius: var(--radius-md); padding: 0; box-shadow: 0 30px 60px -30px rgba(42,42,42,0.22), 0 10px 30px -10px rgba(42,42,42,0.08); position: relative; overflow: hidden; margin: 0 auto; max-width: 600px; }
-    .tool-mockup .chrome { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: var(--color-gray-light); border-bottom: 1px solid var(--color-gray); }
-    .tool-mockup .chrome span { width: 10px; height: 10px; border-radius: 50%; background: var(--color-gray); }
-    .tool-mockup-body { padding: 0; background: var(--color-gray-light); }
-    /* Pathfinder mockup */
-    .mp { display: grid; grid-template-columns: 170px 1fr; min-height: 360px; }
-    .mp-side { background: var(--bg-dark); color: var(--text-dark-primary); padding: var(--spacing-sm) var(--spacing-xs); font-family: var(--font-primary); font-size: 12px; }
-    .mp-side .brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; padding: 4px 8px; margin-bottom: var(--spacing-md); }
-    .mp-side .brand img { width: 18px; height: 18px; filter: invert(1) brightness(1.5); }
-    .mp-side-item { padding: 8px 10px; border-radius: var(--radius-sm); margin-bottom: 2px; color: var(--text-dark-muted); display: flex; align-items: center; gap: 8px; }
-    .mp-side-item.a { background: var(--surface-dark); color: var(--text-dark-primary); }
-    .mp-side-item.a::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--color-primary); }
-    .mp-graph { background: var(--color-gray-light); padding: 12px; display: flex; flex-direction: column; }
-    .mp-toolbar { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
-    .mp-pill { background: var(--color-white); border-radius: 999px; padding: 4px 12px; font-family: var(--font-primary); font-size: 11px; font-weight: 500; color: var(--color-dark-soft); border: 1px solid var(--color-gray); display: inline-flex; align-items: center; gap: 6px; }
-    .mp-pill.green { background: var(--color-primary); border-color: var(--color-primary); color: var(--bg-dark); }
-    .mp-canvas { flex: 1; background: var(--color-white); border-radius: var(--radius-md); position: relative; overflow: hidden; }
-    .mp-grid-bg { position: absolute; inset: 0; background-image: radial-gradient(var(--color-gray) 1px, transparent 1px); background-size: 18px 18px; opacity: 0.5; }
-    /* CaseConnect mockup */
-    .cc { padding: 18px; background: var(--color-gray-light); min-height: 360px; font-family: var(--font-primary); }
-    .cc-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-    .cc-head .title { font-weight: 600; font-size: 13px; color: var(--color-dark-soft); text-transform: uppercase; letter-spacing: 0.08em; }
-    .cc-head .count { font-size: 11px; color: var(--text-dark-muted); background: var(--color-white); padding: 3px 8px; border-radius: 999px; }
-    .cc-item { background: var(--color-white); border-radius: 6px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; margin-bottom: 8px; border-left: 3px solid var(--color-gray); }
-    .cc-item.active { border-left-color: var(--color-primary); }
-    .cc-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--color-gray-light); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 11px; color: var(--color-dark-soft); flex-shrink: 0; }
-    .cc-meta { flex: 1; min-width: 0; }
-    .cc-name { font-weight: 600; font-size: 13px; color: var(--color-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .cc-sub { font-family: var(--font-secondary); font-size: 11px; color: var(--text-dark-muted); margin-top: 2px; }
-    .cc-status { font-weight: 500; font-size: 10px; color: var(--color-dark-soft); background: var(--color-gray-light); padding: 4px 8px; border-radius: var(--radius-sm); text-transform: uppercase; letter-spacing: 0.06em; flex-shrink: 0; }
-    .cc-status.on { background: rgba(43,221,150,0.15); color: #0E8A5F; }
-    /* QuickLock mockup */
-    .ql { padding: 24px; min-height: 360px; font-family: var(--font-primary); }
-    .ql h4 { font-family: var(--font-accent); font-weight: 400; font-size: 20px; margin: 0 0 2px; color: var(--color-dark); }
-    .ql .meta { font-family: var(--font-secondary); font-size: 12px; color: var(--text-dark-muted); margin-bottom: 18px; }
-    .ql-row { display: flex; padding: 10px 0; border-bottom: 1px solid var(--color-gray-light); align-items: center; gap: 12px; }
-    .ql-row:last-of-type { border-bottom: 0; }
-    .ql-dot { width: 22px; height: 22px; border-radius: 50%; background: var(--color-gray-light); color: var(--text-dark-muted); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 10px; flex-shrink: 0; }
-    .ql-row.done .ql-dot { background: var(--color-primary); color: var(--color-dark); }
-    .ql-row .label { flex: 1; font-weight: 500; font-size: 13px; color: var(--color-dark); }
-    .ql-row.queued .label { color: var(--text-dark-muted); }
-    .ql-row .state { font-family: var(--font-secondary); font-size: 11px; color: var(--text-dark-muted); }
-    .ql-footer { margin-top: 18px; display: flex; justify-content: flex-end; }
-    /* TaxReport mockup */
-    .tr { padding: 22px; min-height: 360px; font-family: var(--font-primary); }
-    .tr-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
-    .tr-head h4 { font-family: var(--font-accent); font-weight: 400; font-size: 22px; margin: 0; color: var(--color-dark); }
-    .tr-head .sub { font-family: var(--font-secondary); font-size: 12px; color: var(--text-dark-muted); margin-top: 2px; }
-    .tr-pill { font-size: 10px; font-weight: 600; text-transform: uppercase; color: #0E8A5F; background: rgba(43,221,150,0.15); padding: 4px 10px; border-radius: 999px; letter-spacing: 0.06em; }
-    .tr-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-    .tr-card { background: var(--color-gray-light); border-radius: 6px; padding: 14px; }
-    .tr-card .lbl { font-size: 10px; color: var(--color-dark-soft); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
-    .tr-card .val { font-family: var(--font-accent); font-weight: 400; font-size: 22px; color: #0E8A5F; letter-spacing: -0.01em; }
-    .tr-card .val.neg { color: #B54848; }
-    .tr-list { background: var(--color-gray-light); border-radius: 6px; padding: 14px; }
-    .tr-list .lbl { font-weight: 600; font-size: 11px; margin-bottom: 10px; color: var(--color-dark); text-transform: uppercase; letter-spacing: 0.06em; }
-    .tr-list .row { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
-    .tr-list .row img { width: 20px; height: 20px; }
-    .tr-list .row .a { flex: 1; font-size: 13px; color: var(--color-dark); }
-    .tr-list .row .n { font-family: var(--font-secondary); font-size: 12px; color: var(--color-dark-soft); }
     @media (max-width: 960px) {
       .tool-panel { grid-template-columns: 1fr; gap: var(--spacing-xl); }
-      .mp { grid-template-columns: 1fr; }
-      .mp-side { display: none; }
     }
   </style>
 
@@ -144,7 +81,6 @@ So the context (.) is already the tools object
 {{/* Minimal JavaScript for tab switching */}}
 <script>
 (function() {
-  var tabs = document.querySelectorAll('#tool-body .tools-tab, .tools-section .tools-tab');
   var panels = document.querySelectorAll('#tool-body .tool-panel');
   
   // Handle tab clicks
