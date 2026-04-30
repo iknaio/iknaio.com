@@ -6,7 +6,7 @@
   <div class="container hero-inner" style="position: relative;">
     <div style="position: relative; z-index: 1;">
       <h1 id="hero-heading" class="hero-title">{{ .title | safeHTML }}</h1>
-      <p class="hero-subtitle">{{ .subtitle }}</p>
+      <p class="hero-subtitle">{{ .subtitle | safeHTML }}</p>
       <div class="hero-actions">
         <a href="{{ .cta.url | relURL }}" class="btn btn-primary">{{ .cta.text }}</a>
       </div>

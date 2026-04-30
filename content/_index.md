@@ -4,7 +4,7 @@ description: "Iknaio provides cryptoasset investigation tools. Trace blockchain 
 
 hero:
   title: "Investigate crypto money flows.<br>More efficiently."
-  subtitle: "Automated tools for law enforcement and financial authorities — built on a decade of open research."
+  subtitle: "Automated tools for professionals and authorities,<br> built on a decade of open research."
   cta:
     text: "Request a Demo"
     url: contact/
