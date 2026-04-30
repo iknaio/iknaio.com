@@ -860,6 +860,7 @@ hr {
   max-width: 900px;
   margin-bottom: var(--spacing-md);
   line-height: 1.05;
+  font-kerning: none;
 }
 
 @media (min-width: 768px) {
