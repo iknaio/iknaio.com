@@ -84,7 +84,8 @@
   --text-dark-primary: #F4F4F4;
   --text-dark-muted: #A8A8A8;
   --font-primary: 'General Sans', system-ui, sans-serif;
-  --font-secondary: 'Roboto', Arial, sans-serif;
+  --font-secondary: 'General Sans', system-ui, sans-serif;
+  --font-tertiary: 'Roboto', Arial, sans-serif;
   --font-accent: 'Brawler', Georgia, serif;
   --spacing-xs: 4px;
   --spacing-sm: 8px;
@@ -882,7 +883,7 @@ hr {
 
 
 .hero p {
-  font-size: 18px;
+  font-size: var(--text-h2);
   color: var(--color-dark-soft);
   max-width: var(--max-width-text);
   margin-bottom: var(--spacing-xl);
@@ -3798,8 +3799,8 @@ hr {
 
 .tools-heading-subtitle {
   font-family: var(--font-primary);
-  font-weight: 500;
-  font-size: 20px;
+  font-weight: 400;
+  font-size: var(--text-h3);
   line-height: 1.4;
   text-align: left;
   color: var(--color-dark-soft);
