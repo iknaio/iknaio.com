@@ -22,6 +22,8 @@ tools:
       icon: "images/platform/icons/quicklock.svg"
     - name: "API & MCP"
       icon: "images/platform/icons/automator.svg"
+    - name: "Tailored Reports"
+      icon: "images/platform/icons/tailored-reports.svg"
   panels:
     - name: Pathfinder
       description: "Simplify cryptoasset payment flow analysis. Pathfinder puts simple but powerful tracing capabilities at everyone's desk, making it easier than ever to follow cryptoasset transactions without organizational bottlenecks."
@@ -39,6 +41,9 @@ tools:
       description: "Automate complex workflows; build agentic pipelines that scale. REST API over the same data Pathfinder uses. Model Context Protocol (MCP) interface for connecting AI agents. Integrates into existing AML, case-management, and analytics stacks."
       read_more_url: "platform/#api-mcp"
       screenshot: "images/screenshots/screenshot-api.png"
+    - name: "Tailored Reports"
+      description: "Bespoke forensic and intelligence reports, written by our analysts. Court-grade narrative reports for cases too large or sensitive to self-serve. Iknaio analysts handle the tracing, attribution, and write-up. Delivered under contract with agreed turnaround."
+      screenshot: "images/screenshots/screenshot-tailored-reports.png"
 
 secondary_audience:
   title: "Also for compliance teams and advisors"
