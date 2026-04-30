@@ -76,7 +76,7 @@
 {{ end }}
 
 {{ with .Params.why }}
-<section class="section section-why" style="position:relative; z-index:1" aria-labelledby="why-heading">
+<section class="section section-why" aria-labelledby="why-heading">
   <div class="container">
     <h2 id="why-heading" class="section-title">{{ .title }}</h2>
     <p class="section-subtitle">{{ .subtitle }}</p>
@@ -90,7 +90,7 @@
       {{ end }}
     </div>
   </div>
-  <div style="width: 150px;height: 150px;position: absolute;bottom: -75px;left: -27px;border-radius: 100%;border: 6px solid var(--bg-dark);display: flex;justify-content: center;align-items: center;"><div style="width: 50%;height: 50%; background: var(--color-primary);border-radius: 100%;"></div></div>
+  <div class="deco-dot-frame"><div class="deco-dot"></div></div>
 </section>
 {{ end }}
 

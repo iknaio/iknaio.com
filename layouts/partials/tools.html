@@ -1,13 +1,3 @@
-{{/*
-Tools Section - Extracted from homepage/index.html
-Minimal JavaScript used only for tab switching
-All tool content is embedded in HTML
-Called within: {{ with .Params.tools }}{{ partial "tools.html" . }}{{ end }}
-So the context (.) is already the tools object
-*/}}
-
-{{/* . is the tools object from Params */}}
-
 <section class="tools-heading">
   <div class="container">
     <h2 id="tools-heading" class="tools-heading-title">{{ .title | safeHTML }}</h2>
