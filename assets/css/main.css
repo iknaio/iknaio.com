@@ -3856,9 +3856,7 @@ hr {
 .tools-tabs {
   display: flex;
   gap: var(--spacing-xs);
-  border-bottom: 1px solid var(--color-gray);
   margin: 0 auto var(--spacing-2xl);
-  max-width: 800px;
   flex-wrap: wrap;
   justify-content: center;
 }
