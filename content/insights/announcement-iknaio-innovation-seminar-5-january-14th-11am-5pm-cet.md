@@ -3,7 +3,7 @@ title: "Announcement: Iknaio Innovation Seminar #5"
 date: 2024-12-20
 description: "An upcoming webinar on January 14th, 2025 explores investigative techniques for identifying cryptoasset abuse on the dark web."
 tags: []
-image: "images/news/announcement-iknaio-innovation-seminar-5-january-14th-11am-5pm-cet/cover.jpg"
+image: "images/insights/announcement-iknaio-innovation-seminar-5-january-14th-11am-5pm-cet/cover.jpg"
 posttype: "news"
 aliases: ["/news/announcement-iknaio-innovation-seminar-5-january-14th-11am-5pm-cet/"]
 ---

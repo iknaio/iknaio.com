@@ -3,7 +3,7 @@ title: "Operation Alice"
 date: 2026-04-26
 description: "Iknaio technology supported the takedown of 373,000 darknet domains in the Operation Alice case."
 posttype: "case-study"
-image: "images/case-study/sperrbanner.png"
+image: "images/insights/operation-alice/sperrbanner.png"
 aliases: ["/blog/operation-alice/"]
 tags: ["case-study", "law-enforcement"]
 ---

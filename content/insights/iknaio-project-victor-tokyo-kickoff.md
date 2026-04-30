@@ -3,7 +3,7 @@ title: "Project ViCTOR Tokyo Kickoff"
 date: 2023-09-25
 description: "Iknaio announces its participation in the Tokyo kickoff event for Project ViCTOR alongside over 60 delegates from Asian countries."
 tags: []
-image: "images/news/iknaio-project-victor-tokyo-kickoff/cover.png"
+image: "images/insights/iknaio-project-victor-tokyo-kickoff/cover.png"
 posttype: "news"
 aliases: ["/news/iknaio-project-victor-tokyo-kickoff/"]
 ---

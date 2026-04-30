@@ -3,7 +3,7 @@ title: "Iknaio & CFLW Webinar: Dark Web and Crypto-Asset Analysis"
 date: 2025-05-19
 description: "Exclusive webinar demonstrating crypto-asset investigation tools for Dark Web analysis."
 tags: []
-image: "images/news/unlock-advanced-investigative-tools-iknaio-cflw-webinar-on-dark-web-and-crypto-asset-analysis/cover.jpg"
+image: "images/insights/unlock-advanced-investigative-tools-iknaio-cflw-webinar-on-dark-web-and-crypto-asset-analysis/cover.jpg"
 posttype: "news"
 aliases: ["/news/unlock-advanced-investigative-tools-iknaio-cflw-webinar-on-dark-web-and-crypto-asset-analysis/"]
 ---

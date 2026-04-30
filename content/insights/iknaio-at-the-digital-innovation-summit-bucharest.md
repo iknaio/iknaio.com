@@ -3,7 +3,7 @@ title: "Iknaio at the Digital Innovation Summit Bucharest"
 date: 2025-04-23
 description: "Iknaio co-founders discuss crypto-asset attribution standardization and data interoperability at a leading Eastern European technology and policy event."
 tags: []
-image: "images/news/iknaio-at-the-digital-innovation-summit-bucharest/cover.jpg"
+image: "images/insights/iknaio-at-the-digital-innovation-summit-bucharest/cover.jpg"
 posttype: "news"
 aliases: ["/news/iknaio-at-the-digital-innovation-summit-bucharest/"]
 ---

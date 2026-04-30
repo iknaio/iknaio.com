@@ -3,7 +3,7 @@ title: "Navigating the EU Crypto Regime"
 date: 2025-07-07
 description: "How Iknaio helps CASPs comply with MiCAR, AMLD6, DAC8 and the Travel Rule"
 tags: []
-image: "images/blog/navigating-the-eu-crypto-regime/cover.png"
+image: "images/insights/navigating-the-eu-crypto-regime/cover.png"
 posttype: "insight"
 aliases: ["/blog/navigating-the-eu-crypto-regime/"]
 ---

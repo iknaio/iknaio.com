@@ -3,7 +3,7 @@ title: "Change Address Heuristics"
 date: 2026-04-15
 description: "How we identify the change output of a Bitcoin transaction at Iknaio, and why getting it right matters."
 tags: []
-image: "images/blog/change-detection/cover.png"
+image: "images/insights/change-detection/cover.png"
 posttype: "insight"
 aliases: ["/blog/change-detection/"]
 ---
@@ -26,7 +26,7 @@ The engine behind Iknaio runs three independent checks on every transaction and 
 
 After the three checks run, their results merge per output address. Each entry in the consensus carries the union of source names and the highest confidence among any source that fired. An output that two checks agree on is not double-counted. It simply inherits the maximum confidence. The figure below shows this for a real transaction (`fc12dfcb...` from block 400,000): all three inputs come from the same address, which sends 2.0 BTC to a recipient and 4.697 BTC back to itself. Direct change fires at confidence 100 (address reuse) and multi-input change at confidence 50 (same cluster). One-time change stays silent because the address already has on-chain history. The consensus merges both into a single label at confidence 100 with 2 sources.
 
-![](/images/blog/change-detection/figure-1.png)
+![](/images/insights/change-detection/figure-1.png)
 
 ## Check it out in Pathfinder
 
@@ -36,7 +36,7 @@ Here is the same transaction as it appears in Pathfinder:
 
 <figure class="figure-center">
 
-![](/images/blog/change-detection/figure-2.png)
+![](/images/insights/change-detection/figure-2.png)
 
 </figure>
 

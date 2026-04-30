@@ -3,7 +3,7 @@ title: "10 Years of the Central Office for Cybercrime Bavaria"
 date: 2025-02-11
 description: "Iknaio's CEO participated in Bavaria's celebration of the ZCB's tenth anniversary, where GraphSense and Pathfinder were recognized as key investigative tools."
 tags: []
-image: "images/news/10-years-of-the-central-office-for-cybercrime-bavaria/cover.jpg"
+image: "images/insights/10-years-of-the-central-office-for-cybercrime-bavaria/cover.jpg"
 posttype: "news"
 aliases: ["/news/10-years-of-the-central-office-for-cybercrime-bavaria/"]
 ---

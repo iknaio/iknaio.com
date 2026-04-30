@@ -3,7 +3,7 @@ title: "Improving Cryptoasset Investigations by Connecting Cases"
 date: 2024-12-11
 description: "Identify connections between cases with Iknaio CaseConnect"
 tags: ["caseconnect", "investigation", "law-enforcement", "research"]
-image: "images/blog/improving-cryptoasset-investigations-by-connecting-cases/cover.png"
+image: "images/insights/improving-cryptoasset-investigations-by-connecting-cases/cover.png"
 posttype: "insight"
 aliases: ["/blog/improving-cryptoasset-investigations-by-connecting-cases/"]
 ---

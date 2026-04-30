@@ -77,7 +77,7 @@ trust:
 
 case_study:
   title: "Case Study: Operation Alice (2026)"
-  image: "images/case-study/sperrbanner.png"
+  image: "images/insights/operation-alice/sperrbanner.png"
   image_alt: "Operation Alice seizure banner"
   link: "insights/operation-alice/"
   link_text: "Read the case study"

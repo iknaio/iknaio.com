@@ -3,7 +3,7 @@ title: "Iknaio Participates in ENSEMBLE Project"
 date: 2024-12-12
 description: "Iknaio collaborates in an EU-funded initiative leveraging AI to enhance forensic investigations and combat cybercriminal activities across Europe."
 tags: []
-image: "images/news/iknaio-participates-in-ensemble-project/cover.jpg"
+image: "images/insights/iknaio-participates-in-ensemble-project/cover.jpg"
 posttype: "news"
 aliases: ["/news/iknaio-participates-in-ensemble-project/"]
 ---

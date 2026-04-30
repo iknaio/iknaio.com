@@ -3,7 +3,7 @@ title: "Crypto Inheritance"
 date: 2025-03-20
 description: "Ensuring Digital Assets Are Not Lost Forever"
 tags: ["investigation", "inheritance", "compliance"]
-image: "images/blog/crypto-inheritance-investigation/cover.png"
+image: "images/insights/crypto-inheritance-investigation/cover.png"
 posttype: "insight"
 aliases: ["/blog/crypto-inheritance-investigation/"]
 ---

@@ -3,7 +3,7 @@ title: "One-click identification of potential crypto fund routes to exchanges"
 date: 2025-05-19
 description: "Introducing QuickTrace feature"
 tags: ["quicktrace", "automation", "investigation", "product-update"]
-image: "images/blog/introducing-quicktrace-feature/cover.png"
+image: "images/insights/introducing-quicktrace-feature/cover.png"
 posttype: "insight"
 aliases: ["/blog/introducing-quicktrace-feature/"]
 ---

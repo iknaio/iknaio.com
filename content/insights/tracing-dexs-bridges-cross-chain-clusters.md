@@ -3,7 +3,7 @@ title: "Tracing through DEXs, over Bridges, and Cross-Chain Address Clusters"
 date: 2025-09-30
 description: "Taking You Behind the Scenes of Our Latest Release (25.09)"
 tags: []
-image: "images/blog/tracing-dexs-bridges-cross-chain-clusters/cover.jpg"
+image: "images/insights/tracing-dexs-bridges-cross-chain-clusters/cover.jpg"
 posttype: "insight"
 aliases: ["/blog/tracing-dexs-bridges-cross-chain-clusters/", "/news/tracing-through-dexs-over-bridges-and-cross-chain-address-clusters/"]
 ---

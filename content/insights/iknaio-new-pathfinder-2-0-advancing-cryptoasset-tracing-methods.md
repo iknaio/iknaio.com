@@ -3,7 +3,7 @@ title: "Pathfinder 2.0"
 date: 2024-11-20
 description: "Rethinking Manual Cryptoasset Tracing with Pathfinder 2.0"
 tags: ["pathfinder", "investigation", "tracing", "product-update"]
-image: "images/blog/iknaio-new-pathfinder-2-0-advancing-cryptoasset-tracing-methods/cover.png"
+image: "images/insights/iknaio-new-pathfinder-2-0-advancing-cryptoasset-tracing-methods/cover.png"
 posttype: "insight"
 aliases: ["/blog/iknaio-new-pathfinder-2-0-advancing-cryptoasset-tracing-methods/"]
 ---

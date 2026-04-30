@@ -3,7 +3,7 @@ title: "Project DeFiTrace: Innovating DeFi Investigations"
 date: 2023-10-16
 description: "Iknaio partners with the KIRAS DeFiTrace project to develop methods for identifying illegal transactions in Decentralized Finance systems."
 tags: []
-image: "images/news/iknaio-defitrace-innovating-defi-investigations-with-kiras/cover.jpg"
+image: "images/insights/iknaio-defitrace-innovating-defi-investigations-with-kiras/cover.jpg"
 posttype: "news"
 aliases: ["/news/iknaio-defitrace-innovating-defi-investigations-with-kiras/"]
 ---

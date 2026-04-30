@@ -3,7 +3,7 @@ title: "Reflecting on Our Contribution to CINTIA 2024"
 date: 2024-11-15
 description: "Iknaio's CEO shares insights on blockchain analysis and combating financial crime at the CINTIA 2024 Analytical Conference in Warsaw."
 tags: []
-image: "images/news/iknaio-cintia-2024-analytical-conference/cover.jpeg"
+image: "images/insights/iknaio-cintia-2024-analytical-conference/cover.jpeg"
 posttype: "news"
 aliases: ["/news/iknaio-cintia-2024-analytical-conference/"]
 ---

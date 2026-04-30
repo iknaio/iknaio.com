@@ -3,7 +3,7 @@ title: "Happy New Year 2025 from Iknaio!"
 date: 2025-01-02
 description: "Iknaio reflects on 2024 achievements and commits to advancing blockchain investigation tools for authorities and financial institutions in 2025."
 tags: []
-image: "images/news/happy-new-year-2025-from-iknaio/cover.svg"
+image: "images/insights/happy-new-year-2025-from-iknaio/cover.svg"
 posttype: "news"
 aliases: ["/news/𝗛𝗮𝗽𝗽𝘆-𝗡𝗲𝘄-𝗬𝗲𝗮𝗿-𝟮𝟬𝟮𝟱-𝗳𝗿𝗼𝗺-𝗜𝗸𝗻𝗮𝗶𝗼/", "/news/happy-new-year-2025-from-iknaio/"]
 ---

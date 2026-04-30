@@ -3,7 +3,7 @@ title: "ONE Conference: Iknaio & CFLW"
 date: 2023-10-03
 description: "Iknaio and CFLW Cyber Strategies held their inaugural joint exhibition focusing on Dark Web and Crypto-Asset Investigations."
 tags: []
-image: "images/news/iknaio-one-conference-dark-web-cflw-crypto-collaboration/cover.jpeg"
+image: "images/insights/iknaio-one-conference-dark-web-cflw-crypto-collaboration/cover.jpeg"
 posttype: "news"
 aliases: ["/news/iknaio-one-conference-dark-web-cflw-crypto-collaboration/"]
 ---

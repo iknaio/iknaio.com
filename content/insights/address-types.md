@@ -3,7 +3,7 @@ title: "Bitcoin Address Types"
 date: 2026-04-14
 description: "Bitcoin address types, what they tell an investigator, and how Iknaio uses them."
 tags: []
-image: "images/blog/address-types/cover.png"
+image: "images/insights/address-types/cover.png"
 posttype: "insight"
 aliases: ["/blog/address-types/"]
 ---
@@ -51,7 +51,7 @@ Two output types appear in transactions but do not use standard addresses:
 
 The chart below shows how the distribution of address types changed over time, based on a sample of roughly 21,000 transactions from the Iknaio database.
 
-![](/images/blog/address-types/figure-1.png)
+![](/images/insights/address-types/figure-1.png)
 
 Legacy addresses dominate through the early years, P2SH grows steadily from around 2015, native segwit takes over from 2017-2018 onward, and Taproot appears after late 2021.
 

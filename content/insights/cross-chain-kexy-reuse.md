@@ -3,7 +3,7 @@ title: "Cross-Chain Key Reuse: How Public Keys Link Addresses Across Chains"
 date: 2026-02-18
 description: "New Research Reveals Widespread Key Reuse Between UTXO and Account-Based Cryptocurrencies"
 tags: []
-image: "images/blog/cross-chain-kexy-reuse/cover.png"
+image: "images/insights/cross-chain-kexy-reuse/cover.png"
 posttype: "insight"
 aliases: ["/blog/cross-chain-kexy-reuse/", "/insights/cross-chain-key-reuse/", "/blog/cross-chain-key-reuse/"]
 ---
@@ -14,7 +14,7 @@ Different blockchains use different address formats. A Bitcoin address looks not
 
 The study, [Reuse of Public Keys Across UTXO and Account-Based Cryptocurrencies](https://arxiv.org/abs/2601.19500) (Stütz, Stifter, Dragaschnig, Haslhofer, Judmayer, 2026), demonstrates that the same cryptographic keys are used extensively and actively across multiple blockchain networks, even when those networks employ seemingly incompatible address formats.
 
-![](/images/blog/cross-chain-kexy-reuse/figure-1.png)
+![](/images/insights/cross-chain-kexy-reuse/figure-1.png)
 
 ## Why Address Matching Alone Is Not Enough
 
@@ -38,7 +38,7 @@ The results are significant:
 
 - Even a single reused key creates a deterministic link: if the same public key appears on Bitcoin and Ethereum, all addresses derivable from that key on both chains are provably controlled by the same entity.
 
-![](/images/blog/cross-chain-kexy-reuse/figure-2.png)
+![](/images/insights/cross-chain-kexy-reuse/figure-2.png)
 
 ## From Key Reuse to Cross-Chain Clustering
 
@@ -56,7 +56,7 @@ This method does not rely on heuristics for the cross-chain link itself. The con
 
 Using this technique, the authors were able to cluster **497,289 Ethereum addresses into 62,681 clusters** and **305,019 Tron addresses into 19,242 clusters**, by transferring Bitcoin's multi-input clustering across the chain boundary.
 
-![](/images/blog/cross-chain-kexy-reuse/figure-3.png)
+![](/images/insights/cross-chain-kexy-reuse/figure-3.png)
 
 ## How This Is Implemented in Iknaio
 
@@ -72,7 +72,7 @@ In Iknaio's platform, cross-chain clustering works as follows:
 
 **Combining methods for comprehensive coverage.** Cross-chain key-based clustering complements Iknaio's other cross-chain capabilities, including tracing through decentralized exchanges (DEXs) and bridge protocols. Together, these methods provide investigators with a comprehensive view of entity activity across the multi-chain ecosystem.
 
-![](/images/blog/cross-chain-kexy-reuse/figure-4.png)
+![](/images/insights/cross-chain-kexy-reuse/figure-4.png)
 
 ## Implications for Investigators and Compliance
 

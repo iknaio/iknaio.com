@@ -3,7 +3,7 @@ title: "German Startup Cup Fintech: Second Place for Iknaio"
 date: 2023-07-01
 description: "Iknaio received second place recognition in the Fintech category at the German Startup Cup competition."
 tags: []
-image: "images/news/german-startup-cup-fintech-second-place-for-iknaio/cover.jpg"
+image: "images/insights/german-startup-cup-fintech-second-place-for-iknaio/cover.jpg"
 posttype: "news"
 aliases: ["/news/german-startup-cup-fintech-second-place-for-iknaio/"]
 ---

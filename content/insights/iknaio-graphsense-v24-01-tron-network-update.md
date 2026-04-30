@@ -3,7 +3,7 @@ title: "GraphSense Release 24.01 — Tron Network Update"
 date: 2024-01-29
 description: "GraphSense v24.01 introduces tracing and tracking functionalities for the Tron network."
 tags: []
-image: "images/news/iknaio-graphsense-v24-01-tron-network-update/cover.png"
+image: "images/insights/iknaio-graphsense-v24-01-tron-network-update/cover.png"
 posttype: "news"
 aliases: ["/news/iknaio-graphsense-v24-01-tron-network-update/"]
 ---

@@ -3,7 +3,7 @@ title: "Unraveling the Bybit Ethereum Hack"
 date: 2025-02-25
 description: "What Happened and How Iknaio Can Help"
 tags: ["ethereum", "hack", "investigation", "security"]
-image: "images/blog/unraveling-bybit-hack-in-iknaio/cover.png"
+image: "images/insights/unraveling-bybit-hack-in-iknaio/cover.png"
 posttype: "insight"
 aliases: ["/blog/unraveling-bybit-hack-in-iknaio/"]
 ---
@@ -20,7 +20,7 @@ The initial unauthorized transaction that transferred approximately 400,000 ETH 
 
 By utilizing Iknaio's advanced blockchain analysis tools, users can trace the flow of these funds in real-time. Iknaio's platform enables the visualization of complex transaction networks, allowing investigators to monitor the dispersion of stolen assets across various wallets. This level of transparency is crucial for identifying patterns, potential laundering activities, and ultimately, the entities involved in the heist.
 
-![](/images/blog/unraveling-bybit-hack-in-iknaio/figure-1.png)
+![](/images/insights/unraveling-bybit-hack-in-iknaio/figure-1.png)
 
 ## Investigate the Bigger Picture
 
@@ -28,7 +28,7 @@ Renowned [on-chain investigator ZachXBT has linked the Bybit hack to previous ex
 
 Iknaio's Pathfinder tool can be instrumental in visualizing the connections between these incidents. By mapping out transaction flows and identifying commonalities in the attack vectors, Pathfinder aids in constructing a comprehensive overview of the threat landscape. This holistic approach is essential for understanding the methodologies employed by the Lazarus Group and for developing strategies to mitigate future risks.
 
-![](/images/blog/unraveling-bybit-hack-in-iknaio/figure-2.png)
+![](/images/insights/unraveling-bybit-hack-in-iknaio/figure-2.png)
 
 ## Final Thoughts
 

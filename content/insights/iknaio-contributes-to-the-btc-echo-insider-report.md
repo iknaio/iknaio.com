@@ -3,7 +3,7 @@ title: "Iknaio contributes to the BTC-ECHO Insider Report"
 date: 2025-01-29
 description: "Iknaio's Head of Sales and Marketing contributed expert insights to BTC-ECHO's Q1 2025 analysis of German political parties' crypto positions ahead of the federal election."
 tags: []
-image: "images/news/iknaio-contributes-to-the-btc-echo-insider-report/cover.png"
+image: "images/insights/iknaio-contributes-to-the-btc-echo-insider-report/cover.png"
 posttype: "news"
 aliases: ["/news/iknaio-contributes-to-the-btc-echo-insider-report/"]
 ---

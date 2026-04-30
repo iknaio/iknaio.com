@@ -3,7 +3,7 @@ title: "CINTiA 2023 Presentation"
 date: 2023-09-21
 description: "Iknaio presented on mass data processing for cryptoassets at CINTiA 2023 in Krakow."
 tags: []
-image: "images/news/iknaio-cintia-2023-cryptoasset-presentation/cover.jpg"
+image: "images/insights/iknaio-cintia-2023-cryptoasset-presentation/cover.jpg"
 posttype: "news"
 aliases: ["/news/iknaio-cintia-2023-cryptoasset-presentation/"]
 ---

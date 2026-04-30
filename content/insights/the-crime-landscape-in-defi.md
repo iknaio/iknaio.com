@@ -3,7 +3,7 @@ title: "The Crime Landscape in DeFi: A Data-Driven Perspective"
 date: 2025-02-04
 description: "Understanding DeFi Risks: How Data-Driven Insights Shape Financial Security"
 tags: ["defi", "research", "security", "crime"]
-image: "images/blog/the-crime-landscape-in-defi/cover.png"
+image: "images/insights/the-crime-landscape-in-defi/cover.png"
 posttype: "insight"
 aliases: ["/blog/the-crime-landscape-in-defi/"]
 ---

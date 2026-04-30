@@ -3,7 +3,7 @@ title: "Iknaio Supports BIS Project ATLAS"
 date: 2023-10-05
 description: "Iknaio supports the Bank of International Settlements' Project ATLAS initiative to improve transparency and data provenance in cryptoasset research and regulation."
 tags: []
-image: "images/news/iknaio-project-atlas-cryptoasset-transparency/cover.jpg"
+image: "images/insights/iknaio-project-atlas-cryptoasset-transparency/cover.jpg"
 posttype: "news"
 aliases: ["/news/iknaio-project-atlas-cryptoasset-transparency/"]
 ---

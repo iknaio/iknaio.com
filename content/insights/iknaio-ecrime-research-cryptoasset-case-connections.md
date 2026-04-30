@@ -3,7 +3,7 @@ title: "New Study on Cryptoasset Case Connections"
 date: 2023-11-17
 description: "Research reveals that over 40% of cyberfraud cases and approximately 97% of sextortion incidents share investigative connections."
 tags: []
-image: "images/news/iknaio-ecrime-research-cryptoasset-case-connections/cover.jpg"
+image: "images/insights/iknaio-ecrime-research-cryptoasset-case-connections/cover.jpg"
 posttype: "news"
 aliases: ["/news/iknaio-ecrime-research-cryptoasset-case-connections/"]
 ---

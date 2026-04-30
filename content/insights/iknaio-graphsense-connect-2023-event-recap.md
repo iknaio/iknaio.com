@@ -3,7 +3,7 @@ title: "First GraphSense Connect"
 date: 2023-11-09
 description: "GraphSense hosted its inaugural Connect event in Vienna to bring together users, developers, and stakeholders around the open-source cryptoasset analytics platform."
 tags: []
-image: "images/news/iknaio-graphsense-connect-2023-event-recap/cover.jpg"
+image: "images/insights/iknaio-graphsense-connect-2023-event-recap/cover.jpg"
 posttype: "news"
 aliases: ["/news/iknaio-graphsense-connect-2023-event-recap/"]
 ---

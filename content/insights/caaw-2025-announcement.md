@@ -3,7 +3,7 @@ title: "CAAW 2025 Announcement"
 date: 2025-03-18
 description: "Bernhard Haslhofer joins the organizing committee for the 4th International Cryptoasset Analytics Workshop in Japan."
 tags: []
-image: "images/news/caaw-2025-announcement/cover.png"
+image: "images/insights/caaw-2025-announcement/cover.png"
 posttype: "news"
 aliases: ["/news/caaw-2025-announcement/"]
 ---

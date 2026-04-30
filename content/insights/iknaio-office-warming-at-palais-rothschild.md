@@ -3,7 +3,7 @@ title: "Iknaio Office Warming at Palais Rothschild"
 date: 2025-05-14
 description: "Iknaio celebrated the opening of its new Vienna office at the historic Palais Rothschild with friends, partners, and colleagues."
 tags: []
-image: "images/news/iknaio-office-warming-at-palais-rothschild/cover.jpeg"
+image: "images/insights/iknaio-office-warming-at-palais-rothschild/cover.jpeg"
 posttype: "news"
 aliases: ["/news/iknaio-office-warming-at-palais-rothschild/"]
 ---

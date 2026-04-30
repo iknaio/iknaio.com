@@ -31,7 +31,7 @@ Posts live in `content/insights/` as Markdown files. The slug becomes the URL (`
    date: 2026-04-22
    description: "One-sentence summary — used for SEO, OG preview, and insight-card subtitle."
    tags: ["tag1", "tag2"]
-   image: "images/blog/<slug>/cover.png"
+   image: "images/insights/<slug>/cover.png"
    posttype: "insight"
    aliases: ["/blog/<slug>/"]
    ---
@@ -41,14 +41,14 @@ Posts live in `content/insights/` as Markdown files. The slug becomes the URL (`
    - `image` is the card thumbnail and the OG preview image; use `cover.png` or `cover.jpg`.
    - `aliases` preserve old `/blog/<slug>/` URLs as redirects to the new `/insights/<slug>/` path.
 
-2. **Add images** under `static/images/blog/<slug>/`:
+2. **Add images** under `static/images/insights/<slug>/`:
    - `cover.png` (or `.jpg`) — required; used for card + social preview.
    - `figure-1.png`, `figure-2.png`, … — optional inline figures.
 
 3. **Reference inline figures** in the body as:
 
    ```markdown
-   ![](/images/blog/<slug>/figure-1.png)
+   ![](/images/insights/<slug>/figure-1.png)
    ```
 
    The leading slash is fine — `layouts/_default/_markup/render-image.html` is a Hugo image render hook that strips the leading slash and pipes the path through `relURL` so it works under any baseURL (localhost or `/iknaio.com/` on GitHub Pages).
@@ -80,7 +80,7 @@ assets/              Pipeline-processed (minified + fingerprinted)
   js/main.js           Mobile nav, dark-mode toggle, scroll behaviour
   js/cookie-banner.js  Consent banner + Plausible gate
 static/              Files served as-is at site root
-  images/              Photos, product screenshots, logos, icons, blog figures
+  images/              Photos, product screenshots, logos, icons, insights/<slug>/ folders for post covers + figures
   fonts/               woff2 (Brawler / General Sans / Roboto)
   favicon/
 ```

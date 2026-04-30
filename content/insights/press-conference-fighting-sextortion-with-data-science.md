@@ -3,7 +3,7 @@ title: "Press Conference: Fighting Sextortion with Data Science"
 date: 2025-02-06
 description: "Iknaio and Graphsense collaborate with Bavarian law enforcement to combat sextortion through data-driven crypto forensics and blockchain analytics."
 tags: []
-image: "images/news/press-conference-fighting-sextortion-with-data-science/cover.jpeg"
+image: "images/insights/press-conference-fighting-sextortion-with-data-science/cover.jpeg"
 posttype: "news"
 aliases: ["/news/press-conference-fighting-sextortion-with-data-science/"]
 ---
