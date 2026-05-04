@@ -46,15 +46,14 @@
       {{ range .items }}
       <li class="about-value">
         <div class="about-value-icon" aria-hidden="true">
-          {{ if eq .icon "graph" }}
-          <img src="{{ "images/about/icons/science.svg" | relURL }}" alt="">
-          {{ else if eq .icon "layers" }}
-          <img src="{{ "images/about/icons/transparency.svg" | relURL }}" alt="">
-          {{ else if eq .icon "arrows" }}
-          <img src="{{ "images/about/icons/collaborative.svg" | relURL }}" alt="">
-
-          {{ else if eq .icon "dots" }}
-          <img src="{{ "images/about/icons/diversity.svg" | relURL }}" alt="">
+          {{ if eq .icon "science" }}
+          <img src="{{ "images/icons/backed-by-science-icon.svg" | relURL }}" alt="">
+          {{ else if eq .icon "network" }}
+          <img src="{{ "images/icons/network-icon.svg" | relURL }}" alt="">
+          {{ else if eq .icon "transparency" }}
+          <img src="{{ "images/icons/transparency-icon.svg" | relURL }}" alt="">
+          {{ else if eq .icon "collaboration" }}
+          <img src="{{ "images/icons/collaboration-icon.svg" | relURL }}" alt="">
           {{ end }}
         </div>
         <h3 class="about-value-name">{{ .name }}</h3>

@@ -22,9 +22,11 @@
         <div>
           <h3>{{ $panel.name }}</h3>
           <p>{{ $panel.description | markdownify }}</p>
+          {{/* read-more links hidden — re-enable by uncommenting
           {{ with $panel.read_more_url }}
           <a href="{{ . | relURL }}" class="read-more">{{ $.read_more_text | default "Read more" }}</a>
           {{ end }}
+          */}}
         </div>
         <div class="tool-mockup">
           {{ with $panel.screenshot }}
