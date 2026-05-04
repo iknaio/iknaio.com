@@ -12,7 +12,7 @@ hero:
   timeline_title: "Milestones"
   timeline:
     - year: "2015"
-      text: "GraphSense research project initiated at [AIT Austrian Institute of Technology](https://www.ait.ac.at) and [Complexity Science Hub Vienna](https://csh.ac.at)"
+      text: "GraphSense research project initiated at [AIT Austrian Institute of Technology](https://www.ait.ac.at)"
     - year: "2018"
       text: "First law enforcement agencies adopt GraphSense for investigations"
     - year: "2021"
