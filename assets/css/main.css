@@ -3941,9 +3941,9 @@ hr {
 .tools-tab {
   background: transparent;
   border: none;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
   font-family: var(--font-primary);
-  font-size: var(--text-h3);
+  font-size: 16px;
   font-weight: 500;
   color: var(--text-dark-muted);
   cursor: pointer;
@@ -3952,8 +3952,9 @@ hr {
   letter-spacing: -0.01em;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .tools-tab:hover {
@@ -3967,8 +3968,8 @@ hr {
 .tools-tab.active::after {
   content: '';
   position: absolute;
-  left: var(--spacing-lg);
-  right: var(--spacing-lg);
+  left: var(--spacing-md);
+  right: var(--spacing-md);
   bottom: -1px;
   height: 3px;
   background: var(--color-primary);
@@ -3976,8 +3977,8 @@ hr {
 }
 
 .tool-tab-icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   opacity: 0.4;
   transition: opacity var(--duration-base) var(--easing-default);
 }
@@ -4020,11 +4021,12 @@ hr {
 .tool-panel h3 {
   font-family: var(--font-accent);
   font-weight: 400;
-  font-size: 40px;
+  font-size: clamp(28px, 3.4vw, 40px);
   line-height: 1.1;
   margin: 0 0 20px;
   color: var(--color-dark);
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .tool-panel .read-more {

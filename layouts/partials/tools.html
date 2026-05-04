@@ -10,7 +10,8 @@
     <div class="container">
       <div class="tools-tabs" role="tablist">
         {{ range $i, $tab := .tabs }}
-        <a class="tools-tab{{ if eq $i 0 }} active{{ end }}" href="#tool-{{ $tab.name | urlize }}" data-tool="{{ $tab.name | urlize }}" data-index="{{ $i }}" role="tab" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}">
+        {{ $slug := (index $.panels $i).name | urlize }}
+        <a class="tools-tab{{ if eq $i 0 }} active{{ end }}" href="#tool-{{ $slug }}" data-tool="{{ $slug }}" data-index="{{ $i }}" role="tab" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}">
           <img src="{{ $tab.icon | relURL }}" alt="" class="tool-tab-icon" loading="lazy" aria-hidden="true">
           {{ $tab.name }}
         </a>

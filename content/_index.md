@@ -24,8 +24,8 @@ tools:
       icon: "images/platform/icons/automator.svg"
     - name: "Tailored Reports"
       icon: "images/platform/icons/tailored-reports.svg"
-    - name: "Learning & Trainings"
-      icon: "images/platform/icons/learning.svg"
+    - name: "Trainings"
+      icon: "images/platform/icons/learnings.svg"
   panels:
     - name: Pathfinder
       description: "Simplify cryptoasset payment flow analysis. Pathfinder puts simple but powerful tracing capabilities at everyone's desk, making it easier than ever to follow cryptoasset transactions without organizational bottlenecks."
