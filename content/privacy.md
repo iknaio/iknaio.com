@@ -3,7 +3,7 @@ title: "Privacy Policy"
 description: "Privacy policy for Iknaio Cryptoasset Analytics GmbH."
 ---
 
-*Last updated: 26 April 2026*
+*Last updated: 4 May 2026*
 
 ## 1. Controller
 
@@ -39,15 +39,22 @@ If you contact us by email, we process your email address and the content of you
 
 Server logs collected by GitHub Pages are managed by GitHub according to their data retention policies. Email correspondence is retained for as long as necessary to respond to your inquiry and maintain the business relationship, typically no longer than 3 years after last contact.
 
-### 3.3 Cookies
+### 3.3 Cookies and Analytics
 
-This website does not set tracking cookies. A locally stored preference may be saved in your browser for the dark/light mode toggle. This does not constitute personal data processing.
+We use a small set of analytics services to understand how visitors use the site. They are loaded only after you give explicit consent via the cookie banner. If you reject — or have not yet chosen — no analytics scripts are loaded and no analytics data is collected.
 
-Cookieless analytics (Plausible) may be loaded only after explicit consent given via the cookie banner. If you reject or have not yet chosen, no analytics script is loaded and no analytics data is collected. You can change your choice at any time by clicking "Cookie Settings" in the site footer.
+When you accept, the following are loaded:
 
-## 4. No Third-Party Tracking
+- **Plausible Analytics** (Plausible Insights OÜ, Estonia) — privacy-focused analytics. Loads `plausible.io/js/script.js`. Does not set cookies in its default configuration; data is processed within the EU. See [Plausible's privacy policy](https://plausible.io/privacy).
+- **Google Analytics 4** (Google Ireland Ltd. / Google LLC, USA) — measures aggregate traffic. Loads `googletagmanager.com/gtag/js` and sets the `_ga` and `_ga_TPJK719TS4` cookies (valid for up to 13 months). IP addresses are anonymized by default in GA4. Data is transferred to the United States; Google relies on the EU–US Data Privacy Framework as a transfer mechanism. See [Google's privacy policy](https://policies.google.com/privacy) and [how Google uses data when you use partner sites](https://policies.google.com/technologies/partner-sites).
 
-We do not use any analytics, advertising, or social media tracking tools on this website.
+The legal basis for these analytics is Art. 6(1)(a) GDPR (consent). You can withdraw consent at any time by clicking "Cookie Settings" in the site footer and choosing "Reject"; subsequent page loads will not load analytics. Cookies already set by previously accepted services can be cleared from your browser settings.
+
+A locally stored preference for the dark/light mode toggle is also saved in your browser via `localStorage`. This is not a tracking cookie and does not transmit data.
+
+## 4. Advertising and Remarketing
+
+We do not run advertising, remarketing, or social media tracking on this website. We do not use Google Tag Manager, Google Ads, Meta Pixel, or LinkedIn Insight Tag. The Google Analytics integration described in Section 3.3 is loaded directly via gtag.js for measurement only.
 
 ## 5. Data Sharing
 
