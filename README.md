@@ -105,12 +105,6 @@ node qa-check.mjs
 
 Screenshots land in `qa-screenshots/`. Known false positive: lazy-loaded press logos / team photos / blog covers may be reported as "broken images" — spot-check via `curl -sI <url> | head -1` confirms they serve HTTP 200.
 
-Optional SEO/GEO audit (requires `seo-geo` skill from the `opc-skills` plugin):
-
-```sh
-python3 ~/.claude/plugins/cache/opc-skills/seo-geo/1.0.0/scripts/seo_audit.py "http://localhost:1313/"
-```
-
 ## Pre-launch TODO
 
 See [`TODO.md`](TODO.md) for the remaining checklist (custom domain DNS, Formspree form ID, Plausible account, real content for placeholder pages).
