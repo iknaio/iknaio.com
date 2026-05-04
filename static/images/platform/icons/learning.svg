@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <!-- triangle edges, gap matched to collaborative (~7 units) -->
+  <line x1="20" y1="12" x2="60" y2="12" stroke="rgb(42,42,42)" stroke-width="7.15" stroke-linecap="round"/>
+  <line x1="13.58" y1="22.63" x2="34.42" y2="62.37" stroke="rgb(42,42,42)" stroke-width="7.15" stroke-linecap="round"/>
+  <line x1="66.42" y1="22.63" x2="45.58" y2="62.37" stroke="rgb(42,42,42)" stroke-width="7.15" stroke-linecap="round"/>
+  <!-- small green nodes, radius matched to collaborative (~5) -->
+  <circle cx="8" cy="12" r="5" fill="rgb(43,221,150)"/>
+  <circle cx="72" cy="12" r="5" fill="rgb(43,221,150)"/>
+  <circle cx="40" cy="73" r="5" fill="rgb(43,221,150)"/>
+</svg>

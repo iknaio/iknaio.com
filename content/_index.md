@@ -24,6 +24,8 @@ tools:
       icon: "images/platform/icons/automator.svg"
     - name: "Tailored Reports"
       icon: "images/platform/icons/tailored-reports.svg"
+    - name: "Learning & Trainings"
+      icon: "images/platform/icons/learning.svg"
   panels:
     - name: Pathfinder
       description: "Simplify cryptoasset payment flow analysis. Pathfinder puts simple but powerful tracing capabilities at everyone's desk, making it easier than ever to follow cryptoasset transactions without organizational bottlenecks."
@@ -44,6 +46,9 @@ tools:
     - name: "Tailored Reports"
       description: "Bespoke forensic and intelligence reports, written by our analysts. Court-grade narrative reports for cases too large or sensitive to self-serve. Iknaio analysts handle the tracing, attribution, and write-up. Delivered under contract with agreed turnaround."
       screenshot: "images/screenshots/screenshot-tailored-reports.png"
+    - name: "Learning & Trainings"
+      description: "Workshops and trainings for cryptoasset investigators. On-site or remote training for investigation, compliance, and reporting workflows. Curriculum tailored to your team's tooling and case mix. Designed and delivered by Iknaio research and product staff."
+      screenshot: "images/screenshots/screenshot-learning.svg"
 
 secondary_audience:
   title: "Also for compliance teams and advisors"
