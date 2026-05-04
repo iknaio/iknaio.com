@@ -4,6 +4,7 @@
   var STORAGE_KEY = 'iknaio-cookie-consent';
   var PLAUSIBLE_DOMAIN = 'iknaio.com';
   var PLAUSIBLE_SRC = 'https://plausible.io/js/script.js';
+  var DOTLOTTIE_SRC = 'https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs';
 
   function loadAnalytics() {
     if (document.querySelector('script[data-domain="' + PLAUSIBLE_DOMAIN + '"]')) return;
@@ -12,6 +13,21 @@
     s.setAttribute('data-domain', PLAUSIBLE_DOMAIN);
     s.src = PLAUSIBLE_SRC;
     document.head.appendChild(s);
+  }
+
+  function loadLottiePlayer() {
+    if (!document.querySelector('dotlottie-player')) return;
+    if (document.querySelector('script[data-iknaio-lottie]')) return;
+    var s = document.createElement('script');
+    s.type = 'module';
+    s.src = DOTLOTTIE_SRC;
+    s.setAttribute('data-iknaio-lottie', '');
+    document.head.appendChild(s);
+  }
+
+  function loadConsented() {
+    loadAnalytics();
+    loadLottiePlayer();
   }
 
   function saveConsent(value) {
@@ -34,7 +50,7 @@
 
   var consent = getConsent();
   if (consent === 'accepted') {
-    loadAnalytics();
+    loadConsented();
   } else if (consent === null) {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', showBanner);
@@ -47,7 +63,7 @@
     var t = e.target;
     if (t.matches('[data-cookie-action="accept"]')) {
       saveConsent('accepted');
-      loadAnalytics();
+      loadConsented();
       hideBanner();
     } else if (t.matches('[data-cookie-action="reject"]')) {
       saveConsent('rejected');

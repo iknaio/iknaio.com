@@ -50,15 +50,6 @@
   var panels = document.querySelectorAll('.tools-section .tool-panel');
   if (!panels.length) return;
 
-  var navOffset = 75.2;
-  var ANIM_LOCK = 600;     // block while the smooth scroll is in flight
-  var GESTURE_GAP = 220;   // ms of quiet before a wheel event counts as a fresh gesture
-  var animating = false;
-  var animTimer = null;
-  var gestureActive = false;
-  var gestureTimer = null;
-  var currentIndex = 0;
-
   function setActive(index) {
     tabs.forEach(function (t, i) {
       var on = i === index;
@@ -70,111 +61,28 @@
     });
   }
 
-  function scrollToPanel(index) {
-    if (index < 0 || index >= panels.length) return;
-    if (animTimer) clearTimeout(animTimer);
-    animating = true;
-    currentIndex = index;
-    panels[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setActive(index);
-    animTimer = setTimeout(function () { animating = false; }, ANIM_LOCK);
-  }
+  // Tabs jump directly to a panel.
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function (e) {
+      e.preventDefault();
+      panels[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setActive(i);
+    });
+  });
 
-  function nextSectionEl() {
-    // Computed lazily — at script-parse time the sibling sections are not yet in the DOM.
-    var el = section.nextElementSibling;
-    while (el && el.tagName !== 'SECTION') el = el.nextElementSibling;
-    return el;
-  }
-
-  function scrollToNextSection() {
-    var el = nextSectionEl();
-    if (!el) return false;
-    if (animTimer) clearTimeout(animTimer);
-    animating = true;
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    animTimer = setTimeout(function () { animating = false; }, ANIM_LOCK);
-    return true;
-  }
-
-  function bumpGesture() {
-    gestureActive = true;
-    if (gestureTimer) clearTimeout(gestureTimer);
-    gestureTimer = setTimeout(function () { gestureActive = false; }, GESTURE_GAP);
-  }
-
-  function inToolsArea() {
-    var rect = section.getBoundingClientRect();
-    return rect.top <= navOffset && rect.bottom > window.innerHeight;
-  }
-
-  // Active tab tracking — runs even on touch devices, drives currentIndex when user scrolls naturally.
+  // Active tab follows native scroll position.
   if ('IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function (entries) {
-      if (animating) return;
       var best = null;
       entries.forEach(function (e) {
         if (e.isIntersecting && (!best || e.intersectionRatio > best.intersectionRatio)) best = e;
       });
       if (best) {
         var idx = parseInt(best.target.getAttribute('data-index'), 10);
-        currentIndex = idx;
         setActive(idx);
       }
     }, { rootMargin: '-150px 0px -40% 0px', threshold: [0.25, 0.5, 0.75, 1] });
     panels.forEach(function (p) { observer.observe(p); });
   }
-
-  tabs.forEach(function (tab, i) {
-    tab.addEventListener('click', function (e) {
-      e.preventDefault();
-      scrollToPanel(i);
-    });
-  });
-
-  // Skip wheel/keyboard interception on touch / small viewports — they keep native scroll.
-  var isTouch = window.matchMedia('(max-width: 960px)').matches ||
-                window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (isTouch) return;
-
-  window.addEventListener('wheel', function (e) {
-    if (!inToolsArea()) return;
-    // Block anything during the smooth-scroll animation, but keep the gesture marker alive
-    // so any inertia tail is ignored once the animation ends.
-    if (animating) { e.preventDefault(); bumpGesture(); return; }
-    // Inertia / continuation of the previous gesture — ignore but keep the marker fresh
-    // so the gesture only "ends" after a real quiet period.
-    if (gestureActive) { e.preventDefault(); bumpGesture(); return; }
-    if (Math.abs(e.deltaY) < 4) return;
-    var direction = e.deltaY > 0 ? 1 : -1;
-    var target = currentIndex + direction;
-    if (target >= panels.length) {
-      if (scrollToNextSection()) {
-        e.preventDefault();
-        bumpGesture();
-      }
-      return;
-    }
-    if (target < 0) return; // let scroll exit the area upward
-    e.preventDefault();
-    bumpGesture();
-    scrollToPanel(target);
-  }, { passive: false });
-
-  window.addEventListener('keydown', function (e) {
-    if (!inToolsArea() || animating) return;
-    var direction = 0;
-    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') direction = 1;
-    else if (e.key === 'ArrowUp' || e.key === 'PageUp') direction = -1;
-    else return;
-    var target = currentIndex + direction;
-    if (target >= panels.length) {
-      if (scrollToNextSection()) e.preventDefault();
-      return;
-    }
-    if (target < 0) return;
-    e.preventDefault();
-    scrollToPanel(target);
-  });
 })();
 </script>

@@ -1,11 +1,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
 
   {{- /* Theme init: runs before CSS to avoid flash of wrong theme */ -}}
   <script>(function(){try{var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){}})();</script>
 
-  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | Iknaio{{ end }}</title>
+  <title>{{ if .IsHome }}{{ .Site.Title }} — Investigate Crypto Money Flows{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
   <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 
   {{- /* Per-page OG image: post hero if set, else site default */ -}}
@@ -23,6 +25,7 @@
   <meta property="og:image" content="{{ $ogImage }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -52,54 +55,83 @@
   {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 
-  <!-- dotlottie player -->
-  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-
   <!-- JSON-LD Organization Schema (homepage only) -->
   {{ if .IsHome }}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Iknaio Cryptoasset Analytics GmbH",
-    "url": "{{ .Site.BaseURL }}",
-    "logo": "{{ .Site.BaseURL }}images/logos/iknaio-logo.svg",
-    "description": "{{ .Site.Params.description }}",
-    "sameAs": [
-      "{{ .Site.Params.linkedin }}",
-      "{{ .Site.Params.github }}",
-      "{{ .Site.Params.youtube }}"
-    ]
-  }
-  </script>
+  {{- $orgSchema := dict
+    "@context" "https://schema.org"
+    "@type" "Organization"
+    "name" "Iknaio Cryptoasset Analytics GmbH"
+    "alternateName" "Iknaio"
+    "url" .Site.BaseURL
+    "logo" (printf "%simages/logos/iknaio-logo.svg" .Site.BaseURL)
+    "image" (printf "%simages/og-default.png" .Site.BaseURL)
+    "description" .Site.Params.description
+    "slogan" .Site.Params.tagline
+    "foundingDate" "2021"
+    "email" .Site.Params.email
+    "address" (dict
+      "@type" "PostalAddress"
+      "streetAddress" "Metternichgasse 8"
+      "postalCode" "1030"
+      "addressLocality" "Vienna"
+      "addressCountry" "AT")
+    "contactPoint" (dict
+      "@type" "ContactPoint"
+      "email" .Site.Params.email
+      "contactType" "sales"
+      "areaServed" "Worldwide"
+      "availableLanguage" (slice "English" "German"))
+    "knowsAbout" (slice
+      "Cryptoasset analytics"
+      "Blockchain forensics"
+      "Cryptocurrency investigations"
+      "Anti-money laundering"
+      "Bitcoin tracing"
+      "Cross-chain analysis"
+      "Darknet investigations"
+      "GraphSense")
+    "sameAs" (slice .Site.Params.linkedin .Site.Params.github .Site.Params.youtube)
+  -}}
+  <script type="application/ld+json">{{ $orgSchema | jsonify (dict "indent" "  ") | safeJS }}</script>
   {{ end }}
 
   <!-- JSON-LD Article Schema (insights posts) -->
   {{ if and (eq .Kind "page") (eq .Section "insights") }}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "{{ .Title | htmlEscape }}",
-    "description": "{{ with .Params.description }}{{ . | htmlEscape }}{{ else }}{{ .Summary | truncate 200 | htmlEscape }}{{ end }}",
-    "image": "{{ $ogImage }}",
-    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
-    "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
-    "author": {
-      "@type": "Organization",
-      "name": "Iknaio Cryptoasset Analytics GmbH",
-      "url": "{{ .Site.BaseURL }}"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Iknaio Cryptoasset Analytics GmbH",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "{{ .Site.BaseURL }}images/logos/iknaio-logo.svg"
-      }
-    },
-    "mainEntityOfPage": "{{ .Permalink }}"
-  }
-  </script>
+  {{- $articleDesc := "" -}}
+  {{- with .Params.description }}{{ $articleDesc = . }}{{ else }}{{ $articleDesc = .Summary | truncate 200 }}{{ end -}}
+  {{- $articleSchema := dict
+    "@context" "https://schema.org"
+    "@type" "Article"
+    "headline" .Title
+    "description" $articleDesc
+    "image" $ogImage
+    "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+    "inLanguage" .Site.LanguageCode
+    "articleSection" "Insights"
+    "wordCount" .WordCount
+    "keywords" (delimit .Params.tags ", ")
+    "mainEntityOfPage" .Permalink
+    "author" (dict
+      "@type" "Organization"
+      "name" "Iknaio Cryptoasset Analytics GmbH"
+      "url" .Site.BaseURL)
+    "publisher" (dict
+      "@type" "Organization"
+      "name" "Iknaio Cryptoasset Analytics GmbH"
+      "logo" (dict
+        "@type" "ImageObject"
+        "url" (printf "%simages/logos/iknaio-logo.svg" .Site.BaseURL)))
+  -}}
+  <script type="application/ld+json">{{ $articleSchema | jsonify (dict "indent" "  ") | safeJS }}</script>
+
+  <!-- JSON-LD BreadcrumbList -->
+  {{- $crumbs := slice
+    (dict "@type" "ListItem" "position" 1 "name" "Home" "item" .Site.BaseURL)
+    (dict "@type" "ListItem" "position" 2 "name" "Insights" "item" (printf "%sinsights/" .Site.BaseURL))
+    (dict "@type" "ListItem" "position" 3 "name" .Title "item" .Permalink)
+  -}}
+  {{- $breadcrumb := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $crumbs -}}
+  <script type="application/ld+json">{{ $breadcrumb | jsonify (dict "indent" "  ") | safeJS }}</script>
   {{ end }}
 </head>

@@ -1,0 +1,49 @@
+# Iknaio Cryptoasset Analytics
+
+> Iknaio Cryptoasset Analytics GmbH is a Vienna-based deep-tech company building cryptoasset investigation tools for law enforcement, compliance teams, and professional advisors. We trace blockchain transactions, generate forensic reports, and reveal cross-case connections — built on a decade of peer-reviewed research and the open-source GraphSense platform.
+
+Iknaio is used by 2,500+ investigators across 23+ countries. Customers include law-enforcement agencies, banks and crypto exchanges (for AML screening), and lawyers, tax advisors, and security consultants. Infrastructure is EU-hosted with GDPR-compliant data handling.
+
+## What Iknaio does
+
+- **Pathfinder**: Cryptoasset payment-flow analysis. Whole-network tracing across Bitcoin, Ethereum, Tron, and other supported chains.
+- **CaseConnect**: Collaborative investigation platform that surfaces shared insights across related cases.
+- **QuickLock**: Automates generation of forensic transaction-tracing reports, removing repetitive manual analysis.
+- **API & MCP**: REST API and Model Context Protocol (MCP) interface for integration into AML, case-management, analytics stacks, and AI agent pipelines.
+- **Tailored Reports**: Custom report templates with full provenance of underlying data points.
+- **Trainings**: On-site and remote training in cryptoasset investigation, compliance, and reporting workflows.
+
+## Platform pages
+
+- [Platform overview](https://iknaio.com/platform/): Pathfinder, CaseConnect, QuickLock, API & MCP, and integration details.
+- [Solutions](https://iknaio.com/solutions/): Use cases by audience — Investigate (law enforcement), Comply (financial institutions), Advise (lawyers, tax advisors, consultants).
+- [Pricing](https://iknaio.com/pricing/): Free, Starter, Professional, and Institutional tiers with feature matrix and FAQ.
+- [About](https://iknaio.com/about/): Company background, team, mission, and timeline (founded 2021 as a spin-off of the Complexity Science Hub Vienna; roots in the 2015 GraphSense research project at AIT Austrian Institute of Technology).
+- [Contact](https://iknaio.com/contact/): Demo request and direct contact — contact@iknaio.com.
+
+## Technical research and methodology (insights)
+
+- [Operation Alice](https://iknaio.com/insights/operation-alice/): Case study — supporting the takedown of a darknet CSAM platform (373,000 domains, 5,170 Bitcoin addresses, ~440 suspects identified).
+- [Change Address Heuristics](https://iknaio.com/insights/change-detection/): How Iknaio identifies the change output of a Bitcoin transaction, and why it matters for tracing accuracy.
+- [Bitcoin Address Types](https://iknaio.com/insights/address-types/): What Bitcoin address types reveal to an investigator and how Iknaio uses them.
+- [Blockchain C2](https://iknaio.com/insights/blockchain-c2/): Detection of malware command-and-control channels operating over the blockchain.
+- [Cross-chain key reuse](https://iknaio.com/insights/cross-chain-kexy-reuse/): Linking activity across chains via reused cryptographic keys.
+- [Tracing DEXs, bridges, cross-chain clusters](https://iknaio.com/insights/tracing-dexs-bridges-cross-chain-clusters/): Methods for following funds through decentralised exchanges and bridges.
+- [Navigating the EU crypto regime](https://iknaio.com/insights/navigating-the-eu-crypto-regime/): Compliance overview for MiCA, TFR, and related EU regulations.
+- [The crime landscape in DeFi](https://iknaio.com/insights/the-crime-landscape-in-defi/): Patterns of illicit activity in decentralised finance.
+- [Improving cryptoasset investigations by connecting cases](https://iknaio.com/insights/improving-cryptoasset-investigations-by-connecting-cases/): The research behind CaseConnect.
+
+## Why Iknaio
+
+- **Research-backed**: 10+ years of peer-reviewed research; 26+ academic publications; every algorithm grounded in published methodology.
+- **Whole-network analysis**: Reveals patterns across entire networks rather than wallet-by-wallet, surfacing connections that isolated tools miss.
+- **API-first and open source**: Full scriptable API; open-source foundations under MIT license; results are reproducible.
+- **EU data sovereignty**: EU-hosted infrastructure, GDPR-compliant, no non-EU subpoena risk; data stays in Europe.
+- **Complementary to existing tools**: Built to be the automation and scale layer on top of other analytics tools, not a replacement.
+
+## Optional
+
+- [RSS feed](https://iknaio.com/index.xml): Latest insights and announcements.
+- [Sitemap](https://iknaio.com/sitemap.xml): Full URL list.
+- [GitHub (GraphSense)](https://github.com/graphsense): Open-source foundations.
+- [LinkedIn](https://www.linkedin.com/company/iknaio-cryptoasset-analytics-gmbh): Company updates.

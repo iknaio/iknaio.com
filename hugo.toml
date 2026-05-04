@@ -24,6 +24,9 @@ disableKinds = ["taxonomy", "term"]
   changefreq = "weekly"
   priority = 0.5
 
+[frontmatter]
+  lastmod = ["lastmod", "date", ":git", ":fileModTime"]
+
 # Platform menu entry temporarily disabled — re-enable by uncommenting
 # [[menus.main]]
 #   name = "Platform"
