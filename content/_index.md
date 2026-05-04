@@ -20,11 +20,11 @@ tools:
       icon: "images/platform/icons/caseconnect.svg"
     - name: QuickLock
       icon: "images/platform/icons/quicklock.svg"
-    - name: "API & MCP"
+    - name: API & MCP
       icon: "images/platform/icons/automator.svg"
-    - name: "Tailored Reports"
+    - name: Tailored Reports
       icon: "images/platform/icons/tailored-reports.svg"
-    - name: "Trainings"
+    - name: Trainings
       icon: "images/platform/icons/learnings.svg"
   panels:
     - name: Pathfinder
@@ -39,14 +39,14 @@ tools:
       description: "Streamline your transaction tracing process. QuickLock automates the generation of detailed forensics reports, enabling you to analyze money flows effortlessly. Avoid repetitive manual tasks and boost your efficiency."
       read_more_url: "platform/#quicklock"
       screenshot: "images/screenshots/screenshot-quicklock.png"
-    - name: "API & MCP"
+    - name: API & MCP
       description: "Automate complex workflows; build agentic pipelines that scale. REST API over the same data Pathfinder uses. Model Context Protocol (MCP) interface for connecting AI agents. Integrates into existing AML, case-management, and analytics stacks."
       read_more_url: "platform/#api-mcp"
       screenshot: "images/screenshots/screenshot-api.png"
-    - name: "Tailored Reports"
-      description: "Bespoke forensic and intelligence reports, written by our analysts. Court-grade narrative reports for cases too large or sensitive to self-serve. Iknaio analysts handle the tracing, attribution, and write-up. Delivered under contract with agreed turnaround."
+    - name: Tailored Reports
+      description: "Reports generated automatically and tailored to your needs. Designed once, executed any time. Full provenance of all underlying data points."
       screenshot: "images/screenshots/screenshot-tailored-reports.png"
-    - name: "Learning & Trainings"
+    - name: Learning & Trainings
       description: "Workshops and trainings for cryptoasset investigators. On-site or remote training for investigation, compliance, and reporting workflows. Curriculum tailored to your team's tooling and case mix. Designed and delivered by Iknaio research and product staff."
       screenshot: "images/screenshots/screenshot-learning.svg"
 
