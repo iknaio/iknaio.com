@@ -1329,6 +1329,160 @@ hr {
   background-color: var(--color-gray-light);
 }
 
+/* Newsletter (Brevo) — lives inside its own grid cell in the footer */
+/* Override Brevo's sib-styles.css defaults (white card background, side padding,
+   text-align center, max-width 540px, etc.) */
+.footer-newsletter #sib-form-container,
+.footer-newsletter #sib-container,
+.footer-newsletter .sib-form-container,
+.footer-newsletter .sib-form-message-panel {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  font-family: inherit !important;
+  color: inherit !important;
+  direction: inherit !important;
+}
+
+.footer-newsletter #sib-form-container,
+.footer-newsletter .sib-form-container {
+  max-width: 400px !important;
+}
+
+.footer-newsletter #sib-container,
+.footer-newsletter .sib-form-message-panel {
+  max-width: none !important;
+}
+
+.footer-newsletter .sib-input,
+.footer-newsletter .sib-form-block,
+.footer-newsletter .form__entry,
+.footer-newsletter .entry_block,
+.footer-newsletter .form__label-row,
+.footer-newsletter .entry__field {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+}
+
+.footer-newsletter .sib-hide-loader-icon {
+  display: none !important;
+}
+
+.footer-newsletter .entry__specification,
+.footer-newsletter .entry__label {
+  display: none !important;
+}
+
+.newsletter-title {
+  font-family: var(--font-primary);
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 500;
+  color: var(--text-dark-primary);
+  margin: 0 0 var(--spacing-md);
+  letter-spacing: -0.01em;
+}
+
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.newsletter-row {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: 1.5px solid var(--text-dark-muted);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 3px;
+}
+
+.newsletter-row .sib-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.newsletter-row .newsletter-submit-block {
+  flex-shrink: 0;
+}
+
+.newsletter-input {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 8px 14px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  color: var(--text-dark-primary);
+  outline: none;
+}
+
+.newsletter-input::placeholder {
+  color: var(--text-dark-muted);
+}
+
+.newsletter-submit {
+  background: transparent;
+  color: var(--text-dark-primary);
+  border: 1.5px solid var(--text-dark-primary);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color var(--duration-base) var(--easing-default), color var(--duration-base) var(--easing-default);
+}
+
+.newsletter-submit:hover,
+.newsletter-submit:focus-visible {
+  background: var(--text-dark-primary);
+  color: var(--bg-dark);
+}
+
+.newsletter-consent {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 13px;
+  color: var(--text-dark-muted);
+  margin-top: var(--spacing-xs);
+  cursor: pointer;
+}
+
+.newsletter-consent input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--text-dark-primary);
+  flex-shrink: 0;
+}
+
+.newsletter-msg {
+  display: none;
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.newsletter-msg--error {
+  background: rgba(255, 73, 73, 0.12);
+  color: #ff8a8a;
+  border: 1px solid rgba(255, 73, 73, 0.4);
+}
+
+.newsletter-msg--success {
+  background: rgba(43, 221, 150, 0.12);
+  color: var(--color-primary);
+  border: 1px solid rgba(43, 221, 150, 0.4);
+}
+
 /* --------------------------------------------------------------------------
    17. Article (single blog/news post)
    -------------------------------------------------------------------------- */
@@ -1444,17 +1598,34 @@ hr {
   grid-template-columns: 1fr;
   gap: var(--spacing-xl);
   margin-bottom: var(--spacing-2xl);
+  grid-template-areas:
+    "about"
+    "links"
+    "newsletter"
+    "connect";
 }
+
+.footer-about { grid-area: about; }
+.footer-links { grid-area: links; }
+.footer-connect { grid-area: connect; }
+.footer-newsletter { grid-area: newsletter; }
 
 @media (min-width: 480px) {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "about about"
+      "links connect"
+      "newsletter newsletter";
   }
 }
 
 @media (min-width: 768px) {
   .footer-grid {
     grid-template-columns: 2fr 1fr 1fr;
+    grid-template-areas:
+      "about      links connect"
+      "newsletter .     .";
   }
 }
 
