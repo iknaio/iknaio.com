@@ -6,71 +6,174 @@
 </section>
 
 <section class="tools-section">
-  <div class="container">
-    <div class="tools-tabs" role="tablist">
-      {{ range .tabs }}
-      <button class="tools-tab" data-tool="{{ .name | urlize }}" role="tab">
-        <img src="{{ .icon | relURL }}" alt="{{ .name }}" class="tool-tab-icon" loading="lazy">
-        {{ .name }}
-      </button>
-      {{ end }}
-    </div>
-
-    <div id="tool-body">
-      {{ range $index, $panel := .panels }}
-      <div class="tool-panel {{ if eq $index 0 }}active{{ end }}" data-tool="{{ $panel.name | urlize }}" role="tabpanel">
-        <div>
-          <h3>{{ $panel.name }}</h3>
-          <p>{{ $panel.description | markdownify }}</p>
-          {{/* read-more links hidden — re-enable by uncommenting
-          {{ with $panel.read_more_url }}
-          <a href="{{ . | relURL }}" class="read-more">{{ $.read_more_text | default "Read more" }}</a>
-          {{ end }}
-          */}}
-        </div>
-        <div class="tool-mockup">
-          {{ with $panel.screenshot }}
-          <img src="{{ . | relURL }}" alt="{{ $panel.name }} screenshot" loading="lazy" class="tool-screenshot">
-          {{ end }}
-        </div>
+  <div class="tools-tabs-bar">
+    <div class="container">
+      <div class="tools-tabs" role="tablist">
+        {{ range $i, $tab := .tabs }}
+        <a class="tools-tab{{ if eq $i 0 }} active{{ end }}" href="#tool-{{ $tab.name | urlize }}" data-tool="{{ $tab.name | urlize }}" data-index="{{ $i }}" role="tab" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}">
+          <img src="{{ $tab.icon | relURL }}" alt="" class="tool-tab-icon" loading="lazy" aria-hidden="true">
+          {{ $tab.name }}
+        </a>
+        {{ end }}
       </div>
-      {{ end }}
     </div>
   </div>
+
+  {{ range $index, $panel := .panels }}
+  <article class="tool-panel{{ if eq $index 0 }} active{{ end }}" id="tool-{{ $panel.name | urlize }}" data-tool="{{ $panel.name | urlize }}" data-index="{{ $index }}" role="tabpanel">
+    <div class="container tool-panel-inner">
+      <div>
+        <h3>{{ $panel.name }}</h3>
+        <p>{{ $panel.description | markdownify }}</p>
+        {{/* read-more links hidden — re-enable by uncommenting
+        {{ with $panel.read_more_url }}
+        <a href="{{ . | relURL }}" class="read-more">{{ $.read_more_text | default "Read more" }}</a>
+        {{ end }}
+        */}}
+      </div>
+      <div class="tool-mockup">
+        {{ with $panel.screenshot }}
+        <img src="{{ . | relURL }}" alt="{{ $panel.name }} screenshot" loading="lazy" class="tool-screenshot">
+        {{ end }}
+      </div>
+    </div>
+  </article>
+  {{ end }}
 </section>
 
-{{/* Minimal JavaScript for tab switching */}}
 <script>
-(function() {
-  var panels = document.querySelectorAll('#tool-body .tool-panel');
-  
-  // Handle tab clicks
-  document.querySelectorAll('.tools-section .tools-tab').forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      var tool = this.getAttribute('data-tool');
-      
-      // Update active tab
-      document.querySelectorAll('.tools-section .tools-tab').forEach(function(t) {
-        t.classList.remove('active');
+(function () {
+  var section = document.querySelector('.tools-section');
+  if (!section) return;
+  var tabs = document.querySelectorAll('.tools-section .tools-tab');
+  var panels = document.querySelectorAll('.tools-section .tool-panel');
+  if (!panels.length) return;
+
+  var navOffset = 75.2;
+  var ANIM_LOCK = 600;     // block while the smooth scroll is in flight
+  var GESTURE_GAP = 220;   // ms of quiet before a wheel event counts as a fresh gesture
+  var animating = false;
+  var animTimer = null;
+  var gestureActive = false;
+  var gestureTimer = null;
+  var currentIndex = 0;
+
+  function setActive(index) {
+    tabs.forEach(function (t, i) {
+      var on = i === index;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    panels.forEach(function (p, i) {
+      p.classList.toggle('active', i === index);
+    });
+  }
+
+  function scrollToPanel(index) {
+    if (index < 0 || index >= panels.length) return;
+    if (animTimer) clearTimeout(animTimer);
+    animating = true;
+    currentIndex = index;
+    panels[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setActive(index);
+    animTimer = setTimeout(function () { animating = false; }, ANIM_LOCK);
+  }
+
+  function nextSectionEl() {
+    // Computed lazily — at script-parse time the sibling sections are not yet in the DOM.
+    var el = section.nextElementSibling;
+    while (el && el.tagName !== 'SECTION') el = el.nextElementSibling;
+    return el;
+  }
+
+  function scrollToNextSection() {
+    var el = nextSectionEl();
+    if (!el) return false;
+    if (animTimer) clearTimeout(animTimer);
+    animating = true;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    animTimer = setTimeout(function () { animating = false; }, ANIM_LOCK);
+    return true;
+  }
+
+  function bumpGesture() {
+    gestureActive = true;
+    if (gestureTimer) clearTimeout(gestureTimer);
+    gestureTimer = setTimeout(function () { gestureActive = false; }, GESTURE_GAP);
+  }
+
+  function inToolsArea() {
+    var rect = section.getBoundingClientRect();
+    return rect.top <= navOffset && rect.bottom > window.innerHeight;
+  }
+
+  // Active tab tracking — runs even on touch devices, drives currentIndex when user scrolls naturally.
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      if (animating) return;
+      var best = null;
+      entries.forEach(function (e) {
+        if (e.isIntersecting && (!best || e.intersectionRatio > best.intersectionRatio)) best = e;
       });
-      this.classList.add('active');
-      
-      // Show matching panel
-      panels.forEach(function(p) {
-        p.classList.remove('active');
-        if (p.getAttribute('data-tool') === tool) {
-          p.classList.add('active');
-        }
-      });
+      if (best) {
+        var idx = parseInt(best.target.getAttribute('data-index'), 10);
+        currentIndex = idx;
+        setActive(idx);
+      }
+    }, { rootMargin: '-150px 0px -40% 0px', threshold: [0.25, 0.5, 0.75, 1] });
+    panels.forEach(function (p) { observer.observe(p); });
+  }
+
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function (e) {
+      e.preventDefault();
+      scrollToPanel(i);
     });
   });
-  
-  // Set first tab as active by default
-  var firstTab = document.querySelector('.tools-section .tools-tab');
-  var firstPanel = document.querySelector('#tool-body .tool-panel');
-  if (firstTab && firstPanel) {
-    firstTab.classList.add('active');
-    firstPanel.classList.add('active');
-  }
+
+  // Skip wheel/keyboard interception on touch / small viewports — they keep native scroll.
+  var isTouch = window.matchMedia('(max-width: 960px)').matches ||
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isTouch) return;
+
+  window.addEventListener('wheel', function (e) {
+    if (!inToolsArea()) return;
+    // Block anything during the smooth-scroll animation, but keep the gesture marker alive
+    // so any inertia tail is ignored once the animation ends.
+    if (animating) { e.preventDefault(); bumpGesture(); return; }
+    // Inertia / continuation of the previous gesture — ignore but keep the marker fresh
+    // so the gesture only "ends" after a real quiet period.
+    if (gestureActive) { e.preventDefault(); bumpGesture(); return; }
+    if (Math.abs(e.deltaY) < 4) return;
+    var direction = e.deltaY > 0 ? 1 : -1;
+    var target = currentIndex + direction;
+    if (target >= panels.length) {
+      if (scrollToNextSection()) {
+        e.preventDefault();
+        bumpGesture();
+      }
+      return;
+    }
+    if (target < 0) return; // let scroll exit the area upward
+    e.preventDefault();
+    bumpGesture();
+    scrollToPanel(target);
+  }, { passive: false });
+
+  window.addEventListener('keydown', function (e) {
+    if (!inToolsArea() || animating) return;
+    var direction = 0;
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') direction = 1;
+    else if (e.key === 'ArrowUp' || e.key === 'PageUp') direction = -1;
+    else return;
+    var target = currentIndex + direction;
+    if (target >= panels.length) {
+      if (scrollToNextSection()) e.preventDefault();
+      return;
+    }
+    if (target < 0) return;
+    e.preventDefault();
+    scrollToPanel(target);
+  });
 })();
 </script>
