@@ -9,7 +9,7 @@
 <section class="section section-pricing" aria-labelledby="pricing-tiers-heading">
   <div class="container">
     <h2 id="pricing-tiers-heading" class="sr-only">Pricing Tiers</h2>
-    <div class="grid grid-3 pricing-grid">
+    <div class="pricing-grid">
       {{ range .Site.Data.pricing.tiers }}
       <div class="card pricing-card{{ if .highlight }} pricing-card-highlight{{ end }}">
         {{ if .highlight }}<span class="pricing-highlight-badge">Recommended</span>{{ end }}
