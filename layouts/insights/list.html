@@ -6,7 +6,7 @@
     <h1 class="platform-hero-title" id="insights-heading">Insights</h1>
     <div class="insights-hero">
       {{ with $first.Params.image }}
-      <img src="{{ . | relURL }}" alt="" loading="lazy" class="insights-hero-image">
+      <img src="{{ . | relURL }}" alt="" loading="lazy" class="insights-hero-image" style="--post-image-object-fit: {{ $first.Params.object_fit | default "cover" }};">
       {{ end }}
       <div class="insights-hero-text">
         {{ with $first.Date }}
@@ -31,10 +31,11 @@
     {{ if .Pages }}
     <div class="grid grid-3 post-grid">
       {{ range .Pages.ByDate.Reverse }}
+      {{ $object_fit := .Params.object_fit | default "cover" }}
       <article class="card post-card">
         <div class="post-card-image">
           {{ with .Params.image }}
-          <img src="{{ . | relURL }}" alt="" loading="lazy">
+          <img src="{{ . | relURL }}" alt="" loading="lazy" style="--post-image-object-fit: {{ $object_fit }};">
           {{ else }}
           <div class="post-card-image-placeholder" aria-hidden="true"></div>
           {{ end }}
