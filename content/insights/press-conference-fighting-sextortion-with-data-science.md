@@ -6,6 +6,7 @@ tags: []
 image: "images/insights/press-conference-fighting-sextortion-with-data-science/cover.jpeg"
 posttype: "news"
 aliases: ["/news/press-conference-fighting-sextortion-with-data-science/"]
+object_fit: "scale-down"
 ---
 
 Sextortion is a growing global cybercrime that preys on victims by coercing them into paying ransom under the threat of exposing sensitive material. Recent research by the [Complexity Science Hub (CSH)](https://csh.ac.at/news/sextortion-a-growing-global-issue-how-can-we-fight-back/) highlights the increasing scale of this issue and how data-driven approaches can help combat it. At Iknaio, we are deeply connected to this research—both through our technology and our collaborations with law enforcement.
