@@ -1,4 +1,4 @@
-baseURL = "https://iknaio.github.io/iknaio.com/"
+baseURL = "https://iknaio.com/"
 languageCode = "en"
 title = "Iknaio Cryptoasset Analytics"
 enableRobotsTXT = true
