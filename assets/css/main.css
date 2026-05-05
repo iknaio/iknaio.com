@@ -2834,11 +2834,22 @@ hr {
 
 .insights-hero {
     display: flex;
-    gap: var(--spacing-3xl);
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+    .insights-hero {
+        flex-direction: row;
+        gap: var(--spacing-3xl);
+        align-items: center;
+    }
 }
 
 .insights-hero img {
+    width: 100%;
     max-width: 500px;
+    height: auto;
     border-radius: 16px;
 }
 
