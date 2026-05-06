@@ -39,8 +39,8 @@ disableKinds = ["taxonomy", "term"]
   weight = 2
 
 [[menus.main]]
-  name = "Pricing"
-  url = "/pricing/"
+  name = "Packages"
+  url = "/packages/"
   weight = 3
 
 [[menus.main]]

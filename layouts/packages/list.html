@@ -1,30 +1,30 @@
 {{ define "main" }}
-<section class="hero section" aria-labelledby="pricing-heading">
+<section class="hero section" aria-labelledby="packages-heading">
   <div class="container hero-inner">
-    <h1 id="pricing-heading" class="hero-title">Plans for every<br> team size</h1>
+    <h1 id="packages-heading" class="hero-title">Plans for every<br> team size</h1>
     <p class="hero-subtitle">From individual investigators to organization-wide deployments — pick the access level that fits, then talk to us.</p>
   </div>
 </section>
 
-<section class="section section-pricing" aria-labelledby="pricing-tiers-heading">
+<section class="section section-packages" aria-labelledby="packages-tiers-heading">
   <div class="container">
-    <h2 id="pricing-tiers-heading" class="sr-only">Pricing Tiers</h2>
-    <div class="pricing-grid">
-      {{ range .Site.Data.pricing.tiers }}
-      <div class="card pricing-card{{ if .highlight }} pricing-card-highlight{{ end }}">
-        {{ if .highlight }}<span class="pricing-highlight-badge">Recommended</span>{{ end }}
-        <h3 class="pricing-name">{{ .name }}</h3>
-        <p class="pricing-for">{{ .audience }}</p>
-        <p class="pricing-accounts">{{ .accounts }}</p>
-        <div class="pricing-callout-slot">
-          {{ with .callout }}<p class="pricing-callout">{{ . }}</p>{{ end }}
+    <h2 id="packages-tiers-heading" class="sr-only">Packages</h2>
+    <div class="packages-grid">
+      {{ range .Site.Data.packages.tiers }}
+      <div class="card packages-card{{ if .highlight }} packages-card-highlight{{ end }}">
+        {{ if .highlight }}<span class="packages-highlight-badge">Recommended</span>{{ end }}
+        <h3 class="packages-name">{{ .name }}</h3>
+        <p class="packages-for">{{ .audience }}</p>
+        <p class="packages-accounts">{{ .accounts }}</p>
+        <div class="packages-callout-slot">
+          {{ with .callout }}<p class="packages-callout">{{ . }}</p>{{ end }}
         </div>
         {{ with .features }}
         {{ $features := . }}
-        <ul class="pricing-features">
-          {{ range $.Site.Data.pricing.feature_rows }}
+        <ul class="packages-features">
+          {{ range $.Site.Data.packages.feature_rows }}
           {{ $value := index $features .key }}
-          <li class="pricing-feature{{ if not $value }} pricing-feature-unavailable{{ end }}">
+          <li class="packages-feature{{ if not $value }} packages-feature-unavailable{{ end }}">
             {{ if $value }}
             <svg class="icon-check" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 4.5l-7 7L3 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             {{ else }}
@@ -35,16 +35,16 @@
           {{ end }}
         </ul>
         {{ end }}
-        <a href="{{ "contact/" | relURL }}" class="btn {{ if .highlight }}btn-primary{{ else }}btn-secondary{{ end }} pricing-cta">{{ .cta_text | default "Get Started" }}</a>
+        <a href="{{ "contact/" | relURL }}" class="btn {{ if .highlight }}btn-primary{{ else }}btn-secondary{{ end }} packages-cta">{{ .cta_text | default "Get Started" }}</a>
       </div>
       {{ end }}
     </div>
 
-    <p class="pricing-note">All plans include access to the Pathfinder investigation dashboard.</p>
+    <p class="packages-note">All plans include access to the Pathfinder investigation dashboard.</p>
   </div>
 </section>
 
-{{ with .Site.Data.pricing.comparison }}
+{{ with .Site.Data.packages.comparison }}
 <section class="section section-comparison" aria-labelledby="comparison-heading">
   <div class="container">
     <h2 id="comparison-heading" class="section-title">Compare Plans</h2>
@@ -62,9 +62,9 @@
           {{ range . }}
           <tr>
             <td class="comparison-feature-name">{{ .feature }}</td>
-            {{- partial "pricing/comparison-cell.html" (dict "value" .free) -}}
-            {{- partial "pricing/comparison-cell.html" (dict "value" .professional "highlight" true) -}}
-            {{- partial "pricing/comparison-cell.html" (dict "value" .institutional) -}}
+            {{- partial "packages/comparison-cell.html" (dict "value" .free) -}}
+            {{- partial "packages/comparison-cell.html" (dict "value" .professional "highlight" true) -}}
+            {{- partial "packages/comparison-cell.html" (dict "value" .institutional) -}}
           </tr>
           {{ end }}
         </tbody>
@@ -74,17 +74,17 @@
 </section>
 {{ end }}
 
-<section class="section section-pricing-trust">
+<section class="section section-packages-trust">
   <div class="container">
-    <p class="pricing-trust-text">Trusted by law enforcement and compliance teams across Europe</p>
-    <div class="logo-row logo-row-pricing">
+    <p class="packages-trust-text">Trusted by law enforcement and compliance teams across Europe</p>
+    <div class="logo-row logo-row-packages">
       {{ range .Site.Data.partners.customers }}
       <div class="logo-item">
         <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
       </div>
       {{ end }}
     </div>
-    <blockquote class="pricing-trust-quote">
+    <blockquote class="packages-trust-quote">
       <p>&ldquo;We would never have conducted this investigation without Iknaio.&rdquo;</p>
       <footer><cite>Bavarian Central Office for the Prosecution of Cybercrime (ZCB)</cite></footer>
     </blockquote>
@@ -95,7 +95,7 @@
   <div class="container text-container">
     <h2 id="faq-heading" class="section-title">Frequently Asked Questions</h2>
     <div class="faq-list">
-      {{ range .Site.Data.pricing.faq }}
+      {{ range .Site.Data.packages.faq }}
       <details class="faq-item">
         <summary class="faq-question">{{ .question }}</summary>
         <p class="faq-answer">{{ .answer }}</p>
@@ -105,7 +105,7 @@
   </div>
 </section>
 
-{{ with .Site.Data.pricing.faq }}
+{{ with .Site.Data.packages.faq }}
 {{- $entities := slice -}}
 {{- range . -}}
   {{- $entities = $entities | append (dict "@type" "Question" "name" .question "acceptedAnswer" (dict "@type" "Answer" "text" .answer)) -}}

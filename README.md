@@ -61,19 +61,19 @@ Posts live in `content/insights/` as Markdown files. The slug becomes the URL (`
 content/             Markdown content
   _index.md            Home (front-matter-driven; edit hero/products/why/trust/case-study/etc. here)
   insights/            Blog posts + /insights/ landing
-  about/, pricing/, solutions/, contact/  …
+  about/, packages/, solutions/, contact/  …
   imprint.md, privacy.md, tcs.md
 data/                YAML data files consumed by templates
-  pricing.yaml         Tiers, feature matrix, FAQ
+  packages.yaml        Tiers, feature matrix, FAQ
   team.yaml            Founders + team + advisors
   partners.yaml        Customers, research, resellers, funding
   press.yaml           Press logos
   use_cases.yaml       Solutions page (Investigate / Comply / Advise)
 layouts/             Hugo templates
   _default/            baseof.html, single.html, _markup/render-image.html
-  partials/            head, nav, footer, cookie-banner, pricing/comparison-cell
+  partials/            head, nav, footer, cookie-banner, packages/comparison-cell
   index.html           Home (all home sections inlined — single readable template)
-  <section>/           Section-specific layouts (about, contact, pricing, solutions, insights)
+  <section>/           Section-specific layouts (about, contact, packages, solutions, insights)
   robots.txt           Custom robots.txt with explicit AI-bot allowlist
 assets/              Pipeline-processed (minified + fingerprinted)
   css/main.css         Full design system (tokens, components, dark mode, responsive)
@@ -88,7 +88,7 @@ static/              Files served as-is at site root
 ## Editing conventions
 
 - **Home page copy** lives in `content/_index.md` front matter (hero, products, secondary_audience, why, trust, case_study, press, cta). Don't hunt through templates.
-- **Team / partners / press / pricing / use_cases** are YAML in `data/`. Changes there propagate automatically.
+- **Team / partners / press / packages / use_cases** are YAML in `data/`. Changes there propagate automatically.
 - **Navigation** is defined in `hugo.toml` under `[[menus.main]]`.
 - **Design tokens** (colors, spacing, fonts) are CSS custom properties at the top of `assets/css/main.css`.
 - **Dark mode** is a `[data-theme="dark"]` attribute on `<html>`; toggled in `assets/js/main.js`, respects `prefers-color-scheme`.

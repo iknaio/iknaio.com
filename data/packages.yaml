@@ -100,7 +100,7 @@ faq:
   - question: "Can I upgrade my plan later?"
     answer: "Yes. You can upgrade at any time and we will pro-rate the difference. Contact us to arrange the switch."
   - question: "How does institutional licensing work?"
-    answer: "One license covers your entire organization — unlimited seats for investigators, analysts, and compliance officers. Pricing is based on organization size and needs. Contact us for a tailored quote."
+    answer: "One license covers your entire organization — unlimited seats for investigators, analysts, and compliance officers. Package pricing is based on organization size and needs. Contact us for a tailored quote."
   - question: "Is Iknaio GDPR-compliant, and where is customer data stored?"
     answer: "Iknaio operates under EU data-protection rules and all customer investigation data is processed and stored within the EU. Institutional customers receive a Data Processing Agreement (DPA) as part of their licensing contract. For details on deployment options (shared vs. dedicated environments) or specific compliance documentation, please contact us."
   - question: "What does the vetting process for the Free tier involve?"

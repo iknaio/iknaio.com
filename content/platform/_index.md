@@ -77,7 +77,7 @@ cta:
     - text: "Request a Demo"
       url: "contact/"
       style: "primary"
-    - text: "View Pricing"
-      url: "pricing/"
+    - text: "View Packages"
+      url: "packages/"
       style: "secondary"
 ---

@@ -8,7 +8,7 @@ mkdirSync(SCREENSHOT_DIR, { recursive: true });
 const pages = [
   { path: '/', name: 'home' },
   { path: '/solutions/', name: 'solutions' },
-  { path: '/pricing/', name: 'pricing' },
+  { path: '/packages/', name: 'packages' },
   { path: '/about/', name: 'about' },
   { path: '/blog/', name: 'blog' },
   { path: '/news/', name: 'news' },

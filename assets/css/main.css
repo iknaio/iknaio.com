@@ -260,7 +260,7 @@ p:last-child {
 .product-detail-description a:not(.btn):not(.post-nav-link),
 .contact-details a:not(.btn):not(.post-nav-link),
 .contact-social a:not(.btn):not(.post-nav-link),
-.pricing-features a:not(.btn):not(.post-nav-link),
+.packages-features a:not(.btn):not(.post-nav-link),
 .about-hero-body a:not(.btn),
 .about-security-body a:not(.btn),
 .about-timeline-text a:not(.btn) {
@@ -277,7 +277,7 @@ p:last-child {
 .product-detail-description a:not(.btn):not(.post-nav-link):hover,
 .contact-details a:not(.btn):not(.post-nav-link):hover,
 .contact-social a:not(.btn):not(.post-nav-link):hover,
-.pricing-features a:not(.btn):not(.post-nav-link):hover,
+.packages-features a:not(.btn):not(.post-nav-link):hover,
 .about-hero-body a:not(.btn):hover,
 .about-security-body a:not(.btn):hover,
 .about-timeline-text a:not(.btn):hover {
@@ -927,10 +927,10 @@ hr {
 }
 
 /* --------------------------------------------------------------------------
-   12. Pricing Table
+   12. Packages Table
    -------------------------------------------------------------------------- */
 
-.pricing-grid {
+.packages-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-lg);
@@ -938,19 +938,19 @@ hr {
 }
 
 @media (min-width: 768px) {
-  .pricing-grid {
+  .packages-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
-  .pricing-grid {
+  .packages-grid {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(8, auto);
   }
 }
 
-.pricing-card {
+.packages-card {
   background-color: var(--color-white);
   border: 1px solid var(--color-gray);
   border-radius: var(--radius-md);
@@ -962,13 +962,13 @@ hr {
 }
 
 @media (min-width: 1024px) {
-  .pricing-card {
+  .packages-card {
     grid-row: span 8;
     grid-template-rows: subgrid;
   }
 }
 
-.pricing-card-highlight {
+.packages-card-highlight {
   border-color: var(--color-primary);
   border-width: 2px;
   position: relative;
@@ -976,12 +976,12 @@ hr {
 }
 
 @media (min-width: 1024px) {
-  .pricing-card-highlight {
+  .packages-card-highlight {
     transform: scale(1.02);
   }
 }
 
-.pricing-highlight-badge {
+.packages-highlight-badge {
   position: absolute;
   top: -12px;
   left: 50%;
@@ -996,24 +996,24 @@ hr {
   white-space: nowrap;
 }
 
-.pricing-card-header h3 {
+.packages-card-header h3 {
   font-size: var(--text-h3);
   margin-bottom: var(--spacing-xs);
 }
 
-.pricing-card-header p {
+.packages-card-header p {
   color: var(--color-dark-soft);
   font-size: 14px;
 }
 
-.pricing-price {
+.packages-price {
   font-family: var(--font-primary);
   font-size: 30px;
   font-weight: 700;
   color: var(--color-dark);
 }
 
-.pricing-period {
+.packages-period {
   font-size: 16px;
   font-weight: 400;
   color: var(--color-dark-soft);
@@ -1026,7 +1026,7 @@ hr {
   cursor: help;
 }
 
-.pricing-callout {
+.packages-callout {
   font-size: 13px;
   color: var(--color-dark-soft);
   background-color: rgba(43, 221, 150, 0.08);
@@ -1035,13 +1035,13 @@ hr {
   line-height: 1.5;
 }
 
-.pricing-monthly {
+.packages-monthly {
   font-size: 13px;
   color: var(--color-dark-soft);
   margin-top: calc(-1 * var(--spacing-sm));
 }
 
-.pricing-features {
+.packages-features {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
@@ -1049,7 +1049,7 @@ hr {
   margin-bottom: var(--spacing-lg);
 }
 
-.pricing-features li {
+.packages-features li {
   display: flex;
   align-items: flex-start;
   gap: var(--spacing-sm);
@@ -1059,13 +1059,13 @@ hr {
 
 /* Feature indicators are rendered inline via template SVGs — no ::before needed */
 
-.pricing-card .btn-primary,
-.pricing-card .btn-secondary {
+.packages-card .btn-primary,
+.packages-card .btn-secondary {
   width: 100%;
   margin-top: auto;
 }
 
-.pricing-note {
+.packages-note {
   margin-top: var(--spacing-2xl);
   text-align: center;
   color: var(--color-dark-soft);
@@ -1084,11 +1084,11 @@ hr {
   opacity: 0.5;
 }
 
-.pricing-feature-unavailable {
+.packages-feature-unavailable {
   opacity: 0.55;
 }
 
-.pricing-feature {
+.packages-feature {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
@@ -1173,8 +1173,8 @@ hr {
   color: var(--color-dark);
 }
 
-/* Pricing trust signals */
-.pricing-trust-text {
+/* Packages trust signals */
+.packages-trust-text {
   text-align: center;
   font-family: var(--font-primary);
   font-weight: 600;
@@ -1185,29 +1185,29 @@ hr {
   margin-bottom: var(--spacing-lg);
 }
 
-.logo-row-pricing {
+.logo-row-packages {
   justify-content: center;
   margin-bottom: var(--spacing-xl);
 }
 
-.logo-row-pricing .logo-item img {
+.logo-row-packages .logo-item img {
   opacity: 0.7;
 }
 
-.pricing-trust-quote {
+.packages-trust-quote {
   max-width: var(--max-width-text);
   margin: 0 auto;
   text-align: center;
 }
 
-.pricing-trust-quote p {
+.packages-trust-quote p {
   font-size: 1.125rem;
   font-style: italic;
   color: var(--color-dark);
   margin-bottom: var(--spacing-xs);
 }
 
-.pricing-trust-quote cite {
+.packages-trust-quote cite {
   font-size: 14px;
   font-style: normal;
   color: var(--color-dark-soft);
@@ -2062,7 +2062,7 @@ hr {
 [data-theme="dark"] .product-detail-description a:not(.btn):not(.post-nav-link),
 [data-theme="dark"] .contact-details a:not(.btn):not(.post-nav-link),
 [data-theme="dark"] .contact-social a:not(.btn):not(.post-nav-link),
-[data-theme="dark"] .pricing-features a:not(.btn):not(.post-nav-link),
+[data-theme="dark"] .packages-features a:not(.btn):not(.post-nav-link),
 [data-theme="dark"] .about-hero-body a:not(.btn),
 [data-theme="dark"] .about-security-body a:not(.btn),
 [data-theme="dark"] .about-timeline-text a:not(.btn) {
@@ -2074,7 +2074,7 @@ hr {
 [data-theme="dark"] .product-detail-description a:not(.btn):not(.post-nav-link):hover,
 [data-theme="dark"] .contact-details a:not(.btn):not(.post-nav-link):hover,
 [data-theme="dark"] .contact-social a:not(.btn):not(.post-nav-link):hover,
-[data-theme="dark"] .pricing-features a:not(.btn):not(.post-nav-link):hover,
+[data-theme="dark"] .packages-features a:not(.btn):not(.post-nav-link):hover,
 [data-theme="dark"] .about-hero-body a:not(.btn):hover,
 [data-theme="dark"] .about-security-body a:not(.btn):hover,
 [data-theme="dark"] .about-timeline-text a:not(.btn):hover {
@@ -2094,16 +2094,16 @@ hr {
   background-color: var(--surface-dark);
 }
 
-[data-theme="dark"] .pricing-card {
+[data-theme="dark"] .packages-card {
   background-color: var(--surface-dark);
   border-color: var(--border-dark);
 }
 
-[data-theme="dark"] .pricing-card-highlight {
+[data-theme="dark"] .packages-card-highlight {
   border-color: var(--color-primary);
 }
 
-[data-theme="dark"] .pricing-price {
+[data-theme="dark"] .packages-price {
   color: var(--text-dark-primary);
 }
 [data-theme="dark"] .case-study-stat-value {
@@ -2241,7 +2241,7 @@ hr {
 .section-capabilities,
 .section-chains,
 .section-comparison,
-.section-pricing-trust,
+.section-packages-trust,
 .section-faq,
 .section-insights,
 .section-posts {
