@@ -8,6 +8,8 @@ node_modules/
 
 # QA artifacts
 qa-screenshots/
+.playwright-mcp/
+/*.png
 
 # Local tooling config (Claude Code, editors)
 CLAUDE.md
