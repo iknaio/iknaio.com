@@ -23,15 +23,15 @@
 
     {{ if or .PrevInSection .NextInSection }}
     <nav class="post-nav" aria-label="Insight navigation">
-      {{ with .PrevInSection }}
-      <a class="post-nav-link post-nav-prev" href="{{ .RelPermalink }}">
-        <span class="post-nav-direction">&larr; Older post</span>
+      {{ with .NextInSection }}
+      <a class="post-nav-link post-nav-next" href="{{ .RelPermalink }}">
+        <span class="post-nav-direction">&larr; Newer post</span>
         <span class="post-nav-title">{{ .Title }}</span>
       </a>
       {{ end }}
-      {{ with .NextInSection }}
-      <a class="post-nav-link post-nav-next" href="{{ .RelPermalink }}">
-        <span class="post-nav-direction">Newer post &rarr;</span>
+      {{ with .PrevInSection }}
+      <a class="post-nav-link post-nav-prev" href="{{ .RelPermalink }}">
+        <span class="post-nav-direction">Older post &rarr;</span>
         <span class="post-nav-title">{{ .Title }}</span>
       </a>
       {{ end }}

@@ -3963,8 +3963,8 @@ hr {
   border-color: var(--color-primary);
 }
 
-.post-nav-prev { text-align: left; }
-.post-nav-next { text-align: right; }
+.post-nav-next { text-align: left; }
+.post-nav-prev { text-align: right; }
 
 .post-nav-direction {
   font-size: 0.875rem;
