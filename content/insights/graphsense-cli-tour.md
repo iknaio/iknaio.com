@@ -176,9 +176,11 @@ If you ever need to see what is actually in the export, `graphsense gs decode in
 
 The result is a feedback loop between the two tools: explore in Pathfinder until the graph stops carrying its weight, export, finish the question in the shell, and feed the answer back into the next round of tracing.
 
-## Skipping the CSV: live JSON from the network
+## Combining with other data sources
 
-The CLI does not care whether your input came from a CSV file, a JSON file, or `curl`. As long as you can describe how to pick the address out, it will go to work. To keep this reproducible we pin a fixed Bitcoin block — number 800000 — and look up every output address in it via the public [mempool.space](https://mempool.space/docs/api/rest) API:
+The interesting questions in blockchain analytics rarely live in a single dataset. You have an internal watchlist, a sanctions list from a public repository, a transaction feed from your own node, block data from a public explorer, a partner's spreadsheet — and the question you actually want to answer needs two or three of them stitched together. Because the CLI reads CSV, JSON and plain lines the same way, anything that produces those shapes is one pipe away from a GraphSense lookup.
+
+To make that concrete, here is a small but realistic combination: take the latest Bitcoin block from the public [mempool.space](https://mempool.space/docs/api/rest) explorer, hand its output addresses to GraphSense, and surface the labeled ones. We pin a fixed block — number 800000 — so the example is reproducible.
 
 ```sh
 HASH=00000000000000000002a7c4c1e48d76c5a37902165a270156b7a8d72728a054   # block 800000
@@ -234,7 +236,7 @@ curl -s "https://mempool.space/api/block/$(curl -s https://mempool.space/api/blo
 ...
 ```
 
-Change `800000` to any block height and you have a different question answered by the same pipeline. That is the property worth chasing.
+Change `800000` to any block height and you have a different question answered by the same pipeline. Swap the data source entirely — a [sanctions list from a public repository](https://github.com/0xB10C/ofac-sanctioned-digital-currency-addresses), an internal watchlist exported to JSON, a wallet provider's webhook payload — and the structure of the command does not change. Whatever produces a line of addresses or a JSON document with addresses in it composes with GraphSense the same way.
 
 ## From pipeline to report
 
