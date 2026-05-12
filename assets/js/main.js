@@ -104,4 +104,47 @@
     }, { rootMargin: '-130px 0px -60% 0px', threshold: 0 });
     tools.forEach(function (t) { spy.observe(t); });
   }
+
+  // Copy-to-clipboard buttons on article code blocks.
+  // Scoped to .content so nav/footer/inline snippets are left alone.
+  document.querySelectorAll('.content pre').forEach(function (pre) {
+    if (pre.querySelector('.code-copy')) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'code-copy';
+    btn.setAttribute('aria-label', 'Copy code to clipboard');
+    btn.textContent = 'Copy';
+    pre.appendChild(btn);
+  });
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.code-copy');
+    if (!btn) return;
+    var pre = btn.closest('pre');
+    if (!pre) return;
+    var code = pre.querySelector('code') || pre;
+    var text = code.innerText.replace(/\nCopy$/, '');
+    var done = function () {
+      var original = 'Copy';
+      btn.textContent = 'Copied';
+      btn.classList.add('code-copy--done');
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.classList.remove('code-copy--done');
+      }, 1500);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () {});
+    } else {
+      // Fallback for very old browsers / non-secure contexts
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch (err) {}
+      document.body.removeChild(ta);
+    }
+  });
 })();
