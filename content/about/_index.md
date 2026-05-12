@@ -35,7 +35,7 @@ values:
     - name: "Research-Backed"
       body: "10+ years of peer-reviewed research. 26+ publications. Every algorithm grounded in science."
       icon: "science"
-    - name: "Whole-Network Analysis"
+    - name: "Network-Centric Analysis"
       body: "Reveal patterns across entire networks, not wallet-by-wallet. See connections that isolated tools miss."
       icon: "network"
     - name: "API-First & Open Source"

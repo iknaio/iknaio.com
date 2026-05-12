@@ -1,6 +1,6 @@
 # Iknaio Corporate Website
 
-Static site for [Iknaio Cryptoasset Analytics](https://iknaio.com). Built with [Hugo](https://gohugo.io), plain CSS, and minimal vanilla JS. Currently published at https://iknaio.github.io/iknaio.com/ via GitHub Pages; final domain will be https://iknaio.com/ once DNS is flipped (see [`TODO.md`](TODO.md)).
+Static site for [Iknaio Cryptoasset Analytics](https://iknaio.com). Built with [Hugo](https://gohugo.io), plain CSS, and minimal vanilla JS. Published at https://iknaio.com/ via GitHub Pages.
 
 ## Run locally
 
@@ -96,15 +96,4 @@ static/              Files served as-is at site root
 
 ## QA
 
-Playwright check (screenshots + broken images/links + responsive + dark mode):
-
-```sh
-export FNM_DIR="$HOME/.local/share/fnm" && export PATH="$FNM_DIR:$PATH" && eval "$(fnm env)"
-node qa-check.mjs
-```
-
-Screenshots land in `qa-screenshots/`. Known false positive: lazy-loaded press logos / team photos / blog covers may be reported as "broken images" — spot-check via `curl -sI <url> | head -1` confirms they serve HTTP 200.
-
-## Pre-launch TODO
-
-See [`TODO.md`](TODO.md) for the remaining checklist (custom domain DNS, Formspree form ID, Plausible account, real content for placeholder pages).
+Visual checks are done through the Playwright MCP server (Claude Code's `browser_*` tools). Start `~/bin/hugo server` and have the assistant navigate the site, capture screenshots, and verify links and responsive behavior. Screenshots and the MCP working dir are gitignored (`.playwright-mcp/`, root-level `*.png`).

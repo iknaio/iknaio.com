@@ -3,11 +3,7 @@ public/
 resources/
 .hugo_build.lock
 
-# Node / Playwright (QA only)
-node_modules/
-
-# QA artifacts
-qa-screenshots/
+# QA artifacts (Playwright MCP)
 .playwright-mcp/
 /*.png
 
