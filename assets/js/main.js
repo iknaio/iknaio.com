@@ -123,7 +123,15 @@
     var pre = btn.closest('pre');
     if (!pre) return;
     var code = pre.querySelector('code') || pre;
-    var text = code.innerText.replace(/\nCopy$/, '');
+    // Hugo's chroma highlighter wraps each line in `<span style="display:flex">…\n</span>`.
+    // innerText then doubles up newlines (one from the literal `\n` inside the span,
+    // one from the block-level flex wrapper), which breaks `\`-continued shell commands.
+    // Read text per line from those wrappers instead.
+    var lineSpans = code.querySelectorAll(':scope > span');
+    var text = lineSpans.length
+      ? Array.from(lineSpans).map(function (l) { return l.textContent.replace(/\n+$/, ''); }).join('\n')
+      : code.textContent;
+    text = text.replace(/\nCopy$/, '');
     var done = function () {
       var original = 'Copy';
       btn.textContent = 'Copied';
