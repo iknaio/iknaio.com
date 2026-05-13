@@ -1,12 +1,12 @@
 ---
 title: "Blockchain analytics efficiency on the command line"
-date: 2026-05-12
-description: "A walk-through of the GraphSense CLI — from a CSV of addresses to live JSON sources piped through jq — with copy-paste commands you can reproduce on a coffee break."
+date: 2026-05-13
+description: "A hands-on tour of GraphSense on the command line, with copy-paste commands you can reproduce."
 tags: ["graphsense", "cli", "tutorial", "tooling"]
-image: "images/insights/graphsense-cli-tour/cover.png"
+image: "images/insights/graphsense-commandline/cover.png"
 posttype: "insight"
 draft: true
-aliases: ["/blog/graphsense-cli-tour/"]
+aliases: ["/blog/graphsense-cli-tour/", "/insights/graphsense-cli-tour/", "/blog/graphsense-commandline/"]
 ---
 
 Most of our work at Iknaio happens in [Pathfinder](https://app.iknaio.com), but a non-trivial amount of analysis is faster in a terminal: enriching a CSV of customer deposit addresses, triaging a list of transactions exported from an internal tool, or chaining a quick "give me the cluster of every output of this transaction" query into a report. That is what the [`graphsense` CLI](https://github.com/graphsense/graphsense-lib/blob/master/clients/python/README_CLI.md) is for — the command-line client shipped with the `graphsense-python` package, a pipe-friendly companion to the GraphSense API that speaks JSON, CSV and plain text natively and composes nicely with `jq`, `curl` and the rest of your shell toolkit.
@@ -42,7 +42,7 @@ That's the same query, written as CSV. Nothing else changes.
 For a taste of what composes, here is the same lookup applied to every address in our sample CSV, filtered to the labeled ones, with the balance projected in both BTC and EUR:
 
 ```sh
-curl -s https://iknaio.com/data/graphsense-cli-tour/addresses.csv \
+curl -s https://iknaio.com/data/graphsense-commandline/addresses.csv \
   | graphsense --address-col address -f jsonl \
       lookup-address btc --with-tag-summary \
   | jq -c 'select(.tag_summary.tag_count > 0)
@@ -56,10 +56,10 @@ The rest of the post unpacks what each piece of that pipeline does.
 
 ## From a CSV of addresses
 
-The realistic case is that you have a list of addresses from somewhere — a CSV export from an internal CRM, a watchlist from a partner, a column pulled out of a spreadsheet. Download our sample file to follow along:
+The realistic case is that you have a list of addresses from somewhere — an export from an internal tool, a watchlist from a partner, a column pulled out of a spreadsheet. Download our sample file to follow along:
 
 ```sh
-curl -O https://iknaio.com/data/graphsense-cli-tour/addresses.csv
+curl -O https://iknaio.com/data/graphsense-commandline/addresses.csv
 head -3 addresses.csv
 ```
 
@@ -154,7 +154,7 @@ graphsense gs entities  investigation.gs   # every cluster id
 The output respects the global `-f` / `-o` / `-d` flags, so the natural composition is "extract → look up → rank". A worked example: you have spent the last hour pulling threads in Pathfinder and you want the top destinations of money in the case so far — the addresses that have *received* the most, with their attribution where there is one.
 
 ```sh
-graphsense gs addresses investigation.gs -f csv \
+graphsense -f csv gs addresses investigation.gs \
   | graphsense --address-col id --network-col network -f jsonl \
       lookup-address btc --with-tag-summary \
   | jq -c '{addr: .address,
@@ -244,18 +244,16 @@ When you do want to keep an artefact, the output side is symmetric. Write CSV wi
 
 ```sh
 cat addresses.csv \
-  | graphsense --address-col address \
-      lookup-address btc --with-tag-summary \
-      -o enriched.csv
+  | graphsense --address-col address -o enriched.csv \
+      lookup-address btc --with-tag-summary
 ```
 
 Or one file per record with `-d` — handy when you want to feed the JSON into another tool downstream:
 
 ```sh
 cat addresses.csv \
-  | graphsense --address-col address \
-      lookup-address btc --with-cluster --with-tags \
-      -d out/
+  | graphsense --address-col address -d out/ \
+      lookup-address btc --with-cluster --with-tags
 ls out/ | head
 # 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa.json
 # 1F1tAaz5x1HUXrCNLbtMDqcw6o5GNn4xqX.json
@@ -267,9 +265,8 @@ ls out/ | head
 The flat commands cover the common path. Everything else hangs off `graphsense raw`, which mirrors every method of the generated client one-to-one and inherits the same I/O machinery:
 
 ```sh
-graphsense raw addresses list-address-txs btc \
-  1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa --pagesize 50 \
-  -f csv -o txs.csv
+graphsense -f csv -o txs.csv raw addresses list-address-txs btc \
+  1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa --pagesize 50
 ```
 
 When the API gains a new call, `raw` picks it up the moment you `uv tool upgrade graphsense-python`. There is no separate client release to wait for.
