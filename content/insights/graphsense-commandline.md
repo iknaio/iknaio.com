@@ -1,10 +1,10 @@
 ---
-title: "Blockchain analytics efficiency on the command line"
+title: "Faster blockchain intelligence via command-line tooling"
 date: 2026-05-13
 description: "A hands-on tour of GraphSense on the command line, with copy-paste commands you can reproduce."
 tags: ["graphsense", "cli", "tutorial", "tooling"]
 image: "images/insights/graphsense-commandline/cover.png"
-posttype: "insight"
+posttype: "tech-deep-dive"
 draft: true
 aliases: ["/blog/graphsense-cli-tour/", "/insights/graphsense-cli-tour/", "/blog/graphsense-commandline/"]
 ---
@@ -15,10 +15,18 @@ This post is a hands-on tour. Every command below is meant to be copy-pasted. Yo
 
 ## Install
 
+The CLI ships inside the `graphsense-python` package. We install it with [`uv`](https://docs.astral.sh/uv/) — a fast Python package manager that drops the `graphsense` command onto your `PATH` in its own isolated environment, so it never collides with anything else. If you do not have `uv` yet, one line gets it:
+
+```sh
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Then install the CLI and point it at an instance:
+
 ```sh
 uv tool install 'graphsense-python[cli]'
-export GRAPHSENSE_API_KEY=...           # your key
-export GRAPHSENSE_HOST=https://api.ikna.io   # or your private instance
+export GRAPHSENSE_API_KEY=...                   # your key
+export GRAPHSENSE_HOST=https://api.iknaio.com   # or your private instance
 graphsense --help
 ```
 
@@ -135,7 +143,7 @@ The same `lookup-*` family also includes `lookup-cluster`, `lookup-tx`, `search`
 
 Most investigations begin in [Pathfinder](https://app.iknaio.com), where the graph is the right tool: you click through neighbours, build out a few hops, see who the suspects connect to. After a while you start to feel the limits of the canvas. The trace has grown into a few hundred outputs, the same exchange shows up on twenty branches, and the question shifts from *who connects to whom* to *across everything I have surfaced so far, where did the money actually go?*. Pathfinder is honest about that: tags and balances are visible on every node, but it is not the place to rank, total or report. That is a terminal job.
 
-Pathfinder exports the current investigation as a `.gs` file: a portable container with the addresses, transactions, clusters and edges you have brought into view. A set of `graphsense gs` commands opens it and emits the underlying records in the usual JSON / JSONL / CSV shapes — so the export drops straight into the same pipelines you have been using all along.
+Pathfinder exports the current investigation as a `.gs` file: a portable container with the addresses, transactions and the edges between them that you have brought into view. A set of `graphsense gs` commands opens it and emits the underlying records in the usual JSON / JSONL / CSV shapes — so the export drops straight into the same pipelines you have been using all along.
 
 First a sanity check — what's in the file?
 
@@ -143,12 +151,11 @@ First a sanity check — what's in the file?
 graphsense gs summary investigation.gs
 ```
 
-That prints a small summary with counts of addresses, transactions and entities — enough to confirm you grabbed the right export. To pull the actual records out there are three extractors, each producing uniform `{network, id}` rows that are pre-deduped:
+That prints a small summary — the kind of save file, its name, and counts of addresses, transactions, annotations and edges — enough to confirm you grabbed the right export. To pull the actual records out there are two extractors, each producing uniform `{network, id}` rows that are pre-deduped:
 
 ```sh
 graphsense gs addresses investigation.gs   # every address node
 graphsense gs txs       investigation.gs   # every transaction
-graphsense gs entities  investigation.gs   # every cluster id
 ```
 
 The output respects the global `-f` / `-o` / `-d` flags, so the natural composition is "extract → look up → rank". A worked example: you have spent the last hour pulling threads in Pathfinder and you want the top destinations of money in the case so far — the addresses that have *received* the most, with their attribution where there is one.
@@ -164,7 +171,7 @@ graphsense -f csv gs addresses investigation.gs \
   | jq -s 'sort_by(-.received_eur) | .[:20] | .[]'
 ```
 
-The `{network, id}` shape is deliberately what the downstream `lookup-*` commands expect: `--address-col id` picks up the identifier, `--network-col network` provides the per-row currency (with the trailing `btc` as a fallback for any blank rows). Swap the first command for `gs txs` to drive `lookup-tx`, or `gs entities` to drive `lookup-cluster` — the rest of the pipeline does not change.
+The `{network, id}` shape is deliberately what the downstream `lookup-*` commands expect: `--address-col id` picks up the identifier, `--network-col network` provides the per-row currency (with the trailing `btc` as a fallback for any blank rows). Swap the first command for `gs txs` to drive `lookup-tx` — the rest of the pipeline does not change.
 
 From the same building blocks you can answer a whole family of questions the graph won't:
 
@@ -172,7 +179,7 @@ From the same building blocks you can answer a whole family of questions the gra
 - *Which visible addresses are also on an external watchlist* — `gs addresses … -f csv | sort | join -t, watchlist.csv -`.
 - *A CSV evidence pack* with current balance, first/last seen and best label for every visible address — same first two stages, `-f csv -o evidence.csv`.
 
-If you ever need to see what is actually in the export, `graphsense gs decode investigation.gs` prints the decoded JSON in full, and `--raw` returns the untouched contents for other tools.
+If you ever need to see what is actually in the export, `graphsense gs decode investigation.gs` prints the decoded JSON in full, and `--raw` gives you the unstructured version for other tools.
 
 The result is a feedback loop between the two tools: explore in Pathfinder until the graph stops carrying its weight, export, finish the question in the shell, and feed the answer back into the next round of tracing.
 

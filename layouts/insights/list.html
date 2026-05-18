@@ -42,7 +42,7 @@
         </div>
         <div class="post-card-body">
           <div class="post-card-meta">
-            <span class="post-card-kind">{{ if eq .Params.posttype "news" }}News{{ else if eq .Params.posttype "case-study" }}Case Study{{ else }}Insight{{ end }}</span>
+            <span class="post-card-kind">{{ if eq .Params.posttype "news" }}News{{ else if eq .Params.posttype "case-study" }}Case Study{{ else if eq .Params.posttype "tech-deep-dive" }}Tech Deep Dive{{ else }}Insight{{ end }}</span>
             <time class="post-card-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
           </div>
           <h3 class="post-card-title">
