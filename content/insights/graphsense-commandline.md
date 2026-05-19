@@ -5,7 +5,6 @@ description: "A hands-on tour of GraphSense on the command line, with copy-paste
 tags: ["graphsense", "cli", "tutorial", "tooling"]
 image: "images/insights/graphsense-commandline/cover.png"
 posttype: "tech-deep-dive"
-draft: true
 aliases: ["/blog/graphsense-cli-tour/", "/insights/graphsense-cli-tour/", "/blog/graphsense-commandline/"]
 ---
 
