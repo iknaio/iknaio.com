@@ -30,7 +30,7 @@
     <h2 id="insights-feed-heading" class="sr-only">All posts</h2>
     {{ if .Pages }}
     <div class="grid grid-3 post-grid">
-      {{ range .Pages.ByDate.Reverse }}
+      {{ range after 1 .Pages.ByDate.Reverse }}
       {{ $object_fit := .Params.object_fit | default "cover" }}
       <article class="card post-card">
         <div class="post-card-image">
