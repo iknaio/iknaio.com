@@ -39,16 +39,14 @@ If you contact us by email, we process your email address and the content of you
 
 Server logs collected by GitHub Pages are managed by GitHub according to their data retention policies. Email correspondence is retained for as long as necessary to respond to your inquiry and maintain the business relationship, typically no longer than 3 years after last contact.
 
-### 3.3 Cookies and Analytics
+### 3.3 Analytics
 
-We use a small set of analytics services to understand how visitors use the site. They are loaded only after you give explicit consent via the cookie banner. If you reject — or have not yet chosen — no analytics scripts are loaded and no analytics data is collected.
+We use a small set of analytics services to understand how visitors use the site. The following are loaded on every page view:
 
-When you accept, the following are loaded:
-
-- **Plausible Analytics** (Plausible Insights OÜ, Estonia) — privacy-focused analytics. Loads `plausible.io/js/script.js`. Does not set cookies in its default configuration; data is processed within the EU. See [Plausible's privacy policy](https://plausible.io/privacy).
+- **Plausible Analytics** (Plausible Insights OÜ, Estonia) — privacy-focused analytics. Loads `plausible.io/js/script.js`. Does not set cookies and does not use any persistent identifier; visitor counts are computed from a rotating daily hash of the IP address that is discarded at the end of the day. Data is processed within the EU. See [Plausible's privacy policy](https://plausible.io/privacy).
 - **Google Analytics 4** (Google Ireland Ltd. / Google LLC, USA) — measures aggregate traffic. Loads `googletagmanager.com/gtag/js` and sets the `_ga` and `_ga_TPJK719TS4` cookies (valid for up to 13 months). IP addresses are anonymized by default in GA4. Data is transferred to the United States; Google relies on the EU–US Data Privacy Framework as a transfer mechanism. See [Google's privacy policy](https://policies.google.com/privacy) and [how Google uses data when you use partner sites](https://policies.google.com/technologies/partner-sites).
 
-The legal basis for these analytics is Art. 6(1)(a) GDPR (consent). You can withdraw consent at any time by clicking "Cookie Settings" in the site footer and choosing "Reject"; subsequent page loads will not load analytics. Cookies already set by previously accepted services can be cleared from your browser settings.
+The legal basis for this processing is Art. 6(1)(f) GDPR (legitimate interest in measuring and improving the website). You can object to this processing at any time by emailing us (see Section 1) or by using your browser's privacy controls (e.g. blocking third-party scripts or cookies for this site).
 
 A locally stored preference for the dark/light mode toggle is also saved in your browser via `localStorage`. This is not a tracking cookie and does not transmit data.
 

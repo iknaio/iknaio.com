@@ -9,7 +9,6 @@
       {{- block "main" . }}{{- end }}
     </main>
     {{- partial "footer.html" . -}}
-    {{- partial "cookie-banner.html" . -}}
     {{ $js := resources.Get "js/main.js" | minify | fingerprint }}
     <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
     {{ $cookie := resources.Get "js/cookie-banner.js" | minify | fingerprint }}
