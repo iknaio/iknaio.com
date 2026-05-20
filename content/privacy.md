@@ -41,10 +41,9 @@ Server logs collected by GitHub Pages are managed by GitHub according to their d
 
 ### 3.3 Analytics
 
-We use a small set of analytics services to understand how visitors use the site. The following are loaded on every page view:
+We use a privacy-focused analytics service to understand how visitors use the site, loaded on every page view:
 
-- **Plausible Analytics** (Plausible Insights OÜ, Estonia) — privacy-focused analytics. Loads `plausible.io/js/script.js`. Does not set cookies and does not use any persistent identifier; visitor counts are computed from a rotating daily hash of the IP address that is discarded at the end of the day. Data is processed within the EU. See [Plausible's privacy policy](https://plausible.io/privacy).
-- **Google Analytics 4** (Google Ireland Ltd. / Google LLC, USA) — measures aggregate traffic. Loads `googletagmanager.com/gtag/js` and sets the `_ga` and `_ga_TPJK719TS4` cookies (valid for up to 13 months). IP addresses are anonymized by default in GA4. Data is transferred to the United States; Google relies on the EU–US Data Privacy Framework as a transfer mechanism. See [Google's privacy policy](https://policies.google.com/privacy) and [how Google uses data when you use partner sites](https://policies.google.com/technologies/partner-sites).
+- **Plausible Analytics** (Plausible Insights OÜ, Estonia) — privacy-focused analytics. Loads a tracker script from `plausible.io`. Does not set cookies and does not use any persistent identifier; visitor counts are computed from a rotating daily hash of the IP address that is discarded at the end of the day. Data is processed within the EU. See [Plausible's privacy policy](https://plausible.io/privacy).
 
 The legal basis for this processing is Art. 6(1)(f) GDPR (legitimate interest in measuring and improving the website). You can object to this processing at any time by emailing us (see Section 1) or by using your browser's privacy controls (e.g. blocking third-party scripts or cookies for this site).
 
@@ -52,7 +51,7 @@ A locally stored preference for the dark/light mode toggle is also saved in your
 
 ## 4. Advertising and Remarketing
 
-We do not run advertising, remarketing, or social media tracking on this website. We do not use Google Tag Manager, Google Ads, Meta Pixel, or LinkedIn Insight Tag. The Google Analytics integration described in Section 3.3 is loaded directly via gtag.js for measurement only.
+We do not run advertising, remarketing, or social media tracking on this website. We do not use Google Analytics, Google Tag Manager, Google Ads, Meta Pixel, or LinkedIn Insight Tag.
 
 ## 5. Data Sharing
 

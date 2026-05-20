@@ -1,31 +1,18 @@
 (function () {
   'use strict';
 
-  var PLAUSIBLE_DOMAIN = 'iknaio.com';
-  var PLAUSIBLE_SRC = 'https://plausible.io/js/script.js';
-  var GA_ID = 'G-TPJK719TS4';
+  var PLAUSIBLE_SRC = 'https://plausible.io/js/pa-zxMJ8B15OK7TSChEp97LX.js';
   var DOTLOTTIE_SRC = 'https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs';
 
   function loadPlausible() {
-    if (document.querySelector('script[data-domain="' + PLAUSIBLE_DOMAIN + '"]')) return;
-    var s = document.createElement('script');
-    s.defer = true;
-    s.setAttribute('data-domain', PLAUSIBLE_DOMAIN);
-    s.src = PLAUSIBLE_SRC;
-    document.head.appendChild(s);
-  }
-
-  function loadGoogleAnalytics() {
-    if (document.querySelector('script[data-iknaio-ga]')) return;
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ window.dataLayer.push(arguments); }
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', GA_ID);
+    if (document.querySelector('script[data-iknaio-plausible]')) return;
+    window.plausible = window.plausible || function () { (plausible.q = plausible.q || []).push(arguments); };
+    plausible.init = plausible.init || function (i) { plausible.o = i || {}; };
+    plausible.init();
     var s = document.createElement('script');
     s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-    s.setAttribute('data-iknaio-ga', '');
+    s.src = PLAUSIBLE_SRC;
+    s.setAttribute('data-iknaio-plausible', '');
     document.head.appendChild(s);
   }
 
@@ -40,6 +27,5 @@
   }
 
   loadPlausible();
-  loadGoogleAnalytics();
   loadLottiePlayer();
 })();

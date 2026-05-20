@@ -58,7 +58,7 @@ Posts live in `content/insights/` as Markdown. The filename slug becomes the URL
 - **Team / partners / press / packages / use cases**: YAML in `data/`.
 - **Navigation**: `[[menus.main]]` in `hugo.toml`.
 - **Design tokens** (colors, spacing, fonts): CSS custom properties at the top of `assets/css/main.css`. Dark mode is `[data-theme="dark"]` on `<html>`.
-- **Analytics**: `assets/js/cookie-banner.js` loads Plausible, Google Analytics (`G-TPJK719TS4`), and the Lottie player on every page view. No consent banner; legal basis is Art. 6(1)(f) GDPR (legitimate interest) per `content/privacy.md` Section 3.3.
+- **Analytics**: `assets/js/cookie-banner.js` loads Plausible and the Lottie player on every page view. No consent banner; legal basis is Art. 6(1)(f) GDPR (legitimate interest) per `content/privacy.md` Section 3.3.
 
 ## QA
 
