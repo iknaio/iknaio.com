@@ -24,14 +24,14 @@ Before any setup, here's the payoff. With the connector in place, this is a real
 >
 > **GraphSense agent:** `1Archive…Jz8dN` is attributed to the **Internet Archive** *(Lookup Address)*. One hop out, its largest outgoing flows go to untagged addresses: roughly **€848,000** in a single transaction to `1qXREY6D…wMdhC`, and about **€88,000** across 13 transactions to `165jtsMW…2WStS` *(List Neighbors)*. Two counterparties carry exchange tags, **Coinbase** (high confidence) and **BitPay** (medium), though the amounts routed to them are comparatively small. Note: those tags are single-source, so treat them as leads to verify, not conclusions.
 
-No copy-pasting between steps, no API client to write, just a question and a sourced answer. The rest of this post is how to get there.
+One question in, a sourced answer out. The rest of this post is how to get there.
 
 ![The teaser exchange in Le Chat](/images/insights/graphsense-mcp-le-chat/00-teaser-exchange.png)
 ## What is MCP, briefly
 
-The [Model Context Protocol](https://modelcontextprotocol.io) is an open standard for giving AI assistants access to external tools and data. An *MCP server* offers a set of tools; an *MCP client* (here, Le Chat) finds those tools and lets the model use them while you chat. The model decides *when* to use a tool and *what to ask it for*; the server runs the request against the real backend and hands the results back.
+The [Model Context Protocol](https://modelcontextprotocol.io) is an open standard for giving AI assistants access to external tools and data. An *MCP server* offers a set of tools. An *MCP client* (here, Le Chat) finds those tools and lets the model use them while you chat. The model decides *when* to use a tool and *what to ask it for*, and the server runs the request against the real backend and hands the results back.
 
-The GraphSense MCP server covers the read-only side of the GraphSense API: address and cluster lookups, transaction detail, neighbor graphs, tags and actors, block and rate data. Seventeen tools in total, each one a focused, clearly described action. The model never touches the database directly; it only ever uses these tools, and the server decides what they can and cannot do.
+The GraphSense MCP server covers the read-only side of the GraphSense API: address and cluster lookups, transaction detail, neighbor graphs, tags and actors, block and rate data. Seventeen tools in total, each one a focused, clearly described action. The model never touches the database directly. It only ever uses these tools, and the server decides what they can and cannot do.
 
 ## What you'll need
 
@@ -47,17 +47,18 @@ In Le Chat, open **Settings → Connectors** ([chat.mistral.ai/connections](http
 ![Le Chat Settings, Connectors panel](/images/insights/graphsense-mcp-le-chat/01-connectors-panel.png)
 Click **+ Add connector** in the top right. In the dialog that opens, switch to the second tab, **Custom MCP connector**: that is the form for pointing Le Chat at the Iknaio GraphSense MCP server. Fill in:
 
-- a **name**, something recognizable like `GraphSense` or `Iknaio GraphSense`;
-- the **Connector Server**, which is the GraphSense MCP endpoint: `https://api.iknaio.com/mcp`;
-- the **Authentication Method**: select **API Token Authentication**. Set the **header name** to `Authorization` and the **type** to `Bearer`, then paste your GraphSense API key into the **Token** field, which becomes the header value.
+- **Name:** something recognizable like `GraphSense` or `Iknaio GraphSense`.
+- **Connector Server:** the GraphSense MCP endpoint, `https://api.iknaio.com/mcp`.
+- **Authentication Method:** select **API Token Authentication**. Set the **header name** to `Authorization` and the **type** to `Bearer`, then paste your GraphSense API key into the **Token** field, which becomes the header value.
 
 <img src="/images/insights/graphsense-mcp-le-chat/02-add-connector-dialog.png" alt="The Add connector dialog, Custom MCP connector tab" loading="lazy" style="display:block;margin:1.5rem auto;max-width:440px;width:100%;">
+
 Click **Create**. Le Chat checks the connection with your key and adds the connector. When the connection succeeds, the connector shows a green indicator and reads as **Connected**.
 
 ![The Iknaio connector, connected](/images/insights/graphsense-mcp-le-chat/04-connector-tools.png)
 ## Step 2: Enable it in a conversation
 
-Adding a connector makes it *available*; it isn't necessarily *on* for every chat. In a new conversation, open the tools/connectors control in the message composer and switch **Iknaio** on for this chat.
+Adding a connector makes it *available*, but it isn't necessarily *on* for every chat. In a new conversation, open the tools/connectors control in the message composer and switch **Iknaio** on for this chat.
 
 ![Enabling the connector in a chat](/images/insights/graphsense-mcp-le-chat/05-enable-in-chat.png)
 With the connector enabled, the model can now reach for Iknaio tools whenever a question calls for them.
@@ -67,7 +68,7 @@ With the connector enabled, the model can now reach for Iknaio tools whenever a 
 The first time the model wants to use an Iknaio tool, Le Chat pauses and asks for your approval. The prompt names the tool it is about to use and exactly what it will ask for, so you can see what is about to happen before it does. Approve it to let it through.
 
 ![A tool-access approval prompt](/images/insights/graphsense-mcp-le-chat/06-tool-access-prompt.png)
-Le Chat usually offers to remember the choice, so you can allow a tool once and not be asked again, or keep approving each one while you are still getting a feel for what each tool does. Treat the prompt as a feature, not a nuisance: early on, read each one; once you trust a routine, allowing the Iknaio tools for the conversation keeps things moving.
+Le Chat usually offers to remember the choice, so you can allow a tool once and not be asked again, or keep approving each one while you are still getting a feel for what each tool does. Treat the prompt as a feature, not a nuisance. Read each one early on, and once you trust a routine, allow the Iknaio tools for the conversation to keep things moving.
 
 ## Step 3: Your first queries
 
@@ -84,7 +85,7 @@ Now a real lookup. You can give the model just an address and let it figure out 
 
 Behind the scenes the model typically uses Search to find the address, then Lookup Address for the full picture: balance, activity range, cluster membership, and tags. It comes back with something like *"this is the Internet Archive's public Bitcoin donation address, first active in 2013, with roughly 633 BTC received over its lifetime and only a small balance held today…"*.
 
-Most Le Chat clients let you expand a tool result to see exactly what was asked and what came back. Get into the habit of doing this; it's the difference between trusting a number and verifying it.
+Most Le Chat clients let you expand a tool result to see exactly what was asked and what came back. Get into the habit, because it's the difference between trusting a number and verifying it.
 
 ![Inspecting a tool call](/images/insights/graphsense-mcp-le-chat/08-tool-call-detail.png)
 A few prompts to try, each exercising a different tool:
@@ -104,14 +105,14 @@ The MCP interface is at its best when one answer feeds the next. Because the mod
 >
 > **You:** Show me the transactions between the original address and that counterparty.
 
-That's List Neighbors, then Lookup Address, then List Txs For: three tools, stitched together by plain English, no copy-pasting between steps. The address is a well-known, stable one, so you'll get a sensible trace to follow along with; swap in any address and the shape of the conversation is identical.
+That's List Neighbors, then Lookup Address, then List Txs For: three tools, stitched together by plain English. The address is a well-known, stable one, so you'll get a sensible trace to follow along with. Swap in any address and the shape of the conversation is identical.
 
 ![A multi-step trace conversation](/images/insights/graphsense-mcp-le-chat/09-trace-conversation.png)
 ## Step 5: Build an agent
 
 Asking questions one at a time is useful, but you end up re-typing the same setup each time: which tools to reach for, in what order, how to format the answer, what caveats to apply. An agent saves all of that. It is a named, reusable configuration with its own instructions and its own connectors.
 
-An agent's instructions are more than a saved prompt: they are where you write down how the work should be done, and where you draw the lines it must not cross. On the procedure side, you spell out which tools to reach for, in what order, and how to shape the output. On the safeguards side, you set the rules the agent must always follow and must never break: always state the network, always cite the tool result behind a number, never present a cluster-level tag as fact, and say so plainly when a tool returns nothing instead of guessing. You can also bound its scope, telling it to stop and ask rather than tracing further, or to escalate instead of drawing a conclusion. Those rules turn a capable but improvising model into something that behaves predictably enough to trust with case work.
+Agent instructions are where you write down how the work should be done, and where you draw the lines the agent must never cross. On the procedure side, you spell out which tools to reach for, in what order, and how to shape the output. On the safeguards side, you set the rules the agent must always follow and must never break: always state the network, always cite the tool result behind a number, never present a cluster-level tag as fact, and say so plainly when a tool returns nothing instead of guessing. You can also bound its scope, telling it to stop and ask rather than tracing further, or to escalate instead of drawing a conclusion. Those rules turn a capable but improvising model into something that behaves predictably enough to trust with case work.
 
 That predictability is the real payoff. The agent runs the task the same way every time, so you can hand it a batch of addresses and get one comparable result per address instead of a freeform answer you have to read closely to compare. And because an agent is just a saved object, you can share it: a senior analyst's method, rules and hedging and all, becomes something the whole team runs identically, without everyone having to remember the right prompt. Le Chat's **Agent Builder** ([chat.mistral.ai/agents](https://chat.mistral.ai/agents)) is where you set this up.
 
@@ -146,17 +147,17 @@ Rules:
 Save it, and you have a reusable analyst you can hand a batch of addresses to.
 
 ![The agent running a triage task](/images/insights/graphsense-mcp-le-chat/12-agent-in-action.png)
-The instructions do real work here. Without them the model improvises; with them you get the same structured output every time, the same hedging on cluster tags, and the same "say so when a tool returns nothing" discipline. An agent is only as good as its brief.
+The instructions do real work here. Without them, the model improvises, but with them you get the same structured output every time, the same hedging on cluster tags, and the same "say so when a tool returns nothing" discipline. An agent is only as good as its brief.
 
 ## Practical notes
 
-- **Verify the numbers.** The model summarizes; the tool results are the source of truth. Expand tool calls when a figure matters, and prefer agents that cite the call behind each number.
-- **Read-only by design.** Every GraphSense MCP tool is a read. The server cannot move funds, write tags, or change anything; the worst an unlucky prompt can do is ask a wrong question.
+- **Verify the numbers.** The model summarizes, but the tool results are the source of truth. Expand tool calls when a figure matters, and prefer agents that cite the call behind each number.
+- **Read-only by design.** Every GraphSense MCP tool is a read. The server cannot move funds, write tags, or change anything, so the worst an unlucky prompt can do is ask a wrong question.
 - **The server guides the model.** Many tools carry detailed descriptions and guardrails (compact result shapes, pagination caps, sensible defaults). You benefit from these without configuring anything.
-- **Big results paginate.** Hub addresses can have thousands of neighbors; the server pages and caps results. If an answer feels truncated, ask the model to continue, since it has the pagination cursor.
+- **Big results paginate.** Hub addresses can have thousands of neighbors, so the server pages and caps results. If an answer feels truncated, ask the model to continue, since it has the pagination cursor.
 - **Agents fan out, so budget for it.** A single triage prompt can turn into a dozen or more tool calls, and every call is a round trip that costs Le Chat message/usage allowance on one side and GraphSense API quota on the other. A chatty agent run is not free on either meter. Keep batches modest, narrow the instructions, and watch both quotas before pointing an agent at a long list.
 - **Keep a human in the loop.** The agent produces leads and summaries, not decisions. Before its output feeds a report or any automated step, have a person check it against the underlying tool results.
-- **One connector, many surfaces.** The same MCP server works with any MCP-capable client. Le Chat is the walkthrough here, but the connector setup is the only part that's Le-Chat-specific. Just note that the EU-only property comes from the *combination*; point the connector at a non-EU chat client and you give that guarantee up.
+- **One connector, many surfaces.** The same MCP server works with any MCP-capable client. Le Chat is the walkthrough here, but the connector setup is the only part that's Le-Chat-specific. Just note that the EU-only property comes from the *combination*. Point the connector at a non-EU chat client and you give that guarantee up.
 
 ## Where this fits, and where it doesn't
 
@@ -164,9 +165,9 @@ The MCP server is a third way in, not a replacement. The honest one-line guide: 
 
 So it's worth being clear about what the MCP path is *not* good at:
 
-- **Not for reproducible bulk work.** The model doesn't work exactly the same way twice; ask the same thing again and you get a slightly different run. Enriching ten thousand addresses identically every time is a CLI job, not a chat job.
-- **Not for visual exploration.** There's no canvas, no clustering you can click through. For *seeing* how funds branch and rejoin, Pathfinder is the tool.
-- **Not a system of record.** A conversation is not an audit trail. When an MCP session surfaces something that matters, reproduce it deterministically (in Pathfinder or via the CLI) before it goes near a report.
+- **Not for reproducible bulk work.** The model doesn't work exactly the same way twice. Ask the same thing again and you get a slightly different run. Enriching ten thousand addresses identically every time is a CLI job, not a chat job.
+- **Not for visual exploration.** A chat window can't show you a graph, so to *see* how funds branch and rejoin, open Pathfinder.
+- **Not a system of record.** A conversation isn't an audit trail. When an MCP session surfaces something that matters, reproduce it deterministically (in Pathfinder or via the CLI) before it goes near a report.
 
 What it *is* good at is the front of the funnel: triage, "what is this address", ad-hoc questions, and agentic workflows that hand you a ranked shortlist to take into the other two tools. All three share one backend and one set of tags, so an address looks the same whichever door you come in through.
 
