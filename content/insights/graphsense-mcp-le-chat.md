@@ -42,7 +42,7 @@ The GraphSense MCP server covers the read-only side of the GraphSense API: addre
 
 ## Step 1: Add the connector
 
-In Le Chat, open **Settings → Connectors** ([chat.mistral.ai/connections](https://chat.mistral.ai/connections)). This is the panel that lists both the built-in connectors and any custom ones you've added.
+In Le Chat, open **Context → Connectors** ([chat.mistral.ai/connections](https://chat.mistral.ai/connections)). This is the panel that lists both the built-in connectors and any custom ones you've added.
 
 ![Le Chat Settings, Connectors panel](/images/insights/graphsense-mcp-le-chat/01-connectors-panel.png)
 Click **+ Add connector** in the top right. In the dialog that opens, switch to the second tab, **Custom MCP connector**: that is the form for pointing Le Chat at the Iknaio GraphSense MCP server. Fill in:
@@ -83,7 +83,7 @@ Now a real lookup. You can give the model just an address and let it figure out 
 
 > **You:** What can you tell me about `1Archive1n2C579dMsAu3iC6tWzuQJz8dN`?
 
-Behind the scenes the model typically uses Search to find the address, then Lookup Address for the full picture: balance, activity range, cluster membership, and tags. It comes back with something like *"this is the Internet Archive's public Bitcoin donation address, first active in 2013, with roughly 633 BTC received over its lifetime and only a small balance held today…"*.
+Behind the scenes the model typically uses *Search* to find the address, then *Lookup Address* for the full picture: balance, activity range, cluster membership, and tags. It comes back with something like *"this is the Internet Archive's public Bitcoin donation address, first active in 2013, with roughly 633 BTC received over its lifetime and only a small balance held today…"*.
 
 Most Le Chat clients let you expand a tool result to see exactly what was asked and what came back. Get into the habit, because it's the difference between trusting a number and verifying it.
 
@@ -105,7 +105,7 @@ The MCP interface is at its best when one answer feeds the next. Because the mod
 >
 > **You:** Show me the transactions between the original address and that counterparty.
 
-That's List Neighbors, then Lookup Address, then List Txs For: three tools, stitched together by plain English. The address is a well-known, stable one, so you'll get a sensible trace to follow along with. Swap in any address and the shape of the conversation is identical.
+That's *List Neighbors*, then *Lookup Address*, then *List Txs For*: three tools, stitched together by plain English. The address is a well-known, stable one, so you'll get a sensible trace to follow along with. Swap in any address and the shape of the conversation is identical.
 
 ![A multi-step trace conversation](/images/insights/graphsense-mcp-le-chat/09-trace-conversation.png)
 ## Step 5: Build an agent
