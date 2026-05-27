@@ -108,7 +108,7 @@ The MCP interface is at its best when one answer feeds the next. Because the mod
 That's *List Neighbors*, then *Lookup Address*, then *List Txs For*: three tools, stitched together by plain English. The address is a well-known, stable one, so you'll get a sensible trace to follow along with. Swap in any address and the shape of the conversation is identical.
 
 ![A multi-step trace conversation](/images/insights/graphsense-mcp-le-chat/09-trace-conversation.png)
-## Step 5: Hand off to Pathfinder (beta)
+## Step 5: Validate in Pathfinder (beta)
 
 > **Beta:** the Build Pathfinder File tool is new and still being refined. Expect rough edges, and please [send feedback](mailto:contact@iknaio.com).
 >
@@ -122,7 +122,7 @@ The server makes that handoff explicit. One of the seventeen tools is **Build Pa
 
 ![The prompt and Build Pathfinder File call in Le Chat](/images/insights/graphsense-mcp-le-chat/10-pathfinder-prompt.png)
 
-Click the download link, then open the GraphSense file in Pathfinder. The model's trace comes back as a graph: the Internet Archive address on the left, dozens of outgoing edges fanning out to Coinbase clusters, each edge labelled with date and BTC amount, ready for you to expand, prune and verify.
+Click the download link, then open the GraphSense file in Pathfinder. The model's trace comes back as a graph: the Internet Archive address on the left, up to four outgoing edges fanning out to Coinbase clusters, each edge labelled with date and BTC amount, ready for you to expand, prune and verify.
 
 ![The same trace opened in Pathfinder](/images/insights/graphsense-mcp-le-chat/11-pathfinder-graph.png)
 
@@ -130,7 +130,7 @@ Your file might not look exactly like the one above, and that is fine. The model
 
 That closes the loop. The model does the searching and stitching, you do the verification, and the same backend serves both ends of the workflow.
 
-## Step 6: Build an agent
+## Step 6: Make it repeatable with an agent
 
 Asking questions one at a time is useful, but you end up re-typing the same setup each time: which tools to reach for, in what order, how to format the answer, what caveats to apply. An agent saves all of that. It is a named, reusable configuration with its own instructions and its own connectors.
 
