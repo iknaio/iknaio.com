@@ -31,7 +31,7 @@ One question in, a sourced answer out. The rest of this post is how to get there
 
 The [Model Context Protocol](https://modelcontextprotocol.io) is an open standard for giving AI assistants access to external tools and data. An *MCP server* offers a set of tools. An *MCP client* (here, Le Chat) finds those tools and lets the model use them while you chat. The model decides *when* to use a tool and *what to ask it for*, and the server runs the request against the real backend and hands the results back.
 
-The GraphSense MCP server covers the read-only side of the GraphSense API: address and cluster lookups, transaction detail, neighbor graphs, tags and actors, block and rate data. Seventeen tools in total, each one a focused, clearly described action. The model never touches the database directly. It only ever uses these tools, and the server decides what they can and cannot do.
+The GraphSense MCP server covers the read-only side of the GraphSense API: address and cluster lookups, transaction detail, neighbor graphs, tags and actors, block and rate data. Each tool is a focused, clearly described action. The model never touches the database directly. It only ever uses these tools, and the server decides what they can and cannot do.
 
 ## What you'll need
 
@@ -116,7 +116,7 @@ That's *List Neighbors*, then *Lookup Address*, then *List Txs For*: three tools
 
 The MCP workflow shifts the exploration burden onto the model: instead of clicking through addresses or writing scripts, you ask, and the model runs the calls and writes up the answer. That is a real productivity gain, but the underlying truth doesn't change: an AI can be wrong. A name it pulls from a tag might be the wrong cluster, a trace it stitches together might miss the branch that mattered. Anything that goes into a report still needs a human to verify it.
 
-The server makes that handoff explicit. One of the seventeen tools is **Build Pathfinder File**, which takes the addresses and transactions the model has been working with and packages them into a `.gs` file, GraphSense's native graph format. Drop the file into [Pathfinder](https://app.iknaio.com) and the investigation comes back as a graph: every node, every edge, ready for you to expand, prune and verify visually.
+The server makes that handoff explicit. One of the tools, **Build Pathfinder File**, takes the addresses and transactions the model has been working with and packages them into a `.gs` file, GraphSense's native graph format. Drop the file into [Pathfinder](https://app.iknaio.com) and the investigation comes back as a graph: every node, every edge, ready for you to expand, prune and verify visually.
 
 > **You:** Trace the outgoing transaction path from the address `1Archive1n2C579dMsAu3iC6tWzuQJz8dN` to Coinbase (at most 4 transactions). Provide the results in a GraphSense file format for visualization in Pathfinder.
 
