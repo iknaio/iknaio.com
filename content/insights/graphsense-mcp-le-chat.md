@@ -1,7 +1,7 @@
 ---
 title: "Blockchain intelligence in chat: connecting GraphSense over MCP"
 date: 2026-05-19
-draft: true
+draft: false
 description: "A step-by-step guide to connecting the GraphSense MCP server to Le Chat: add the connector, run your first queries, and build an agent that traces for you."
 tags: ["graphsense", "mcp", "ai", "agents", "tutorial"]
 image: "images/insights/graphsense-mcp-le-chat/cover.png"
