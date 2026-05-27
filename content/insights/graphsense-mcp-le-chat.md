@@ -108,7 +108,29 @@ The MCP interface is at its best when one answer feeds the next. Because the mod
 That's *List Neighbors*, then *Lookup Address*, then *List Txs For*: three tools, stitched together by plain English. The address is a well-known, stable one, so you'll get a sensible trace to follow along with. Swap in any address and the shape of the conversation is identical.
 
 ![A multi-step trace conversation](/images/insights/graphsense-mcp-le-chat/09-trace-conversation.png)
-## Step 5: Build an agent
+## Step 5: Hand off to Pathfinder (beta)
+
+> **Beta:** the Build Pathfinder File tool is new and still being refined. Expect rough edges, and please [send feedback](mailto:contact@iknaio.com).
+>
+> Le Chat currently has trouble handling this particular endpoint reliably. We expect that to be resolved on Mistral's side; in the meantime, if you are comfortable with a more developer-oriented surface, [Mistral Vibe](https://mistral.ai/products/vibe) usually works better.
+
+The MCP workflow shifts the exploration burden onto the model: instead of clicking through addresses or writing scripts, you ask, and the model runs the calls and writes up the answer. That is a real productivity gain, but the underlying truth doesn't change: an AI can be wrong. A name it pulls from a tag might be the wrong cluster, a trace it stitches together might miss the branch that mattered. Anything that goes into a report still needs a human to verify it.
+
+The server makes that handoff explicit. One of the seventeen tools is **Build Pathfinder File**, which takes the addresses and transactions the model has been working with and packages them into a `.gs` file, GraphSense's native graph format. Drop the file into [Pathfinder](https://app.iknaio.com) and the investigation comes back as a graph: every node, every edge, ready for you to expand, prune and verify visually.
+
+> **You:** Trace the outgoing transaction path from the address `1Archive1n2C579dMsAu3iC6tWzuQJz8dN` to Coinbase (at most 4 transactions). Provide the results in a GraphSense file format for visualization in Pathfinder.
+
+![The prompt and Build Pathfinder File call in Le Chat](/images/insights/graphsense-mcp-le-chat/10-pathfinder-prompt.png)
+
+Click the download link, then open the GraphSense file in Pathfinder. The model's trace comes back as a graph: the Internet Archive address on the left, dozens of outgoing edges fanning out to Coinbase clusters, each edge labelled with date and BTC amount, ready for you to expand, prune and verify.
+
+![The same trace opened in Pathfinder](/images/insights/graphsense-mcp-le-chat/11-pathfinder-graph.png)
+
+Your file might not look exactly like the one above, and that is fine. The model decides which paths to follow and which to drop, so the same prompt can produce a slightly different subgraph each time. The point isn't to reproduce this exact picture, it is to get a starting graph in Pathfinder fast, and then refine it from there.
+
+That closes the loop. The model does the searching and stitching, you do the verification, and the same backend serves both ends of the workflow.
+
+## Step 6: Build an agent
 
 Asking questions one at a time is useful, but you end up re-typing the same setup each time: which tools to reach for, in what order, how to format the answer, what caveats to apply. An agent saves all of that. It is a named, reusable configuration with its own instructions and its own connectors.
 
@@ -116,10 +138,10 @@ Agent instructions are where you write down how the work should be done, and whe
 
 That predictability is the real payoff. The agent runs the task the same way every time, so you can hand it a batch of addresses and get one comparable result per address instead of a freeform answer you have to read closely to compare. And because an agent is just a saved object, you can share it: a senior analyst's method, rules and hedging and all, becomes something the whole team runs identically, without everyone having to remember the right prompt. Le Chat's **Agent Builder** ([chat.mistral.ai/agents](https://chat.mistral.ai/agents)) is where you set this up.
 
-![Le Chat Agent Builder](/images/insights/graphsense-mcp-le-chat/10-agent-builder.png)
+![Le Chat Agent Builder](/images/insights/graphsense-mcp-le-chat/12-agent-builder.png)
 Create a new agent, give it a name and description, and (the important part) **attach the Iknaio connector** to it so the agent can call the tools.
 
-![Attaching the connector to the agent](/images/insights/graphsense-mcp-le-chat/11-agent-connector.png)
+![Attaching the connector to the agent](/images/insights/graphsense-mcp-le-chat/13-agent-connector.png)
 Then write the instructions. Here's a starting point for a **Blockchain AML Triage Agent**, the kind of thing you'd run over a list of addresses from a watchlist or an exchange's deposit feed. Copy and paste it into the **Instructions** field of your agent configuration (shown in the screenshot above):
 
 ```text
@@ -146,7 +168,7 @@ Rules:
 
 Save it, and you have a reusable analyst you can hand a batch of addresses to.
 
-![The agent running a triage task](/images/insights/graphsense-mcp-le-chat/12-agent-in-action.png)
+![The agent running a triage task](/images/insights/graphsense-mcp-le-chat/14-agent-in-action.png)
 The instructions do real work here. Without them, the model improvises, but with them you get the same structured output every time, the same hedging on cluster tags, and the same "say so when a tool returns nothing" discipline. An agent is only as good as its brief.
 
 ## Practical notes
