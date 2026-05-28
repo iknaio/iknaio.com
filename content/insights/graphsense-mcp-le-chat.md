@@ -111,8 +111,6 @@ That's *List Neighbors*, then *Lookup Address*, then *List Txs For*: three tools
 ## Step 5: Validate in Pathfinder (beta)
 
 > **Beta:** the Build Pathfinder File tool is new and still being refined. Expect rough edges, and please [send feedback](mailto:contact@iknaio.com).
->
-> Le Chat currently has trouble handling this particular endpoint reliably. We expect that to be resolved on Mistral's side; in the meantime, if you are comfortable with a more developer-oriented surface, [Mistral Vibe](https://mistral.ai/products/vibe) usually works better.
 
 The MCP workflow shifts the exploration burden onto the model: instead of clicking through addresses or writing scripts, you ask, and the model runs the calls and writes up the answer. That is a real productivity gain, but the underlying truth doesn't change: an AI can be wrong. A name it pulls from a tag might be the wrong cluster, a trace it stitches together might miss the branch that mattered. Anything that goes into a report still needs a human to verify it.
 
