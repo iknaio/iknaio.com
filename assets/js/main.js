@@ -253,7 +253,7 @@
 
   function collectImages(context) {
     // Collect all images from article content
-    var selectors = ['.article-cover img', '.content img', '.insights-hero-image', '.post-card-image img'];
+    var selectors = ['.article-cover img', '.content img', '.post-card-image img'];
     
     allImages = [];
     selectors.forEach(function (selector) {
@@ -359,26 +359,7 @@
       collectImages(insightsList);
       if (allImages.length > 0) {
         if (!lightboxOverlay) createLightbox();
-        insightsList.querySelectorAll('.insights-hero-image, .post-card-image img').forEach(function (img, index) {
-          img.style.cursor = 'zoom-in';
-          img.addEventListener('click', function (e) {
-            var imgSrc = img.getAttribute('data-src') || img.src;
-            var foundIndex = allImages.findIndex(function (item) {
-              return item.src === imgSrc;
-            });
-            if (foundIndex >= 0) {
-              openLightbox(foundIndex, e);
-            }
-          });
-        });
-      }
-    }
-    
-    if (insightsHero) {
-      collectImages(insightsHero);
-      if (allImages.length > 0) {
-        if (!lightboxOverlay) createLightbox();
-        insightsHero.querySelectorAll('.insights-hero-image').forEach(function (img, index) {
+        insightsList.querySelectorAll('.post-card-image img').forEach(function (img, index) {
           img.style.cursor = 'zoom-in';
           img.addEventListener('click', function (e) {
             var imgSrc = img.getAttribute('data-src') || img.src;

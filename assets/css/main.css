@@ -3241,7 +3241,6 @@ hr {
 /* Image cursor indicator */
 .article-cover img,
 .content img,
-.insights-hero-image,
 .post-card-image img {
   cursor: zoom-in;
 }
