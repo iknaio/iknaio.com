@@ -3160,7 +3160,7 @@ hr {
 .lightbox-close {
   position: absolute;
   top: -48px;
-  right: -48px;
+  right: 0;
   width: 48px;
   height: 48px;
   background: transparent;
@@ -3175,6 +3175,13 @@ hr {
   justify-content: center;
   transition: opacity var(--duration-fast) var(--easing-default),
               transform var(--duration-fast) var(--easing-default);
+}
+
+@media (max-width: 809.98px) {
+  .lightbox-close {
+    top: -40px;
+    right: 8px;
+  }
 }
 
 .lightbox-close:hover {
