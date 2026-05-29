@@ -13,6 +13,9 @@ disableKinds = ["taxonomy", "term"]
   youtube = "https://www.youtube.com/@IknaioCryptoassetAnalytics"
   odoo_form = "https://iknaio.odoo.com/free"
 
+  [params.lightbox]
+    navEnabled = false
+
 [markup.goldmark.renderer]
   unsafe = true
 

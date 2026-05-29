@@ -160,6 +160,11 @@
   // Lightbox / Image Overlay
   // ---------------------------------------------------------------------------
 
+  // Configuration - can be set from Hugo params via window.lightboxConfig
+  var lightboxConfig = window.lightboxConfig || {
+    navEnabled: false
+  };
+
   // Create lightbox overlay element
   var lightboxOverlay = null;
   var lightboxImage = null;
@@ -193,46 +198,57 @@
     lightboxContent.appendChild(lightboxClose);
 
     // Navigation buttons
-    lightboxNavPrev = document.createElement('button');
-    lightboxNavPrev.className = 'lightbox-nav lightbox-nav--prev lightbox-nav--hidden';
-    lightboxNavPrev.setAttribute('aria-label', 'Previous image');
-    lightboxNavPrev.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18L9 12L15 6"/></svg>';
-    lightboxContent.appendChild(lightboxNavPrev);
+    if (lightboxConfig.navEnabled) {
+      lightboxNavPrev = document.createElement('button');
+      lightboxNavPrev.className = 'lightbox-nav lightbox-nav--prev lightbox-nav--hidden';
+      lightboxNavPrev.setAttribute('aria-label', 'Previous image');
+      lightboxNavPrev.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18L9 12L15 6"/></svg>';
+      lightboxContent.appendChild(lightboxNavPrev);
 
-    lightboxNavNext = document.createElement('button');
-    lightboxNavNext.className = 'lightbox-nav lightbox-nav--next lightbox-nav--hidden';
-    lightboxNavNext.setAttribute('aria-label', 'Next image');
-    lightboxNavNext.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18L15 12L9 6"/></svg>';
-    lightboxContent.appendChild(lightboxNavNext);
+      lightboxNavNext = document.createElement('button');
+      lightboxNavNext.className = 'lightbox-nav lightbox-nav--next lightbox-nav--hidden';
+      lightboxNavNext.setAttribute('aria-label', 'Next image');
+      lightboxNavNext.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18L15 12L9 6"/></svg>';
+      lightboxContent.appendChild(lightboxNavNext);
+    }
 
     lightboxOverlay.appendChild(lightboxContent);
     document.body.appendChild(lightboxOverlay);
 
     // Event listeners
     lightboxClose.addEventListener('click', closeLightbox);
-    lightboxNavPrev.addEventListener('click', navigateLightbox);
-    lightboxNavNext.addEventListener('click', navigateLightbox);
+    if (lightboxConfig.navEnabled) {
+      lightboxNavPrev.addEventListener('click', navigateLightbox);
+      lightboxNavNext.addEventListener('click', navigateLightbox);
+    }
     lightboxOverlay.addEventListener('click', function (e) {
       if (e.target === lightboxOverlay) {
         closeLightbox();
       }
     });
 
-    // Keyboard navigation
+    // Keyboard close (always available)
     document.addEventListener('keydown', function (e) {
       if (!lightboxOverlay.classList.contains('lightbox-overlay--open')) return;
-      switch (e.key) {
-        case 'Escape':
-          closeLightbox();
-          break;
-        case 'ArrowLeft':
-          navigateLightbox({ currentTarget: lightboxNavPrev });
-          break;
-        case 'ArrowRight':
-          navigateLightbox({ currentTarget: lightboxNavNext });
-          break;
+      if (e.key === 'Escape') {
+        closeLightbox();
       }
     });
+
+    // Keyboard navigation (only if enabled)
+    if (lightboxConfig.navEnabled) {
+      document.addEventListener('keydown', function (e) {
+        if (!lightboxOverlay.classList.contains('lightbox-overlay--open')) return;
+        switch (e.key) {
+          case 'ArrowLeft':
+            navigateLightbox({ currentTarget: lightboxNavPrev });
+            break;
+          case 'ArrowRight':
+            navigateLightbox({ currentTarget: lightboxNavNext });
+            break;
+        }
+      });
+    }
   }
 
   function collectImages(context) {
@@ -267,7 +283,9 @@
     lightboxOverlay.classList.add('lightbox-overlay--open');
     lightboxOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    updateNavVisibility();
+    if (lightboxConfig.navEnabled) {
+      updateNavVisibility();
+    }
   }
 
   function closeLightbox() {
