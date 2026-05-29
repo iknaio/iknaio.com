@@ -3110,7 +3110,7 @@ hr {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 3000;
   display: flex;
   align-items: center;
@@ -3142,7 +3142,6 @@ hr {
   max-height: 80vh;
   display: block;
   border-radius: var(--radius-md);
-  box-shadow: 0 0 0 8px rgba(0, 0, 0, 0.8);
   animation: lightbox-zoom-in 0.3s ease-out;
 }
 
@@ -3199,12 +3198,16 @@ hr {
   border: none;
   cursor: pointer;
   color: var(--color-white);
-  font-size: 20px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background-color var(--duration-fast) var(--easing-default);
+}
+
+.lightbox-nav svg {
+  width: 24px;
+  height: 24px;
 }
 
 .lightbox-nav:hover {

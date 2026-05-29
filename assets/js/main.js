@@ -196,13 +196,13 @@
     lightboxNavPrev = document.createElement('button');
     lightboxNavPrev.className = 'lightbox-nav lightbox-nav--prev lightbox-nav--hidden';
     lightboxNavPrev.setAttribute('aria-label', 'Previous image');
-    lightboxNavPrev.innerHTML = '&larr;';
+    lightboxNavPrev.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18L9 12L15 6"/></svg>';
     lightboxContent.appendChild(lightboxNavPrev);
 
     lightboxNavNext = document.createElement('button');
     lightboxNavNext.className = 'lightbox-nav lightbox-nav--next lightbox-nav--hidden';
     lightboxNavNext.setAttribute('aria-label', 'Next image');
-    lightboxNavNext.innerHTML = '&rarr;';
+    lightboxNavNext.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18L15 12L9 6"/></svg>';
     lightboxContent.appendChild(lightboxNavNext);
 
     lightboxOverlay.appendChild(lightboxContent);
