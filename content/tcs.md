@@ -4,7 +4,7 @@ description: "General Terms and Conditions for the Iknaio Cryptoasset Analytics 
 ---
 
 
-*Status: 1. September 2022*
+*Status: 18 June 2026*
 
 
 
@@ -459,3 +459,54 @@ residence of USERS (principle of favourability).
 relationship between IKNAIO and USERS, the competent court in Vienna,
 Austria, shall be responsible for the respective amount in dispute,
 unless this is contrary to mandatory statutory provisions.
+
+
+## 17. EU AI Act (KI-Verordnung) – AI Value Chain
+
+
+**17.1.** Background. Regulation (EU) 2024/1689 (the "AI Act" or
+"KI-Verordnung") imposes obligations on providers and deployers of AI
+systems, in particular high-risk AI systems within the meaning of Article 6
+and Annex III of the AI Act ("High-Risk AI System"). This clause governs the
+parties' responsibilities where Services are used in or integrated into the
+AI value chain.
+
+**17.2.** No High-Risk Intended Purpose. The Services, including the API,
+dashboard, analytics and forensics tools and any Model Context Protocol (MCP)
+interface, are general-purpose cryptoasset analytics tools. They are not
+designed, validated, intended or marketed for use as a safety component of, or
+otherwise as a tool, service, component or process used in or integrated into,
+a High-Risk AI System. IKNAIO makes no representation that the Services are
+suitable for such use.
+
+**17.3.** Permitted Use. Without prejudice to clause 3, the use or integration
+of the Services in or into a High-Risk AI System, and any use that would cause
+IKNAIO to be regarded as a provider or co-provider of a High-Risk AI System, is
+outside the scope of the License and is not permitted unless expressly agreed
+with IKNAIO in writing in advance.
+
+**17.4.** Cooperation under Article 25(4) AI Act. Where a USER acting as a
+provider of a High-Risk AI System nonetheless uses or integrates the Services
+in or into a High-Risk AI System, the USER shall notify IKNAIO in writing
+without undue delay. Subject to IKNAIO's prior written consent under clause
+17.3, the parties shall conclude a separate written agreement pursuant to
+Article 25(4) AI Act specifying the information, capabilities, technical access
+and other assistance, based on the generally acknowledged state of the art,
+that IKNAIO will provide to enable the USER to comply with its obligations
+under the AI Act. Such agreement may be subject to additional terms, fees and
+conditions and may draw on any voluntary model contractual terms published by
+the European AI Office. Absent such agreement, IKNAIO is under no obligation to
+provide any such information, access or assistance.
+
+**17.5.** Open-Source Components. In accordance with the second subparagraph of
+Article 25(4) AI Act, the cooperation obligation in clause 17.4 does not apply
+to tools, services, processes or components (other than general-purpose AI
+models) that IKNAIO or third parties make available to the public under a free
+and open-source licence. This includes the open-source tool GraphSense referred
+to in clause 11.1, which remains subject to the "as is" disclaimer set out
+therein.
+
+**17.6.** USER Responsibility. The USER is solely responsible for ensuring that
+its own use of the Services, and of any AI system it provides or operates,
+complies with the AI Act and all other applicable laws. The limitations and
+exclusions of liability in clause 9 apply in full to this clause 17.
