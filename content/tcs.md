@@ -15,7 +15,7 @@ description: "General Terms and Conditions for the Iknaio Cryptoasset Analytics 
 and the business address Metternichgasse 8, 1030 Vienna, registered in
 the commercial registry of the Commercial Court Vienna under FN 563448 a
 ("IKNAIO" or "We") operates a platform for forensic analysis in relation
-to digital assets under  /  ("Platform").
+to digital assets under https://app.iknaio.com ("Platform").
 
 **1.2.** Services. On the Platform, IKNAIO offers the following digital
 services: API (application programming interface) for Platform access,
@@ -24,7 +24,7 @@ asset forensics including visualization of flow of funds in crypto asset
 and ancillary digital services ("Services").
 
 **1.3.** Parties Services. Parties of the contractual relationship in
-relation to a License for the use of Services of are IKNAIO, as
+relation to a License for the use of Services are IKNAIO, as
 licensor, and the respective user, as licensee ("USER" or "You").
 
 **1.4.** General Terms. These general terms and conditions ("General Terms")
@@ -68,9 +68,8 @@ any rights to the source code of any software that is part of the
 Services or the Platform of IKNAIO.
 
 
-## 3. USER Obligations and
+## 3. USER Obligations and Code of Conduct
 
-Code of Conduct
 
 **3.1.** Conduct. USERS agree not to modify, perform, publish in online,
 print and other media, license, create derivative works from or offer
@@ -103,7 +102,7 @@ rental or access in any other way.
 
 ## 4. Fees
 
-Fees. Per License monthly fees as specified on the Platform shall be
+**4.1.** Fees. Per License monthly fees as specified on the Platform shall be
 paid to IKNAIO ("Fees"). All Fees are net fees exclusive of any value
 added tax, other tax, public or state fee or tariff. IKNAIO reserves the
 right to from time to time adjust Fees.
@@ -159,7 +158,7 @@ invoice default interest at a rate of 12% p.a., at least however 3%
 above the key interest rate of the European Central Bank. The costs for
 use of collection agencies or attorneys in cases of default will – as
 far as they are appropriate and necessary – be born by USERS. The
-obligation to pay default interest does not preclude IKNAIO DESIGNER to
+obligation to pay default interest does not preclude IKNAIO to
 assert claims for further damages.
 
 
@@ -304,8 +303,8 @@ use, integrally or ancillary, third-party software or other intellectual
 property of third parties. USERS acknowledge that the Service might
 contain such third-party IP, and that such third-party IP may be subject
 to additional terms and conditions. In particular, IKNAIO uses as part
-of the Platform the tool GraphSense as software see  www.graphsense.info
- ("Third Party Software"). THE THIRD PARTY SOFTWARE IS PROVIDED "AS IS",
+of the Platform the tool GraphSense as software, see www.graphsense.org
+("Third Party Software"). THE THIRD PARTY SOFTWARE IS PROVIDED "AS IS",
 WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
 LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
 PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
@@ -368,7 +367,7 @@ considered good cause under these General Terms:
 
 (a) breach of obligations by USERS under these General Terms.
 
-(b) USERS are in delay with payment obligations resulting from Liceses
+(b) USERS are in delay with payment obligations resulting from Licenses
 despite receiving a reminder and a grace period of 1 (one) week.
 
 (c) harm to the reputation of IKNAIO caused by action or use of the
@@ -408,7 +407,7 @@ resulting from the business relationship, in particular for the
 administration, billing, data backup and improvement of Services, with
 the aid of automation. For the specific use of the data, reference is
 made to the information on data protection in the IKNAIO's privacy
-policy under /privacy/.
+policy under /privacy/.
 
 
 ## 14. Notifications and Information Sharing
@@ -433,7 +432,7 @@ systemically important or technical information cannot be revoked.
 ## 15. Online Dispute Resolution
 
 The European Commission provides a platform for online dispute
-resolution under  http://ec.europa.eu/consumers/odr/. We are neither
+resolution under https://ec.europa.eu/consumers/odr/. We are neither
 obliged nor willing to participate in a dispute settlement procedure
 before a consumer arbitration board.
 
