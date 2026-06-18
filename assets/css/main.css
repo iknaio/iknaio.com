@@ -609,6 +609,7 @@ hr {
     flex-direction: row;
     align-items: center;
     gap: var(--spacing-lg);
+    margin-left: auto;
     padding: 0;
     border-top: none;
     overflow: visible;
@@ -708,6 +709,39 @@ hr {
 
 .nav-cta:hover {
   opacity: 0.9;
+}
+
+/* App CTA: always visible (incl. mobile), sits in the top bar next to the toggle */
+.nav .nav-app-cta {
+  display: inline-flex;
+  font-size: 14px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-left: auto;
+  margin-right: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .nav .nav-app-cta {
+    order: 1;
+    margin-left: var(--spacing-md);
+    margin-right: 0;
+  }
+}
+
+/* Small phones: shrink logo + compact the app CTA so logo, button and
+   the hamburger toggle all fit on one row without pushing the toggle off-screen. */
+@media (max-width: 479px) {
+  .nav-logo img {
+    width: 140px;
+    height: auto;
+  }
+
+  .nav .nav-app-cta {
+    font-size: 13px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    margin-right: var(--spacing-xs);
+  }
 }
 
 /* Hamburger Toggle */
