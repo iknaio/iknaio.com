@@ -429,12 +429,10 @@ consent can be revoked by USERS at any time. Consent to the receipt of
 systemically important or technical information cannot be revoked.
 
 
-## 15. Online Dispute Resolution
+## 15. Consumer Dispute Resolution
 
-The European Commission provides a platform for online dispute
-resolution under https://ec.europa.eu/consumers/odr/. We are neither
-obliged nor willing to participate in a dispute settlement procedure
-before a consumer arbitration board.
+IKNAIO is neither obliged nor willing to participate in a dispute
+settlement procedure before a consumer arbitration board.
 
 
 ## 16. Applicable Law
