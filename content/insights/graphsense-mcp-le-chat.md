@@ -181,7 +181,7 @@ The instructions do real work here. Without them, the model improvises, but with
 
 ## Where this fits, and where it doesn't
 
-The MCP server is a third way in, not a replacement. The honest one-line guide: reach for **[Pathfinder](/insights/iknaio-new-pathfinder-2-0-advancing-cryptoasset-tracing-methods/)** when the question is visual and you need to *see* the graph, the **[`graphsense` CLI](/insights/graphsense-commandline/)** when the work is reproducible and bulk, and the **MCP server** when you'd rather just *ask*, or have an agent ask on your behalf.
+The MCP server is a third way in, not a replacement. The honest one-line guide: reach for **[Pathfinder]({{< ref "iknaio-new-pathfinder-2-0-advancing-cryptoasset-tracing-methods.md" >}})** when the question is visual and you need to *see* the graph, the **[`graphsense` CLI]({{< ref "graphsense-commandline.md" >}})** when the work is reproducible and bulk, and the **MCP server** when you'd rather just *ask*, or have an agent ask on your behalf.
 
 So it's worth being clear about what the MCP path is *not* good at:
 

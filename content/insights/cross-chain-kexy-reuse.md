@@ -60,7 +60,7 @@ Using this technique, the authors were able to cluster **497,289 Ethereum addres
 
 ## How This Is Implemented in Iknaio
 
-The methods described in this paper are not theoretical — they form the basis for Iknaio's cross-chain address clustering capabilities, available since our [Release 25.09](../tracing-dexs-bridges-cross-chain-clusters/).
+The methods described in this paper are not theoretical — they form the basis for Iknaio's cross-chain address clustering capabilities, available since our [Release 25.09]({{< ref "tracing-dexs-bridges-cross-chain-clusters.md" >}}).
 
 In Iknaio's platform, cross-chain clustering works as follows:
 
