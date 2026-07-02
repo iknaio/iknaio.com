@@ -13,7 +13,7 @@ Eighteen months ago we wrote about [connecting cases]({{< ref "improving-cryptoa
 
 CaseConnect was our answer: a tool that surfaces those connections so agencies can pool what they know instead of duplicating effort. Since then, more agencies have added more cases, and the connection network has grown with them. That growth also taught us something about the interface itself: the original, graph-first way of exploring case connections was visually appealing, but it wasn't always the most efficient route to an answer.
 
-So we redesigned it. **CaseConnect 3.0** doesn't throw away the graphical representation (it's still there), but it shifts it into the background and builds the interface around the use cases we actually see in the field: quickly finding the connections for the cases that matter, and stepping back to see the bigger trends in the data, such as how cases and connections have grown over time, which is a clear signal of how well the approach is working. In this blog post we walk you through the new interface: how to create cases and how to inspect case connections.
+So we redesigned it. **CaseConnect 3.0** doesn't throw away the graphical representation (it's still there), but it shifts it into the background and builds the interface around the use cases we actually see in the field: quickly finding the connections for the cases that matter, and stepping back to see the bigger trends in the data, such as how cases and connected cases have grown over time, which is a clear signal of how well the approach is working. In this blog post we walk you through the new interface: how to create cases and how to inspect case connections.
 
 <!-- PLACEHOLDER NUMBERS — from internal TEST system (snapshot 2026-06-30), MUST be replaced with confirmed production figures before publishing. -->
 <div style="border:2px solid #e02424; background:rgba(224,36,36,0.12); color:#e02424; padding:1rem 1.25rem; border-radius:8px; margin:1.5rem 0; font-weight:700;">⚠️ DRAFT — TEST DATA. The figures in the next paragraph (shown in red) come from our internal test system and MUST be replaced with confirmed production figures before publishing.</div>
@@ -82,13 +82,13 @@ Instead of opening cases individually to discover that two of them overlap, the 
 
 ## Watching the network grow
 
-The last addition is one we're especially happy with, because it makes the core idea of CaseConnect visible. The interface now charts how the **number of cases and the number of connections have grown over time**.
+The last addition is one we're especially happy with, because it makes the core idea of CaseConnect visible. The interface now charts how the **number of cases and the number of connected cases have grown over time**.
 
-Every case an agency adds is checked against the cases it can actually see, which is governed by zone visibility: CaseConnect doesn't automatically check against the entire database, and it's up to the participants to make their cases visible to one another. Within that shared scope, the connection count can grow faster than the case count, since a single new case may link to several existing ones. Seeing those two curves side by side makes the network effect concrete: the tool gets more useful the more it's used, and the growth chart is the proof.
+Every case an agency adds is checked against the cases it can actually see, which is governed by zone visibility: CaseConnect doesn't automatically check against the entire database, and it's up to the participants to make their cases visible to one another. Within that shared scope, the share of cases that connect to at least one other case tends to climb as the network grows, since each case you add has more existing cases to match against. Seeing the two curves side by side, the total number of cases and the number of connected cases, makes the network effect concrete: the tool gets more useful the more it's used, and the growth chart is the proof.
 
-<div class="figure-center"><img src="/images/insights/iknaio-caseconnect-3/08-growth-over-time.png" alt="Case and connection growth over time" loading="lazy"></div>
+<div class="figure-center"><img src="/images/insights/iknaio-caseconnect-3/08-growth-over-time.png" alt="Case and connected-case growth over time" loading="lazy"></div>
 
-It also gives the participants a powerful way to communicate the vision and bring more people on board: the growth curves are concrete proof that the more cases everyone contributes, the more connections are found for all of them. That makes them an easy argument for getting the next agency to join.
+It also gives the participants a powerful way to communicate the vision and bring more people on board: the growth curves are concrete proof that the more cases everyone contributes, the more of everyone's cases end up connected. That makes them an easy argument for getting the next agency to join.
 
 ## Conclusion
 
