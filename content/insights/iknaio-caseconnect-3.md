@@ -1,6 +1,6 @@
 ---
 title: "CaseConnect 3.0: Spot connected cases faster"
-date: 2026-06-25
+date: 2026-07-08
 draft: true
 description: "A rebuilt CaseConnect: a faster, clearer interface for adding cases, seeing how they connect, and watching your shared case network grow over time."
 tags: ["caseconnect", "investigation", "law-enforcement", "ui", "product-update"]
@@ -66,7 +66,7 @@ Once a case has addresses, the interface shows you what it connects to. This is 
 
 <div class="figure-center"><img src="/images/insights/iknaio-caseconnect-3/05-case-connections-table.png" alt="A case and its connections in tabular form" loading="lazy"></div>
 
-The connected-cases table lists every case that links to the one you've selected, and crucially a **connection type** column spells out the reason for each one: a common address, a common cluster, or a common collector. This is the part that used to be hard. In CaseConnect 2.0, seeing *why* two cases connected meant looking across separate network views, one per heuristic, and reading it off the graph. Now it's a single column in a single list. The connection type also carries the strength of the signal, since a shared address is more direct than a shared collector, and having it spelled out means you can scan and sort by it instead of inferring it.
+The connected-cases table lists every case that links to the one you've selected, and crucially a **connection via** column spells out the reason for each one: a common address, a common cluster, or a common collector. This is the part that used to be hard. In CaseConnect 2.0, seeing *why* two cases connected meant looking across separate network views, one per heuristic, and reading it off the graph. Now it's a single column in a single list. The connection type shown there also carries the strength of the signal, since a shared address is more direct than a shared collector, and having it spelled out means you can scan and sort by it instead of inferring it.
 
 <div class="figure-center"><img src="/images/insights/iknaio-caseconnect-3/06-connection-types.png" alt="Connection types distinguished in the connections table" loading="lazy"></div>
 
