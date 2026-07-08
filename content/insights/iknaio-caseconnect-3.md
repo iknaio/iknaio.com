@@ -1,7 +1,6 @@
 ---
 title: "CaseConnect 3.0: Spot connected cases faster"
 date: 2026-07-08
-draft: true
 description: "A rebuilt CaseConnect: a faster, clearer interface for adding cases, seeing how they connect, and watching your shared case network grow over time."
 tags: ["caseconnect", "investigation", "law-enforcement", "ui", "product-update"]
 image: "images/insights/iknaio-caseconnect-3/cover.png"
@@ -15,10 +14,7 @@ CaseConnect was our answer: a tool that surfaces those connections so agencies c
 
 So we redesigned it. **CaseConnect 3.0** doesn't throw away the graphical representation (it's still there), but it shifts it into the background and builds the interface around the use cases we actually see in the field: quickly finding the connections for the cases that matter, and stepping back to see the bigger trends in the data, such as how cases and connected cases have grown over time, which is a clear signal of how well the approach is working. In this blog post we walk you through the new interface: how to create cases and how to inspect case connections.
 
-<!-- PLACEHOLDER NUMBERS — from internal TEST system (snapshot 2026-06-30), MUST be replaced with confirmed production figures before publishing. -->
-<div style="border:2px solid #e02424; background:rgba(224,36,36,0.12); color:#e02424; padding:1rem 1.25rem; border-radius:8px; margin:1.5rem 0; font-weight:700;">⚠️ DRAFT — TEST DATA. The figures in the next paragraph (shown in red) come from our internal test system and MUST be replaced with confirmed production figures before publishing.</div>
-
-The approach has since moved from study to daily practice. Today more than <span style="color:#e02424;font-weight:700;">3,300 active cases</span> from <span style="color:#e02424;font-weight:700;">26 participating agencies</span> are held in CaseConnect, and <span style="color:#e02424;font-weight:700;">almost half of them (49.9%)</span> connect to at least one other case across the shared zones.
+The approach has since moved from study to daily practice. Today CaseConnect holds around **1,700 active cases** from **13 participating agencies**, with more than **4,200 connections** between them: **44%** of the cases connect to at least one other case.
 
 ## Why connections still matter
 
