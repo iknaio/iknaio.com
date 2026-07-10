@@ -27,7 +27,13 @@
         <p class="capability-audience"><strong>For:</strong> {{ .audience }}</p>
         <p class="capability-solution">{{ .solution }}</p>
         {{ with .tools }}
-        <p class="capability-tools"><strong>Includes:</strong> {{ delimit . ", " }}</p>
+        {{ $platformTools := (site.GetPage "/platform").Params.tools }}
+        <p class="capability-tools"><strong>Includes:</strong>
+          {{ range $i, $tool := . }}{{ if $i }}, {{ end }}
+          {{- $slug := "" }}
+          {{- range $platformTools }}{{ if eq .name $tool }}{{ $slug = .slug }}{{ end }}{{ end }}
+          {{- if $slug }}<a href="{{ printf "platform/#%s" $slug | relURL }}">{{ $tool }}</a>{{ else }}{{ $tool }}{{ end }}
+          {{- end }}</p>
         {{ end }}
         {{ with .bullets }}
         <ul class="capability-bullets">
