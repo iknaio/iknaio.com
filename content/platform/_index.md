@@ -1,6 +1,6 @@
 ---
 title: "Platform"
-description: "An in-depth look at the Iknaio platform: Pathfinder, CaseConnect, QuickLock, and TaxReport."
+description: "An in-depth look at the Iknaio platform: Pathfinder, CaseConnect, QuickLock, and the API & MCP interface for automation and AI agents."
 
 hero:
   title: "Platform"
@@ -57,19 +57,18 @@ tools:
 
           The tool allows investigators to automatically generate comprehensive reports of these traces, speeding up the process and improving accessibility.
 
-#  - slug: "taxreport"
-#    name: "TaxReport"
-#    icon: "images/platform/icons/taxreport.svg"
-#    headline: "Automatically calculate your crypto taxes."
-#    tagline: "Calculate crypto taxes with ease. Our TaxReport tool handles jurisdiction-specific tax requirements, allowing you to generate detailed, reliable tax reports for any crypto asset address."
-#    rows:
-#      - layout: "image-left"
-#        image: "images/platform/taxreport.png"
-#        alt: "TaxReport crypto tax solution for calculating taxable gains and losses, generating detailed reports tailored to jurisdiction-specific regulations."
-#        text: |
-#          Iknaio TaxReport, powered by [BlockPit](https://www.blockpit.io/), the European leader in crypto tax computation, allows you to efficiently calculate taxable gains and losses for specific cryptoasset addresses.
-#
-#          You can also generate comprehensive tax reports with ease.
+  - slug: "api-mcp"
+    name: "API & MCP"
+    icon: "images/platform/icons/automator.svg"
+    headline: "Automate complex workflows; build agentic pipelines that scale."
+    rows:
+      - layout: "text-left"
+        image: "images/screenshots/screenshot-api.png"
+        alt: "Iknaio REST API documentation showing endpoints for address lookups and transaction tracing."
+        text: |
+          The Iknaio REST API provides programmatic access to the same data that powers Pathfinder. Automate address lookups, entity attribution, and transaction tracing, and integrate blockchain intelligence directly into your existing AML, case-management, and analytics stacks.
+
+          Through the Model Context Protocol (MCP) server, AI agents can connect to Iknaio data and tools, enabling agentic investigation pipelines that scale. Build workflows that trace funds, screen counterparties, and prepare reports — automatically.
 
 cta:
   title: "Ready to investigate crypto money flows.<br>More efficiently?"
