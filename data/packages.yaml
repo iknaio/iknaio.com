@@ -41,7 +41,7 @@ feature_rows:
     label: Pathfinder dashboard
     tooltip: "Visual investigation dashboard for tracing cryptoasset transactions."
   - key: "Full attribution data"
-    label: "Entity attribution database"
+    label: "Private attribution tags"
     tooltip: "Proprietary dataset that identifies wallet owners and entities across blockchains."
   - key: "API access"
     label: "API access"
@@ -61,7 +61,7 @@ comparison:
     free: true
     professional: true
     institutional: true
-  - feature: "Entity attribution database"
+  - feature: "Private attribution tags"
     free: false
     professional: true
     institutional: true
