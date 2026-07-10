@@ -18,7 +18,7 @@ We supported the investigation in its early phase. This post is a behind-the-sce
 
 The investigation began with a CSAM platform discovered on the dark web, called *Alice with Violence CP*. The platform was duplicated across more than 1,200 onion domains, each requiring a Bitcoin payment for full access. Together, those domains exposed 5,170 Bitcoin addresses used by the operators to receive payments.
 
-![](/images/insights/operation-alice/figure-1.png)
+![Redacted landing page of the Alice with Violence darknet platform, with content thumbnails blacked out above duplicated onion domains](/images/insights/operation-alice/figure-1.png)
 
 That number is the entire problem in one figure. Investigating one Bitcoin address by hand takes hours. Investigating 5,170 by hand is not an investigation, it is a project plan. Off-the-shelf forensic tools, the kind designed for ad-hoc, address-by-address case work, do not solve a problem of that shape. Manual workflows are inconsistent across analysts, hard to reproduce, and impossible to scale to the volumes real darknet operations now generate.
 
@@ -32,7 +32,7 @@ First, since we were dealing with Bitcoin addresses, we applied the well-known m
 
 Exploratory analysis of these addresses surfaced the most important finding at this stage: addresses were **reused across dark web sites**. An operator would only expose the same address on two different sites if they controlled both. On that assumption, we constructed a network in which each node is a site and each edge represents addresses shared between two sites.
 
-![](/images/insights/operation-alice/figure-2.jpeg)
+![Network graph of dark web sites linked by shared Bitcoin addresses, revealing dense clusters of related platforms](/images/insights/operation-alice/figure-2.jpeg)
 
 The picture that emerged was not one site but a whole network of platforms, each duplicated across thousands of onion domains. That alone justified action against all of them. From the extended and validated address dataset, we then automatically traced (i) incoming transactions to identify likely consumers and (ii) outgoing transactions to identify operator cash-out paths. We compiled two evidence packages for cryptoasset exchange data requests and handed them to the authorities.
 

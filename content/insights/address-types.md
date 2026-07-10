@@ -51,7 +51,7 @@ Two output types appear in transactions but do not use standard addresses:
 
 The chart below shows how the distribution of address types changed over time, based on a sample of roughly 21,000 transactions from the Iknaio database.
 
-![](/images/insights/address-types/figure-1.png)
+![Stacked area chart of address type shares by block height: P2PKH declines as P2SH, native segwit, and Taproot grow](/images/insights/address-types/figure-1.png)
 
 Legacy addresses dominate through the early years, P2SH grows steadily from around 2015, native segwit takes over from 2017-2018 onward, and Taproot appears after late 2021.
 

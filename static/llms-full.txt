@@ -1,0 +1,127 @@
+# Iknaio Cryptoasset Analytics — Full Reference
+
+> Iknaio Cryptoasset Analytics GmbH is a Vienna-based deep-tech company building cryptoasset investigation tools for law enforcement, compliance teams, and professional advisors. We trace blockchain transactions, generate forensic reports, and reveal cross-case connections — built on a decade of peer-reviewed research and the open-source GraphSense platform.
+
+This is the extended companion to https://iknaio.com/llms.txt with the full content of key pages inline. Canonical URLs are given per section.
+
+Iknaio is used by 2,500+ investigators across 23+ countries. Customers include law-enforcement agencies, banks and crypto exchanges (for AML screening), and lawyers, tax advisors, and security consultants. Infrastructure is EU-hosted with GDPR-compliant data handling.
+
+## Platform tools (https://iknaio.com/platform/)
+
+### Pathfinder — A simple yet powerful tracing tool for every investigator
+
+Iknaio Pathfinder provides a user-friendly service to track money flows across major cryptoasset networks, including Bitcoin, Ethereum, and Tether. Its simple interface enables monitoring of transactions at both individual and aggregated levels, giving a clear, comprehensive view of financial flows. Investigators can organize investigations by tagging addresses and highlighting critical transaction paths, and can export and share investigations and tags to collaborate on complex projects.
+
+Pathfinder is powered by the open-source GraphSense Dashboard (https://github.com/graphsense/graphsense-dashboard), enhanced with additional attribution tags from various sources, and integrates advanced features like CaseConnect and QuickLock.
+
+### CaseConnect — Collaborate with other investigators working on related cases
+
+CaseConnect links, tracks, and consolidates cases across an organization. By linking case details to cryptoasset addresses, investigators can track and consolidate investigations. When organization-wide sharing is enabled, colleagues can see which addresses are already under investigation and collaborate, ensuring coordinated efforts and eliminating duplicated work. Research behind CaseConnect found that over 40% of cyberfraud cases and roughly 97% of sextortion incidents share investigative connections.
+
+### QuickLock — Automatically trace and report fund flows
+
+QuickLock empowers investigators — even with basic cryptoasset knowledge — to perform the crucial first step of tracing victim funds to a cryptoasset exchange, and to automatically generate comprehensive reports of these traces. It removes repetitive manual analysis and makes forensic reporting accessible to novice investigators.
+
+### API & MCP — Automation and agentic pipelines
+
+REST API over the same data Pathfinder uses. Model Context Protocol (MCP) interface for connecting AI agents. Integrates into existing AML, case-management, and analytics stacks.
+
+### Tailored Reports
+
+Reports generated automatically and tailored to customer needs. Designed once, executed any time, with full provenance of all underlying data points.
+
+### Learning & Trainings
+
+Workshops and trainings for cryptoasset investigators: on-site or remote training for investigation, compliance, and reporting workflows, with curricula tailored to the team's tooling and case mix, designed and delivered by Iknaio research and product staff.
+
+## Solutions by audience (https://iknaio.com/solutions/)
+
+### Investigate — Law enforcement, prosecutors, financial intelligence units
+
+Manual tracing of cryptoasset flows does not scale, and existing commercial tools are prohibitively expensive for most public authorities. Pathfinder, QuickLock, and CaseConnect automate the entire investigation workflow — from initial address lookup to final forensic report. Trace transactions across 7+ blockchains with research-grade clustering; generate initial forensic reports in minutes (QuickLock); avoid duplicate work via cross-case deconfliction (CaseConnect); court-grade narrative reports written by Iknaio analysts (Tailored Reports).
+
+### Comply — Banks, crypto exchanges, payment service providers, regulators
+
+Iknaio follows a combined on- and off-chain screening approach tailored to customer needs. API-based screening integrates directly into existing AML stacks, enriching transaction monitoring with deep blockchain intelligence. Includes suspicious-activity reporting with full evidentiary chain and tailored compliance reports for regulator-facing submissions.
+
+### Advise — Lawyers, tax advisors, security consultants
+
+Affordable tiers with an intuitive UI for non-technical users; reproducible, defensible analysis suitable for client deliverables; on-demand expert reports for complex matters; workshops to upskill staff on cryptoasset investigation methods.
+
+## Packages (https://iknaio.com/packages/)
+
+Three tiers:
+
+- **Free** — for verified users (researchers, public-sector analysts, and other professionals with a legitimate use case; applicants are vetted). 1 seat. Includes Pathfinder with public attribution data.
+- **Professional** — for solo practitioners. 1 seat. Includes Pathfinder, private attribution tags, API access, MCP server, and QuickLock. Contact sales.
+- **Institutional** — for authorities and compliance teams. Unlimited seats — one price for the entire organization. Includes everything in Professional plus CaseConnect. Contact sales.
+
+### Packages FAQ
+
+Q: Is there a free trial?
+A: The Free tier gives you ongoing access to Pathfinder with public attribution data. For paid tiers, contact us to arrange a trial or personalized demo.
+
+Q: Can I upgrade my plan later?
+A: Yes. You can upgrade at any time and we will pro-rate the difference. Contact us to arrange the switch.
+
+Q: How does institutional licensing work?
+A: One license covers your entire organization — unlimited seats for investigators, analysts, and compliance officers. Package pricing is based on organization size and needs. Contact us for a tailored quote.
+
+Q: Is Iknaio GDPR-compliant, and where is customer data stored?
+A: Iknaio operates under EU data-protection rules and all customer investigation data is processed and stored within the EU. Institutional customers receive a Data Processing Agreement (DPA) as part of their licensing contract.
+
+Q: What does the vetting process for the Free tier involve?
+A: We verify that applicants are researchers, public-sector analysts, or other professionals with a legitimate use case, typically by confirming identity and institutional affiliation.
+
+## Why Iknaio
+
+Already using another analytics tool? Iknaio is the automation and scale layer on top — complementary, not competing.
+
+- **Research-backed**: 10+ years of peer-reviewed research; 26+ academic publications; every algorithm grounded in published methodology.
+- **Network-centric analysis**: Reveals patterns across entire networks rather than wallet-by-wallet, surfacing connections that isolated tools miss.
+- **API-first and open source**: Full scriptable API; open-source foundations under MIT license; results are reproducible.
+- **EU data sovereignty**: EU-hosted infrastructure, GDPR-compliant, no non-EU subpoena risk; data stays in Europe.
+
+## About (https://iknaio.com/about/)
+
+Iknaio was founded in 2021 as a spin-off of the Complexity Science Hub Vienna. Its roots go back to 2015, when Bernhard Haslhofer and Ross King initiated the GraphSense research project at AIT Austrian Institute of Technology. Over the following decade, publicly funded research turned GraphSense into one of the best-established open-source cryptoasset analytics platforms available today. Iknaio brings that research to operational customers who require tools built on transparent, auditable, scientific foundations.
+
+Mission: make cryptoasset investigations faster, deeper, and broader — producing evidence that holds up in court.
+
+Milestones:
+- 2015 — GraphSense research project initiated at AIT Austrian Institute of Technology
+- 2018 — First law enforcement agencies adopt GraphSense for investigations
+- 2021 — Iknaio founded as spin-off of the Complexity Science Hub Vienna
+- 2024 — Pathfinder 2.0 released with transaction-level tracing
+- 2025 — QuickTrace feature launched; 2,500+ registered users reached
+- 2026 — Operation Alice: Iknaio technology used in takedown of 373,000 darknet domains
+
+Founders: Karl Zettl (Co-Founder & CEO), Bernhard Haslhofer (Co-Founder & Research Lead, creator of GraphSense), Michael Fröwis (Development Lead).
+
+Security and compliance: All production systems are hosted on EU-based infrastructure in Austria and Germany; no data leaves the European Union. Iknaio processes only publicly available blockchain data, customer-contributed data under controlled engagement, or trusted third-party sources under explicit agreement. Working toward ISO 27001 certification.
+
+## Case study: Operation Alice (https://iknaio.com/insights/operation-alice/)
+
+Iknaio supported the takedown of a darknet CSAM platform: 373,000 darknet domains taken offline, ~440 suspects identified, 105 servers seized, 5,170 Bitcoin addresses analyzed. Quote from the Bavarian Central Office for the Prosecution of Cybercrime (ZCB): "We would never have conducted this investigation without Iknaio."
+
+## Technical research and methodology (https://iknaio.com/insights/)
+
+- Operation Alice (https://iknaio.com/insights/operation-alice/): Case study — supporting the takedown of a darknet CSAM platform.
+- Change Address Heuristics (https://iknaio.com/insights/change-detection/): How Iknaio identifies the change output of a Bitcoin transaction, and why it matters for tracing accuracy.
+- Bitcoin Address Types (https://iknaio.com/insights/address-types/): What Bitcoin address types reveal to an investigator and how Iknaio uses them.
+- CoinJoin Detection (https://iknaio.com/insights/coinjoin-detection/): How Iknaio spots CoinJoin transactions and why that matters for blockchain analytics.
+- Blockchain C2 (https://iknaio.com/insights/blockchain-c2/): Detection of malware command-and-control channels operating over the blockchain.
+- Cross-chain key reuse (https://iknaio.com/insights/cross-chain-kexy-reuse/): Linking activity across chains via reused cryptographic keys.
+- Tracing DEXs, bridges, cross-chain clusters (https://iknaio.com/insights/tracing-dexs-bridges-cross-chain-clusters/): Methods for following funds through decentralised exchanges and bridges.
+- Navigating the EU crypto regime (https://iknaio.com/insights/navigating-the-eu-crypto-regime/): Compliance overview for MiCA, TFR, and related EU regulations.
+- The crime landscape in DeFi (https://iknaio.com/insights/the-crime-landscape-in-defi/): Patterns of illicit activity in decentralised finance.
+- Improving cryptoasset investigations by connecting cases (https://iknaio.com/insights/improving-cryptoasset-investigations-by-connecting-cases/): The research behind CaseConnect.
+
+Full post content is available in the RSS feed: https://iknaio.com/index.xml
+
+## Contact
+
+- Demo requests and sales: https://iknaio.com/contact/ or contact@iknaio.com
+- Address: Iknaio Cryptoasset Analytics GmbH, Metternichgasse 8, 1030 Vienna, Austria
+- GitHub (GraphSense open source): https://github.com/graphsense
+- LinkedIn: https://www.linkedin.com/company/iknaio-cryptoasset-analytics-gmbh

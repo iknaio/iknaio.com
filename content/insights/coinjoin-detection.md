@@ -47,7 +47,7 @@ Here is a real CoinJoin as it appears in Pathfinder. The transaction panel shows
 
 <figure class="figure-center">
 
-![](/images/insights/coinjoin-detection/pathfinder-coinjoin-panel.png)
+![Pathfinder transaction panel labelling the transaction as Whirlpool CoinJoin at high confidence, with 5 senders and 5 receivers](/images/insights/coinjoin-detection/pathfinder-coinjoin-panel.png)
 
 </figure>
 
@@ -55,7 +55,7 @@ In the graph view, mixing transactions such as CoinJoins are marked with an **M*
 
 <figure class="figure-center">
 
-![](/images/insights/coinjoin-detection/pathfinder-coinjoin-graph.png)
+![Pathfinder graph view with the CoinJoin transaction marked M; each address sends and receives exactly 0.050 BTC](/images/insights/coinjoin-detection/pathfinder-coinjoin-graph.png)
 
 </figure>
 

@@ -18,7 +18,7 @@ VMRay's Labs team continuously analyzes new malware samples to identify emerging
 
 VMRay's dynamic analysis revealed the malware's behavior in detail: upon execution, it reached out to a smart contract deployed on the BSC network to retrieve C2 instructions. The sandbox captured the exact contract interaction, including the ABI function call the malware used to fetch its command payload. This level of visibility is something that static analysis alone would not provide.
 
-![](/images/insights/blockchain-c2/figure-1.png)
+![VMRay sandbox network capture showing the malware's JSON-RPC eth_call request to a smart contract on the BSC Testnet](/images/insights/blockchain-c2/figure-1.png)
 
 The threat actor deployed this contract and periodically invoked its `update` function to push new encoded command sequences. Notably, the contract was deployed on the BSC Testnet, a testing environment where gas fees are paid with freely available testnet BNB rather than real tokens. This means that on the BSC side, there is no direct financial trail from gas payments. However, the operational infrastructure behind the contract still required real funding elsewhere, and that is where the money trail begins.
 
@@ -34,7 +34,7 @@ By pivoting the investigation to the Ethereum mainnet, Iknaio uncovered a trail 
 
 On the Ethereum chain, Iknaio's analysis revealed that the funding address had received funds from another address with direct connections to a well-known cryptocurrency exchange. The investigation showed that this address both received funds from and sent funds to exchange-controlled addresses. Additional on-chain activity suggested the purchase of BNB tokens, likely used to fund the C2 operations on BSC.
 
-![](/images/insights/blockchain-c2/figure-2.png)
+![Ethereum transaction graph linking the suspect address to the funding address and exchange-tagged addresses](/images/insights/blockchain-c2/figure-2.png)
 
 Regulated exchanges operating under Know Your Customer (KYC) and Anti-Money Laundering (AML) regulations are required to collect personally identifiable information on their users. These exchange connections therefore represent potential investigative leads. It is worth noting, however, that KYC processes are not infallible: accounts may have been opened with stolen or fabricated identity documents, and the level of verification varies between exchanges and jurisdictions. Obtaining actual user data also requires formal legal process, which can involve cross-border cooperation and significant lead times. Nonetheless, the identified exchange interactions provide law enforcement with a concrete starting point for further investigation.
 
