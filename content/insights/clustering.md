@@ -1,22 +1,22 @@
 ---
-title: "Clustering all of Bitcoin on a laptop"
+title: "Multi-input clustering all of Bitcoin on a laptop"
+slug: "multi-input-clustering-bitcoin-on-a-laptop"
 date: 2026-07-20
 author: "Thomas Niedermayer"
 description: "The multi-input clustering engine behind Iknaio is now a stand-alone PyPI package. Together with a Delta Lake and DuckDB it clusters all 1.4 billion Bitcoin transactions on an ordinary laptop."
 tags: ["clustering", "bitcoin", "open-source"]
-image: "images/insights/clustering/cover.png"
-posttype: "insight"
+posttype: "tech-deep-dive"
 ---
 
 Address clustering is a widely used technique in UTXO blockchain analytics. It groups addresses so they can be analyzed together, which helps to make sense of cases, get a better overview and save time. Inside the engine behind Iknaio, this step used to live deep in a data center, next to a Spark cluster and a Cassandra database. Its core is now available as a stand-alone package on PyPI, [graphsense-clustering](https://pypi.org/project/graphsense-clustering/), an efficient implementation written in Rust with Python bindings.
 
-This post introduces the multi-input heuristic and the caution it comes with, follows it to connected components and the data structure that computes them, and then runs the complete pipeline over the Bitcoin transaction history, 1.4 billion transactions, on an ordinary laptop. The code itself is chain-agnostic, the same steps apply to other UTXO based blockchains such as Litecoin, Zcash or Bitcoin Cash.
+This post introduces the multi-input heuristic, shows how computing its clusters reduces to finding connected components, and then runs the complete pipeline over the Bitcoin transaction history, 1.4 billion transactions, on an ordinary laptop. The code itself is chain-agnostic, the same steps apply to other UTXO based blockchains such as Litecoin, Zcash or Bitcoin Cash.
 
 ## What multi-input clustering is
 
-When a transaction spends coins from several addresses at once, whoever created it was able to sign for all of those addresses. With a certain ambiguity (see [1]), the input addresses of such a transaction belong to the same actor. Applied transitively over the whole chain, this rule partitions the address space into clusters. If one transaction spends from addresses A and B, and a later one spends from B and C, then A, B and C form one cluster. This is the multi-input heuristic, the most widely used clustering rule in UTXO analytics, and the observation behind it is as old as Bitcoin itself. The whitepaper already notes that multi-input transactions "necessarily reveal that their inputs were owned by the same owner" [2], a note that is of course a bit outdated by now.
+When a transaction spends coins from several addresses at once, whoever created it was able to sign for all of those addresses. With a certain ambiguity [[1]](https://arxiv.org/pdf/2607.07414), the input addresses of such a transaction belong to the same actor. Applied transitively over the whole chain, this rule partitions the address space into clusters. If one transaction spends from addresses A and B, and a later one spends from B and C, then A, B and C form one cluster. This is the multi-input heuristic, the most widely used clustering rule in UTXO analytics, and the observation behind it is as old as Bitcoin itself. The whitepaper already notes that multi-input transactions "necessarily reveal that their inputs were owned by the same owner" [[2]](https://bitcoin.org/bitcoin.pdf).
 
-A cluster produced this way is not automatically an actor, but in many cases treating the group as one unit can help make analytics scale better. The most immediate payoff is tag propagation: a tag attached to one address, say the deposit address of an exchange, extends to every address in the same cluster, so a single piece of ground truth annotates millions of addresses at once.
+A cluster produced this way is not automatically an actor, but in many cases treating the group as one unit can help make analytics scale better. One payoff is tag propagation: a tag attached to one address, say the deposit address of an exchange, extends to every address in the same cluster, so a single piece of ground truth annotates millions of addresses at once. In the Iknaio production system this propagation is not applied blindly, tags spread through a cluster only in well vetted circumstances. The other payoff is seeing more of the actor at once. Many addresses are short lived, some used just a single time, and the cluster reassembles them into a partial reconstruction of the underlying wallet. Behavioural patterns that no single address reveals become visible at that level.
 
 The reason for caution is that some transactions are built to break the assumption. CoinJoins, transactions that multiple parties construct cooperatively, place inputs of unrelated actors side by side, and PayJoins do the same between sender and recipient. A single undetected transaction of that kind glues together clusters that have nothing to do with each other.
 
@@ -26,7 +26,7 @@ Computing the clusters is a graph problem. Take every input address as a node an
 
 The classic answer is the Union-Find structure, also known as a disjoint-set forest. It maintains, for every node, a pointer toward a representative of its component. Looking up a node's component and merging two components both cost near-constant time, and processing a transaction simply means merging the components of its input addresses. One pass over all transactions produces the complete clustering.
 
-Union-Find also dictates the shape of the data it wants, an array with one slot per node. That is why the pipeline below first maps every address string to a dense integer id. With ids as array indices, a lookup is a plain memory access instead of a string comparison, and 963.7 million addresses fit into a single uint32 array of under 4 GB. The address strings, tens of gigabytes of them, stay outside the clustering entirely and come back only at the very end.
+Union-Find would work with address strings as node labels, but keeping it fast calls for an array with one slot per node. That is why the pipeline below first maps every address string to a dense integer id. With ids as array indices, a lookup is a plain memory access instead of a string comparison, and 963.7 million addresses fit into a single uint32 array of under 4 GB. The address strings, tens of gigabytes of them, stay outside the clustering entirely and come back only at the very end.
 
 ## A Rust core with Python bindings
 
@@ -56,38 +56,40 @@ uv run minimal_example.py
 {'address_id': [1, 2, 3, 4, 5, 7], 'cluster_id': [1, 1, 1, 4, 4, 1]}
 ```
 
-Each inner list holds the input address ids of one transaction. The third transaction spends from addresses 2 and 7, so address 7 lands in the same cluster as 1, 2 and 3, the transitive rule at work. `get_mapping_min` labels every cluster with the smallest address id it contains, the same convention the Iknaio production pipeline uses, and `skip_singletons=True` keeps only addresses that actually share a cluster with at least one other address. For real chains the engine also ingests Arrow batches directly, without copying them into Python objects, which is how the rest of this post feeds it.
+Each inner list holds the input address ids of one transaction. The third transaction spends from addresses 2 and 7, so address 7 lands in the same cluster as 1, 2 and 3, the transitive rule at work. `get_mapping_min` labels every cluster with the smallest address id it contains, the same convention the Iknaio production pipeline uses, and `skip_singletons=True` keeps only addresses that actually share a cluster with at least one other address.
 
 ## Clustering the full Bitcoin blockchain
 
-The requirements are 32 GB of RAM, about 1 TB of storage and access to a Bitcoin node. The full transaction table weighs 831 GB, the pipeline uses around 100 GB of working disk next to it, and everything below ran on a laptop with an Intel i7-1365U and 32 GB RAM. Both big items are negotiable. The storage shrinks to the 100 GB of working disk when the table lives on remote storage, because the pipeline reads only the columns clustering needs from wherever the table sits, and it drops further when just the input data of a transactions table is downloaded in the first place. The node becomes unnecessary when the raw data comes from a public source instead, for example the [Bitcoin dataset on Google BigQuery](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=crypto_bitcoin&t=inputs&page=table).
+Everything below ran on a laptop with an Intel i7-1365U and 32 GB of RAM, with the full 831 GB transaction table on a local disk and access to a Bitcoin node. The minimal setup is smaller. No step of the pipeline needs more than a 12 GB memory budget, so a machine with 16 GB of RAM should get through as well. The machine also does not have to hold the whole table. It can live on a NAS or an object store, since the pipeline reads only the columns clustering needs from wherever the table sits, which leaves around 100 GB of temporary disk space as the local requirement.
 
-Scaling the minimal example to 1.4 billion transactions is a four step pipeline.
+Scaling the minimal example to 1.4 billion transactions is a four step pipeline. The times are from the Bitcoin run on the laptop above.
 
-| Step | What happens | Tool |
-|---|---|---|
-| 1 &middot; Ingest | Raw transactions from the node into a Delta Lake | graphsense-cli |
-| 2 &middot; Map | Input addresses to dense uint32 ids | DuckDB |
-| 3 &middot; Cluster | One pass of Union-Find over all transactions | graphsense-clustering |
-| 4 &middot; Resolve | Cluster ids back to address strings | DuckDB |
+| Step | What happens | Tool | Time |
+|---|---|---|---|
+| 1 &middot; Ingest | Raw transactions from the node into a Delta Lake | graphsense-cli | about a week |
+| 2 &middot; Map | Input addresses to dense uint32 ids | DuckDB | about 3 h |
+| 3 &middot; Cluster | One pass of Union-Find over all transactions | graphsense-clustering | under 2 min |
+| 4 &middot; Resolve | Cluster ids back to address strings | DuckDB | about 25 min |
+
+The week in the first row covers syncing the node and ingesting the chain, both one-off costs. Once the Delta Lake exists, the analytics itself fits into an afternoon.
 
 ### Step 1: raw data in a Delta Lake
 
-GraphSense ingests raw blockchain data from a node into a Delta Lake, an open table format on top of Parquet files. Ingest is one command of [graphsense-lib](https://github.com/graphsense/graphsense-lib), installed with its ingest extra (`uv add "graphsense-lib[ingest]"`), plus a small config file that points it at the node and the output directory. Any fully synced Bitcoin Core node works as the source, as long as it is not pruned, since the ingest reads the whole chain from block 0. The very first run bootstraps the table in overwrite mode:
+GraphSense ingests raw blockchain data from a node into a Delta Lake, an open table format on top of Parquet files. Ingest is one command of [graphsense-lib](https://github.com/graphsense/graphsense-lib), installed with its ingest extra (`uv add "graphsense-lib[ingest]"`), plus a small config file that points it at the node and the output directory. Any fully synced Bitcoin Core node works as the source, as long as it is not pruned (a pruned node discards old blocks after validating them, and the ingest needs every block from block 0). The very first run bootstraps the table in overwrite mode, since append expects an existing table:
 
 ```bash
 graphsense-cli ingest from-node -e prod -c btc --sinks delta --write-mode overwrite --start-block 0
 ```
 
-Every later run drops the two write flags and falls back to the default append mode, which continues from where the last run stopped. A full Bitcoin sync from the node takes on the order of a week. For a smaller ingest, the `--end-block` flag stops at a chosen block height, which is enough to test the whole pipeline on a slice of the chain.
+Later runs drop the two write flags and fall back to the default append mode, which continues from where the last run stopped. A full Bitcoin sync from the node takes on the order of a week, depending heavily on the connection and the performance of the node. The pace also drops as the ingest progresses, since the early years of the chain consist of nearly empty blocks while later ones come full. For a smaller ingest, the `--end-block` flag stops at a chosen block height, which is enough to test the whole pipeline on a slice of the chain.
 
-The result is a `transaction` table with one row per transaction and the input addresses nested inside each row. For Bitcoin the table holds 1.4 billion transactions and takes up 831 GB. A table of that size can live on a local disk, a NAS or an object store.
+The result is a `transaction` table with one row per transaction and the input addresses nested inside each row. For Bitcoin the table holds 1.4 billion transactions and takes up 831 GB at the time of writing. A table of that size can live on a local disk, a NAS or an object store.
 
 ### Step 2: map addresses to integers with DuckDB
 
-The dense ids the Union-Find wants do not exist yet, the chain only knows address strings. Before assigning them, the table has to shrink, because clustering needs exactly one thing from a transaction, its input addresses. Parquet stores every column separately, including the leaves of nested columns, so a reader can request just that one and skip hashes, scripts, amounts and everything else in the files. On the Bitcoin table this column accounts for 66.6 GB, 8 percent of the total size.
+The dense ids the Union-Find wants do not exist yet, the chain only knows address strings. Before assigning them, the table has to shrink, because clustering needs exactly one thing from a transaction, its input addresses. Parquet stores every column separately, so a reader can request just the input addresses and skip hashes, scripts, amounts and everything else in the files. On the Bitcoin table the input addresses account for 66.6 GB, 8 percent of the total size.
 
-From here on the pipeline runs on DuckDB (`uv add duckdb`) next to the packages already installed. The reduce step walks the table file by file, reads only that column, and keeps one row of distinct input addresses per transaction, numbered with a running transaction key. Transactions with fewer than two distinct input addresses, coinbase transactions among them, contribute nothing to clustering and are dropped on the fly:
+From here on the pipeline runs on DuckDB (`uv add duckdb`) next to the packages already installed. The reduce step keeps one row of distinct input addresses per transaction, numbered with a running transaction key. Transactions with fewer than two distinct input addresses contribute nothing to clustering and are dropped on the fly:
 
 ```python
 import duckdb
@@ -171,11 +173,11 @@ con.execute(
 )
 ```
 
-The ids come from Parquet row numbers instead of a window function over the full address set, and each bucket starts its id range where the previous one stopped, so the 16 partial mappings concatenate into one dense id space. The whole mapping takes 39 minutes.
+The ids come from Parquet row numbers instead of a window function over the full address set, and each bucket starts its id range where the previous one stopped, so the 16 partial mappings concatenate into one dense id space. The whole mapping takes 39 minutes. One caveat for anyone re-running the pipeline, the DISTINCT scan has no defined order, so a fresh run can assign different address ids and therefore different cluster labels, while the grouping of addresses into clusters stays exactly the same.
 
 ### Step 3: run the clustering
 
-The clustering itself looks just like the minimal example, except that DuckDB streams the id lists as Arrow batches and the Rust engine reads each batch in place:
+The clustering itself looks just like the minimal example, except that DuckDB streams the id lists as Arrow batches, an in-memory column format both tools share, so the Rust engine reads each batch in place without copying it into Python objects:
 
 ```python
 import duckdb
@@ -251,13 +253,13 @@ That is the entire pipeline. The final Parquet files map each clustered address 
 | Resolving ids back | 24 min |
 | Clusters | 116.5 million |
 
-Once the reduced lists exist, the laptop needs about an hour to cluster all of Bitcoin, and the clustering step itself is a footnote within that. The result also holds up against the production system. The largest cluster spans 40.7 million addresses and the Iknaio platform identifies the corresponding entity as the exchange Coinbase, and Binance appears among the five largest clusters with sizes matching the platform almost address for address.
+Once the reduced lists exist, the laptop needs about an hour to cluster all of Bitcoin, and the clustering step itself is a footnote within that. We compared the result for correctness with the legacy clustering approach and found no deviations. The largest cluster spans 40.7 million addresses and the Iknaio platform identifies that cluster as the exchange Coinbase, and Binance appears among the five largest clusters.
 
 ## Where the limits are
 
 The pipeline above reproduces the multi-input step of the production system, not the whole platform. The Iknaio platform additionally detects CoinJoins before they can distort clusters, keeps clusters up to date as new blocks arrive, and enriches them with tags, statistics and cross-chain links. The heuristic itself also stays a heuristic. Custodial wallets can merge many users into one cluster, and an actor who never co-spends across addresses stays split.
 
-Beyond the storage that holds the Delta Lake, the run stays well within laptop territory, with around 100 GB of working disk and a 12 GB memory budget. What sets the pace is the throughput to the table's storage and a few hours of processing time. Cluster-level views of all major chains, kept continuously up to date, are available in the [Iknaio platform](https://app.iknaio.com).
+Beyond the storage that holds the Delta Lake, the run stays well within laptop territory, with around 100 GB of temporary disk space and a 12 GB memory budget. What sets the pace is the throughput to the table's storage and a few hours of processing time. Cluster-level views of all major chains, kept continuously up to date, are available in the [Iknaio platform](https://app.iknaio.com).
 
 ## References
 
