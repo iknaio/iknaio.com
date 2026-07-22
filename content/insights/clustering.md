@@ -4,6 +4,7 @@ date: 2026-07-20
 author: "Thomas Niedermayer"
 description: "The multi-input clustering engine behind Iknaio is now a stand-alone PyPI package. Together with a Delta Lake and DuckDB it clusters all 1.4 billion Bitcoin transactions on an ordinary laptop."
 tags: ["clustering", "bitcoin", "open-source"]
+image: "images/insights/clustering/cover.png"
 posttype: "insight"
 ---
 
