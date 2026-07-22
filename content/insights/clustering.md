@@ -60,7 +60,7 @@ Each inner list holds the input address ids of one transaction. The third transa
 
 ## Clustering the full Bitcoin blockchain
 
-Everything below ran on a laptop with an Intel i7-1365U and 32 GB of RAM, with the full 831 GB transaction table on a local disk and access to a Bitcoin node. The minimal setup is smaller. No step of the pipeline needs more than a 12 GB memory budget, so a machine with 16 GB of RAM should get through as well. The machine also does not have to hold the whole table. It can live on a NAS or an object store, since the pipeline reads only the columns clustering needs from wherever the table sits, which leaves around 100 GB of temporary disk space as the local requirement.
+Everything below ran on a laptop with an Intel i7-1365U and 32 GB of RAM, with the full 831 GB transaction table on a local disk and access to a Bitcoin node. The machine does not have to hold the whole table. The table can also live on a NAS or an object store, since the pipeline reads only the columns clustering needs from wherever it sits, which leaves around 100 GB of temporary disk space as the local requirement.
 
 Scaling the minimal example to 1.4 billion transactions is a four step pipeline. The times are from the Bitcoin run on the laptop above.
 
