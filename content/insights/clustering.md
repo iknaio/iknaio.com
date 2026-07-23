@@ -13,7 +13,7 @@ Address clustering is a widely used technique for analyzing UTXO blockchains suc
 
 Previously, this computational step was buried deep inside our fairly complex Spark computation job. Now it is available as a stand-alone package on PyPI: [graphsense-clustering](https://pypi.org/project/graphsense-clustering/), an efficient implementation written in Rust with Python bindings.
 
-This post introduces the multi-input heuristic, shows how computing its clusters reduces to finding connected components, and then runs the complete pipeline over the entire Bitcoin transaction history (1.4 billion transactions) on an ordinary laptop. The code itself is chain-agnostic; the same steps apply to other UTXO-based blockchains such as Litecoin, Zcash, or Bitcoin Cash.
+This post introduces the multi-input heuristic, shows how computing its clusters reduces to finding connected components, and then runs the complete pipeline over the entire Bitcoin transaction history (1.4 billion transactions) on an ordinary laptop. The code itself is chain-agnostic, so the same steps apply to other UTXO-based blockchains such as Litecoin, Zcash, or Bitcoin Cash.
 
 ## What is the multi-input heuristic?
 
@@ -61,11 +61,11 @@ uv run minimal_example.py
 {'address_id': [1, 2, 3, 4, 5, 7], 'cluster_id': [1, 1, 1, 4, 4, 1]}
 ```
 
-Each inner list holds the input address ids of one transaction. The third transaction spends from addresses 2 and 7, so address 7 lands in the same cluster as 1, 2, and 3; this is the transitive rule at work. `get_mapping_min` labels every cluster with the smallest address id it contains (the same convention the Iknaio production pipeline uses). `skip_singletons=True` keeps only addresses that share a cluster with at least one other address.
+Each inner list holds the input address ids of one transaction. The third transaction spends from addresses 2 and 7, so address 7 lands in the same cluster as 1, 2, and 3. This is the transitive rule at work. `get_mapping_min` labels every cluster with the smallest address id it contains (the same convention the Iknaio production pipeline uses). `skip_singletons=True` keeps only addresses that share a cluster with at least one other address.
 
 ## Clustering the full Bitcoin blockchain
 
-Everything below ran on a laptop with an Intel i7-1365U and 32 GB of RAM. The full 831 GB transaction table sat on a local disk, and the machine had access to a Bitcoin node. The machine does not have to hold the whole table. The table can also live on a NAS or an object store; the pipeline reads only the columns clustering needs from wherever the table sits. This leaves around 100 GB of temporary disk space as the local requirement.
+Everything below ran on a laptop with an Intel i7-1365U and 32 GB of RAM. The full 831 GB transaction table sat on a local disk, and the machine had access to a Bitcoin node. The machine does not have to hold the whole table. The table can also live on a NAS or an object store, because the pipeline reads only the columns clustering needs from wherever the table sits. This leaves around 100 GB of temporary disk space as the local requirement.
 
 Scaling the minimal example to 1.4 billion transactions is a four-step pipeline. The times are from the Bitcoin run on the laptop above.
 
@@ -92,7 +92,7 @@ The result is a `transaction` table with one row per transaction and the input a
 
 ### Step 2: map addresses to integers with DuckDB
 
-The dense ids the Union-Find wants do not exist yet. The chain only knows address strings. Before those ids can be assigned, the table has to shrink, because clustering needs exactly one thing from a transaction: its input addresses. Parquet stores every column separately, so a reader can request just the input addresses and skip hashes, scripts, amounts, and everything else in the files. On the Bitcoin table the input addresses account for 66.6 GB (8 percent of the total size).
+The dense ids the Union-Find wants do not exist yet, because the chain only knows address strings. Before those ids can be assigned, the table has to shrink, because clustering needs exactly one thing from a transaction: its input addresses. Parquet stores every column separately, so a reader can request just the input addresses and skip hashes, scripts, amounts, and everything else in the files. On the Bitcoin table the input addresses account for 66.6 GB (8 percent of the total size).
 
 From here on the pipeline runs on DuckDB (`uv add duckdb`) next to the packages already installed. The reduce step keeps one row of distinct input addresses per transaction, numbered with a running transaction key. Transactions with fewer than two distinct input addresses contribute nothing to clustering and are dropped on the fly:
 
@@ -206,7 +206,7 @@ mapping = clustering.get_mapping_min(skip_singletons=True)
 pq.write_table(pa.Table.from_batches([mapping]), "data/address_clusters.parquet")
 ```
 
-The Union-Find holds a single uint32 per address, so even a chain with a billion addresses needs only a few GB of RAM for the array itself. Clustering Bitcoin (1.65 billion input references across 229.8 million transactions) took 78 seconds, with peak memory at 11.7 GB, most of it DuckDB streaming the batches.
+The Union-Find holds a single uint32 per address, so even a chain with a billion addresses needs only a few GB of RAM for the array itself. Clustering Bitcoin (1.65 billion input references across 229.8 million transactions) took 78 seconds, with peak memory at 11.7 GB.
 
 ### Step 4: map cluster ids back to addresses
 
@@ -258,8 +258,7 @@ That is the entire pipeline. The final Parquet files map each clustered address 
 | Resolving ids back | 24 min |
 | Clusters | 116.5 million |
 
-Once the reduced lists exist, the laptop needs about an hour to cluster all of Bitcoin, and the clustering step itself is a footnote within that. We compared the result for consistency with the legacy clustering approach and found no deviations. The largest cluster spans 40.7 million addresses; the Iknaio platform identifies it as the exchange Coinbase. Binance also appears among the five largest clusters.
-
+Once the reduced lists exist, the laptop needs about an hour to cluster all of Bitcoin, and the clustering itself contributes least to the runtime. The largest cluster spans 40.7 million addresses, and the Iknaio platform identifies it as the exchange Coinbase.
 ## Where the limits are
 
 The pipeline above reproduces the multi-input step of the production system, not the whole platform. The Iknaio platform also detects CoinJoins before they can distort clusters, keeps clusters up to date as new blocks arrive, and enriches them with tags, statistics, and cross-chain links. The heuristic itself stays a heuristic. Custodial wallets can merge many users into one cluster, and an actor who never co-spends across addresses stays split.
