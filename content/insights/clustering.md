@@ -1,7 +1,7 @@
 ---
 title: "Multi-input clustering all of Bitcoin on a laptop"
 slug: "multi-input-clustering-bitcoin-on-a-laptop"
-date: 2026-07-20
+date: 2026-07-24
 author: "Thomas Niedermayer"
 description: "The multi-input clustering engine behind Iknaio is now a stand-alone PyPI package. Together with a Delta Lake and DuckDB it clusters all 1.4 billion Bitcoin transactions on an ordinary laptop."
 tags: ["clustering", "bitcoin", "open-source"]
@@ -27,11 +27,11 @@ Handled and interpreted correctly, address clustering remains an extremely usefu
 
 ## Computing clusters
 
-Finding address clusters is a graph problem. Take every input address as a node, and let every multi-input transaction connect its input addresses to each other. The clusters produced by the heuristic are then exactly the [connected components](https://en.wikipedia.org/wiki/Component_(graph_theory)) of this graph. For Bitcoin, this graph comprises 963.7 million nodes reached through 1.65 billion input references, so the algorithm for finding the components must be chosen with care.
+Finding address clusters is a graph problem. Take every input address as a node, and let every multi-input transaction connect its input addresses to each other. The clusters produced by the heuristic are then exactly the [connected components](https://en.wikipedia.org/wiki/Component_(graph_theory)) of this graph. For Bitcoin, this graph comprises 970.3 million nodes reached through 1.66 billion input references, so the algorithm for finding the components must be chosen with care.
 
 The classic answer is the [Union-Find structure](https://en.wikipedia.org/wiki/Disjoint-set_data_structure), also known as a disjoint-set forest. It maintains, for every node, a pointer toward a representative of its component. Both looking up a node's component and merging two components take near-constant time. Processing a transaction therefore reduces to merging the components of its input addresses. A single pass over all transactions yields the complete clustering.
 
-Union-Find would work with address strings as node labels, but keeping it fast requires an array with one slot per node. The pipeline below therefore first maps every address string to a dense integer id. With ids as array indices, a lookup becomes a plain memory access instead of a string comparison. All 963.7 million addresses fit into a single uint32 array of under 4 GB. The address strings (tens of gigabytes of them) stay out of the clustering entirely and return only at the very end.
+Union-Find would work with address strings as node labels, but keeping it fast requires an array with one slot per node. The pipeline below therefore first maps every address string to a dense integer id. With ids as array indices, a lookup becomes a plain memory access instead of a string comparison. All 970.3 million addresses fit into a single uint32 array of under 4 GB. The address strings (tens of gigabytes of them) stay out of the clustering entirely and return only at the very end.
 
 ## A Rust core with Python bindings
 
@@ -65,7 +65,7 @@ Each inner list holds the input address ids of one transaction. The third transa
 
 ## Clustering the full Bitcoin blockchain
 
-Everything below ran on a laptop with an Intel i7-1365U and 32 GB of RAM. The full 831 GB transaction table sat on a local disk, and the machine had access to a Bitcoin node. The machine does not have to hold the whole table. The table can also live on a NAS or an object store, because the pipeline reads only the columns clustering needs from wherever the table sits. This leaves around 100 GB of temporary disk space as the local requirement.
+Everything below ran on a laptop with an Intel i7-1365U and 32 GB of RAM, with access to a Bitcoin node for the ingest. The full 832 GB transaction table can sit on a local disk, a NAS or an object store, since the pipeline reads only the columns clustering needs from wherever it lives. Next to the table, the pipeline needs around 150 GB of local disk space for intermediate and result files.
 
 Scaling the minimal example to 1.4 billion transactions is a four-step pipeline. The times are from the Bitcoin run on the laptop above.
 
@@ -74,7 +74,7 @@ Scaling the minimal example to 1.4 billion transactions is a four-step pipeline.
 | 1 &middot; Ingest | Raw transactions from the node into a Delta Lake | graphsense-cli | about a week |
 | 2 &middot; Map | Input addresses to dense uint32 ids | DuckDB | about 3 h |
 | 3 &middot; Cluster | One pass of Union-Find over all transactions | graphsense-clustering | under 2 min |
-| 4 &middot; Resolve | Cluster ids back to address strings | DuckDB | about 24 min |
+| 4 &middot; Resolve | Cluster ids back to address strings | DuckDB | about 5 min |
 
 The week in the first row covers syncing the node and ingesting the chain, both one-off costs. Once the Delta Lake exists, the analytics itself fits into an afternoon.
 
@@ -86,9 +86,9 @@ GraphSense ingests raw blockchain data from a node into a Delta Lake, an open ta
 graphsense-cli ingest from-node -e prod -c btc --sinks delta --write-mode overwrite --start-block 0
 ```
 
-Later runs drop the two write flags and fall back to the default append mode, which continues from where the last run stopped. A full Bitcoin sync from the node takes on the order of a week, depending heavily on the connection and the performance of the node. The pace also drops as the ingest progresses, since the early years of the chain consist of nearly empty blocks while later ones arrive full. For a smaller ingest, the `--end-block` flag stops at a chosen block height, which is enough to test the whole pipeline on a slice of the chain.
+Later runs drop the two flags and fall back to the default append mode, which continues from where the last run stopped. A full Bitcoin sync from the node takes on the order of a week, depending heavily on the connection and the performance of the node. The pace also drops as the ingest progresses, since the early years of the chain consist of nearly empty blocks while later ones arrive full. For a smaller ingest, the `--end-block` flag stops at a chosen block height, which is enough to test the whole pipeline on a slice of the chain.
 
-The result is a `transaction` table with one row per transaction and the input addresses nested inside each row. For Bitcoin, the table holds 1.4 billion transactions and takes up 831 GB at the time of writing.
+The result is a `transaction` table with one row per transaction and the input addresses nested inside each row. For Bitcoin, the table holds 1.4 billion transactions and takes up 832 GB at the time of writing.
 
 ### Step 2: map addresses to integers with DuckDB
 
@@ -126,9 +126,9 @@ for n, f in enumerate(sorted(DeltaTable("data/transaction").file_uris())):
     offset += rows
 ```
 
-What remains is 39 GB of address lists covering 229.8 million multi-input transactions, produced in a bit over two hours. The memory limit keeps DuckDB from claiming its default 80 percent of system RAM. Anything beyond 12 GB spills to the temp directory, and the rest of the machine stays usable. On a machine with more memory to spare, raising the limit speeds the queries up, since DuckDB then keeps intermediate results in RAM instead of spilling them to disk.
+What remains is 40 GB of address lists covering 231.4 million multi-input transactions, produced in a bit under three hours. The memory limit keeps DuckDB from claiming its default 80 percent of system RAM. Anything beyond 12 GB spills to the temp directory, and the rest of the machine stays usable. On a machine with more memory to spare, raising the limit speeds the queries up, since DuckDB then keeps intermediate results in RAM instead of spilling them to disk.
 
-DuckDB then assigns the ids. Deduplicating 1.65 billion address references into 963.7 million distinct addresses exceeds what a 12 GB memory budget handles in a single query. The mapping therefore splits the addresses into 16 hash buckets and processes them one at a time. Each bucket deduplicates its addresses, assigns dense uint32 ids from its own range, and swaps the ids into the transaction pairs. A last pass groups the pairs back into one id list per transaction:
+DuckDB then assigns the ids. Deduplicating 1.66 billion address references into 970.3 million distinct addresses exceeds what a 12 GB memory budget handles in a single query. The mapping therefore splits the addresses into 16 hash buckets and processes them one at a time. Each bucket deduplicates its addresses, assigns dense uint32 ids from its own range, and swaps the ids into the transaction pairs. A last pass groups the pairs back into one id list per transaction:
 
 ```python
 BUCKETS = 16
@@ -178,7 +178,7 @@ con.execute(
 )
 ```
 
-The ids come from Parquet row numbers instead of a window function over the full address set. Each bucket starts its id range where the previous one stopped, so the 16 partial mappings concatenate into one dense id space. The whole mapping took 39 minutes. One caveat for anyone re-running the pipeline: the DISTINCT scan has no defined order, so a fresh run can assign different address ids and therefore different cluster labels. The grouping of addresses into clusters stays exactly the same.
+The ids come from Parquet row numbers instead of a window function over the full address set. Each bucket starts its id range where the previous one stopped, so the 16 partial mappings concatenate into one dense id space. The whole mapping took 14 minutes. One caveat for anyone re-running the pipeline: the DISTINCT scan has no defined order, so a fresh run can assign different address ids and therefore different cluster labels. The grouping of addresses into clusters stays exactly the same.
 
 ### Step 3: run the clustering
 
@@ -206,7 +206,7 @@ mapping = clustering.get_mapping_min(skip_singletons=True)
 pq.write_table(pa.Table.from_batches([mapping]), "data/address_clusters.parquet")
 ```
 
-The Union-Find holds a single uint32 per address, so even a chain with a billion addresses needs only a few GB of RAM for the array itself. Clustering Bitcoin (1.65 billion input references across 229.8 million transactions) took 78 seconds, with peak memory at 11.7 GB.
+The Union-Find holds a single uint32 per address, so even a chain with a billion addresses needs only a few GB of RAM for the array itself. Clustering Bitcoin (1.66 billion input references across 231.4 million transactions) took 72 seconds, with peak memory at 12 GB.
 
 ### Step 4: map cluster ids back to addresses
 
@@ -225,7 +225,7 @@ con.execute("""
 """)
 ```
 
-At Bitcoin scale the one-shot join outgrows the memory budget, so the same query runs in eight slices of the id space, which stretches the step to 24 minutes:
+At Bitcoin scale the one-shot join outgrows the memory budget, so the same query runs in eight slices of the id space, which together take about 5 minutes:
 
 ```python
 SLICES = 8
@@ -248,22 +248,23 @@ That is the entire pipeline. The final Parquet files map each clustered address 
 | | |
 |---|---|
 | Machine | Laptop, Intel i7-1365U, 32 GB RAM |
-| Raw transaction table | 831 GB (1.4 billion transactions) |
+| Raw transaction table | 832 GB (1.4 billion transactions) |
 | Read for clustering | 66.6 GB (8 percent of the table) |
-| Reduce to address lists | 2 h 6 min (39 GB on disk) |
-| Multi-input transactions | 229.8 million (1.65 billion input references) |
-| Distinct input addresses | 963.7 million |
-| Address mapping (DuckDB, 16 partitions) | 39 min, 12 GB memory budget |
-| Clustering (Union-Find) | 1 min 18 s, 11.7 GB peak RAM |
-| Resolving ids back | 24 min |
-| Clusters | 116.5 million |
+| Reduce to address lists | 2 h 44 min (40 GB on disk) |
+| Multi-input transactions | 231.4 million (1.66 billion input references) |
+| Distinct input addresses | 970.3 million |
+| Address mapping (DuckDB, 16 partitions) | 14 min, 12 GB memory budget |
+| Clustering (Union-Find) | 1 min 12 s, 12 GB peak RAM |
+| Resolving ids back | 5 min |
+| Clusters | 117.2 million |
 
-Once the reduced lists exist, the laptop needs about an hour to cluster all of Bitcoin, and the clustering itself contributes least to the runtime. The largest cluster spans 40.7 million addresses, and the Iknaio platform identifies it as the exchange Coinbase.
+Once the reduced lists exist, the laptop needs about 20 minutes to cluster all of Bitcoin, and the clustering itself contributes least to the runtime. The largest cluster spans 40.8 million addresses, and the Iknaio platform identifies it as the exchange Coinbase, with a size that matches the platform's cluster within one percent. The second largest, at 24.8 million addresses, is the Wasabi supercluster, caused by CoinJoin transactions and therefore tagged as Wasabi in Iknaio.
+
 ## Where the limits are
 
 The pipeline above reproduces the multi-input step of the production system, not the whole platform. The Iknaio platform also detects CoinJoins before they can distort clusters, keeps clusters up to date as new blocks arrive, and enriches them with tags, statistics, and cross-chain links. The heuristic itself stays a heuristic. Custodial wallets can merge many users into one cluster, and an actor who never co-spends across addresses stays split.
 
-Beyond the storage that holds the Delta Lake, the run stays well within laptop territory, with around 100 GB of temporary disk space and a 12 GB memory budget. What sets the pace is the throughput to the table's storage and a few hours of processing time.
+Beyond the storage that holds the Delta Lake, the run stays well within laptop territory, with around 150 GB of local disk space and a 12 GB memory budget. What sets the pace is the throughput to the table's storage and a few hours of processing time.
 
 Cluster-level views of all major chains, kept continuously up to date, are available in the [Iknaio platform](https://app.iknaio.com).
 
