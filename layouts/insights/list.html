@@ -1,7 +1,7 @@
 {{ define "main" }}
 <section class="platform-hero" aria-labelledby="platform-hero-heading">
-{{ if .Pages }}
-  {{ $first := index .Pages.ByDate.Reverse 0 }}
+{{ if .RegularPagesRecursive }}
+  {{ $first := index .RegularPagesRecursive.ByDate.Reverse 0 }}
   <div class="container">
     <h1 class="platform-hero-title" id="insights-heading">Insights</h1>
     <div class="insights-hero">
@@ -28,9 +28,9 @@
 <section class="section section-insights-list" aria-labelledby="insights-feed-heading">
   <div class="container">
     <h2 id="insights-feed-heading" class="sr-only">All posts</h2>
-    {{ if .Pages }}
+    {{ if .RegularPagesRecursive }}
     <div class="grid grid-3 post-grid">
-      {{ range after 1 .Pages.ByDate.Reverse }}
+      {{ range after 1 .RegularPagesRecursive.ByDate.Reverse }}
       {{ $object_fit := .Params.object_fit | default "cover" }}
       <article class="card post-card">
         <div class="post-card-image">
