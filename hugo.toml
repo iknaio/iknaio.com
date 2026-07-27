@@ -1,5 +1,5 @@
 baseURL = "https://iknaio.com/"
-languageCode = "en"
+locale = "en"
 title = "Iknaio Cryptoasset Analytics"
 enableRobotsTXT = true
 disableKinds = ["taxonomy", "term"]
@@ -7,7 +7,7 @@ disableKinds = ["taxonomy", "term"]
 # URLs stay /insights/<slug-or-filename>/ regardless of how the markdown
 # files are organized into subfolders.
 [permalinks]
-  insights = "/insights/:slugorfilename/"
+  insights = "/insights/:slugorcontentbasename/"
 
 [params]
   description = "Cryptoasset intelligence platform. Investigate crypto money flows — faster, deeper, broader."

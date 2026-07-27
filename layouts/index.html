@@ -103,33 +103,33 @@
 
     <div class="logo-marquee">
       <div class="logo-marquee-track">
-        {{ range $.Site.Data.partners.customers }}
+        {{ range hugo.Data.partners.customers }}
         <div class="logo-item">
           <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
         </div>
         {{ end }}
-        {{ range $.Site.Data.partners.research }}
+        {{ range hugo.Data.partners.research }}
         <div class="logo-item">
           <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
         </div>
         {{ end }}
-        {{ range $.Site.Data.partners.resellers }}
+        {{ range hugo.Data.partners.resellers }}
         <div class="logo-item">
           <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
         </div>
         {{ end }}
-        {{ range $.Site.Data.partners.funding }}
+        {{ range hugo.Data.partners.funding }}
         <div class="logo-item">
           <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
         </div>
         {{ end }}
         <!-- Duplicate for seamless loop -->
-        {{ range $.Site.Data.partners.customers }}
+        {{ range hugo.Data.partners.customers }}
         <div class="logo-item">
           <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
         </div>
         {{ end }}
-        {{ range $.Site.Data.partners.research }}
+        {{ range hugo.Data.partners.research }}
         <div class="logo-item">
           <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
         </div>
@@ -177,12 +177,12 @@
   <div class="container">
     <h2 id="press-heading" class="section-title">{{ .title }}</h2>
     <div class="logo-row logo-row-press">
-      {{ range $.Site.Data.press.international }}
+      {{ range hugo.Data.press.international }}
       <div class="logo-item">
         <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="press-logo" loading="lazy">
       </div>
       {{ end }}
-      {{ range $.Site.Data.press.dach }}
+      {{ range hugo.Data.press.dach }}
       <div class="logo-item">
         <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="press-logo" loading="lazy">
       </div>

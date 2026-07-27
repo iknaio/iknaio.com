@@ -77,7 +77,7 @@
 {{ end }}
 
 {{/* team */}}
-{{ with .Site.Data.team }}
+{{ with hugo.Data.team }}
 <section class="section section-about-team" aria-labelledby="about-team-heading">
   <div class="container">
     <h2 id="about-team-heading" class="about-team-title">{{ $.Params.team.title | default "Meet the Team" }}</h2>

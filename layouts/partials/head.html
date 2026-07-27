@@ -65,7 +65,7 @@
   <!-- JSON-LD Organization Schema (homepage only) -->
   {{ if .IsHome }}
   {{- $founders := slice -}}
-  {{- range .Site.Data.team.founders -}}
+  {{- range hugo.Data.team.founders -}}
     {{- $founders = $founders | append (dict "@type" "Person" "name" .name "jobTitle" .role) -}}
   {{- end -}}
   {{- $orgSchema := dict
@@ -119,7 +119,7 @@
     "image" $ogImage
     "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
     "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
-    "inLanguage" .Site.LanguageCode
+    "inLanguage" .Site.Language.Locale
     "articleSection" "Insights"
     "wordCount" .WordCount
     "keywords" (delimit .Params.tags ", ")
@@ -177,7 +177,7 @@
   <!-- JSON-LD Person Schema (about page) -->
   {{ if and .IsSection (eq .Section "about") }}
   {{- $people := slice -}}
-  {{- range (slice .Site.Data.team.founders .Site.Data.team.team) -}}
+  {{- range (slice hugo.Data.team.founders hugo.Data.team.team) -}}
     {{- range . -}}
       {{- $p := dict
         "@type" "Person"

@@ -1629,6 +1629,24 @@ hr {
   line-height: 1.7;
 }
 
+/* Justified body text (Blocksatz) for article prose. Hyphenation keeps the
+   word spacing from tearing open; lang="en" on <html> supplies the dictionary. */
+.section-article .content p,
+.section-article .content li {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+}
+
+/* Narrow columns can't absorb justification without rivers. */
+@media (max-width: 479px) {
+  .section-article .content p,
+  .section-article .content li {
+    text-align: left;
+  }
+}
+
 .content ul,
 .content ol {
   margin-bottom: var(--spacing-md);

@@ -20,7 +20,7 @@
     <h2 id="capabilities-heading" class="section-title">Three application areas. One platform.</h2>
     <p class="section-subtitle">Iknaio serves three communities with a shared need for defensible, affordable cryptoasset analytics.</p>
     <div class="grid grid-3">
-      {{ range .Site.Data.use_cases }}
+      {{ range hugo.Data.use_cases }}
       <div class="card capability-card" id="{{ .slug }}">
         <h3 class="capability-name">{{ .title }}</h3>
         <p class="capability-headline">{{ .headline }}</p>

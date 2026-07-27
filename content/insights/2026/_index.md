@@ -1,5 +1,5 @@
 ---
 title: "2026"
-_build:
+build:
   render: never
 ---

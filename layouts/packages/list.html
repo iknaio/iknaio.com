@@ -10,7 +10,7 @@
   <div class="container">
     <h2 id="packages-tiers-heading" class="sr-only">Packages</h2>
     <div class="packages-grid">
-      {{ range .Site.Data.packages.tiers }}
+      {{ range hugo.Data.packages.tiers }}
       <div class="card packages-card{{ if .highlight }} packages-card-highlight{{ end }}">
         {{ if .highlight }}<span class="packages-highlight-badge">Recommended</span>{{ end }}
         <h3 class="packages-name">{{ .name }}</h3>
@@ -22,7 +22,7 @@
         {{ with .features }}
         {{ $features := . }}
         <ul class="packages-features">
-          {{ range $.Site.Data.packages.feature_rows }}
+          {{ range hugo.Data.packages.feature_rows }}
           {{ $value := index $features .key }}
           <li class="packages-feature{{ if not $value }} packages-feature-unavailable{{ end }}">
             {{ if $value }}
@@ -44,7 +44,7 @@
   </div>
 </section>
 
-{{ with .Site.Data.packages.comparison }}
+{{ with hugo.Data.packages.comparison }}
 <section class="section section-comparison" aria-labelledby="comparison-heading">
   <div class="container">
     <h2 id="comparison-heading" class="section-title">Compare Plans</h2>
@@ -78,7 +78,7 @@
   <div class="container">
     <p class="packages-trust-text">Trusted by law enforcement and compliance teams across Europe</p>
     <div class="logo-row logo-row-packages">
-      {{ range .Site.Data.partners.customers }}
+      {{ range hugo.Data.partners.customers }}
       <div class="logo-item">
         <img src="{{ .logo | relURL }}" alt="{{ .name }}" class="partner-logo" loading="lazy">
       </div>
@@ -95,7 +95,7 @@
   <div class="container text-container">
     <h2 id="faq-heading" class="section-title">Frequently Asked Questions</h2>
     <div class="faq-list">
-      {{ range .Site.Data.packages.faq }}
+      {{ range hugo.Data.packages.faq }}
       <details class="faq-item">
         <summary class="faq-question">{{ .question }}</summary>
         <p class="faq-answer">{{ .answer }}</p>
@@ -105,7 +105,7 @@
   </div>
 </section>
 
-{{ with .Site.Data.packages.faq }}
+{{ with hugo.Data.packages.faq }}
 {{- $entities := slice -}}
 {{- range . -}}
   {{- $entities = $entities | append (dict "@type" "Question" "name" .question "acceptedAnswer" (dict "@type" "Answer" "text" .answer)) -}}
