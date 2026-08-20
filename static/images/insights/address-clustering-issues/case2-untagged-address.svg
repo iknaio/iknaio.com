@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 760" width="1400" height="760" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1400" height="760" fill="#ffffff"/>
+
+  <defs>
+    <marker id="arrowB" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1A1A"/>
+    </marker>
+    <marker id="arrowR" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C0392B"/>
+    </marker>
+  </defs>
+
+  <!-- Row A -->
+  <circle cx="230" cy="200" r="105" fill="#F4F4F4" stroke="#BDBDBD" stroke-width="2"/>
+  <text x="230" y="195" text-anchor="middle" font-size="24" font-weight="bold" fill="#1A1A1A">Victim</text>
+  <text x="230" y="224" text-anchor="middle" font-size="18" fill="#6B6B6B">custodial wallet</text>
+
+  <line x1="345" y1="200" x2="600" y2="200" stroke="#1A1A1A" stroke-width="3" marker-end="url(#arrowB)"/>
+  <text text-anchor="middle" font-size="18" fill="#1A1A1A"><tspan x="472" y="148">transfer, documented</tspan><tspan x="472" y="172">by screenshot</tspan></text>
+
+  <ellipse cx="880" cy="200" rx="250" ry="120" fill="#EAF8F2" stroke="#21BA8B" stroke-width="2.5" stroke-dasharray="8 6"/>
+  <text x="880" y="190" text-anchor="middle" font-size="24" font-weight="bold" fill="#1A1A1A">Service X cluster</text>
+  <text x="880" y="220" text-anchor="middle" font-size="19" fill="#21BA8B" font-weight="bold">tagged as Service X &#10003;</text>
+  <text x="1245" y="205" font-size="20" fill="#21BA8B" font-weight="bold">trace correct</text>
+
+  <!-- divider -->
+  <line x1="80" y1="370" x2="1320" y2="370" stroke="#E0E0E0" stroke-width="1.5"/>
+
+  <!-- Row B -->
+  <circle cx="230" cy="540" r="105" fill="#F4F4F4" stroke="#BDBDBD" stroke-width="2"/>
+  <text x="230" y="535" text-anchor="middle" font-size="24" font-weight="bold" fill="#1A1A1A">Victim</text>
+  <text x="230" y="564" text-anchor="middle" font-size="18" fill="#6B6B6B">custodial wallet</text>
+
+  <line x1="345" y1="540" x2="600" y2="540" stroke="#1A1A1A" stroke-width="3" marker-end="url(#arrowB)"/>
+  <text text-anchor="middle" font-size="18" fill="#1A1A1A"><tspan x="472" y="488">transfer, documented</tspan><tspan x="472" y="512">by screenshot</tspan></text>
+
+  <rect x="620" y="480" width="260" height="120" rx="16" fill="#F4F4F4" stroke="#BDBDBD" stroke-width="2"/>
+  <text x="750" y="530" text-anchor="middle" font-size="24" font-weight="bold" fill="#1A1A1A">Address</text>
+  <text x="750" y="560" text-anchor="middle" font-size="19" fill="#C0392B" font-weight="bold">no tag</text>
+
+  <text x="750" y="640" text-anchor="middle" font-size="19" fill="#6B6B6B">actually controlled by Service X</text>
+  <text x="750" y="666" text-anchor="middle" font-size="19" fill="#C0392B" font-weight="bold">false negative</text>
+
+  <line x1="890" y1="540" x2="1130" y2="540" stroke="#C0392B" stroke-width="3" stroke-dasharray="10 8" marker-end="url(#arrowR)"/>
+  <text x="1010" y="518" text-anchor="middle" font-size="19" fill="#C0392B">trace wrongly continued</text>
+
+  <rect x="1150" y="480" width="200" height="120" rx="16" fill="#FDF0EE" stroke="#C0392B" stroke-width="2"/>
+  <text x="1250" y="530" text-anchor="middle" font-size="21" font-weight="bold" fill="#C0392B">unrelated</text>
+  <text x="1250" y="558" text-anchor="middle" font-size="21" font-weight="bold" fill="#C0392B">services</text>
+
+  <!-- caption -->
+  <text x="700" y="706" text-anchor="middle" font-size="23" fill="#6B6B6B" font-style="italic">A missing tag was read as negative evidence: attribution data is always</text>
+  <text x="700" y="734" text-anchor="middle" font-size="23" fill="#6B6B6B" font-style="italic">incomplete, so the absence of a tag proves nothing.</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 620" width="1400" height="620" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1400" height="620" fill="#ffffff"/>
+
+  <defs>
+    <marker id="arrowC" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1A1A"/>
+    </marker>
+  </defs>
+
+  <!-- Victim cluster -->
+  <ellipse cx="300" cy="280" rx="210" ry="160" fill="#F4F4F4" stroke="#BDBDBD" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="300" y="250" text-anchor="middle" font-size="28" font-weight="bold" fill="#1A1A1A">Victim</text>
+  <text x="300" y="285" text-anchor="middle" font-size="20" fill="#6B6B6B">cluster</text>
+  <text x="300" y="340" text-anchor="middle" font-size="34" fill="#9A9A9A">? ? ?</text>
+
+  <!-- Fraudster cluster -->
+  <ellipse cx="1100" cy="280" rx="210" ry="160" fill="#F4F4F4" stroke="#BDBDBD" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="1100" y="250" text-anchor="middle" font-size="28" font-weight="bold" fill="#1A1A1A">Fraudster</text>
+  <text x="1100" y="285" text-anchor="middle" font-size="20" fill="#6B6B6B">cluster</text>
+  <text x="1100" y="340" text-anchor="middle" font-size="34" fill="#9A9A9A">? ? ?</text>
+
+  <!-- Amount arrow -->
+  <line x1="520" y1="280" x2="875" y2="280" stroke="#1A1A1A" stroke-width="4" marker-end="url(#arrowC)"/>
+  <rect x="600" y="222" width="200" height="46" rx="23" fill="#1A1A1A"/>
+  <text x="700" y="253" text-anchor="middle" font-size="24" font-weight="bold" fill="#ffffff">&#8776; 800K EUR</text>
+
+  <!-- Not reproducible annotations -->
+  <text x="700" y="330" text-anchor="middle" font-size="20" fill="#C0392B" font-weight="bold">addresses not disclosed</text>
+  <text x="700" y="360" text-anchor="middle" font-size="20" fill="#C0392B" font-weight="bold">transaction hashes not disclosed</text>
+  <text x="700" y="390" text-anchor="middle" font-size="20" fill="#C0392B" font-weight="bold">proprietary clustering, not verifiable</text>
+
+  <!-- caption -->
+  <text x="700" y="548" text-anchor="middle" font-size="23" fill="#6B6B6B" font-style="italic">A damage figure built on undisclosed data and an unverifiable heuristic:</text>
+  <text x="700" y="576" text-anchor="middle" font-size="23" fill="#6B6B6B" font-style="italic">no independent third party can reproduce it.</text>
+</svg>

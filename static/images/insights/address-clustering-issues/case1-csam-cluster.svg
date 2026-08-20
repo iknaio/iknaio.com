@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -70 1400 710" width="1400" height="710" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="-70" width="1400" height="710" fill="#ffffff"/>
+
+  <!-- Left: exchange cluster -->
+  <text x="290" y="112" text-anchor="middle" font-size="26" font-weight="bold" fill="#1A1A1A">Cryptocurrency exchange</text>
+  <text x="290" y="140" text-anchor="middle" font-size="20" fill="#6B6B6B">withdrawal addresses</text>
+  <ellipse cx="290" cy="300" rx="200" ry="150" fill="#F4F4F4" stroke="#BDBDBD" stroke-width="2" stroke-dasharray="8 6"/>
+  <!-- dots -->
+  <circle cx="220" cy="270" r="10" fill="#8FD9C0"/>
+  <circle cx="290" cy="250" r="10" fill="#8FD9C0"/>
+  <circle cx="360" cy="280" r="10" fill="#8FD9C0"/>
+  <circle cx="240" cy="330" r="10" fill="#8FD9C0"/>
+  <circle cx="330" cy="345" r="10" fill="#21BA8B"/>
+  <circle cx="285" cy="300" r="10" fill="#8FD9C0"/>
+
+  <!-- Arrow -->
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A1A1A"/>
+    </marker>
+  </defs>
+  <line x1="500" y1="300" x2="620" y2="300" stroke="#1A1A1A" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="560" y="278" text-anchor="middle" font-size="18" fill="#1A1A1A">BTC withdrawal</text>
+
+  <!-- Right: CSAM-associated cluster -->
+  <text x="960" y="40" text-anchor="middle" font-size="26" font-weight="bold" fill="#1A1A1A">One cluster, thousands of addresses</text>
+  <ellipse cx="960" cy="300" rx="330" ry="230" fill="#F4F4F4" stroke="#BDBDBD" stroke-width="2" stroke-dasharray="8 6"/>
+
+  <!-- neutral dots -->
+  <g fill="#CFCFCF">
+    <circle cx="800" cy="230" r="9"/><circle cx="870" cy="200" r="9"/><circle cx="950" cy="190" r="9"/>
+    <circle cx="1040" cy="210" r="9"/><circle cx="1120" cy="250" r="9"/><circle cx="830" cy="300" r="9"/>
+    <circle cx="920" cy="270" r="9"/><circle cx="1010" cy="290" r="9"/><circle cx="1100" cy="320" r="9"/>
+    <circle cx="850" cy="380" r="9"/><circle cx="940" cy="400" r="9"/><circle cx="1030" cy="380" r="9"/>
+    <circle cx="1130" cy="400" r="9"/><circle cx="890" cy="340" r="9"/><circle cx="1070" cy="250" r="9"/>
+    <circle cx="980" cy="340" r="9"/>
+  </g>
+
+  <!-- CSAM-exposed addresses (red) -->
+  <circle cx="1150" cy="180" r="11" fill="#C0392B"/>
+  <circle cx="1190" cy="300" r="11" fill="#C0392B"/>
+  <circle cx="1160" cy="440" r="11" fill="#C0392B"/>
+
+  <!-- Address in question (green, highlighted) -->
+  <circle cx="720" cy="300" r="14" fill="#21BA8B" stroke="#1A1A1A" stroke-width="3"/>
+  <line x1="720" y1="330" x2="690" y2="470" stroke="#1A1A1A" stroke-width="1.5"/>
+  <text x="672" y="500" text-anchor="middle" font-size="20" fill="#1A1A1A" font-weight="bold">Address in question</text>
+  <text x="672" y="526" text-anchor="middle" font-size="18" fill="#6B6B6B">No direct evidence of CSAM use</text>
+
+  <!-- legend for red -->
+  <line x1="1190" y1="315" x2="1250" y2="470" stroke="#C0392B" stroke-width="1.5"/>
+  <text x="1252" y="500" text-anchor="middle" font-size="20" fill="#C0392B" font-weight="bold">Addresses exposed</text>
+  <text x="1252" y="526" text-anchor="middle" font-size="20" fill="#C0392B" font-weight="bold">on CSAM sites</text>
+
+  <!-- caption -->
+  <text x="700" y="596" text-anchor="middle" font-size="23" fill="#6B6B6B" font-style="italic">Cluster co-membership is not individual attribution: the address in question</text>
+  <text x="700" y="624" text-anchor="middle" font-size="23" fill="#6B6B6B" font-style="italic">shares a cluster with exposed addresses, nothing more.</text>
+</svg>
