@@ -3140,6 +3140,23 @@ hr {
   margin-right: auto;
 }
 
+/* A pill as the Pathfinder renders it, for naming a UI element in prose.
+   Set the hue per pill with --pill-color. */
+.ui-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border: 1px solid var(--pill-color, currentColor);
+  border-radius: 100px;
+  color: var(--pill-color, currentColor);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  line-height: 1.2;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
 .post-card {
   position: relative;
 }
