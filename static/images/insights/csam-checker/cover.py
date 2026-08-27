@@ -5,9 +5,10 @@ it was given (same cluster, direct neighbours, neighbouring clusters). Green is 
 ordinary address, red one carrying a CSAM tag: the point of the picture is that the red
 ones turn up at every distance, and the distance is what the checker reports.
 
-The mark at the centre is the plugin's own icon, lifted verbatim from the dashboard
-theme (Theme.Svg.Navbar.iconsChecker): a 40x40 box holding a square outline centred on
-(20, 20) and a check that deliberately overruns its top right corner.
+The mark at the centre is the plugin's own icon, a shield carrying a check, taken from
+the current CSAM Check logo (24x24 box, shield spanning x 4.5..19.5 and y 2.6..20.4).
+The check is drawn in the cover's own green rather than the logo's #16BFA0 so it sits
+with the green nodes around it.
 """
 
 import math
@@ -36,20 +37,12 @@ SIZES = [7, 9, 8, 10, 7, 8, 10, 7, 9, 8, 7]
 # nudged off the ring so the rows do not read as beads on a string
 WOBBLE = [0, 15, -11, 6, -17, 10, -7, 19, -13, 4, -9]
 
-# The check of Theme.Svg.Navbar.iconsChecker, verbatim.
-CHECK = (
-    "M1.25771 3.3354C0.585671 2.64079 -0.522217 2.6225 -1.21682 3.29454C-1.91143 "
-    "3.96658 -1.92972 5.07447 -1.25768 5.76908L1.50682e-05 4.55224L1.25771 3.3354ZM"
-    "4.97619 9.6955L3.71849 10.9123L4.95179 12.187L6.20981 10.9367L4.97619 9.6955ZM"
-    "15.9652 1.24124C16.6507 0.559931 16.6541 -0.548103 15.9728 -1.23362C15.2915 "
-    "-1.91914 14.1835 -1.92255 13.498 -1.24124L14.7316 0L15.9652 1.24124ZM1.50682e-05 "
-    "4.55224L-1.25768 5.76908L3.71849 10.9123L4.97619 9.6955L6.23389 8.47866L1.25771 "
-    "3.3354L1.50682e-05 4.55224ZM4.97619 9.6955L6.20981 10.9367L15.9652 1.24124L14.7316 "
-    "0L13.498 -1.24124L3.74257 8.45426L4.97619 9.6955Z"
-)
+# The CSAM Check logo, verbatim: shield outline and the check inside it.
+SHIELD = "M12 2.6 4.5 5.6v6.8c0 4.2 3.6 6.8 7.5 8 3.9-1.2 7.5-3.8 7.5-8V5.6Z"
+CHECK = "m8.4 12 2.6 2.6 4.8-5.2"
 
-# 20.44 units wide in the source box, so this puts the square at about 72px.
-ICON_SCALE = 3.5
+# The shield is 15 units wide and 17.8 tall, so this puts it at about 65x77px.
+ICON_SCALE = 4.3
 
 DIM_DOTS = [
     (250, 60, 5), (430, 108, 4), (640, 52, 6), (880, 96, 4), (1075, 44, 5),
@@ -110,12 +103,10 @@ for x, y, rad, col in nodes():
 
 out.append('  <!-- the CSAM Checker itself, at the centre of the rings -->')
 out.append(f'  <circle cx="{CX:g}" cy="{CY:g}" r="115" fill="url(#glow)"/>')
-out.append(f'  <g transform="translate({CX:g} {CY:g}) scale({ICON_SCALE}) translate(-20 -20)">')
-out.append(f'    <rect x="9.78173828125" y="9.753662109375" width="20.4365234375" '
-           f'height="20.492431640625" fill="none" stroke="#FFFFFF" stroke-width="3"/>')
-out.append('    <g transform="translate(15.4866943359375, 14.0706787109375)">')
-out.append(f'      <path fill="{GREEN}" d="{CHECK}"/>')
-out.append('    </g>')
+out.append(f'  <g transform="translate({CX:g} {CY:g}) scale({ICON_SCALE}) translate(-12 -11.5)" '
+           f'fill="none" stroke-linecap="round" stroke-linejoin="round">')
+out.append(f'    <path d="{SHIELD}" stroke="#FFFFFF" stroke-width="1.75"/>')
+out.append(f'    <path d="{CHECK}" stroke="{GREEN}" stroke-width="2"/>')
 out.append('  </g>')
 out.append('</svg>')
 
