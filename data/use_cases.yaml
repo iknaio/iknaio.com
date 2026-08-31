@@ -13,11 +13,13 @@
     - Pathfinder
     - QuickLock
     - CaseConnect
+    - CSAM Checker
     - Tailored Reports
   bullets:
     - "Trace transactions across 7+ blockchains with research-grade clustering"
     - "Generate initial forensic reports in minutes (QuickLock)"
     - "Avoid duplicate work via cross-case deconfliction (CaseConnect)"
+    - "Check addresses against known CSAM attribution tags on every network (CSAM Checker)"
     - "Court-grade narrative reports written by our analysts (Tailored Reports)"
 
 - slug: comply
