@@ -50,7 +50,7 @@ tools:
     tagline: "Enable even novice investigators to generate comprehensive reports that trace funds across blockchain networks. QuickLock simplifies reporting, empowering investigators with faster, accurate results."
     rows:
       - layout: "text-left"
-        image: "images/platform/quicklock.png"
+        image: "images/screenshots/screenshot-quicklock.png"
         alt: "QuickLock blockchain forensics tool automating transaction tracing and detailed cryptoasset money flow reports, boosting investigation efficiency."
         text: |
           QuickLock provides a user-friendly tool that empowers investigators, even with basic cryptoasset knowledge, to perform the crucial first step of tracing victim funds to a cryptoasset exchange.
