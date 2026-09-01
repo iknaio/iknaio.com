@@ -20,6 +20,8 @@ tools:
       icon: "images/platform/icons/caseconnect.svg"
     - name: QuickLock
       icon: "images/platform/icons/quicklock.svg"
+    - name: CSAM Checker
+      icon: "images/platform/icons/csam-check.svg"
     - name: API & MCP
       icon: "images/platform/icons/automator.svg"
     - name: Tailored Reports
@@ -39,6 +41,10 @@ tools:
       description: "Streamline your transaction tracing process. QuickLock automates the generation of detailed forensics reports, enabling you to analyze money flows effortlessly. Avoid repetitive manual tasks and boost your efficiency."
       read_more_url: "platform/#quicklock"
       screenshot: "images/screenshots/screenshot-quicklock.png"
+    - name: CSAM Checker
+      description: "Check a cryptoasset address against known CSAM attribution tags across every network it exists on, in one click. Every hit names the relationship that produced it, from a tag on the address itself to a tag on its likely cluster or its immediate neighbours, so investigators can see at a glance how much weight a finding carries. The checker also states which checks it performed and which it skipped, and results export as CSV for the case file."
+      read_more_url: "platform/#csam-check"
+      screenshot: "images/screenshots/screenshot-csam-check.png"
     - name: API & MCP
       description: "Automate complex workflows; build agentic pipelines that scale. REST API over the same data Pathfinder uses. Model Context Protocol (MCP) interface for connecting AI agents. Integrates into existing AML, case-management, and analytics stacks."
       read_more_url: "platform/#api-mcp"

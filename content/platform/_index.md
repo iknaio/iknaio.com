@@ -50,12 +50,37 @@ tools:
     tagline: "Enable even novice investigators to generate comprehensive reports that trace funds across blockchain networks. QuickLock simplifies reporting, empowering investigators with faster, accurate results."
     rows:
       - layout: "text-left"
-        image: "images/platform/quicklock.png"
+        image: "images/screenshots/screenshot-quicklock.png"
         alt: "QuickLock blockchain forensics tool automating transaction tracing and detailed cryptoasset money flow reports, boosting investigation efficiency."
         text: |
           QuickLock provides a user-friendly tool that empowers investigators, even with basic cryptoasset knowledge, to perform the crucial first step of tracing victim funds to a cryptoasset exchange.
 
           The tool allows investigators to automatically generate comprehensive reports of these traces, speeding up the process and improving accessibility.
+
+  - slug: "csam-check"
+    name: "CSAM Checker"
+    icon: "images/platform/icons/csam-check.svg"
+    headline: "Check an address against known CSAM attribution tags, on every network it exists on."
+    tagline: "A Pathfinder plugin for CSAM casework. One address in, every supported network checked in parallel, and every hit labelled with how closely it relates to the address you asked about."
+    rows:
+      - layout: "text-left"
+        image: "images/screenshots/screenshot-csam-check.png"
+        alt: "The CSAM Checker in Iknaio Pathfinder, showing an address checked across every network it exists on with a summary above the results table."
+        text: |
+          Enter one address. The CSAM Checker first works out which of the supported networks that address exists on, then checks each of them in parallel against addresses tagged as related to child sexual abuse material. Results appear as each network finishes, so the first hits are on screen while the rest are still running, and the full table exports as CSV for the case file.
+
+          Tags come from several sources, among them the Dark Web Monitor operated by [CFLW](https://cflw.com/). Every row names the source its tag came from and links back to it, so the origin of a finding is one click away.
+
+          You do not have to start from the checker. Right-click any address in the Pathfinder graph and pick **CSAM Check** to open it on that address. Started from a node on one chain, the check still covers every network the address exists on.
+      - layout: "image-left"
+        image: "images/platform/csam-check-results.png"
+        alt: "CSAM Checker results table with one row per match, showing the relationship, the tag concept, the tag source and a link back into Pathfinder."
+        text: |
+          Every hit arrives labelled with the relationship that produced it, ordered from the finding that bears most directly on the address to the one that bears least: the address itself is tagged, another address in the same cluster is tagged, a direct neighbour that sent or received funds is tagged, or an address in a cluster that exchanged funds with this cluster is tagged.
+
+          A cluster groups addresses likely controlled by the same actor, so a same-cluster hit is a lead rather than proof. Printing the relationship on every row is what lets each finding be weighed for what it is.
+
+          Some clusters and neighbourhoods are too large to check exhaustively in reasonable time. When that happens, the checker names which checks it performed and which it skipped, together with the figure that tripped the limit, so an incomplete check is never mistaken for a clean address.
 
   - slug: "api-mcp"
     name: "API & MCP"
