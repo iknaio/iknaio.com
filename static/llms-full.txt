@@ -32,27 +32,39 @@ Every hit is labelled with the relationship that produced it, ordered from the f
 
 REST API over the same data Pathfinder uses. Model Context Protocol (MCP) interface for connecting AI agents. Integrates into existing AML, case-management, and analytics stacks.
 
-### Tailored Reports
+## Services (https://iknaio.com/services/)
 
-Reports generated automatically and tailored to customer needs. Designed once, executed any time, with full provenance of all underlying data points.
+### Tailored Analytics — Analyses and reports prepared by our analysts for cases that exceed standard tooling
 
-### Learning & Trainings
+Some cases involve thousands of addresses across several networks, mixing services, or fund flows that have to be reconstructed over years, and need a report that a court, a regulator, or a client can read without knowing what an address cluster is. Our analysts reconstruct fund flows across the networks Iknaio supports, attribute addresses to services and actors using our attribution data, and quantify what moved where, when, and in what amount, with every result keeping the provenance of its underlying data points. The result is a written report with figures, tables, and a documented methodology, suitable for court proceedings, regulatory submissions, and client deliverables. Expert testimony is available on request.
 
-Workshops and trainings for cryptoasset investigators: on-site or remote training for investigation, compliance, and reporting workflows, with curricula tailored to the team's tooling and case mix, designed and delivered by Iknaio research and product staff.
+Who it is for: Investigators, prosecutors, compliance teams, and advisors with a specific case or dataset.
+
+### Trainings & Workshops — Trainings on the Iknaio platform, workshops on cryptoasset investigation topics
+
+Trainings cover the Iknaio platform — tracing funds with Pathfinder, generating reports with QuickLock, coordinating cases with CaseConnect, and automating workflows through the API and MCP server — delivered on-site or remote and structured around a team's own case mix, with a Train the Trainer format for in-house instructors. Workshops are deep dives into specific topics independent of any tool, such as address clustering and its evidential limits, tracing through mixers and cross-chain bridges, stablecoin flows, or darknet market investigations, designed and delivered by Iknaio research and product staff and adjusted to the audience's background.
+
+Who it is for: Law enforcement units, financial intelligence units, compliance teams, and advisory firms onboarding staff or upskilling on a topic.
+
+### Crypto-Estate Forensics — Locating, recovering, and valuing cryptoassets in an estate
+
+Cryptoassets leave no trace in bank statements or land registers, so without documentation heirs often cannot tell whether a deceased person held any, where they are, or what they are worth. Iknaio examines devices and documents with forensically sound methods to recover wallet files, seed phrases, exchange correspondence, and transaction records, then analyzes the recovered addresses to identify the wallets controlled by the deceased, trace the movement of funds, and determine which exchanges or custodial services they likely held accounts with. All holdings are valued as of the date of death and the reporting date. The result is a written report suitable for probate proceedings, tax declarations, and disputes among heirs; where keys are recovered, Iknaio assists in transferring assets to the heirs.
+
+Who it is for: Heirs, executors, lawyers, notaries, and tax advisors, on the basis of verified legal authorization.
 
 ## Solutions by audience (https://iknaio.com/solutions/)
 
 ### Investigate — Law enforcement, prosecutors, financial intelligence units
 
-Manual tracing of cryptoasset flows does not scale, and existing commercial tools are prohibitively expensive for most public authorities. Pathfinder, QuickLock, CaseConnect, and the CSAM Checker automate the entire investigation workflow — from initial address lookup to final forensic report. Trace transactions across 7+ blockchains with research-grade clustering; generate initial forensic reports in minutes (QuickLock); avoid duplicate work via cross-case deconfliction (CaseConnect); check addresses against known CSAM attribution tags on every network (CSAM Checker); court-grade narrative reports written by Iknaio analysts (Tailored Reports).
+Manual tracing of cryptoasset flows does not scale, and existing commercial tools are prohibitively expensive for most public authorities. Pathfinder, QuickLock, CaseConnect, and the CSAM Checker automate the entire investigation workflow — from initial address lookup to final forensic report. Trace transactions across 7+ blockchains with research-grade clustering; generate initial forensic reports in minutes (QuickLock); avoid duplicate work via cross-case deconfliction (CaseConnect); check addresses against known CSAM attribution tags on every network (CSAM Checker); court-grade narrative reports written by Iknaio analysts (Tailored Analytics).
 
 ### Comply — Banks, crypto exchanges, payment service providers, regulators
 
 Iknaio follows a combined on- and off-chain screening approach tailored to customer needs. API-based screening integrates directly into existing AML stacks, enriching transaction monitoring with deep blockchain intelligence. Includes suspicious-activity reporting with full evidentiary chain and tailored compliance reports for regulator-facing submissions.
 
-### Advise — Lawyers, tax advisors, security consultants
+### Advise — Lawyers, notaries, tax advisors, security consultants
 
-Affordable tiers with an intuitive UI for non-technical users; reproducible, defensible analysis suitable for client deliverables; on-demand expert reports for complex matters; workshops to upskill staff on cryptoasset investigation methods.
+Affordable tiers with an intuitive UI for non-technical users; reproducible, defensible analysis suitable for client deliverables; on-demand expert reports for complex matters; workshops to upskill staff on cryptoasset investigation methods; locate, recover, and value cryptoassets in estates (Crypto-Estate Forensics).
 
 ## Packages (https://iknaio.com/packages/)
 

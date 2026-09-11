@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="468" height="424" viewBox="0 0 468 424" fill="none">
 <!-- triangle edges connecting the three service nodes -->
-<path d="M126 118L338 92" stroke="#2A2A2A" stroke-width="3.038"/>
-<path d="M348 108L246 314" stroke="#2A2A2A" stroke-width="3.038"/>
-<path d="M212 322L108 128" stroke="#2A2A2A" stroke-width="3.038"/>
+<path d="M128.9 103.8L329.1 88.2" stroke="#2A2A2A" stroke-width="3.038"/>
+<path d="M344.4 111.6L243.6 300.4" stroke="#2A2A2A" stroke-width="3.038"/>
+<path d="M215.2 301L114.8 131" stroke="#2A2A2A" stroke-width="3.038"/>
 
 <!-- faint texture edges to satellite nodes -->
 <g stroke="#2A2A2A" stroke-width="1.8" stroke-linecap="round" opacity="0.3">
@@ -23,7 +23,7 @@
 </g>
 <g opacity="0.55">
 <circle cx="154" cy="26" r="4.5" fill="#2BDD96"/>
-<circle cx="174" cy="6" r="12.6" stroke="#2A2A2A" stroke-width="3.038"/>
+<circle cx="174" cy="20" r="12.6" stroke="#2A2A2A" stroke-width="3.038"/>
 </g>
 <g opacity="0.55">
 <circle cx="410" cy="374" r="4.5" fill="#2BDD96"/>

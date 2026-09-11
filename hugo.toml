@@ -36,11 +36,6 @@ disableKinds = ["taxonomy", "term"]
   lastmod = ["lastmod", "date", ":git", ":fileModTime"]
 
 [[menus.main]]
-  name = "Solutions"
-  url = "/solutions/"
-  weight = 4
-
-[[menus.main]]
   name = "Platform"
   url = "/platform/"
   weight = 2
@@ -49,6 +44,11 @@ disableKinds = ["taxonomy", "term"]
   name = "Services"
   url = "/services/"
   weight = 3
+
+[[menus.main]]
+  name = "Solutions"
+  url = "/solutions/"
+  weight = 4
 
 [[menus.main]]
   name = "Packages"
