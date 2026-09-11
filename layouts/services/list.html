@@ -1,0 +1,80 @@
+{{ define "main" }}
+{{ with .Params.hero }}
+<section class="platform-hero" aria-labelledby="services-hero-heading">
+  <div class="container platform-hero-inner">
+    <div class="platform-hero-text">
+      <h1 id="services-hero-heading" class="platform-hero-title">{{ .title }}</h1>
+      <p class="platform-hero-subtitle">{{ .subtitle }}</p>
+    </div>
+    {{ with .image }}
+    <div class="platform-hero-image">
+      <img src="{{ . | relURL }}" alt="{{ $.Params.hero.alt }}" loading="eager">
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+<section class="section section-platform section-services" aria-label="Services">
+  {{ with .Params.services }}
+  <nav class="platform-tabs" aria-label="Services">
+    <div class="container">
+      {{ range . }}
+      <a class="platform-tab" href="#{{ .slug }}">{{ .tab | default .name }}</a>
+      {{ end }}
+    </div>
+  </nav>
+
+  {{ range $i, $service := . }}
+  {{ if gt $i 0 }}<div class="platform-divider" aria-hidden="true"></div>{{ end }}
+  <article id="{{ .slug }}" class="platform-tool service">
+    <div class="container">
+      <header class="platform-tool-header">
+        <div class="platform-tool-title">
+          {{ with .icon }}<img class="platform-tool-icon" src="{{ . | relURL }}" alt="" aria-hidden="true">{{ end }}
+          <h2 class="platform-tool-name">{{ .name }}</h2>
+        </div>
+        {{ with .headline }}<p class="platform-tool-headline">{{ . }}</p>{{ end }}
+      </header>
+
+      {{ with .tagline }}
+      <p class="platform-tool-tagline">{{ . }}</p>
+      {{ end }}
+
+      <div class="service-layout">
+        <div class="platform-row-text service-body">{{ .body | markdownify }}</div>
+        <aside class="service-facts">
+          {{ with .facts }}
+          <dl>
+            {{ range . }}
+            <dt>{{ .label }}</dt>
+            <dd>{{ .text | markdownify }}</dd>
+            {{ end }}
+          </dl>
+          {{ end }}
+          {{ with .actions }}
+          <div class="service-actions">
+            {{ range . }}<a href="{{ .url | relURL }}" class="btn btn-{{ .style | default "secondary" }}">{{ .text }}</a>{{ end }}
+          </div>
+          {{ end }}
+        </aside>
+      </div>
+    </div>
+  </article>
+  {{ end }}
+  {{ end }}
+</section>
+
+{{ with .Params.cta }}
+<section class="section section-cta" aria-labelledby="services-cta-heading">
+  <div class="container cta-inner">
+    <h2 id="services-cta-heading" class="cta-title">{{ .title | safeHTML }}</h2>
+    <div class="cta-actions">
+      {{ range .actions }}
+      <a href="{{ .url | relURL }}" class="btn btn-{{ .style }}">{{ .text }}</a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}

@@ -103,7 +103,9 @@
       "Darknet investigations"
       "CSAM detection"
       "Attribution tags"
-      "GraphSense")
+      "GraphSense"
+      "Crypto-estate forensics"
+      "Investigator training")
     "sameAs" (slice .Site.Params.linkedin .Site.Params.github .Site.Params.youtube)
   -}}
   <script type="application/ld+json">{{ $orgSchema | jsonify (dict "indent" "  ") | safeJS }}</script>
@@ -173,6 +175,32 @@
     "name" "Iknaio platform tools"
     "itemListElement" $apps -}}
   <script type="application/ld+json">{{ $toolsSchema | jsonify (dict "indent" "  ") | safeJS }}</script>
+  {{- end }}
+  {{ end }}
+
+  <!-- JSON-LD Service Schema (services page) -->
+  {{ if and .IsSection (eq .Section "services") }}
+  {{- with .Params.services -}}
+  {{- $items := slice -}}
+  {{- range $i, $service := . -}}
+    {{- $items = $items | append (dict
+      "@type" "ListItem"
+      "position" (add $i 1)
+      "item" (dict
+        "@type" "Service"
+        "name" $service.name
+        "serviceType" $service.name
+        "url" (printf "%sservices/#%s" $.Site.BaseURL $service.slug)
+        "description" $service.headline
+        "areaServed" "Worldwide"
+        "provider" (dict "@type" "Organization" "name" "Iknaio Cryptoasset Analytics GmbH" "url" $.Site.BaseURL))) -}}
+  {{- end -}}
+  {{- $servicesSchema := dict
+    "@context" "https://schema.org"
+    "@type" "ItemList"
+    "name" "Iknaio services"
+    "itemListElement" $items -}}
+  <script type="application/ld+json">{{ $servicesSchema | jsonify (dict "indent" "  ") | safeJS }}</script>
   {{- end }}
   {{ end }}
 

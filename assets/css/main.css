@@ -263,6 +263,7 @@ p:last-child {
 .packages-features a:not(.btn):not(.post-nav-link),
 .packages-note a:not(.btn),
 .capability-tools a:not(.btn),
+.platform-row-text a:not(.btn),
 .about-hero-body a:not(.btn),
 .about-security-body a:not(.btn),
 .about-timeline-text a:not(.btn) {
@@ -282,6 +283,7 @@ p:last-child {
 .packages-features a:not(.btn):not(.post-nav-link):hover,
 .packages-note a:not(.btn):hover,
 .capability-tools a:not(.btn):hover,
+.platform-row-text a:not(.btn):hover,
 .about-hero-body a:not(.btn):hover,
 .about-security-body a:not(.btn):hover,
 .about-timeline-text a:not(.btn):hover {
@@ -2207,6 +2209,7 @@ hr {
 [data-theme="dark"] .contact-social a:not(.btn):not(.post-nav-link),
 [data-theme="dark"] .packages-features a:not(.btn):not(.post-nav-link),
 [data-theme="dark"] .packages-note a:not(.btn),
+[data-theme="dark"] .platform-row-text a:not(.btn),
 [data-theme="dark"] .about-hero-body a:not(.btn),
 [data-theme="dark"] .about-security-body a:not(.btn),
 [data-theme="dark"] .about-timeline-text a:not(.btn) {
@@ -2220,6 +2223,7 @@ hr {
 [data-theme="dark"] .contact-social a:not(.btn):not(.post-nav-link):hover,
 [data-theme="dark"] .packages-features a:not(.btn):not(.post-nav-link):hover,
 [data-theme="dark"] .packages-note a:not(.btn):hover,
+[data-theme="dark"] .platform-row-text a:not(.btn):hover,
 [data-theme="dark"] .about-hero-body a:not(.btn):hover,
 [data-theme="dark"] .about-security-body a:not(.btn):hover,
 [data-theme="dark"] .about-timeline-text a:not(.btn):hover {
@@ -4567,4 +4571,129 @@ hr {
   overflow: hidden;
   margin: 0 auto;
   max-width: 600px;
+}
+
+/* --------------------------------------------------------------------------
+   26. Services Page
+   -------------------------------------------------------------------------- */
+
+/* Services page: text-led body + facts panel (no screenshots) */
+.service-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .service-layout {
+    grid-template-columns: 3fr 2fr;
+    gap: var(--spacing-2xl);
+  }
+}
+
+.service-body {
+  max-width: 62ch;
+}
+
+.service-body ul {
+  padding-left: 1.25rem;
+  margin: 0 0 var(--spacing-md);
+  line-height: 1.6;
+}
+
+.service-facts {
+  background: var(--color-gray-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+}
+
+[data-theme="dark"] .service-facts {
+  background: var(--surface-dark);
+}
+
+.service-facts dl {
+  margin: 0;
+}
+
+.service-facts dt {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-dark-soft);
+  margin: 0 0 var(--spacing-xs);
+}
+
+[data-theme="dark"] .service-facts dt {
+  color: var(--text-dark-muted);
+}
+
+.service-facts dd {
+  margin: 0 0 var(--spacing-md);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.service-facts dd:last-child {
+  margin-bottom: 0;
+}
+
+.service-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+}
+
+/* Home page: services cards (markup lives in layouts/index.html, written by another agent) */
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  color: inherit;
+  text-decoration: none;
+}
+
+.service-card-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--spacing-xs);
+}
+
+[data-theme="dark"] .service-card-icon {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.service-card-title {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.service-card-text {
+  color: var(--color-dark-soft);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+[data-theme="dark"] .service-card-text {
+  color: var(--text-dark-muted);
+}
+
+.service-card-link {
+  align-self: flex-start;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 14px;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid var(--color-primary);
+}
+
+.service-card:hover .service-card-link {
+  color: var(--color-primary);
 }
