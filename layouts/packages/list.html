@@ -16,9 +16,7 @@
         <h3 class="packages-name">{{ .name }}</h3>
         <p class="packages-for">{{ .audience }}</p>
         <p class="packages-accounts">{{ .accounts }}</p>
-        <div class="packages-callout-slot">
-          {{ with .callout }}<p class="packages-callout">{{ . }}</p>{{ end }}
-        </div>
+        {{ with .callout }}<p class="packages-callout">{{ . }}</p>{{ end }}
         {{ with .features }}
         {{ $features := . }}
         <ul class="packages-features">
@@ -41,6 +39,7 @@
     </div>
 
     <p class="packages-note">All plans include access to the Pathfinder investigation dashboard.</p>
+    <p class="packages-note">Academic researchers and students can get a Professional license at a discount. <a href="{{ "contact/" | relURL }}">Contact us</a> to find out more.</p>
   </div>
 </section>
 

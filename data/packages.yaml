@@ -10,6 +10,7 @@ tiers:
       "MCP server": false
       "QuickLock": false
       "CaseConnect": false
+      "CSAM Checker": false
 
   - name: Professional
     audience: "Solo practitioners"
@@ -23,10 +24,11 @@ tiers:
       "MCP server": true
       "QuickLock": true
       "CaseConnect": false
+      "CSAM Checker": false
 
   - name: Institutional
     audience: "Authorities & Compliance"
-    accounts: "Unlimited seats — one price for your entire team"
+    accounts: "Unlimited seats"
     cta_text: "Contact sales"
     features:
       Pathfinder: true
@@ -35,10 +37,11 @@ tiers:
       "MCP server": true
       "QuickLock": true
       "CaseConnect": true
+      "CSAM Checker": true
 
 feature_rows:
   - key: Pathfinder
-    label: Pathfinder dashboard
+    label: Pathfinder
     tooltip: "Visual investigation dashboard for tracing cryptoasset transactions."
   - key: "Full attribution data"
     label: "Private attribution tags"
@@ -55,6 +58,9 @@ feature_rows:
   - key: "CaseConnect"
     label: "CaseConnect"
     tooltip: "Automated case deconfliction across investigators."
+  - key: "CSAM Checker"
+    label: "CSAM Checker"
+    tooltip: "Check an address against known CSAM attribution tags across every network it exists on."
 
 comparison:
   - feature: "Pathfinder"
@@ -78,6 +84,10 @@ comparison:
     professional: true
     institutional: true
   - feature: "CaseConnect"
+    free: false
+    professional: false
+    institutional: true
+  - feature: "CSAM Checker"
     free: false
     professional: false
     institutional: true

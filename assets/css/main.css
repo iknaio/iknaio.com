@@ -261,6 +261,7 @@ p:last-child {
 .contact-details a:not(.btn):not(.post-nav-link),
 .contact-social a:not(.btn):not(.post-nav-link),
 .packages-features a:not(.btn):not(.post-nav-link),
+.packages-note a:not(.btn),
 .capability-tools a:not(.btn),
 .about-hero-body a:not(.btn),
 .about-security-body a:not(.btn),
@@ -279,6 +280,7 @@ p:last-child {
 .contact-details a:not(.btn):not(.post-nav-link):hover,
 .contact-social a:not(.btn):not(.post-nav-link):hover,
 .packages-features a:not(.btn):not(.post-nav-link):hover,
+.packages-note a:not(.btn):hover,
 .capability-tools a:not(.btn):hover,
 .about-hero-body a:not(.btn):hover,
 .about-security-body a:not(.btn):hover,
@@ -1039,14 +1041,14 @@ hr {
   border-radius: var(--radius-md);
   padding: var(--spacing-xl);
   display: grid;
-  grid-template-rows: auto auto auto auto auto auto 1fr auto;
-  /* rows: name, price, monthly, audience, accounts, callout-slot, features, cta */
+  grid-template-rows: auto auto auto 1fr auto;
+  /* rows: name, audience, accounts, features, cta — add a row (and bump span below) if a tier sets `callout` */
   gap: var(--spacing-sm);
 }
 
 @media (min-width: 1024px) {
   .packages-card {
-    grid-row: span 8;
+    grid-row: span 5;
     grid-template-rows: subgrid;
   }
 }
@@ -1103,6 +1105,10 @@ hr {
   margin-left: var(--spacing-xs);
 }
 
+.packages-accounts {
+  margin-bottom: 0; /* the card grid gap provides the spacing to the feature list */
+}
+
 .has-tooltip {
   text-decoration: underline dotted var(--color-gray);
   text-underline-offset: 2px;
@@ -1153,6 +1159,10 @@ hr {
   text-align: center;
   color: var(--color-dark-soft);
   font-size: 14px;
+}
+
+.packages-note + .packages-note {
+  margin-top: var(--spacing-sm);
 }
 
 
@@ -2164,6 +2174,7 @@ hr {
 [data-theme="dark"] .contact-details a:not(.btn):not(.post-nav-link),
 [data-theme="dark"] .contact-social a:not(.btn):not(.post-nav-link),
 [data-theme="dark"] .packages-features a:not(.btn):not(.post-nav-link),
+[data-theme="dark"] .packages-note a:not(.btn),
 [data-theme="dark"] .about-hero-body a:not(.btn),
 [data-theme="dark"] .about-security-body a:not(.btn),
 [data-theme="dark"] .about-timeline-text a:not(.btn) {
@@ -2176,6 +2187,7 @@ hr {
 [data-theme="dark"] .contact-details a:not(.btn):not(.post-nav-link):hover,
 [data-theme="dark"] .contact-social a:not(.btn):not(.post-nav-link):hover,
 [data-theme="dark"] .packages-features a:not(.btn):not(.post-nav-link):hover,
+[data-theme="dark"] .packages-note a:not(.btn):hover,
 [data-theme="dark"] .about-hero-body a:not(.btn):hover,
 [data-theme="dark"] .about-security-body a:not(.btn):hover,
 [data-theme="dark"] .about-timeline-text a:not(.btn):hover {
