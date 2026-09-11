@@ -934,6 +934,18 @@ hr {
   }
 }
 
+/* Compact hero: pages whose main content should be visible on load (contact) */
+.hero--compact {
+  padding-bottom: var(--spacing-2xl);
+}
+
+@media (min-width: 768px) {
+  .hero--compact {
+    padding-top: var(--spacing-4xl);
+    padding-bottom: var(--spacing-2xl);
+  }
+}
+
 .hero .container {
   display: flex;
   flex-direction: column;
@@ -1933,6 +1945,10 @@ hr {
   color: var(--color-primary);
 }
 
+.section-contact {
+  padding-top: 0;
+}
+
 .section-contact .btn-primary {
   color: var(--color-white);
   background-color: var(--color-primary);
@@ -1958,6 +1974,22 @@ hr {
 
 .contact-form-wrap h2 {
   margin-bottom: var(--spacing-lg);
+}
+
+/* Embedded Odoo form: tall enough to show every field and the submit button
+   without a nested scrollbar (form measures ~1013px at 575px, ~1118px on phones) */
+.contact-iframe {
+  display: block;
+  width: 100%;
+  max-width: 575px;
+  height: 1200px;
+  border: 0;
+}
+
+@media (min-width: 480px) {
+  .contact-iframe {
+    height: 1100px;
+  }
 }
 
 .contact-form {
