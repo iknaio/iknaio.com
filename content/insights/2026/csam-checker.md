@@ -3,8 +3,8 @@ title: "Is This Address Involved in CSAM?"
 date: 2026-09-01
 draft: false
 description: "Our new CSAM checker add-on checks an address against known CSAM tags on every network it exists on, and names what kind of hit each one is."
-tags: ["csam", "law-enforcement", "investigation", "product-update"]
-image: "/images/insights/csam-checker/cover.png"
+tags: ["csam", "csam-checker", "attribution-tags", "pathfinder", "law-enforcement", "investigation", "product-update"]
+image: "images/insights/csam-checker/cover.png"
 posttype: "insight"
 ---
 

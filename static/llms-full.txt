@@ -22,6 +22,12 @@ CaseConnect links, tracks, and consolidates cases across an organization. By lin
 
 QuickLock empowers investigators — even with basic cryptoasset knowledge — to perform the crucial first step of tracing victim funds to a cryptoasset exchange, and to automatically generate comprehensive reports of these traces. It removes repetitive manual analysis and makes forensic reporting accessible to novice investigators.
 
+### CSAM Checker — Check an address against known CSAM attribution tags, on every network it exists on
+
+The CSAM Checker is a Pathfinder plugin for CSAM casework. Enter one address: the checker first works out which of the supported networks that address exists on, then checks each of them in parallel against addresses tagged as related to child sexual abuse material. Results appear as each network finishes, and the full table exports as CSV for the case file. Tags come from several attribution sources, among them the Dark Web Monitor operated by CFLW (https://cflw.com/); every row names the source its tag came from and links back to it. The check can also be started by right-clicking any address in the Pathfinder graph and picking CSAM Check.
+
+Every hit is labelled with the relationship that produced it, ordered from the finding that bears most directly on the address to the one that bears least: the address itself is tagged (direct), another address in the same cluster is tagged, a direct neighbour that sent or received funds is tagged, or an address in a cluster that exchanged funds with this cluster is tagged. A cluster groups addresses likely controlled by the same actor, so a same-cluster hit is a lead rather than proof; nothing is condensed into a risk score. When a cluster or neighbourhood is too large to check exhaustively, the checker names which checks it performed and which it skipped, so an incomplete check is never mistaken for a clean address. Available in the Institutional package.
+
 ### API & MCP — Automation and agentic pipelines
 
 REST API over the same data Pathfinder uses. Model Context Protocol (MCP) interface for connecting AI agents. Integrates into existing AML, case-management, and analytics stacks.
@@ -38,7 +44,7 @@ Workshops and trainings for cryptoasset investigators: on-site or remote trainin
 
 ### Investigate — Law enforcement, prosecutors, financial intelligence units
 
-Manual tracing of cryptoasset flows does not scale, and existing commercial tools are prohibitively expensive for most public authorities. Pathfinder, QuickLock, and CaseConnect automate the entire investigation workflow — from initial address lookup to final forensic report. Trace transactions across 7+ blockchains with research-grade clustering; generate initial forensic reports in minutes (QuickLock); avoid duplicate work via cross-case deconfliction (CaseConnect); court-grade narrative reports written by Iknaio analysts (Tailored Reports).
+Manual tracing of cryptoasset flows does not scale, and existing commercial tools are prohibitively expensive for most public authorities. Pathfinder, QuickLock, CaseConnect, and the CSAM Checker automate the entire investigation workflow — from initial address lookup to final forensic report. Trace transactions across 7+ blockchains with research-grade clustering; generate initial forensic reports in minutes (QuickLock); avoid duplicate work via cross-case deconfliction (CaseConnect); check addresses against known CSAM attribution tags on every network (CSAM Checker); court-grade narrative reports written by Iknaio analysts (Tailored Reports).
 
 ### Comply — Banks, crypto exchanges, payment service providers, regulators
 
@@ -54,7 +60,7 @@ Three tiers:
 
 - **Free** — for verified users (researchers, public-sector analysts, and other professionals with a legitimate use case; applicants are vetted). 1 seat. Includes Pathfinder with public attribution data.
 - **Professional** — for solo practitioners. 1 seat. Includes Pathfinder, private attribution tags, API access, MCP server, and QuickLock. Contact sales.
-- **Institutional** — for authorities and compliance teams. Unlimited seats — one price for the entire organization. Includes everything in Professional plus CaseConnect. Contact sales.
+- **Institutional** — for authorities and compliance teams. Unlimited seats — one price for the entire organization. Includes everything in Professional plus CaseConnect and the CSAM Checker. Contact sales.
 
 ### Packages FAQ
 
@@ -72,6 +78,9 @@ A: Iknaio operates under EU data-protection rules and all customer investigation
 
 Q: What does the vetting process for the Free tier involve?
 A: We verify that applicants are researchers, public-sector analysts, or other professionals with a legitimate use case, typically by confirming identity and institutional affiliation.
+
+Q: Which package includes the CSAM Checker?
+A: The CSAM Checker is included in the Institutional package. It checks a cryptoasset address against known CSAM attribution tags on every network the address exists on and labels each hit with the relationship that produced it. Contact us if you need it for a smaller team.
 
 ## Why Iknaio
 
@@ -107,6 +116,8 @@ Iknaio supported the takedown of a darknet CSAM platform: 373,000 darknet domain
 ## Technical research and methodology (https://iknaio.com/insights/)
 
 - Operation Alice (https://iknaio.com/insights/operation-alice/): Case study — supporting the takedown of a darknet CSAM platform.
+- Is This Address Involved in CSAM? (https://iknaio.com/insights/csam-checker/): Product update — how the CSAM Checker checks an address across every network and names the relationship behind every hit.
+- Address Clustering Is Not Evidence (https://iknaio.com/insights/address-clustering-issues/): Why address clusters are investigative leads rather than evidence (companion post to the CSAM Checker).
 - Change Address Heuristics (https://iknaio.com/insights/change-detection/): How Iknaio identifies the change output of a Bitcoin transaction, and why it matters for tracing accuracy.
 - Bitcoin Address Types (https://iknaio.com/insights/address-types/): What Bitcoin address types reveal to an investigator and how Iknaio uses them.
 - CoinJoin Detection (https://iknaio.com/insights/coinjoin-detection/): How Iknaio spots CoinJoin transactions and why that matters for blockchain analytics.

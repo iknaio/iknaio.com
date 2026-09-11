@@ -1,6 +1,6 @@
 ---
 title: "Platform"
-description: "An in-depth look at the Iknaio platform: Pathfinder, CaseConnect, QuickLock, and the API & MCP interface for automation and AI agents."
+description: "An in-depth look at the Iknaio platform: Pathfinder, CaseConnect, QuickLock, the CSAM Checker, and the API & MCP interface for automation and AI agents."
 
 hero:
   title: "Platform"

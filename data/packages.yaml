@@ -115,3 +115,5 @@ faq:
     answer: "Iknaio operates under EU data-protection rules and all customer investigation data is processed and stored within the EU. Institutional customers receive a Data Processing Agreement (DPA) as part of their licensing contract. For details on deployment options (shared vs. dedicated environments) or specific compliance documentation, please contact us."
   - question: "What does the vetting process for the Free tier involve?"
     answer: "We verify that applicants are researchers, public-sector analysts, or other professionals with a legitimate use case. The process typically involves confirming your identity and institutional affiliation."
+  - question: "Which package includes the CSAM Checker?"
+    answer: "The CSAM Checker is included in the Institutional package. It checks a cryptoasset address against known CSAM attribution tags on every network the address exists on and labels each hit with the relationship that produced it. Contact us if you need it for a smaller team."
