@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="468" height="424" viewBox="0 0 468 424" fill="none">
+<!-- triangle edges connecting the three service nodes -->
+<path d="M126 118L338 92" stroke="#2A2A2A" stroke-width="3.038"/>
+<path d="M348 108L246 314" stroke="#2A2A2A" stroke-width="3.038"/>
+<path d="M212 322L108 128" stroke="#2A2A2A" stroke-width="3.038"/>
+
+<!-- faint texture edges to satellite nodes -->
+<g stroke="#2A2A2A" stroke-width="1.8" stroke-linecap="round" opacity="0.3">
+<path d="M74 292L100 118"/>
+<path d="M420 236L358 96"/>
+<path d="M160 34L100 96"/>
+<path d="M404 366L248 322"/>
+</g>
+
+<!-- satellite nodes: small green dot + offset dark ring, for texture -->
+<g opacity="0.55">
+<circle cx="70" cy="300" r="4.5" fill="#2BDD96"/>
+<circle cx="90" cy="280" r="14.2" stroke="#2A2A2A" stroke-width="3.038"/>
+</g>
+<g opacity="0.55">
+<circle cx="426" cy="244" r="4.5" fill="#2BDD96"/>
+<circle cx="446" cy="224" r="14.2" stroke="#2A2A2A" stroke-width="3.038"/>
+</g>
+<g opacity="0.55">
+<circle cx="154" cy="26" r="4.5" fill="#2BDD96"/>
+<circle cx="174" cy="6" r="12.6" stroke="#2A2A2A" stroke-width="3.038"/>
+</g>
+<g opacity="0.55">
+<circle cx="410" cy="374" r="4.5" fill="#2BDD96"/>
+<circle cx="430" cy="394" r="12.6" stroke="#2A2A2A" stroke-width="3.038"/>
+</g>
+
+<!-- node A: tailored analytics (document) -->
+<circle cx="100" cy="106" r="29" stroke="#2A2A2A" stroke-width="3.038"/>
+<circle cx="118" cy="88" r="5.5" fill="#2BDD96"/>
+<path d="M87 90H97L103 96V122H87V90Z" fill="#2A2A2A"/>
+<path d="M97 90L103 96H97V90Z" fill="#2BDD96"/>
+
+<!-- node B: trainings & workshops (graduation cap) -->
+<circle cx="358" cy="86" r="29" stroke="#2A2A2A" stroke-width="3.038"/>
+<circle cx="376" cy="68" r="5.5" fill="#2BDD96"/>
+<path d="M358 62L384 82L358 98L332 82L358 62Z" fill="#2A2A2A"/>
+<path d="M348 94H368V104H348V94Z" fill="#2A2A2A"/>
+<path d="M380 80H384V102H380V80Z" fill="#2BDD96"/>
+<path d="M377 100H387V108H377V100Z" fill="#2BDD96"/>
+
+<!-- node C: crypto estate forensics (key) -->
+<circle cx="230" cy="326" r="29" stroke="#2A2A2A" stroke-width="3.038"/>
+<circle cx="248" cy="308" r="5.5" fill="#2BDD96"/>
+<g transform="translate(216 314) rotate(-52) scale(1.3)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0-5.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Zm0 3.1a2.4 2.4 0 1 1 0 4.8 2.4 2.4 0 0 1 0-4.8Z" fill="#2BDD96"/>
+<path d="M-1.8 5.5H1.8V21H-1.8V5.5Z" fill="#2BDD96"/>
+<path d="M1.8 15H5.8V18H1.8V15Z" fill="#2BDD96"/>
+<path d="M1.8 18.5H5V21.5H1.8V18.5Z" fill="#2BDD96"/>
+</g>
+</svg>
