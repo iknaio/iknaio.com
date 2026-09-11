@@ -61,6 +61,26 @@
   {{ end }}
 {{ end }}
 
+{{ with .Params.services }}
+<section class="section section-services" aria-labelledby="services-heading">
+  <div class="container">
+    <h2 id="services-heading" class="section-title">{{ .title }}</h2>
+    <p class="section-subtitle">{{ .subtitle | markdownify }}</p>
+    {{ $linkText := .link_text | default "Learn more" }}
+    <div class="grid grid-3">
+      {{ range .items }}
+      <a class="card service-card" href="{{ .url | relURL }}">
+        <img class="service-card-icon" src="{{ .icon | relURL }}" alt="" aria-hidden="true" width="48" height="48" loading="lazy">
+        <h3 class="service-card-title">{{ .name }}</h3>
+        <p class="service-card-text">{{ .description }}</p>
+        <span class="service-card-link">{{ $linkText }} &rarr;</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
 {{ with .Params.secondary_audience }}
 <section class="section section-secondary-audience" aria-labelledby="secondary-audience-heading">
   <div class="container text-container">

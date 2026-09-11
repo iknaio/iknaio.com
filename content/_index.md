@@ -10,7 +10,7 @@ hero:
     url: contact/
 
 tools:
-  title: "Tools and services for cryptoasset investigations"
+  title: "Tools for cryptoasset investigations"
   subtitle: "Designed to remove bottlenecks and scale investigations across your organization."
   read_more_text: "Read more"
   tabs:
@@ -24,10 +24,6 @@ tools:
       icon: "images/platform/icons/csam-check.svg"
     - name: API & MCP
       icon: "images/platform/icons/automator.svg"
-    - name: Tailored Reports
-      icon: "images/platform/icons/tailored-reports.svg"
-    - name: Trainings
-      icon: "images/platform/icons/learnings.svg"
   panels:
     - name: Pathfinder
       description: "Simplify cryptoasset payment flow analysis. Pathfinder puts simple but powerful tracing capabilities at everyone's desk, making it easier than ever to follow cryptoasset transactions without organizational bottlenecks."
@@ -49,12 +45,24 @@ tools:
       description: "Automate complex workflows; build agentic pipelines that scale. REST API over the same data Pathfinder uses. Model Context Protocol (MCP) interface for connecting AI agents. Integrates into existing AML, case-management, and analytics stacks."
       read_more_url: "platform/#api-mcp"
       screenshot: "images/screenshots/screenshot-api.png"
-    - name: Tailored Reports
-      description: "Reports generated automatically and tailored to your needs. Designed once, executed any time. Full provenance of all underlying data points."
-      screenshot: "images/screenshots/screenshot-tailored-reports.png"
-    - name: Learning & Trainings
-      description: "Workshops and trainings for cryptoasset investigators. On-site or remote training for investigation, compliance, and reporting workflows. Curriculum tailored to your team's tooling and case mix. Designed and delivered by Iknaio research and product staff."
-      screenshot: "images/screenshots/screenshot-learning.svg"
+
+services:
+  title: "Services"
+  subtitle: "Beyond the tools: expert work from the Iknaio team."
+  link_text: "Learn more"
+  items:
+    - name: "Tailored Analytics"
+      icon: "images/services/icons/tailored-analytics.svg"
+      description: "Fund-flow reconstruction and written reports by our analysts for cases that exceed standard tooling."
+      url: "services/#tailored-analytics"
+    - name: "Trainings & Workshops"
+      icon: "images/services/icons/trainings-workshops.svg"
+      description: "Platform trainings for your team and topic workshops delivered by Iknaio research and product staff."
+      url: "services/#trainings-workshops"
+    - name: "Crypto-Estate Forensics"
+      icon: "images/services/icons/crypto-estate-forensics.svg"
+      description: "Locating, recovering, and valuing cryptoassets in an estate, documented for probate, tax, and disputes."
+      url: "services/#crypto-estate-forensics"
 
 secondary_audience:
   title: "Also for compliance teams and advisors"

@@ -14,13 +14,13 @@
     - QuickLock
     - CaseConnect
     - CSAM Checker
-    - Tailored Reports
+    - Tailored Analytics
   bullets:
     - "Trace transactions across 7+ blockchains with research-grade clustering"
     - "Generate initial forensic reports in minutes (QuickLock)"
     - "Avoid duplicate work via cross-case deconfliction (CaseConnect)"
     - "Check addresses against known CSAM attribution tags on every network (CSAM Checker)"
-    - "Court-grade narrative reports written by our analysts (Tailored Reports)"
+    - "Court-grade narrative reports written by our analysts (Tailored Analytics)"
 
 - slug: comply
   title: Comply
@@ -37,7 +37,7 @@
   tools:
     - API & MCP
     - Pathfinder
-    - Tailored Reports
+    - Tailored Analytics
   bullets:
     - "On-chain + off-chain risk screening tailored to your AML stack"
     - "REST API integrates directly into existing transaction monitoring"
@@ -47,7 +47,7 @@
 - slug: advise
   title: Advise
   headline: Affordable tools for professional advisors
-  audience: Lawyers, tax advisors, security consultants
+  audience: Lawyers, notaries, tax advisors, security consultants
   pain: >
     Institutional-grade cryptoasset analytics tools are too expensive and too complex for
     individual professionals. Advisory work on crypto cases often relies on ad-hoc
@@ -57,10 +57,12 @@
     CaseConnect. Use our API for workflow automation.
   tools:
     - Pathfinder
-    - Tailored Reports
-    - Learning & Trainings
+    - Tailored Analytics
+    - Trainings & Workshops
+    - Crypto-Estate Forensics
   bullets:
     - "Affordable single-user licenses for solo practitioners"
     - "Reproducible, defensible analysis suitable for client deliverables"
     - "On-demand expert reports for complex matters"
     - "Workshops to upskill staff on cryptoasset investigation methods"
+    - "Locate, recover, and value cryptoassets in estates (Crypto-Estate Forensics)"
