@@ -11,7 +11,6 @@ hero:
 services:
   - slug: "tailored-analytics"
     name: "Tailored Analytics"
-    tab: "Analytics"
     icon: "images/services/icons/tailored-analytics.svg"
     headline: "Analyses and reports prepared by our analysts for cases that exceed standard tooling."
     body: |
@@ -34,7 +33,6 @@ services:
 
   - slug: "trainings-workshops"
     name: "Trainings & Workshops"
-    tab: "Trainings"
     icon: "images/services/icons/trainings-workshops.svg"
     headline: "Trainings on the Iknaio platform. Workshops on cryptoasset investigation topics."
     body: |
@@ -60,7 +58,6 @@ services:
 
   - slug: "crypto-estate-forensics"
     name: "Crypto-Estate Forensics"
-    tab: "Estate Forensics"
     icon: "images/services/icons/crypto-estate-forensics.svg"
     headline: "Locating, recovering, and valuing cryptoassets in an estate."
     body: |

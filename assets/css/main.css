@@ -264,6 +264,7 @@ p:last-child {
 .packages-note a:not(.btn),
 .capability-tools a:not(.btn),
 .platform-row-text a:not(.btn),
+.service-body a:not(.btn),
 .about-hero-body a:not(.btn),
 .about-security-body a:not(.btn),
 .about-timeline-text a:not(.btn) {
@@ -284,6 +285,7 @@ p:last-child {
 .packages-note a:not(.btn):hover,
 .capability-tools a:not(.btn):hover,
 .platform-row-text a:not(.btn):hover,
+.service-body a:not(.btn):hover,
 .about-hero-body a:not(.btn):hover,
 .about-security-body a:not(.btn):hover,
 .about-timeline-text a:not(.btn):hover {
@@ -2210,6 +2212,7 @@ hr {
 [data-theme="dark"] .packages-features a:not(.btn):not(.post-nav-link),
 [data-theme="dark"] .packages-note a:not(.btn),
 [data-theme="dark"] .platform-row-text a:not(.btn),
+[data-theme="dark"] .service-body a:not(.btn),
 [data-theme="dark"] .about-hero-body a:not(.btn),
 [data-theme="dark"] .about-security-body a:not(.btn),
 [data-theme="dark"] .about-timeline-text a:not(.btn) {
@@ -2224,6 +2227,7 @@ hr {
 [data-theme="dark"] .packages-features a:not(.btn):not(.post-nav-link):hover,
 [data-theme="dark"] .packages-note a:not(.btn):hover,
 [data-theme="dark"] .platform-row-text a:not(.btn):hover,
+[data-theme="dark"] .service-body a:not(.btn):hover,
 [data-theme="dark"] .about-hero-body a:not(.btn):hover,
 [data-theme="dark"] .about-security-body a:not(.btn):hover,
 [data-theme="dark"] .about-timeline-text a:not(.btn):hover {
@@ -4577,74 +4581,136 @@ hr {
    26. Services Page
    -------------------------------------------------------------------------- */
 
-/* Services page: text-led body + facts panel (no screenshots) */
-.service-layout {
+/* Services page: one full-width panel per service, alternating white and grey.
+   The serif service name is the one loud element; everything else stays quiet. */
+.service-panel {
+  padding: var(--spacing-3xl) 0;
+  background-color: var(--color-white);
+  scroll-margin-top: 96px;
+}
+
+.service-panel:nth-child(even) {
+  background-color: var(--color-gray-light);
+}
+
+[data-theme="dark"] .service-panel {
+  background-color: var(--bg-dark);
+}
+
+[data-theme="dark"] .service-panel:nth-child(even) {
+  background-color: var(--surface-dark);
+}
+
+.service-panel-inner {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--spacing-xl);
-  align-items: start;
 }
 
-@media (min-width: 768px) {
-  .service-layout {
-    grid-template-columns: 3fr 2fr;
-    gap: var(--spacing-2xl);
-  }
-}
-
-.service-body {
-  max-width: 62ch;
-}
-
-.service-body ul {
-  padding-left: 1.25rem;
+.service-panel-name {
+  font-family: var(--font-accent);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.1;
   margin: 0 0 var(--spacing-md);
-  line-height: 1.6;
 }
 
-.service-facts {
-  background: var(--color-gray-light);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-lg);
-}
-
-[data-theme="dark"] .service-facts {
-  background: var(--surface-dark);
-}
-
-.service-facts dl {
-  margin: 0;
-}
-
-.service-facts dt {
+.service-panel-headline {
   font-family: var(--font-primary);
-  font-weight: 600;
-  font-size: 0.8125rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
   color: var(--color-dark-soft);
-  margin: 0 0 var(--spacing-xs);
+  max-width: 30em;
+  margin: 0 0 var(--spacing-lg);
 }
 
-[data-theme="dark"] .service-facts dt {
+[data-theme="dark"] .service-panel-headline {
   color: var(--text-dark-muted);
-}
-
-.service-facts dd {
-  margin: 0 0 var(--spacing-md);
-  font-size: 0.9375rem;
-  line-height: 1.55;
-}
-
-.service-facts dd:last-child {
-  margin-bottom: 0;
 }
 
 .service-actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-sm);
-  margin-top: var(--spacing-lg);
+}
+
+.service-body {
+  font-family: var(--font-primary);
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 62ch;
+}
+
+.service-body p {
+  margin: 0 0 var(--spacing-md);
+}
+
+.service-body p:last-child {
+  margin-bottom: 0;
+}
+
+.service-facts {
+  margin: 0;
+  border-top: 1px solid var(--color-gray);
+}
+
+.service-fact {
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid var(--color-gray);
+}
+
+.service-fact dt {
+  font-family: var(--font-primary);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 var(--spacing-xs);
+}
+
+.service-fact dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-dark-soft);
+}
+
+[data-theme="dark"] .service-facts,
+[data-theme="dark"] .service-fact {
+  border-color: var(--border-dark);
+}
+
+[data-theme="dark"] .service-fact dd {
+  color: var(--text-dark-muted);
+}
+
+@media (min-width: 768px) {
+  .service-panel {
+    padding: var(--spacing-4xl) 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .service-panel-inner {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    grid-template-areas:
+      "header facts"
+      "body facts";
+    column-gap: var(--spacing-4xl);
+    row-gap: var(--spacing-xl);
+    align-items: start;
+  }
+
+  .service-panel-header {
+    grid-area: header;
+  }
+
+  .service-body {
+    grid-area: body;
+  }
+
+  .service-facts {
+    grid-area: facts;
+  }
 }
 
 /* Home page: services cards (markup lives in layouts/index.html, written by another agent) */
