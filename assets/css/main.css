@@ -4722,16 +4722,6 @@ hr {
   text-decoration: none;
 }
 
-.service-card-icon {
-  width: 48px;
-  height: 48px;
-  margin-bottom: var(--spacing-xs);
-}
-
-[data-theme="dark"] .service-card-icon {
-  filter: invert(1) hue-rotate(180deg);
-}
-
 .service-card-title {
   font-family: var(--font-primary);
   font-weight: 600;

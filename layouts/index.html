@@ -70,7 +70,6 @@
     <div class="grid grid-3">
       {{ range .items }}
       <a class="card service-card" href="{{ .url | relURL }}">
-        <img class="service-card-icon" src="{{ .icon | relURL }}" alt="" aria-hidden="true" width="48" height="48" loading="lazy">
         <h3 class="service-card-title">{{ .name }}</h3>
         <p class="service-card-text">{{ .description }}</p>
         <span class="service-card-link">{{ $linkText }} &rarr;</span>

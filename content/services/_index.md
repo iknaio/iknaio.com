@@ -6,7 +6,7 @@ hero:
   title: "Services"
   subtitle: "Expert work from the team behind the platform: analytics on demand, training for your investigators, and forensic support for crypto estates."
   image: "images/services/hero.svg"
-  alt: "Three connected nodes representing Iknaio's analytics, training, and estate forensics services."
+  alt: "An analyst between a network graph on a screen and a written report, representing Iknaio's analytics, training, and estate forensics services."
 
 services:
   - slug: "tailored-analytics"
@@ -52,9 +52,6 @@ services:
       - text: "Contact us"
         url: "contact/"
         style: "primary"
-      - text: "Watch the tutorials"
-        url: "learning/"
-        style: "secondary"
 
   - slug: "crypto-estate-forensics"
     name: "Crypto-Estate Forensics"

@@ -52,15 +52,12 @@ services:
   link_text: "Learn more"
   items:
     - name: "Tailored Analytics"
-      icon: "images/services/icons/tailored-analytics.svg"
       description: "Fund-flow reconstruction and written reports by our analysts for cases that exceed standard tooling."
       url: "services/#tailored-analytics"
     - name: "Trainings & Workshops"
-      icon: "images/services/icons/trainings-workshops.svg"
       description: "Platform trainings for your team and topic workshops delivered by Iknaio research and product staff."
       url: "services/#trainings-workshops"
     - name: "Crypto-Estate Forensics"
-      icon: "images/services/icons/crypto-estate-forensics.svg"
       description: "Locating, recovering, and valuing cryptoassets in an estate, documented for probate, tax, and disputes."
       url: "services/#crypto-estate-forensics"
 
