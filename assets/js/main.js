@@ -77,32 +77,35 @@
     }, { passive: true });
   }
 
-  // Platform scroll-spy: highlight the tab matching the section currently in view.
-  // The trigger band sits just below the sticky tab strip and covers the upper
-  // ~40% of the viewport, so a section becomes "active" as its heading scrolls
-  // into the area where the user is reading.
+  // Platform scroll-spy: highlight the tab matching the section the reader is in.
+  // A section counts as current once its top edge has reached the line where an
+  // anchor jump lands it (its scroll-margin-top plus the root scroll-padding-top),
+  // so after following a tab or a deep link the highlighted tab is always the
+  // one that was followed, never the section whose tail is still under the bar.
   var tabs = document.querySelectorAll('.platform-tab');
   var tools = document.querySelectorAll('.platform-tool');
-  if (tabs.length && tools.length && 'IntersectionObserver' in window) {
-    var visible = new Set();
-    function setActive(slug) {
+  if (tabs.length && tools.length) {
+    var updateSpy = function () {
+      var line = (parseFloat(getComputedStyle(tools[0]).scrollMarginTop) || 0)
+        + (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0)
+        + 16; // slack for the small reflow when the webfont swaps in after the jump
+      var current = null;
+      tools.forEach(function (t) {
+        if (t.getBoundingClientRect().top <= line) current = t;
+      });
+      // A short final section can never reach the line because the page runs
+      // out of scroll first; once the viewport rests on the page end, it is current.
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+        current = tools[tools.length - 1];
+      }
       tabs.forEach(function (t) {
-        t.classList.toggle('is-active', t.getAttribute('href') === '#' + slug);
+        t.classList.toggle('is-active', !!current && t.getAttribute('href') === '#' + current.id);
       });
-    }
-    var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) visible.add(e.target);
-        else visible.delete(e.target);
-      });
-      if (visible.size === 0) return;
-      var top = null;
-      visible.forEach(function (el) {
-        if (!top || el.getBoundingClientRect().top < top.getBoundingClientRect().top) top = el;
-      });
-      if (top) setActive(top.id);
-    }, { rootMargin: '-130px 0px -60% 0px', threshold: 0 });
-    tools.forEach(function (t) { spy.observe(t); });
+    };
+    window.addEventListener('scroll', updateSpy, { passive: true });
+    window.addEventListener('resize', updateSpy, { passive: true });
+    window.addEventListener('load', updateSpy);
+    updateSpy();
   }
 
   // Copy-to-clipboard buttons on article code blocks.
