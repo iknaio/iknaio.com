@@ -259,7 +259,6 @@ p:last-child {
 .content a:not(.btn):not(.post-nav-link),
 .product-detail-description a:not(.btn):not(.post-nav-link),
 .contact-details a:not(.btn):not(.post-nav-link),
-.contact-social a:not(.btn):not(.post-nav-link),
 .packages-features a:not(.btn):not(.post-nav-link),
 .packages-note a:not(.btn),
 .capability-tools a:not(.btn),
@@ -280,7 +279,6 @@ p:last-child {
 .content a:not(.btn):not(.post-nav-link):hover,
 .product-detail-description a:not(.btn):not(.post-nav-link):hover,
 .contact-details a:not(.btn):not(.post-nav-link):hover,
-.contact-social a:not(.btn):not(.post-nav-link):hover,
 .packages-features a:not(.btn):not(.post-nav-link):hover,
 .packages-note a:not(.btn):hover,
 .capability-tools a:not(.btn):hover,
@@ -1932,26 +1930,6 @@ hr {
   margin: 0 0 var(--spacing-md);
 }
 
-.contact-social {
-  list-style: none;
-  padding: 0;
-  margin: var(--spacing-md) 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-}
-
-.contact-social a {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  color: var(--color-dark);
-}
-
-.contact-social a:hover {
-  color: var(--color-primary);
-}
-
 .section-contact {
   padding-top: 0;
 }
@@ -1959,11 +1937,6 @@ hr {
 .section-contact .btn-primary {
   color: var(--color-white);
   background-color: var(--color-primary);
-}
-
-.contact-social .icon {
-  width: 20px;
-  height: 20px;
 }
 
 /* Contact form layout */
@@ -1979,23 +1952,27 @@ hr {
   }
 }
 
-.contact-form-wrap h2 {
-  margin-bottom: var(--spacing-lg);
-}
-
 /* Embedded Odoo form: tall enough to show every field and the submit button
-   without a nested scrollbar (form measures ~1013px at 575px, ~1118px on phones) */
+   without a nested scrollbar. The form is cross-origin, so the height cannot
+   follow its content; measured on 2026-09-13 the form needs ~1390px at 288px
+   wide, ~1285px at 328px, ~1180px at 448px, and ~1138px at 575px. */
 .contact-iframe {
   display: block;
   width: 100%;
   max-width: 575px;
-  height: 1200px;
+  height: 1400px;
   border: 0;
+}
+
+@media (min-width: 360px) {
+  .contact-iframe {
+    height: 1300px;
+  }
 }
 
 @media (min-width: 480px) {
   .contact-iframe {
-    height: 1100px;
+    height: 1200px;
   }
 }
 
@@ -2211,7 +2188,6 @@ hr {
 [data-theme="dark"] .content a:not(.btn):not(.post-nav-link),
 [data-theme="dark"] .product-detail-description a:not(.btn):not(.post-nav-link),
 [data-theme="dark"] .contact-details a:not(.btn):not(.post-nav-link),
-[data-theme="dark"] .contact-social a:not(.btn):not(.post-nav-link),
 [data-theme="dark"] .packages-features a:not(.btn):not(.post-nav-link),
 [data-theme="dark"] .packages-note a:not(.btn),
 [data-theme="dark"] .platform-row-text a:not(.btn),
@@ -2226,7 +2202,6 @@ hr {
 [data-theme="dark"] .content a:not(.btn):not(.post-nav-link):hover,
 [data-theme="dark"] .product-detail-description a:not(.btn):not(.post-nav-link):hover,
 [data-theme="dark"] .contact-details a:not(.btn):not(.post-nav-link):hover,
-[data-theme="dark"] .contact-social a:not(.btn):not(.post-nav-link):hover,
 [data-theme="dark"] .packages-features a:not(.btn):not(.post-nav-link):hover,
 [data-theme="dark"] .packages-note a:not(.btn):hover,
 [data-theme="dark"] .platform-row-text a:not(.btn):hover,
