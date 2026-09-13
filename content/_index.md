@@ -34,15 +34,15 @@ tools:
       read_more_url: "platform/#caseconnect"
       screenshot: "images/screenshots/screenshot-caseconnect.png"
     - name: QuickLock
-      description: "Streamline your transaction tracing process. QuickLock automates the generation of detailed forensics reports, enabling you to analyze money flows effortlessly. Avoid repetitive manual tasks and boost your efficiency."
+      description: "Streamline your transaction tracing process. QuickLock automates the generation of detailed forensics reports, enabling you to analyze money flows effortlessly and avoid repetitive manual tasks."
       read_more_url: "platform/#quicklock"
       screenshot: "images/screenshots/screenshot-quicklock.png"
     - name: CSAM Checker
-      description: "Check a cryptoasset address against known CSAM attribution tags across every network it exists on, in one click. Every hit names the relationship that produced it, from a tag on the address itself to a tag on its likely cluster or its immediate neighbours, so investigators can see at a glance how much weight a finding carries."
+      description: "Screen cryptoasset addresses for links to known CSAM activity. CSAM Checker matches an address against CSAM attribution tags across every network it exists on, in one click. Every hit names the relationship behind it, whether a tag on the address itself, its likely cluster, or a neighbour, so investigators can see how much weight a finding carries."
       read_more_url: "platform/#csam-check"
       screenshot: "images/screenshots/screenshot-csam-check.png"
     - name: API & MCP
-      description: "Automate complex workflows; build agentic pipelines that scale. REST API over the same data Pathfinder uses. Model Context Protocol (MCP) interface for connecting AI agents. Integrates into existing AML, case-management, and analytics stacks."
+      description: "Automate complex workflows and build agentic pipelines that scale. API & MCP exposes the same data Pathfinder uses through a REST API and a Model Context Protocol (MCP) interface for AI agents, integrating tracing directly into existing AML, case-management, and analytics stacks."
       read_more_url: "platform/#api-mcp"
       screenshot: "images/screenshots/screenshot-api.png"
 

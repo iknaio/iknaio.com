@@ -20,7 +20,7 @@ hero:
     - year: "2024"
       text: "Pathfinder 2.0 released with transaction-level tracing"
     - year: "2025"
-      text: "QuickTrace feature launched; 2,500+ registered users reached"
+      text: "QuickLock feature launched; 2,500+ registered users reached"
     - year: "2026"
       text: "Operation Alice: Iknaio technology used in takedown of 373,000 darknet domains"
 
