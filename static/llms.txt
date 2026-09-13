@@ -35,7 +35,7 @@ Iknaio is used by 2,500+ investigators across 23+ countries. Customers include l
 - [Change Address Heuristics](https://iknaio.com/insights/change-detection/): How Iknaio identifies the change output of a Bitcoin transaction, and why it matters for tracing accuracy.
 - [Bitcoin Address Types](https://iknaio.com/insights/address-types/): What Bitcoin address types reveal to an investigator and how Iknaio uses them.
 - [Blockchain C2](https://iknaio.com/insights/blockchain-c2/): Detection of malware command-and-control channels operating over the blockchain.
-- [Cross-chain key reuse](https://iknaio.com/insights/cross-chain-kexy-reuse/): Linking activity across chains via reused cryptographic keys.
+- [Cross-chain key reuse](https://iknaio.com/insights/cross-chain-key-reuse/): Linking activity across chains via reused cryptographic keys.
 - [Tracing DEXs, bridges, cross-chain clusters](https://iknaio.com/insights/tracing-dexs-bridges-cross-chain-clusters/): Methods for following funds through decentralised exchanges and bridges.
 - [Navigating the EU crypto regime](https://iknaio.com/insights/navigating-the-eu-crypto-regime/): Compliance overview for MiCA, TFR, and related EU regulations.
 - [The crime landscape in DeFi](https://iknaio.com/insights/the-crime-landscape-in-defi/): Patterns of illicit activity in decentralised finance.
