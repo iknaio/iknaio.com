@@ -16,7 +16,7 @@ services:
     body: |
       Not every question fits a dashboard. Some cases involve thousands of addresses across several networks, mixing services, or fund flows that have to be reconstructed over years. Others require a report that a court, a regulator, or a client can read without knowing what an address cluster is.
 
-      Our analysts take on these cases. We reconstruct fund flows across the networks Iknaio supports (e.g., Bitcoin, Ethereum, Tether), attribute addresses to services and actors, and quantify what moved where, when, and in what amount. Recurring questions are set up once as a scripted analysis on the Iknaio API and re-executed on demand. The result is a written report with figures, tables, and a documented methodology, suitable for court proceedings, regulatory submissions, and client deliverables. Expert testimony is available on request.
+      Our analysts take on these cases. We reconstruct fund flows across the networks Iknaio supports, attribute addresses to services and actors, and quantify what moved where, when, and in what amount. Recurring questions are set up once as a scripted analysis on the Iknaio API and re-executed on demand. The result is a written report with figures, tables, and a documented methodology, suitable for court proceedings, regulatory submissions, and client deliverables. Expert testimony is available on request.
     facts:
       - label: "Who it is for"
         text: "Investigators, prosecutors, compliance teams, and advisors with a specific case or dataset."
