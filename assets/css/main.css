@@ -530,6 +530,9 @@ hr {
 .nav-logo img {
   width: 180px;
   height: 37px;
+  /* The wordmark sits low in the SVG canvas (y 44.8-149.3 of 152); lift the
+     rendered image so the wordmark, not the canvas, is centered in the bar. */
+  transform: translateY(-13.85%);
 }
 /* nav-menu: mobile-first (hidden), flex on desktop */
 .nav-menu {
