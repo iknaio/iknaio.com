@@ -6,7 +6,7 @@ hero:
   title: "About Us"
   subtitle: "Our Story"
   body: |
-    Iknaio was founded in 2021 as a spin-off of the [Complexity Science Hub Vienna](https://csh.ac.at). Our roots go back to 2015, when [Bernhard Haslhofer](https://bernhardhaslhofer.info) and [Ross King](https://www.ait.ac.at/en/about-the-ait/researcher-profiles/detail/king-ross) initiated the [GraphSense](https://graphsense.org) research project at [AIT Austrian Institute of Technology](https://www.ait.ac.at).
+    Iknaio was founded in 2021 as a spin-off of the [Complexity Science Hub Vienna](https://csh.ac.at). Our roots go back to 2015, when [Bernhard Haslhofer](https://bernhardhaslhofer.info) and [Ross King](https://www.linkedin.com/in/ross-king-a540ba8) initiated the [GraphSense](https://graphsense.org) research project at [AIT Austrian Institute of Technology](https://www.ait.ac.at).
 
     Over the following decade, publicly funded research turned GraphSense into one of the best-established open-source cryptoasset analytics platforms available today. We founded Iknaio to bring that research to operational customers who require tools built on transparent, auditable, scientific foundations.
   timeline_title: "Milestones"
