@@ -6,7 +6,7 @@ hero:
   title: "Investigate crypto money flows.<br>More efficiently."
   subtitle: "Automated tools for professionals and authorities,<br> built on a decade of open research."
   cta:
-    text: "Request a Demo"
+    text: "Get access"
     url: contact/
 
 tools:
@@ -113,7 +113,7 @@ press:
 cta:
   title: "Ready to investigate crypto money flows.<br>More efficiently?"
   actions:
-    - text: "Request a Demo"
+    - text: "Get access"
       url: contact/
       style: primary
     - text: "View Packages"

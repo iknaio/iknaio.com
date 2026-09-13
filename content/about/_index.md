@@ -48,7 +48,7 @@ values:
 contact:
   title: "Contact Us"
   subtitle: "Get in touch and we will get back to you to schedule a walkthrough."
-  cta_text: "Request a Demo"
+  cta_text: "Get access"
   cta_url: "contact/"
 
 team:

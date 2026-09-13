@@ -98,7 +98,7 @@ tools:
 cta:
   title: "Ready to investigate crypto money flows.<br>More efficiently?"
   actions:
-    - text: "Request a Demo"
+    - text: "Get access"
       url: "contact/"
       style: "primary"
     - text: "View Packages"
