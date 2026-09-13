@@ -16,11 +16,7 @@ services:
     body: |
       Not every question fits a dashboard. Some cases involve thousands of addresses across several networks, mixing services, or fund flows that have to be reconstructed over years. Others require a report that a court, a regulator, or a client can read without knowing what an address cluster is.
 
-      Our analysts take on these cases. We reconstruct fund flows across the networks Iknaio supports (e.g., Bitcoin, Ethereum, Tether), attribute addresses to services and actors using our attribution data, and quantify what moved where, when, and in what amount. Recurring questions (e.g., periodic exposure screening of a set of counterparties) are set up once as a scripted analysis on the Iknaio API and re-executed on demand. Every result keeps the provenance of its underlying data points.
-
-      The result is a written report with figures, tables, and a documented methodology, suitable for court proceedings, regulatory submissions, and client deliverables. Expert testimony is available on request.
-
-      We work for law enforcement, prosecutors, compliance teams, lawyers, and tax advisors.
+      Our analysts take on these cases. We reconstruct fund flows across the networks Iknaio supports (e.g., Bitcoin, Ethereum, Tether), attribute addresses to services and actors, and quantify what moved where, when, and in what amount. Recurring questions are set up once as a scripted analysis on the Iknaio API and re-executed on demand. The result is a written report with figures, tables, and a documented methodology, suitable for court proceedings, regulatory submissions, and client deliverables. Expert testimony is available on request.
     facts:
       - label: "Who it is for"
         text: "Investigators, prosecutors, compliance teams, and advisors with a specific case or dataset."
@@ -36,13 +32,9 @@ services:
     icon: "images/services/icons/trainings-workshops.svg"
     headline: "Trainings on the Iknaio platform. Workshops on cryptoasset investigation topics."
     body: |
-      Cryptoasset investigations require a tool and the knowledge to interpret what it shows. An address cluster is a lead, not proof. An exchange deposit is where the blockchain trail ends and the legal process begins. We teach both parts.
-
-      Trainings cover the Iknaio platform: tracing funds with Pathfinder, generating reports with QuickLock, coordinating cases with CaseConnect, and automating workflows through the API and MCP server. They are delivered on-site or remote and are structured around your team's own case mix. Our Train the Trainer format prepares in-house instructors who then carry the training within your organization. Self-paced [video tutorials](/learning/) complement the sessions.
+      Trainings cover the Iknaio platform: tracing funds with Pathfinder, generating reports with QuickLock, coordinating cases with CaseConnect, and automating workflows through the API and MCP server. But we do not only teach how to use a tool. Every training also covers the methodology underneath: how clustering heuristics work and when they mislead, where attribution data comes from, and where the blockchain trail ends and the legal process begins. An address cluster is a lead, not proof, and your team should know why. Sessions are delivered on-site or remote and structured around your team's own case mix. A Train the Trainer format prepares in-house instructors who then carry the training within your organization.
 
       Workshops are deep dives into specific topics, independent of any tool (e.g., address clustering and its evidential limits, tracing through mixers and cross-chain bridges, stablecoin flows, or darknet market investigations). Each workshop is designed and delivered by Iknaio research and product staff and adjusted to the audience's background, whether investigators, prosecutors, or compliance officers.
-
-      We work for law enforcement agencies, financial intelligence units, compliance teams, and professional advisors.
     facts:
       - label: "Who it is for"
         text: "Law enforcement units, financial intelligence units, compliance teams, and advisory firms onboarding staff or upskilling on a topic."
@@ -60,11 +52,7 @@ services:
     body: |
       Cryptoassets leave no trace in bank statements or land registers. Without documentation, heirs often cannot tell whether a deceased person held any, where they are, or what they are worth.
 
-      Iknaio answers these questions. Devices and documents are examined with forensically sound methods to recover wallet files, seed phrases, exchange correspondence, and transaction records. Recovered addresses are analyzed on the relevant blockchains to identify the wallets controlled by the deceased, trace the movement of funds, and determine which exchanges or custodial services they likely held accounts with. All holdings are valued as of the date of death and the reporting date.
-
-      The result is a written report documenting identified wallets, probable custodial accounts, evidence, and methodology, suitable for probate proceedings, tax declarations, and disputes among heirs. Where keys are recovered, we assist in transferring assets to the heirs. Expert testimony is available on request.
-
-      We work for heirs, executors, lawyers, notaries, and tax advisors, on the basis of verified legal authorization only.
+      Iknaio answers these questions. Devices and documents are examined with forensically sound methods to recover wallet files, seed phrases, exchange correspondence, and transaction records. Recovered addresses are analyzed on the relevant blockchains to identify the wallets controlled by the deceased, trace the movement of funds, and determine which custodial services they likely held accounts with. All holdings are valued as of the date of death and the reporting date and documented in a written report suitable for probate proceedings, tax declarations, and disputes among heirs. Where keys are recovered, we assist in transferring assets to the heirs. We work on the basis of verified legal authorization only.
     facts:
       - label: "Who it is for"
         text: "Heirs, executors, lawyers, notaries, and tax advisors, on the basis of verified legal authorization."
