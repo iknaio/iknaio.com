@@ -114,7 +114,7 @@ Milestones:
 - 2018 — First law enforcement agencies adopt GraphSense for investigations
 - 2021 — Iknaio founded as spin-off of the Complexity Science Hub Vienna
 - 2024 — Pathfinder 2.0 released with transaction-level tracing
-- 2025 — QuickTrace feature launched; 2,500+ registered users reached
+- 2025 — QuickLock feature launched; 2,500+ registered users reached
 - 2026 — Operation Alice: Iknaio technology used in takedown of 373,000 darknet domains
 
 Founders: Karl Zettl (Co-Founder & CEO), Bernhard Haslhofer (Co-Founder & Research Lead, creator of GraphSense), Michael Fröwis (Development Lead).
