@@ -1,0 +1,276 @@
+{
+ "date": "2025-11-20",
+ "nodes": [
+  {
+   "id": "perpetrator",
+   "label": "Perpetrator",
+   "role": "perpetrator",
+   "network": "bnb",
+   "network_name": "BNB Smart Chain",
+   "address": "0x2e8a8670b734e260cedbc6d5a05532264aae5c38",
+   "x": 0.0,
+   "y": -0.784
+  },
+  {
+   "id": "wallet-a",
+   "label": "Wallet A",
+   "role": "wallet",
+   "network": "bnb",
+   "network_name": "BNB Smart Chain",
+   "address": "0x98fc13632ff112e4667fc4f21ae980571f122b5a",
+   "x": 12.0,
+   "y": -2.41
+  },
+  {
+   "id": "wallet-b",
+   "label": "Wallet B",
+   "role": "wallet",
+   "network": "bnb",
+   "network_name": "BNB Smart Chain",
+   "address": "0x7a503e3ab9433ebf13afb4f7f1793c25733b3cca",
+   "x": 12.0,
+   "y": 0.84
+  },
+  {
+   "id": "swap-wallet",
+   "label": "Swap wallet",
+   "role": "wallet",
+   "network": "bnb",
+   "network_name": "BNB Smart Chain",
+   "address": "0xd10ed57534dc63f2ea9dc0cb0096086f3cc8fa4d",
+   "x": 24.0,
+   "y": -2.41
+  },
+  {
+   "id": "stargate-bnb",
+   "label": "Stargate",
+   "role": "service",
+   "network": "bnb",
+   "network_name": "BNB Smart Chain",
+   "address": "0x138eb30f73bc423c6455c53df6d89cb01d9ebc63",
+   "x": 24.0,
+   "y": 0.84
+  },
+  {
+   "id": "stargate-eth",
+   "label": "Stargate",
+   "role": "service",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x933597a323eb81cae705c5bc29985172fd5a3973",
+   "x": 24.0,
+   "y": 4.09
+  },
+  {
+   "id": "wallet-b-eth",
+   "label": "Wallet B",
+   "role": "wallet",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x7a503e3ab9433ebf13afb4f7f1793c25733b3cca",
+   "x": 36.0,
+   "y": 4.089
+  },
+  {
+   "id": "tornado-bnb",
+   "label": "Tornado Cash",
+   "role": "service",
+   "network": "bnb",
+   "network_name": "BNB Smart Chain",
+   "address": "0x0d5550d52428e7e3175bfc9550207e4ad3859b17",
+   "x": 36.0,
+   "y": -5.035
+  },
+  {
+   "id": "swap-venue",
+   "label": "Swap venue",
+   "role": "service",
+   "network": "bnb",
+   "network_name": "BNB Smart Chain",
+   "address": "0xc590175e458b83680867afd273527ff58f74c02b",
+   "x": 36.0,
+   "y": -0.285
+  },
+  {
+   "id": "tornado-eth",
+   "label": "Tornado Cash",
+   "role": "service",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0xd90e2f925da726b50c4ed8d0fb90ad053324f31b",
+   "x": 48.0,
+   "y": 4.091
+  }
+ ],
+ "edges": [
+  {
+   "id": "perpetrator>wallet-a",
+   "from": "perpetrator",
+   "to": "wallet-a",
+   "amount": "2,099,879 USDT",
+   "transfers": 2,
+   "first": "04:23",
+   "last": "04:24"
+  },
+  {
+   "id": "perpetrator>wallet-b",
+   "from": "perpetrator",
+   "to": "wallet-b",
+   "amount": "1,047,298.57 USDT",
+   "transfers": 2,
+   "first": "04:26",
+   "last": "04:27"
+  },
+  {
+   "id": "wallet-a>swap-wallet",
+   "from": "wallet-a",
+   "to": "swap-wallet",
+   "amount": "1,049,931.26 USDT",
+   "transfers": 1,
+   "first": "04:53",
+   "last": "04:53"
+  },
+  {
+   "id": "swap-wallet>swap-venue",
+   "from": "swap-wallet",
+   "to": "swap-venue",
+   "amount": "1,049,931.26 USDT",
+   "transfers": 3,
+   "first": "04:59",
+   "last": "05:05"
+  },
+  {
+   "id": "swap-venue>swap-wallet",
+   "from": "swap-venue",
+   "to": "swap-wallet",
+   "amount": "1,140.98 BNB",
+   "transfers": 3,
+   "first": "04:59",
+   "last": "05:05"
+  },
+  {
+   "id": "swap-wallet>tornado-bnb",
+   "from": "swap-wallet",
+   "to": "tornado-bnb",
+   "amount": "1,140 BNB",
+   "transfers": 15,
+   "first": "05:01",
+   "last": "05:13"
+  },
+  {
+   "id": "wallet-b>stargate-bnb",
+   "from": "wallet-b",
+   "to": "stargate-bnb",
+   "amount": "1,047,298.57 USDT",
+   "transfers": 4,
+   "first": "04:30",
+   "last": "04:46"
+  },
+  {
+   "id": "stargate-eth>wallet-b-eth",
+   "from": "stargate-eth",
+   "to": "wallet-b-eth",
+   "amount": "1,046,670.19 USDT",
+   "transfers": 4,
+   "first": "04:30",
+   "last": "04:46"
+  },
+  {
+   "id": "wallet-b-eth>tornado-eth",
+   "from": "wallet-b-eth",
+   "to": "tornado-eth",
+   "amount": "346 ETH",
+   "transfers": 31,
+   "first": "09:05",
+   "last": "09:24"
+  },
+  {
+   "id": "stargate-bnb>stargate-eth",
+   "from": "stargate-bnb",
+   "to": "stargate-eth",
+   "bridge": true
+  }
+ ],
+ "steps": [
+  {
+   "nodes": [
+    "perpetrator"
+   ],
+   "edges": [],
+   "view": [
+    "perpetrator"
+   ]
+  },
+  {
+   "nodes": [
+    "wallet-a",
+    "wallet-b"
+   ],
+   "edges": [
+    "perpetrator>wallet-a",
+    "perpetrator>wallet-b"
+   ],
+   "view": [
+    "perpetrator",
+    "wallet-a",
+    "wallet-b"
+   ]
+  },
+  {
+   "nodes": [
+    "swap-wallet",
+    "swap-venue"
+   ],
+   "edges": [
+    "wallet-a>swap-wallet",
+    "swap-wallet>swap-venue",
+    "swap-venue>swap-wallet"
+   ],
+   "view": [
+    "swap-wallet",
+    "swap-venue"
+   ]
+  },
+  {
+   "nodes": [
+    "tornado-bnb"
+   ],
+   "edges": [
+    "swap-wallet>tornado-bnb"
+   ],
+   "view": [
+    "swap-wallet",
+    "tornado-bnb"
+   ]
+  },
+  {
+   "nodes": [
+    "stargate-bnb",
+    "stargate-eth",
+    "wallet-b-eth"
+   ],
+   "edges": [
+    "wallet-b>stargate-bnb",
+    "stargate-bnb>stargate-eth",
+    "stargate-eth>wallet-b-eth"
+   ],
+   "view": [
+    "stargate-bnb",
+    "stargate-eth",
+    "wallet-b-eth"
+   ]
+  },
+  {
+   "nodes": [
+    "tornado-eth"
+   ],
+   "edges": [
+    "wallet-b-eth>tornado-eth"
+   ],
+   "view": [
+    "wallet-b-eth",
+    "tornado-eth"
+   ]
+  }
+ ]
+}
