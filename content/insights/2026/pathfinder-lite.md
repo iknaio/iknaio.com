@@ -90,7 +90,7 @@ Relationship mode (the view of the counterparties of an address) is not availabl
 
 ## The GANA Payment exploit
 
-On 20 November 2025, an attacker took more than 3.1 million USD from GANA Payment, a payment protocol on BNB Smart Chain, as [reported by The Block](https://www.theblock.co/post/379619/gana-payment-exploit) based on [an analysis by ZachXBT](https://t.me/investigations/289). The perpetrator address [`0x2e8a8670b734e260cedbc6d5a05532264aae5c38`](https://app.iknaio.com/pathfinder/bnb/address/0x2e8a8670b734e260cedbc6d5a05532264aae5c38) split the stolen USDT (a US dollar stablecoin) between two wallets, A and B.
+On 20 November 2025, an attacker took more than 3.1 million USD from GANA Payment, a payment protocol on BNB Smart Chain, as [reported by The Block](https://www.theblock.co/post/379619/gana-payment-exploit) [2] based on [an analysis by ZachXBT](https://t.me/investigations/289) [3]. The perpetrator address [`0x2e8a8670b734e260cedbc6d5a05532264aae5c38`](https://app.iknaio.com/pathfinder/bnb/address/0x2e8a8670b734e260cedbc6d5a05532264aae5c38) split the stolen USDT (a US dollar stablecoin) between two wallets, A and B.
 
 Wallet A's part stayed on BNB Smart Chain. It was swapped for BNB and, less than an hour after the split, deposited into Tornado Cash (a mixing service). Wallet B's part took the bridge to Ethereum. Scrolling through the graph below follows both routes step by step.
 
@@ -113,3 +113,7 @@ In the GANA case, the trail does not stop where the stolen funds leave BNB Smart
 ## References
 
 [1] Stütz, R., Stifter, N., Dragaschnig, M., Haslhofer, B., & Judmayer, A. (2026). [Reuse of Public Keys Across UTXO and Account-Based Cryptocurrencies](https://arxiv.org/abs/2601.19500). Financial Cryptography and Data Security (FC 2026). arXiv:2601.19500.
+
+[2] Avan-Nomayo, N. (2025, November 20). [GANA Payment exploited for over $3.1 million on BNB Smart Chain: ZachXBT](https://www.theblock.co/post/379619/gana-payment-exploit). The Block.
+
+[3] ZachXBT (2025, November 20). [Analysis of the GANA Payment exploit](https://t.me/investigations/289). ZachXBT Investigations, Telegram.
