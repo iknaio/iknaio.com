@@ -108,4 +108,4 @@ Wallet A's part stayed on BNB Smart Chain. It was swapped for BNB and, less than
 </figure>
 <script src="/js/pathfinder-lite-story.js" defer></script>
 
-Pathfinder now follows funds on fourteen blockchains and across the bridges that connect them.
+In the GANA case, the trail does not stop where the stolen funds leave BNB Smart Chain. With fourteen blockchains in Pathfinder, many more cases that cross a bridge can now be followed in one graph, from the first address to the last.
