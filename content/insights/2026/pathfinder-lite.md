@@ -1,5 +1,5 @@
 ---
-title: "8 New Blockchains in the Pathfinder"
+title: "8 New Blockchains in Pathfinder"
 date: 2026-10-13
 author: "Thomas Niedermayer"
 draft: true
@@ -31,11 +31,9 @@ posttype: "insight"
 .pl-key use.icon { fill: var(--color-dark); }
 </style>
 
-Iknaio Pathfinder now covers fourteen blockchains: the six core blockchains Bitcoin, Bitcoin Cash, Litecoin, Zcash, Ethereum and Tron, and eight new ones, including BNB Smart Chain, Arbitrum and Base, in Lite mode with a smaller feature set.
+Iknaio Pathfinder now covers fourteen blockchains: the six core blockchains Bitcoin, Bitcoin Cash, Litecoin, Zcash, Ethereum and Tron, and eight new ones, including BNB Smart Chain, Arbitrum and Base.
 
-In this post, we showcase the eight new blockchains supported in Pathfinder. This add-on also means broader support for public key clustering ([Stütz et al., FC 2026](https://arxiv.org/abs/2601.19500)) and more useful bridge resolution, since more of the blockchains that bridges connect are now in Pathfinder. We follow one real case across a bridge: stolen funds from the GANA Payment exploit of November 2025, on their way from BNB Smart Chain to Ethereum.
-
-The short summary: on the new blockchains, Pathfinder shows the transactions of an address, its attribution tags (labels that name who controls an address) and the same address on other blockchains. A bridge transfer is linked to its payout on the destination blockchain, so the trace continues there in the same graph.
+In this post, we present the eight new blockchains, what they add to investigations and what Pathfinder can do on them. We then follow one real case across a bridge: stolen funds from the GANA Payment exploit of November 2025, on their way from BNB Smart Chain to Ethereum.
 
 ## The new blockchains
 
@@ -52,7 +50,10 @@ The eight new blockchains are:
 <li><span class="pl-chain-icon"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="/images/insights/pathfinder-lite/blockchains.svg#robinhood"/></svg></span>Robinhood Chain</li>
 </ul>
 
-All eight use the address format of Ethereum, so one key gives the same address on each of them. The same key also gives an address on Bitcoin and on Tron, each in its own format (Figure 1). Pathfinder lists the addresses of one key as related by public key: the same address on every new blockchain where it was used, and the Bitcoin and Tron addresses as described in our post on [cross-chain key reuse](/insights/cross-chain-key-reuse/). Figure 1 shows a key of the exchange Gate that is in use on Bitcoin, Tron, Ethereum and seven of the eight new blockchains.
+All eight run the same software as Ethereum (they are EVM blockchains) and use its address format, so one key gives the same address on each of them. This brings two improvements for investigations:
+
+- **More hits for cross-chain key reuse.** Pathfinder lists the addresses of one key on other blockchains as related addresses, as described in our post on [cross-chain key reuse](/insights/cross-chain-key-reuse/). The new blockchains add more places where a key can show up. Figure 1 shows a key of the exchange Gate that is in use on Bitcoin, Tron, Ethereum and seven of the eight new blockchains.
+- **More bridge transfers resolved.** Pathfinder links a bridge transfer to its payout when both blockchains are in Pathfinder. Many bridges connect Ethereum with the new blockchains, so more bridge transfers now lead to their payout, and the trace continues in the same graph.
 
 <figure class="pl-key">
 <div class="pl-key-canvas"><svg viewBox="0 0 720 284" role="group" aria-label="A key of the exchange Gate, linked by solid lines to the same address 0x0d0707963952f2fba59dd06f2b425ace40b492fe on Ethereum, BNB Smart Chain, Arbitrum, Base and Polygon, and by dashed lines to its Bitcoin address 1G47mSr3oANXMafVrR8UC4pzV7FEAzo3r9 and its Tron address TBA6CypYJizwA9XdC7Ubgc5F1bxrQ7SqPt">
@@ -76,15 +77,24 @@ All eight use the address format of Ethereum, so one key gives the same address 
 <figcaption>Figure 1: A key of the exchange Gate and its addresses, all in use: the same address on Ethereum and on the new blockchains, and an address in another format on Bitcoin and on Tron.</figcaption>
 </figure>
 
-For an address on these blockchains, Pathfinder lists its transactions in the native coin and in the tokens Iknaio supports, its attribution tags and its related addresses. Bridge transfers are linked to their payout, as the case below shows.
+### Capabilities
+
+Pathfinder supports the new blockchains in Lite mode and marks them with a Lite badge. For an address on a new blockchain, Pathfinder shows:
+
+- its transactions in the native coin and in the tokens Iknaio supports, with filters for direction, token and time range
+- its attribution tags (labels that name who controls an address)
+- its related addresses: the addresses of the same key on other blockchains
+- its bridge transfers, each linked to its payout on the destination blockchain
+
+Relationship mode (the view of the counterparties of an address) is not available on the new blockchains. To add the next address to the graph, select a transaction from the transaction list.
 
 ## The GANA Payment exploit
 
 On 20 November 2025, an attacker took more than 3.1 million USD from GANA Payment, a payment protocol on BNB Smart Chain, as [reported by The Block](https://www.theblock.co/post/379619/gana-payment-exploit) based on [an analysis by ZachXBT](https://t.me/investigations/289). The perpetrator address [`0x2e8a8670b734e260cedbc6d5a05532264aae5c38`](https://app.iknaio.com/pathfinder/bnb/address/0x2e8a8670b734e260cedbc6d5a05532264aae5c38) split the stolen USDT (a US dollar stablecoin) between two wallets, A and B.
 
-Wallet A's part stayed on BNB Smart Chain. It was swapped for BNB and, less than an hour after the split, deposited into Tornado Cash (a mixing service). Wallet B's part took the bridge to Ethereum. The graph below follows both routes step by step.
+Wallet A's part stayed on BNB Smart Chain. It was swapped for BNB and, less than an hour after the split, deposited into Tornado Cash (a mixing service). Wallet B's part took the bridge to Ethereum. Scrolling through the graph below follows both routes step by step.
 
-<figure class="pl-story" data-src="/data/pathfinder-lite/gana-story.json" data-svg-light="/data/pathfinder-lite/gana-pathfinder-light.svg" data-svg-dark="/data/pathfinder-lite/gana-pathfinder-dark.svg" data-label="The GANA Payment case in Pathfinder, from BNB Smart Chain to Ethereum" data-overview="The whole case in Pathfinder on 20 November 2025. Select a step to follow the funds in order.">
+<figure class="pl-story" data-src="/data/pathfinder-lite/gana-story.json" data-svg-light="/data/pathfinder-lite/gana-pathfinder-light.svg" data-svg-dark="/data/pathfinder-lite/gana-pathfinder-dark.svg" data-label="The GANA Payment case in Pathfinder, from BNB Smart Chain to Ethereum" data-overview="The whole case in Pathfinder on 20 November 2025. Scroll on, or select a step, to follow the funds in order.">
 <img class="pl-story-fallback" src="/images/insights/pathfinder-lite/figure-2-pathfinder.png" alt="The GANA Payment case in Pathfinder: the perpetrator address on BNB Smart Chain, the swap of 200.00k USDT for 217.34 BNB, and the bridge transfer of 300.00k USDT linked to its payout of 299.82k USDT on Ethereum">
 <ol class="pl-story-steps">
 <li data-label="Start">The trail starts at the perpetrator address on BNB Smart Chain.</li>
@@ -98,6 +108,4 @@ Wallet A's part stayed on BNB Smart Chain. It was swapped for BNB and, less than
 </figure>
 <script src="/js/pathfinder-lite-story.js" defer></script>
 
-## Limitations
-
-While Lite mode opens eight more blockchains to investigations, it does not support every feature of the core blockchains. Relationship mode (the view of the counterparties of an address) is not available on them, so an address is expanded through its transaction list.
+Pathfinder now follows funds on fourteen blockchains and across the bridges that connect them.
