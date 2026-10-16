@@ -86,7 +86,7 @@ Pathfinder supports the new blockchains in Lite mode and marks them with a Lite 
 - its related addresses: the addresses of the same key on other blockchains
 - its bridge transfers, each linked to its payout on the destination blockchain
 
-Relationship mode (the view of the counterparties of an address) is not available on the new blockchains. To add the next address to the graph, select a transaction from the transaction list.
+Relationship mode (the view of the counterparties of an address) is not available on the new blockchains.
 
 ## The GANA Payment exploit
 
