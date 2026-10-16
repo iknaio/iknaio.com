@@ -5,6 +5,7 @@ tiers:
     cta_text: "Apply for access"
     features:
       Pathfinder: true
+      "Lite blockchains": false
       "Full attribution data": false
       "API access": false
       "MCP server": false
@@ -19,6 +20,7 @@ tiers:
     cta_text: "Contact sales"
     features:
       Pathfinder: true
+      "Lite blockchains": true
       "Full attribution data": true
       "API access": true
       "MCP server": true
@@ -32,6 +34,7 @@ tiers:
     cta_text: "Contact sales"
     features:
       Pathfinder: true
+      "Lite blockchains": true
       "Full attribution data": true
       "API access": true
       "MCP server": true
@@ -43,6 +46,9 @@ feature_rows:
   - key: Pathfinder
     label: Pathfinder
     tooltip: "Visual investigation dashboard for tracing cryptoasset transactions."
+  - key: "Lite blockchains"
+    label: "Lite blockchains"
+    tooltip: "Eight more blockchains in Pathfinder: BNB Smart Chain, Arbitrum, Base, Optimism, Polygon, Avalanche C-Chain, Gnosis and Robinhood Chain."
   - key: "Full attribution data"
     label: "Private attribution tags"
     tooltip: "Proprietary dataset that identifies wallet owners and entities across blockchains."
@@ -65,6 +71,10 @@ feature_rows:
 comparison:
   - feature: "Pathfinder"
     free: true
+    professional: true
+    institutional: true
+  - feature: "Lite blockchains"
+    free: false
     professional: true
     institutional: true
   - feature: "Private attribution tags"
