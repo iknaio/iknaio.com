@@ -52,7 +52,7 @@ The eight new blockchains are:
 
 All eight run the same software as Ethereum (they are EVM blockchains) and use its address format, so one key gives the same address on each of them. This brings two improvements for investigations:
 
-- **More hits for cross-chain key reuse.** Pathfinder lists the addresses of one key on other blockchains as related addresses, as described in our post on [cross-chain key reuse](/insights/cross-chain-key-reuse/). The new blockchains add more places where a key can show up. Figure 1 shows a key of the exchange Gate that is in use on Bitcoin, Tron, Ethereum and seven of the eight new blockchains.
+- **More hits for cross-chain key reuse.** Pathfinder lists the addresses of one key on other blockchains as related addresses, as described in our post on [cross-chain key reuse](/insights/cross-chain-key-reuse/) [1]. The new blockchains add more places where a key can show up. Figure 1 shows a key of the exchange Gate that is in use on Bitcoin, Tron, Ethereum and seven of the eight new blockchains.
 - **More bridge transfers resolved.** Pathfinder links a bridge transfer to its payout when both blockchains are in Pathfinder. Many bridges connect Ethereum with the new blockchains, so more bridge transfers now lead to their payout, and the trace continues in the same graph.
 
 <figure class="pl-key">
@@ -109,3 +109,7 @@ Wallet A's part stayed on BNB Smart Chain. It was swapped for BNB and, less than
 <script src="/js/pathfinder-lite-story.js" defer></script>
 
 In the GANA case, the trail does not stop where the stolen funds leave BNB Smart Chain. With fourteen blockchains in Pathfinder, many more cases that cross a bridge can now be followed in one graph, from the first address to the last.
+
+## References
+
+[1] Stütz, R., Stifter, N., Dragaschnig, M., Haslhofer, B., & Judmayer, A. (2026). [Reuse of Public Keys Across UTXO and Account-Based Cryptocurrencies](https://arxiv.org/abs/2601.19500). Financial Cryptography and Data Security (FC 2026). arXiv:2601.19500.
