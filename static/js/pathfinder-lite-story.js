@@ -13,6 +13,8 @@
  * every transaction, edge and link tagged data-edge="<id>". The JSON holds
  * the addresses and the nodes and edges each step adds. Each step zooms to
  * its part of the graph, fades what came before and hides what comes later.
+ * The graph stays in view while the page scrolls past it, and the scroll
+ * position selects the step. The step buttons scroll to their step.
  */
 (function () {
   "use strict";
@@ -22,9 +24,12 @@
   var MIN_WIDTH = 760; // graph units: the closest zoom
   var PAD = 70;
   var ZOOM_MS = 700;
+  var STEP_SCROLL = 0.5; // scroll distance of one step, in viewport heights
+  var NAV_HEIGHT = 76; // the fixed site navigation
 
   var STYLE = [
     ".pl-story{margin:2rem 0;}",
+    ".pl-story-stage{position:sticky;background:var(--color-white,#FFF);padding-bottom:4px;}",
     ".pl-story-canvas{position:relative;aspect-ratio:2.1/1;border-radius:var(--radius-md,8px);overflow:hidden;background:#F9FBFC;border:1px solid var(--color-gray,#D9D9D9);}",
     "[data-theme=dark] .pl-story-canvas{background:#2D353D;}",
     ".pl-story-canvas svg{display:block;width:100%;height:100%;}",
@@ -210,32 +215,84 @@
       apply(false);
     }
 
-    function button(text, onClick) {
+    function button(text) {
       var b = document.createElement("button");
       b.type = "button";
       b.textContent = text;
-      b.addEventListener("click", onClick);
       controls.appendChild(b);
       return b;
     }
 
-    var prev = button("‹", function () { show(state - 1); });
+    var prev = button("‹");
     prev.setAttribute("aria-label", "Previous step");
-    var overview = button("Whole case", function () { show(0); });
+    var overview = button("Whole case");
     var stepButtons = data.steps.map(function (_, i) {
       var label = (items[i] && items[i].getAttribute("data-label")) || "Step";
-      return button(i + 1 + " " + label, function () { show(i + 1); });
+      return button(i + 1 + " " + label);
     });
-    var next = button("›", function () { show(state + 1); });
+    var next = button("›");
     next.setAttribute("aria-label", "Next step");
 
+    var track = document.createElement("div");
+    track.className = "pl-story-track";
+    var stage = document.createElement("div");
+    stage.className = "pl-story-stage";
+    stage.appendChild(canvas);
+    stage.appendChild(controls);
+    stage.appendChild(caption);
+    track.appendChild(stage);
     var list = figure.querySelector(".pl-story-steps");
-    figure.insertBefore(canvas, list);
-    figure.insertBefore(controls, list);
-    figure.insertBefore(caption, list);
+    figure.insertBefore(track, list);
     figure.classList.add("ready");
     mount();
     show(0);
+
+    /* The track is taller than the stage by one scroll distance per step.
+     * While the stage sticks, the scrolled part of that extra height picks
+     * the step: the whole case first, then each step in turn. */
+    function stepHeight() {
+      return window.innerHeight * STEP_SCROLL;
+    }
+
+    /* The stage sticks centred in the viewport below the navigation. */
+    var stickyTop = NAV_HEIGHT;
+    function layout() {
+      stickyTop = Math.max(NAV_HEIGHT + 16, Math.round((window.innerHeight + NAV_HEIGHT - stage.offsetHeight) / 2));
+      stage.style.top = stickyTop + "px";
+      track.style.height = stage.offsetHeight + data.steps.length * stepHeight() + "px";
+    }
+
+    function stateFromScroll() {
+      var scrolled = stickyTop - track.getBoundingClientRect().top;
+      return Math.max(0, Math.min(data.steps.length, Math.floor(scrolled / stepHeight() + 0.5)));
+    }
+
+    var pending = false;
+    function onScroll() {
+      if (pending) return;
+      pending = true;
+      window.requestAnimationFrame(function () {
+        pending = false;
+        var target = stateFromScroll();
+        if (target !== state) show(target);
+      });
+    }
+
+    function scrollToStep(target) {
+      target = Math.max(0, Math.min(data.steps.length, target));
+      var top = window.scrollY + track.getBoundingClientRect().top - stickyTop + target * stepHeight();
+      window.scrollTo({ top: top, behavior: reducedMotion() ? "auto" : "smooth" });
+      show(target);
+    }
+
+    prev.onclick = function () { scrollToStep(state - 1); };
+    next.onclick = function () { scrollToStep(state + 1); };
+    overview.onclick = function () { scrollToStep(0); };
+    stepButtons.forEach(function (b, i) { b.onclick = function () { scrollToStep(i + 1); }; });
+
+    layout();
+    window.addEventListener("resize", layout);
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     new MutationObserver(mount).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
   }
