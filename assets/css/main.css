@@ -1291,6 +1291,11 @@ hr {
   line-height: 1.4;
 }
 
+.blockchains-footnote {
+  margin-top: var(--spacing-md);
+  font-size: 14px;
+}
+
 #supported-blockchains .comparison-feature-col,
 #supported-blockchains .comparison-feature-name {
   text-align: left;

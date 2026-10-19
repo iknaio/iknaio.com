@@ -18,7 +18,7 @@ tools:
         image: "images/platform/pathfinder-1.png"
         alt: "Pathfinder dashboard showing a Bitcoin address transaction graph with cluster information."
         text: |
-          Iknaio Pathfinder provides a user-friendly service to track money flows across fourteen blockchains, including Bitcoin, Ethereum and Tron, and tokens such as Tether. See [Supported Blockchains](#supported-blockchains) for the full list.
+          Iknaio Pathfinder provides a user-friendly service to track money flows across fourteen blockchains, including Bitcoin and Ethereum, and stablecoins such as USDT. See [Supported Blockchains](#supported-blockchains) for the full list.
 
           Its simple interface enables you to monitor transactions at both individual and aggregated levels, giving you a clear, comprehensive view of financial flows. You can organize your investigations by tagging addresses and highlighting critical transaction paths, helping you stay focused and efficient.
 
@@ -99,7 +99,8 @@ blockchains:
   slug: "supported-blockchains"
   name: "Supported Blockchains"
   headline: "Fourteen blockchains in Pathfinder, in Full or Lite mode."
-  tagline: "Pathfinder supports six blockchains in Full mode and eight in Lite mode. Lite mode offers transaction-based tracing with a reduced feature set. Lite blockchains are included in the Professional and Institutional packages and can be switched on and off in the Pathfinder settings."
+  tagline: "Pathfinder supports blockchains at two levels. Six blockchains in Full mode offer the complete feature set. Eight Lite blockchains offer transaction-based tracing with a reduced feature set and are marked with a Lite badge in Pathfinder. Lite blockchains are available in the Professional and Institutional packages and can be switched on and off in the Pathfinder settings."
+  footnote: "Aggregate tracing follows money flows between addresses as summarised totals rather than individual transactions."
   full: "Bitcoin, Bitcoin Cash, Litecoin, Zcash, Ethereum, Tron"
   lite: "BNB Smart Chain, Arbitrum, Base, Optimism, Polygon, Avalanche C-Chain, Gnosis, Robinhood Chain"
   rows:
@@ -130,6 +131,7 @@ blockchains:
     - feature: "Exact address statistics"
       full: true
       lite: "Lower bounds for some counts"
+    # TODO: add rows for QuickLock and the CSAM Checker once it is confirmed whether they work on Lite blockchains.
     - feature: "Packages"
       full: "All packages"
       lite: "Professional, Institutional"
