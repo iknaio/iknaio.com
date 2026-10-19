@@ -125,9 +125,6 @@ blockchains:
     - feature: "Relationship mode (aggregate tracing)"
       full: true
       lite: false
-    - feature: "Address clusters"
-      full: true
-      lite: false
     - feature: "Exact address statistics"
       full: true
       lite: "Lower bounds for some counts"
