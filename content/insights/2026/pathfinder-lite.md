@@ -2,7 +2,7 @@
 title: "8 New Blockchains in Pathfinder"
 date: 2026-10-13
 author: "Thomas Niedermayer"
-draft: true
+draft: false
 description: "Iknaio Pathfinder now covers BNB Smart Chain, Arbitrum, Base, Optimism, Polygon, Avalanche C-Chain, Gnosis and Robinhood Chain. In the GANA Payment exploit, stolen funds crossed a bridge from BNB Smart Chain to Ethereum, and Pathfinder follows them across."
 tags: ["pathfinder", "bnb-smart-chain", "bridges", "cross-chain", "product-update"]
 image: "images/insights/pathfinder-lite/cover.jpg"
