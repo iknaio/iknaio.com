@@ -22,6 +22,7 @@
       {{ range . }}
       <a class="platform-tab" href="#{{ .slug }}">{{ .name }}</a>
       {{ end }}
+      {{ with $.Params.blockchains }}<a class="platform-tab" href="#{{ .slug }}">{{ .name }}</a>{{ end }}
     </div>
   </nav>
 
@@ -52,6 +53,41 @@
     </div>
   </article>
   {{ end }}
+  {{ end }}
+
+  {{ with .Params.blockchains }}
+  <div class="platform-divider" aria-hidden="true"></div>
+  <article id="{{ .slug }}" class="platform-tool">
+    <div class="container">
+      <header class="platform-tool-header">
+        <div class="platform-tool-title">
+          <h2 class="platform-tool-name">{{ .name }}</h2>
+        </div>
+        {{ with .headline }}<p class="platform-tool-headline">{{ . }}</p>{{ end }}
+      </header>
+      {{ with .tagline }}<p class="platform-tool-tagline">{{ . }}</p>{{ end }}
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th class="comparison-feature-col">Feature</th>
+              <th>Full mode<span class="blockchains-list">{{ .full }}</span></th>
+              <th>Lite mode<span class="blockchains-list">{{ .lite }}</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ range .rows }}
+            <tr>
+              <td class="comparison-feature-name">{{ .feature }}</td>
+              {{- partial "packages/comparison-cell.html" (dict "value" .full) -}}
+              {{- partial "packages/comparison-cell.html" (dict "value" .lite) -}}
+            </tr>
+            {{ end }}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </article>
   {{ end }}
 </section>
 

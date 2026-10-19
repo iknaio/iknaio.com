@@ -1283,6 +1283,20 @@ hr {
   color: var(--color-dark);
 }
 
+.comparison-table .blockchains-list {
+  display: block;
+  margin-top: var(--spacing-xs, 4px);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+#supported-blockchains .comparison-feature-col,
+#supported-blockchains .comparison-feature-name {
+  text-align: left;
+  white-space: normal;
+}
+
 /* Packages trust signals */
 .packages-trust-text {
   text-align: center;

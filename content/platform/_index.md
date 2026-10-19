@@ -18,7 +18,7 @@ tools:
         image: "images/platform/pathfinder-1.png"
         alt: "Pathfinder dashboard showing a Bitcoin address transaction graph with cluster information."
         text: |
-          Iknaio Pathfinder provides a user-friendly service to track money flows across major cryptoasset networks, including Bitcoin, Ethereum, and Tether.
+          Iknaio Pathfinder provides a user-friendly service to track money flows across fourteen blockchains, including Bitcoin, Ethereum and Tron, and tokens such as Tether. See [Supported Blockchains](#supported-blockchains) for the full list.
 
           Its simple interface enables you to monitor transactions at both individual and aggregated levels, giving you a clear, comprehensive view of financial flows. You can organize your investigations by tagging addresses and highlighting critical transaction paths, helping you stay focused and efficient.
 
@@ -94,6 +94,45 @@ tools:
           The Iknaio REST API provides programmatic access to the same data that powers Pathfinder. Automate address lookups, entity attribution, and transaction tracing, and integrate blockchain intelligence directly into your existing AML, case-management, and analytics stacks.
 
           Through the Model Context Protocol (MCP) server, AI agents can connect to Iknaio data and tools, enabling agentic investigation pipelines that scale. Build workflows that trace funds, screen counterparties, and prepare reports — automatically.
+
+blockchains:
+  slug: "supported-blockchains"
+  name: "Supported Blockchains"
+  headline: "Fourteen blockchains in Pathfinder, in Full or Lite mode."
+  tagline: "Pathfinder supports six blockchains in Full mode and eight in Lite mode. Lite mode offers transaction-based tracing with a reduced feature set. Lite blockchains are included in the Professional and Institutional packages and can be switched on and off in the Pathfinder settings."
+  full: "Bitcoin, Bitcoin Cash, Litecoin, Zcash, Ethereum, Tron"
+  lite: "BNB Smart Chain, Arbitrum, Base, Optimism, Polygon, Avalanche C-Chain, Gnosis, Robinhood Chain"
+  rows:
+    - feature: "Transactions, with filters for direction, token and time range"
+      full: true
+      lite: true
+    - feature: "Attribution tags"
+      full: true
+      lite: true
+    - feature: "Related addresses (same key on other blockchains)"
+      full: true
+      lite: true
+    - feature: "Bridge transfers, linked to their payout"
+      full: true
+      lite: true
+    - feature: "Swap detection"
+      full: true
+      lite: true
+    - feature: "API and MCP access"
+      full: true
+      lite: true
+    - feature: "Relationship mode (aggregate tracing)"
+      full: true
+      lite: false
+    - feature: "Address clusters"
+      full: true
+      lite: false
+    - feature: "Exact address statistics"
+      full: true
+      lite: "Lower bounds for some counts"
+    - feature: "Packages"
+      full: "All packages"
+      lite: "Professional, Institutional"
 
 cta:
   title: "Ready to investigate crypto money flows.<br>More efficiently?"
