@@ -38,7 +38,7 @@ tools:
       read_more_url: "platform/#quicklock"
       screenshot: "images/screenshots/screenshot-quicklock.png"
     - name: CSAM Checker
-      description: "Screen cryptoasset addresses for links to known CSAM activity. CSAM Checker matches an address against CSAM attribution tags across every network it exists on, in one click. Every hit names the relationship behind it, whether a tag on the address itself, its likely cluster, or a neighbour, so investigators can see how much weight a finding carries."
+      description: "Screen cryptoasset addresses for links to known CSAM activity. CSAM Checker matches an address against CSAM attribution tags across every blockchain it exists on, in one click. Every hit names the relationship behind it, whether a tag on the address itself, its likely cluster, or a neighbour, so investigators can see how much weight a finding carries."
       read_more_url: "platform/#csam-check"
       screenshot: "images/screenshots/screenshot-csam-check.png"
     - name: API & MCP
