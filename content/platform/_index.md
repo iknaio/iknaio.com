@@ -18,7 +18,7 @@ tools:
         image: "images/platform/pathfinder-1.png"
         alt: "Pathfinder dashboard showing a Bitcoin address transaction graph with cluster information."
         text: |
-          Iknaio Pathfinder provides a user-friendly service to track money flows across fourteen blockchains, including Bitcoin and Ethereum, and stablecoins such as USDT. See [Supported Blockchains](#supported-blockchains) for the full list.
+          Iknaio Pathfinder provides a user-friendly service to track money flows across fourteen blockchains, including Bitcoin, Ethereum and Tron, and stablecoins such as USDT. See [Supported Blockchains](#supported-blockchains) for the full list.
 
           Its simple interface enables you to monitor transactions at both individual and aggregated levels, giving you a clear, comprehensive view of financial flows. You can organize your investigations by tagging addresses and highlighting critical transaction paths, helping you stay focused and efficient.
 
