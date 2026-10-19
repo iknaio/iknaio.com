@@ -119,21 +119,21 @@ blockchains:
     - feature: "Swap detection"
       full: true
       lite: true
+    - feature: "CSAM Checker"
+      full: true
+      lite: true
     - feature: "API and MCP access"
       full: true
       lite: true
     - feature: "Relationship mode (aggregate tracing)"
       full: true
       lite: false
-    - feature: "Exact address statistics"
-      full: true
-      lite: "Lower bounds for some counts"
-    - feature: "CSAM Checker"
-      full: true
-      lite: true
     - feature: "QuickLock"
       full: true
       lite: false
+    - feature: "Exact address statistics"
+      full: true
+      lite: "Lower bounds for some counts"
     - feature: "Packages"
       full: "All packages"
       lite: "Professional, Institutional"
