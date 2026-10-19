@@ -128,7 +128,12 @@ blockchains:
     - feature: "Exact address statistics"
       full: true
       lite: "Lower bounds for some counts"
-    # TODO: add rows for QuickLock and the CSAM Checker once it is confirmed whether they work on Lite blockchains.
+    - feature: "CSAM Checker"
+      full: true
+      lite: true
+    - feature: "QuickLock"
+      full: true
+      lite: false
     - feature: "Packages"
       full: "All packages"
       lite: "Professional, Institutional"
