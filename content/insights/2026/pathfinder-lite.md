@@ -50,7 +50,7 @@ The eight new blockchains are:
 <li><span class="pl-chain-icon"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="/images/insights/pathfinder-lite/blockchains.svg#robinhood"/></svg></span>Robinhood Chain</li>
 </ul>
 
-All eight run the same software as Ethereum (they are EVM blockchains) and use its address format, so one key gives the same address on each of them. This brings two improvements for investigations:
+All eight are EVM blockchains: they run smart contracts on the Ethereum Virtual Machine (EVM) and use the Ethereum address format, so one key gives the same address on each of them. This brings two improvements for investigations:
 
 - **More hits for cross-chain key reuse.** Pathfinder lists the addresses of one key on other blockchains as related addresses, as described in our post on [cross-chain key reuse](/insights/cross-chain-key-reuse/) [1] and in the underlying [research paper](https://arxiv.org/abs/2601.19500) [2]. The new blockchains add more places where a key can show up. Figure 1 shows a key of the exchange Gate that is in use on Bitcoin, Tron, Ethereum and seven of the eight new blockchains.
 - **More bridge transfers resolved.** Pathfinder links a bridge transfer to its payout when both blockchains are in Pathfinder. Many bridges connect Ethereum with the new blockchains, so more bridge transfers now lead to their payout, and the trace continues in the same graph.
