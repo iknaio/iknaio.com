@@ -88,7 +88,7 @@ graphsense-cli ingest from-node -e prod -c btc --sinks delta --write-mode overwr
 
 Later runs drop the two flags and fall back to the default append mode, which continues from where the last run stopped. A full Bitcoin sync from the node takes on the order of a week, depending heavily on the connection and the performance of the node. The pace also drops as the ingest progresses, since the early years of the chain consist of nearly empty blocks while later ones arrive full. For a smaller ingest, the `--end-block` flag stops at a chosen block height, which is enough to test the whole pipeline on a slice of the chain.
 
-The result is a `transaction` table with one row per transaction and the input addresses nested inside each row. For Bitcoin, the table holds 1.4 billion transactions and takes up 832 GB at the time of writing.
+The result is a `transaction` table with one row per transaction and the input addresses nested inside each row. For Bitcoin, the table holds 1.4 billion transactions up to block 959,383 and takes up 832 GB at the time of writing.
 
 ### Step 2: map addresses to integers with DuckDB
 
@@ -248,7 +248,7 @@ That is the entire pipeline. The final Parquet files map each clustered address 
 | | |
 |---|---|
 | Machine | Laptop, Intel i7-1365U, 32 GB RAM |
-| Raw transaction table | 832 GB (1.4 billion transactions) |
+| Raw transaction table | 832 GB (1.4 billion transactions, up to block 959,383) |
 | Read for clustering | 66.6 GB (8 percent of the table) |
 | Reduce to address lists | 2 h 44 min (40 GB on disk) |
 | Multi-input transactions | 231.4 million (1.66 billion input references) |
