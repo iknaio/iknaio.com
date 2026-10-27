@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  // Theme toggle (init happens inline in <head> to avoid FOUC)
+  // Theme toggle (init happens in theme-init.js in <head> to avoid FOUC)
   document.addEventListener('click', function (e) {
     var btn = e.target.closest('.theme-toggle');
     if (!btn) return;
@@ -163,9 +163,10 @@
   // Lightbox / Image Overlay
   // ---------------------------------------------------------------------------
 
-  // Configuration - can be set from Hugo params via window.lightboxConfig
-  var lightboxConfig = window.lightboxConfig || {
-    navEnabled: false
+  // Configuration - set from Hugo params via data-lightbox-nav on this script tag
+  var configScript = document.querySelector('script[data-lightbox-nav]');
+  var lightboxConfig = {
+    navEnabled: !!configScript && configScript.getAttribute('data-lightbox-nav') === 'true'
   };
 
   // Create lightbox overlay element

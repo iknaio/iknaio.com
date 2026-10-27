@@ -9,9 +9,8 @@
       {{- block "main" . }}{{- end }}
     </main>
     {{- partial "footer.html" . -}}
-    {{- partial "lightbox-config.html" . -}}
     {{ $js := resources.Get "js/main.js" | minify | fingerprint }}
-    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"{{ with .Site.Params.lightbox }} data-lightbox-nav="{{ .navEnabled | default false }}"{{ end }} defer></script>
     {{ $cookie := resources.Get "js/cookie-banner.js" | minify | fingerprint }}
     <script src="{{ $cookie.RelPermalink }}" integrity="{{ $cookie.Data.Integrity }}" defer></script>
   </body>
