@@ -1,42 +1,55 @@
 User-agent: *
 Allow: /
+Disallow: /cv/
 
 # Search engines
 User-agent: Googlebot
 Allow: /
+Disallow: /cv/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /cv/
 
 # AI crawlers / generative-engine optimisation
 User-agent: GPTBot
 Allow: /
+Disallow: /cv/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /cv/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /cv/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /cv/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /cv/
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /cv/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /cv/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /cv/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /cv/
 
 User-agent: CCBot
 Allow: /
+Disallow: /cv/
 
 Sitemap: {{ "sitemap.xml" | absURL }}
