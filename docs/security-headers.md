@@ -77,7 +77,35 @@ Ideally the CSP also moves from the meta tag into a header, with
 `frame-ancestors 'none'` added (and the meta tag removed, so there is only one
 policy to maintain).
 
-Caveats:
+Both options need the iknaio.com nameservers moved to Cloudflare: Cloudflare can
+only serve or proxy the bare domain if it runs the DNS for it. See
+[DNS migration](#dns-migration-easyname--cloudflare) below.
+
+Option 1 needs no repo changes. Option 2 keeps the headers in the repo and adds
+preview deploys per branch. Repo-side work for option 2 is about an hour:
+`static/_headers`, plus either Cloudflare's Git integration (build command
+`hugo --minify`, env `HUGO_VERSION=0.162.1`) or our workflow with the deploy
+step swapped for `wrangler pages deploy public` (needs a Cloudflare API token
+as a repo secret).
+
+### Rejected: only www.iknaio.com on Cloudflare
+
+A Cloudflare Pages custom domain on a subdomain needs only a CNAME
+(`www` → `<project>.pages.dev`), so DNS could stay at easyname. Not recommended:
+
+- The bare domain still has to redirect to `www`, and nothing can serve that
+  cleanly. GitHub Pages only redirects apex → www when `www` also points to GitHub
+  (unsupported setup, certificate issuance unreliable). easyname URL forwarding,
+  if offered, often doesn't do HTTPS properly.
+- The canonical site moves to `www`: `baseURL`, canonical URLs, sitemap, OG
+  images. In SEO terms this is a domain move.
+- A scan of `iknaio.com` first hits the bare-domain redirect, which sends no HSTS.
+  The grade likely only improves for a scan of `www.iknaio.com`, and the
+  redirection test may lose points if `http://iknaio.com` goes straight to
+  `https://www`.
+- HSTS covers only `www`, not the bare domain or the other subdomains.
+
+Caveats for the headers:
 
 - `includeSubDomains` commits **every** subdomain (app., www., etc.) to HTTPS for
   two years. Confirm they all serve valid HTTPS first, or drop that token.
@@ -86,3 +114,89 @@ Caveats:
   hard to undo.
 - `X-Frame-Options: DENY` stops anyone from framing iknaio.com. That's fine
   unless we embed our own pages somewhere.
+
+## DNS migration (easyname → Cloudflare)
+
+The domain stays registered at easyname. Only the nameservers change.
+
+### What is on the domain
+
+These are the public records seen on 2026-10-27. This is **not** a complete
+list: DKIM selectors and other subdomains can't be listed from outside.
+
+| Name | Type | Value | Notes |
+|---|---|---|---|
+| `iknaio.com` | A | 185.199.108–111.153 | GitHub Pages |
+| `www` | CNAME | `iknaio.github.io` | GitHub Pages (redirects to the bare domain) |
+| `iknaio.com` | MX | `0 mc04.x-net.at` | Email |
+| `iknaio.com` | TXT | `v=spf1 include:spf.x-net.at -all` | SPF |
+| `iknaio.com` | TXT | `brevo-code:…`, `google-site-verification=…` | Service verification |
+| `_dmarc` | TXT | `v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com` | DMARC |
+| `app` | A | 62.99.143.170 | Pathfinder: **client-facing** |
+| `api` | A | 62.99.143.170 | API: **client-facing** |
+
+No DNSSEC (no DS record), so there is no DS/DNSKEY to coordinate.
+
+### Impact on clients
+
+None if done right:
+
+- **`app` and `api` stay "DNS only" (grey cloud).** Clients keep connecting
+  directly to 62.99.143.170 with the same IP and certificate, so customer IP
+  allowlists keep working. Do **not** proxy them (orange cloud): that adds
+  Cloudflare's upload size limits, ~100 s request timeouts, bot checks and
+  changed client IPs, any of which can break API clients.
+- **No downtime if the records match exactly.** While the NS change spreads
+  (up to ~48 h), resolvers ask either easyname or Cloudflare. Identical answers
+  mean nobody notices which they got.
+
+### Risks
+
+1. **A missing record.** Cloudflare's auto-import only guesses common names.
+   Email is the most likely to break (e.g. a missing DKIM key means mail lands
+   in spam). Work from a full zone export or screenshot from easyname, not from the import.
+2. **Accidentally proxying `app`/`api`.** See above.
+3. **Website certificate.** Behind the Cloudflare proxy, GitHub Pages may fail
+   to renew its own Let's Encrypt certificate. Use Cloudflare SSL mode "Full" (not
+   "Full (strict)") or move to Cloudflare Pages, which issues its own certificate.
+
+### Steps
+
+1. Export the full zone from easyname (needs the easyname login).
+2. Add the iknaio.com zone in Cloudflare (free plan) and recreate **every** record
+   by hand from the export. Set all records to DNS only, including the website
+   records for now. Don't enable extras (Bot Fight Mode, "Always Use HTTPS", etc.) yet.
+3. Before switching, compare the answers from Cloudflare's assigned nameservers
+   with the live ones, record by record (see the check below). Fix every difference.
+4. Switch the nameservers at easyname to the two Cloudflare ones, ideally early
+   in a working week. Lower TTLs at easyname a day beforehand if possible.
+5. Wait for Cloudflare to report the zone as active, and test email delivery and
+   `app`/`api` from outside.
+6. Only then change the website (proxy option 1 or Pages option 2) and add the
+   headers. Keeping this separate from the DNS move keeps each step small and
+   easy to roll back.
+
+Rollback: set the nameservers back to `ns1/ns2.easyname.eu`. The easyname zone
+stays intact as long as nobody deletes it.
+
+### Pre-switch check
+
+Compares each name/type on the current live nameservers with Cloudflare's.
+Put `CF_NS` to one of the nameservers Cloudflare assigns, and extend
+`NAMES` with everything from the easyname export (DKIM selectors etc.).
+Needs `dig` (package `bind-utils` / `dnsutils`).
+
+```sh
+CF_NS=xxx.ns.cloudflare.com
+OLD_NS=ns1.easyname.eu
+NAMES="iknaio.com www.iknaio.com app.iknaio.com api.iknaio.com _dmarc.iknaio.com"
+for n in $NAMES; do
+  for t in A AAAA CNAME MX TXT CAA SRV; do
+    old=$(dig +short @"$OLD_NS" "$n" "$t" | sort)
+    new=$(dig +short @"$CF_NS" "$n" "$t" | sort)
+    [ "$old" = "$new" ] || printf 'DIFF %s %s\n  easyname:   %s\n  cloudflare: %s\n' "$n" "$t" "$old" "$new"
+  done
+done
+```
+
+No output means the zones match for the listed names.
