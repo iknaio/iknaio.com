@@ -14,6 +14,16 @@ the site scored **D (30/100)**. Four tests failed, all because headers were miss
 | X-Frame-Options / CSP `frame-ancestors` | −20 | No: X-Frame-Options is header only, and browsers ignore `frame-ancestors` in a meta CSP |
 | X-Content-Type-Options | −5 | No, header only |
 
+Re-checked on 2026-10-27 against the Observatory source
+([mdn/mdn-http-observatory](https://github.com/mdn/mdn-http-observatory), `src/retriever/utils.js`
+and `src/analyzer/tests/`): only CSP (`http-equiv`) and Referrer-Policy
+(`name="referrer"`) are read from meta tags. `frame-ancestors` in a meta CSP is
+explicitly ignored. X-Content-Type-Options and X-Frame-Options are read from real
+headers only. HSTS passes without the header only if the domain is on the browser
+preload list, and getting listed requires serving the header first. GitHub Pages
+still has no way to set custom headers ([community discussion, June 2026](https://github.com/orgs/community/discussions/199121)).
+So there is no remaining fix on plain GitHub Pages.
+
 Observatory adds bonus points (SRI, Referrer-Policy, etc.) only once the base
 score is 90 or higher, so the meta-tag fix alone should take us to roughly
 **C (≈55/100)**.
