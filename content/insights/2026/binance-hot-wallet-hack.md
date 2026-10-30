@@ -50,7 +50,6 @@ posttype: "insight"
 @media (max-width: 479px) { .content .bh-ledger dl > div { justify-content: space-between; } .content .bh-ledger dt { flex: 1 1 auto; } .content .bh-ledger dd { text-align: right; } }
 .content .bh-auth-head { margin: 0; padding: 10px 12px; font-size: .85rem; line-height: 1.5; text-align: left; border-bottom: 1px solid var(--color-gray); }
 .content .bh-auth:focus-visible, .pl-story-controls button:focus-visible { outline: 2px solid var(--color-dark); outline-offset: 2px; }
-.content > table td:nth-child(2) { white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }
 /* the case graph is wider than the text, so its labels can be read */
 .content figure.pl-story { position: relative; left: 50%; width: min(1100px, calc(100vw - 32px)); margin-left: calc(-1 * min(550px, 50vw - 16px)); }
 .content figure.pl-story .pl-story-canvas { aspect-ratio: auto; height: min(calc(min(1100px, 100vw - 32px) / 1.9), calc(100vh - 300px)); }
@@ -84,7 +83,7 @@ The attacker used two methods:
 
 The attacker used EIP-7702 only for Binance 14. With the delegation in place, later calls swept new deposits from the wallet until 23:56 UTC.
 
-## How a hot wallet became a sweeper
+## Sweeping the Ethereum hot wallet
 
 Since the Pectra upgrade of May 2025, an ordinary Ethereum wallet can sign an EIP-7702 authorization: a note that tells the network to run the code of a smart contract whenever someone calls the wallet. The note stays in force until the wallet signs a new one.
 
@@ -138,16 +137,7 @@ The graph in Figure 2 starts at the operator and ends at the wallets that hold t
 
 ## Where the funds are now
 
-On 30 October at 11:00 UTC, none of the four ETH wallets has sent a transaction. Together they hold 430,737 ETH, about 1 billion USD.
-
-| Wallet | Holds | Received from |
-|---|---|---|
-| [`0x8532fa14acaf483729c449b8458aeddb900543d4`](https://app.iknaio.com/pathfinder/eth/address/0x8532fa14acaf483729c449b8458aeddb900543d4) | 197,460 ETH | the main receiver |
-| [`0xc887af690e0301cd4edbbce8f8d31b4ec65b286a`](https://app.iknaio.com/pathfinder/eth/address/0xc887af690e0301cd4edbbce8f8d31b4ec65b286a) | 137,602 ETH | the USDT sale through UniswapX and 1inch, and a sale of ENA tokens |
-| [`0x897c80d1a9729e94460e2bd93178bd5215158df3`](https://app.iknaio.com/pathfinder/eth/address/0x897c80d1a9729e94460e2bd93178bd5215158df3) | 78,415 ETH | the wallet chain and a side branch |
-| [`0x03b0ee5d82990cff1bda48651ac3e436d1a020ea`](https://app.iknaio.com/pathfinder/eth/address/0x03b0ee5d82990cff1bda48651ac3e436d1a020ea) | 17,260 ETH | the main receiver, 30 October, 05:15 UTC |
-
-On Bitcoin, the 18,270 BTC sit in 19 addresses of the peel chain, for example [`bc1qz8hdwv8gmml0u96dsvnzsagz6krjyzxmgxupdp`](https://app.iknaio.com/pathfinder/btc/address/bc1qz8hdwv8gmml0u96dsvnzsagz6krjyzxmgxupdp) with 1,000 BTC, and are unspent. On Tron, the attacker's TRX wallet [`TSpe5HC3PRD2svJcr1YoGszhHk2mtkyZ8A`](https://app.iknaio.com/pathfinder/trx/address/TSpe5HC3PRD2svJcr1YoGszhHk2mtkyZ8A) sent its 638.2 million TRX to five new wallets between 10:15 and 10:20 UTC on 30 October, the first movement of this TRX since the night of the hack.
+On 30 October at 11:00 UTC, most of the stolen funds had not moved since the night of the hack. Four Ethereum wallets hold about 431,000 ETH, about 1 billion USD, and none of them has sent a transaction. The stolen bitcoin also sits unspent at the end of the peel chain. Only on Tron did the attacker start to move funds again: on the morning of 30 October, the TRX went to five new wallets. The last two steps of Figure 2 show these wallets.
 
 ## Further notes
 
