@@ -1,7 +1,7 @@
 ---
 title: "Activity Alerts: Get notified when funds move"
 date: 2026-10-29
-draft: true
+draft: false
 description: "Watch an address in Pathfinder and get notified when it sends or receives funds: in the dashboard right away, and by email instantly or as a daily digest. Activity alerts are in beta."
 tags: ["pathfinder", "alerts", "monitoring", "investigation", "product-update"]
 image: "images/insights/activity-alerts/cover.png"
@@ -125,17 +125,6 @@ the [eight new blockchains in Lite mode](/insights/pathfinder-lite/), such as
 BNB Smart Chain, Arbitrum and Base, for accounts that have them. On
 blockchains with tokens, alerts cover the native coin and the tokens Iknaio
 supports.
-
-## Limits of the beta
-
-Activity alerts check watched addresses every few minutes against Iknaio's
-data, so a transaction appears once Iknaio has processed its block. In the beta, each user can watch up to 100 addresses,
-and the feed keeps the transactions of the last 90 days, at most the newest
-1,000 per address.
-
-Alerts belong to the account that set them up, and only that account sees
-which addresses it watches.
-When an account is removed, its alerts and their history are removed with it.
 
 ## Getting access
 
