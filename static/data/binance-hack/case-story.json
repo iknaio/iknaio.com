@@ -58,6 +58,14 @@
    "address": "bc1q0mtc2f5agpkvlq6hhahmfr3hlr55kyfjhl2mnm"
   },
   {
+   "id": "att-avax",
+   "label": "attacker",
+   "role": "attacker",
+   "network": "avax",
+   "network_name": "Avalanche",
+   "address": "0x5227f603c1ee34ce3c06efe6477003bdfccb2f8c"
+  },
+  {
    "id": "tornado",
    "label": "Tornado Cash",
    "role": "service",
@@ -120,6 +128,30 @@
    "network": "eth",
    "network_name": "Ethereum",
    "address": "0x5227f603c1ee34ce3c06efe6477003bdfccb2f8c"
+  },
+  {
+   "id": "receiver-2",
+   "label": "second receiver",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0xa97bf7836f8a08f9ed91d41453d371493fae8d10"
+  },
+  {
+   "id": "stash-6",
+   "label": "ETH stash 6",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0xc2096a12ebe0944f4d39e59979f485afd92d850a"
+  },
+  {
+   "id": "stash-5",
+   "label": "ETH stash 5",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x54401f80da97893a15d43566184635b6674bc942"
   },
   {
    "id": "stash-1",
@@ -297,6 +329,11 @@
    "to": "btc-peel"
   },
   {
+   "id": "bin-avax>att-avax",
+   "from": "bin-avax",
+   "to": "att-avax"
+  },
+  {
    "id": "tornado>operator",
    "from": "tornado",
    "to": "operator"
@@ -335,6 +372,31 @@
    "id": "binance-usdc>receiver",
    "from": "binance-usdc",
    "to": "receiver"
+  },
+  {
+   "id": "binance14>receiver-2",
+   "from": "binance14",
+   "to": "receiver-2"
+  },
+  {
+   "id": "receiver-2>stash-6",
+   "from": "receiver-2",
+   "to": "stash-6"
+  },
+  {
+   "id": "receiver-2>stash-5",
+   "from": "receiver-2",
+   "to": "stash-5"
+  },
+  {
+   "id": "receiver>sellers",
+   "from": "receiver",
+   "to": "sellers"
+  },
+  {
+   "id": "sellers>stash-5",
+   "from": "sellers",
+   "to": "stash-5"
   },
   {
    "id": "receiver>stash-1",
@@ -476,18 +538,22 @@
     "att-trx",
     "bin-btc",
     "att-btc",
-    "btc-peel"
+    "btc-peel",
+    "bin-avax",
+    "att-avax"
    ],
    "edges": [
     "row-xrp",
     "row-sol",
     "row-trx",
     "row-btc",
+    "row-avax",
     "bin-xrp>att-xrp",
     "bin-sol>att-sol",
     "bin-trx>att-trx",
     "bin-btc>att-btc",
-    "att-btc>btc-peel"
+    "att-btc>btc-peel",
+    "bin-avax>att-avax"
    ],
    "view": [
     "bin-xrp",
@@ -498,7 +564,9 @@
     "att-trx",
     "bin-btc",
     "att-btc",
-    "btc-peel"
+    "btc-peel",
+    "bin-avax",
+    "att-avax"
    ]
   },
   {
@@ -519,18 +587,21 @@
    "nodes": [
     "binance16",
     "binance-usdc",
-    "receiver"
+    "receiver",
+    "receiver-2"
    ],
    "edges": [
     "binance14>receiver",
     "binance16>receiver",
-    "binance-usdc>receiver"
+    "binance-usdc>receiver",
+    "binance14>receiver-2"
    ],
    "view": [
     "binance14",
     "binance16",
     "binance-usdc",
-    "receiver"
+    "receiver",
+    "receiver-2"
    ]
   },
   {
@@ -635,22 +706,35 @@
   {
    "nodes": [
     "stash-4",
-    "ena-seller"
+    "ena-seller",
+    "sellers",
+    "stash-5",
+    "stash-6"
    ],
    "edges": [
     "receiver>stash-4",
     "receiver>ena-seller",
     "ena-seller>stash-2",
+    "receiver>sellers",
+    "sellers>stash-5",
+    "receiver-2>stash-5",
+    "receiver-2>stash-6",
     "holds-stash-1",
     "holds-stash-2",
-    "holds-stash-4"
+    "holds-stash-4",
+    "holds-stash-5",
+    "holds-stash-6"
    ],
    "view": [
     "receiver",
+    "receiver-2",
     "stash-4",
     "stash-1",
     "ena-seller",
-    "stash-2"
+    "stash-2",
+    "sellers",
+    "stash-5",
+    "stash-6"
    ]
   },
   {

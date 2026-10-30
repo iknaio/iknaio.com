@@ -3,7 +3,7 @@ title: "The Binance Hot Wallet Hack, Step by Step"
 date: 2026-10-30
 author: "Thomas Niedermayer"
 draft: true
-description: "On 29 October 2026, Binance hot wallets on nine blockchains sent about 6.3 billion USD to an attacker. On Ethereum, one hot wallet was turned into a sweeper with EIP-7702. We follow the Ethereum funds in Iknaio, from the Tornado Cash-funded operator to the wallets that hold the ETH today."
+description: "On 29 October 2026, Binance hot wallets on ten blockchains sent about 6.3 billion USD to an attacker. On Ethereum, one hot wallet was turned into a sweeper with EIP-7702. We follow the Ethereum funds in Iknaio, from the Tornado Cash-funded operator to the wallets that hold the ETH today."
 tags: ["binance", "hack", "ethereum", "eip-7702", "stablecoin-freeze", "case-study"]
 image: "images/insights/binance-hot-wallet-hack/cover.jpg"
 posttype: "insight"
@@ -53,28 +53,28 @@ posttype: "insight"
 @media (max-width: 639px) { .content figure.pl-story .pl-story-canvas { height: min(62vh, 520px); } }
 </style>
 
-On the evening of 29 October 2026, Binance hot wallets on nine blockchains sent their balances to addresses controlled by one attacker. Binance estimates the impact at about 6.3 billion USD [1], about four times the Bybit hack of February 2025. Within hours, Tether and Circle froze 2.58 billion USD of the stolen USDT and USDC on Ethereum and Tron. Most of the rest was turned into ETH and BTC. No issuer can freeze these two coins.
+On the evening of 29 October 2026, Binance hot wallets on ten blockchains sent their balances to addresses controlled by one attacker. Binance estimates the impact at about 6.3 billion USD [1], about four times the Bybit hack of February 2025. Within hours, Tether and Circle froze 2.58 billion USD of the stolen USDT and USDC on Ethereum and Tron. Most of the rest was turned into ETH and BTC. No issuer can freeze ETH or BTC on their own blockchains.
 
-In this post, we explain how the attacker reached nine blockchains from a single entry point, how an Ethereum feature called EIP-7702 turned the busiest Binance hot wallet into a sweeper, and where the Ethereum funds went. Figure 2 follows the funds step by step, as they appear in Iknaio.
+In this post, we explain how the attacker reached ten blockchains from a single entry point, how an Ethereum feature called EIP-7702 turned the busiest Binance hot wallet into a sweeper, and where the Ethereum funds went. Figure 2 follows the funds step by step, as they appear in Iknaio.
 
 <section class="bh-ledger" aria-label="The case in numbers">
 <p class="bh-ledger-date">As of <time datetime="2026-10-30T11:00Z">30 October 2026, 11:00 UTC</time> <span class="bh-ledger-block">Ethereum block 26,305,172</span></p>
 <dl>
 <div><dt>Taken from Binance wallets</dt><dd>6.3B USD<small>Binance estimate</small></dd></div>
-<div><dt>Blockchains drained</dt><dd>9</dd></div>
+<div><dt>Blockchains drained</dt><dd>10</dd></div>
 <div><dt>USDT and USDC frozen</dt><dd>2.58B USD<small>Ethereum and Tron</small></dd></div>
 </dl>
 <p class="bh-ledger-note">The funds are still moving. Balances, frozen amounts and the wallets that hold the funds will change after this point.</p>
 </section>
 
-## How the attacker reached nine blockchains
+## How the attacker reached ten blockchains
 
 A hot wallet is an active wallet of an exchange that manages its daily business, such as customer withdrawals. Each withdrawal needs a valid signature, and Binance's withdrawal system signs on request. According to Binance, the attacker came in through the compromised laptop of a DevOps engineer and reached a service container that submits withdrawals [1]. Binance says that no private key leaked.
 
 The attacker used two methods:
 
 <div class="bh-two">
-<div><span class="bh-tag alt">Other wallets</span><h3>Ordinary signed transfers</h3><p>On the XRP Ledger, Bitcoin, Tron, Solana, Arbitrum, Optimism, Base, Polygon and one Ethereum wallet (Binance 16), the drained wallets sent plain transfers to the attacker, signed with their own keys.</p></div>
+<div><span class="bh-tag alt">Other wallets</span><h3>Ordinary signed transfers</h3><p>On the XRP Ledger, Bitcoin, Tron, Solana, Arbitrum, Optimism, Base, Polygon, Avalanche and one Ethereum wallet (Binance 16), the drained wallets sent plain transfers to the attacker, signed with their own keys.</p></div>
 <div><span class="bh-tag">Binance 14</span><h3>EIP-7702 sweeper on Ethereum</h3><p>On Binance 14, the attacker installed its own code with EIP-7702. One call then moved ETH and 63 different tokens at once, and later calls swept new deposits.</p></div>
 </div>
 
@@ -92,7 +92,7 @@ The authorization list is part of the transaction and can be read from the block
 <div class="bh-auth" tabindex="0" role="region" aria-label="Authorization list">
 <p class="bh-auth-head">All 50 entries are signed by <a href="https://app.iknaio.com/pathfinder/eth/address/0x28c6c06298d514db089934071355e5743bf21d60">Binance 14</a> and point to the sweeper code <a href="https://app.iknaio.com/pathfinder/eth/address/0x63e842b054bd624a465454d533c33f573e9c6fae"><code>0x63e842…6fae</code></a>.</p>
 <table>
-<thead><tr><th>Counter (nonce)</th><th>Result</th><th>Signature</th></tr></thead>
+<thead><tr><th>Counter (nonce)</th><th>Result</th><th>Signature (r)</th></tr></thead>
 <tbody>
 <tr><td class="bh-num">18,914,775</td><td><span class="bh-chip">no match</span></td><td><code>0x29d09a58…b7a7</code></td></tr>
 <tr><td class="bh-num">18,914,776</td><td><span class="bh-chip">no match</span></td><td><code>0x83292222…1cbc</code></td></tr>
@@ -114,18 +114,18 @@ The authorization list is part of the transaction and can be read from the block
 The graph in Figure 2 starts at the operator and ends at the wallets that hold the ETH today. Scrolling through it follows the case in order. Every address opens in Pathfinder, except those on the XRP Ledger and Solana.
 
 <figure class="pl-story" data-src="/data/binance-hack/case-story.json" data-svg-light="/data/binance-hack/case-light.svg" data-svg-dark="/data/binance-hack/case-dark.svg" data-min-width="620" data-label="The Binance hot wallet hack, from the Tornado Cash-funded operator to the ETH stashes" data-overview="The whole case, 28 to 30 October 2026. Scroll on, or select a step, to follow the funds in order.">
-<img class="pl-story-fallback" src="/images/insights/binance-hot-wallet-hack/figure-case.png" alt="The Binance hot wallet hack: drains on the XRP Ledger, Solana, Tron and Bitcoin, the EIP-7702 takeover of Binance 14, the main receiver with its frozen stablecoins, and the routes of the USDT into four ETH wallets">
+<img class="pl-story-fallback" src="/images/insights/binance-hot-wallet-hack/figure-case.png" alt="The Binance hot wallet hack: drains on the XRP Ledger, Solana, Tron, Bitcoin and Avalanche, the EIP-7702 takeover of Binance 14, the main receiver with its frozen stablecoins, and the routes of the stolen funds into six ETH wallets">
 <ol class="pl-story-steps">
-<li data-label="Preparation">On 28 and 29 October, the operator receives three withdrawals of 0.1 ETH from Tornado Cash and 1.08 ETH from a second wallet, which is also funded through Tornado Cash. At 15:59 UTC, it deploys the sweeper code.</li>
-<li data-label="First wave">From 20:05 UTC, Binance wallets on the XRP Ledger, Solana, Tron and Bitcoin send their balances to the attacker through ordinary signed transfers. On Bitcoin, the 18,270 BTC are split into 19 addresses by 20:48 UTC, most of them holding 1,000 BTC.</li>
+<li data-label="Preparation">On 28 and 29 October, the operator receives three withdrawals from the 0.1 ETH pool of Tornado Cash and 1.08 ETH from a second wallet, which is also funded through Tornado Cash. At 15:59 UTC, it deploys the sweeper code.</li>
+<li data-label="First wave">From 20:05 UTC, Binance wallets on the XRP Ledger, Solana, Tron, Bitcoin and Avalanche send their balances to the attacker through ordinary signed transfers. On Bitcoin, the 18,270 BTC are split into 19 addresses by 20:48 UTC, most of them holding 1,000 BTC. On Avalanche, five Binance wallets send 2.26 million AVAX and 8.4 million USDt to the same address as the main receiver on Ethereum, from 20:33 UTC.</li>
 <li data-label="ETH exploit">At 20:20:59 UTC, the operator hands Binance 14 its 50 signed authorizations. The transaction runs nothing itself. From then on, every call to Binance 14 runs the sweeper code.</li>
-<li data-label="Sweep">At 20:24:23 UTC, one call to Binance 14 moves 167,464 ETH, 1.615 billion USDT and 62 other tokens to the main receiver. Binance 16 and a Binance USDC wallet follow, and later calls sweep new deposits until 23:56 UTC.</li>
+<li data-label="Sweep">At 20:24:23 UTC, one call to Binance 14 moves 167,464 ETH, 1.615 billion USDT and 62 other tokens to the main receiver. Binance 16 follows, and through Binance 14 the operator also empties a Binance USDC wallet that accepts orders from Binance 14. Later calls sweep new deposits until 23:56 UTC. From 22:39 UTC, these go to a second receiver.</li>
 <li data-label="Freeze">At 21:01 UTC, Tether freezes the main receiver for USDT, and at 21:04 UTC, Circle freezes its 823 million USDC. The USDT freeze blocks sending but not receiving, so later sweeps bring the frozen USDT to 1,175 million.</li>
 <li data-label="ETH out">Fourteen minutes after the sweep, 195,500 ETH leave the main receiver for a new wallet, and 2,000 ETH follow on 30 October. No issuer can freeze ETH.</li>
 <li data-label="Sell USDT">At 20:30 UTC, 500 million USDT go to a new pass-through wallet. Between 20:34 and 20:50 UTC, it sells 325 million USDT through UniswapX and 1inch orders for about 122,300 ETH, about 2,660 USDT per ETH, while the Chainlink price feed showed 2,240 to 2,310 USD per ETH. The other 175 million USDT reach a wallet that Tether freezes at 21:15 UTC.</li>
-<li data-label="Wallet chain">From 20:33 UTC, another 200 million USDT run through a chain of new pass-through wallets. Along the way, 110 million USDT are swapped for ETH on Uniswap (an automated exchange). One wallet puts 60 million USDT into Aave (a lending service) and borrows about 19,800 WETH (wrapped ETH) against it.</li>
+<li data-label="Wallet chain">From 20:33 UTC, another 200 million USDT run through a chain of new pass-through wallets. Along the way, 110 million USDT are swapped for ETH on decentralized exchanges. One wallet puts 60 million USDT into Aave (a lending service) and borrows about 19,800 WETH (wrapped ETH) against it.</li>
 <li data-label="Chain end">At the end of the chain, 30 million USDT stay in a wallet that Tether freezes at 21:19 UTC, and 57,900 ETH reach a third ETH wallet. A side wallet adds 20,500 ETH to it later that night.</li>
-<li data-label="ETH now">On 30 October at 05:15 UTC, the main receiver moves its last 17,260 ETH to a fourth wallet. A side branch that sold 217.5 million ENA tokens adds 15,300 ETH to the second ETH wallet. At 11:00 UTC, the four ETH wallets hold 430,737 ETH and have not sent a transaction.</li>
+<li data-label="ETH now">On 30 October at 05:15 UTC, the main receiver moves its last 17,260 ETH to a fourth wallet. A side branch that sold 217.5 million ENA tokens adds 15,300 ETH to the second ETH wallet. Wallets that sold other stolen tokens and the second receiver fill two more ETH wallets with 43,600 ETH. At 11:00 UTC, the six ETH wallets hold 474,338 ETH and have not sent a transaction.</li>
 <li data-label="BTC and Tron">On Tron, 300 million USDT go to a swap wallet that turns them into 638.2 million TRX. Tether freezes 313 million USDT in the first attacker wallet and 66 million in a third. The TRX moves on to five new wallets between 10:15 and 10:20 UTC on 30 October. The 18,270 BTC sit unspent in 19 addresses.</li>
 </ol>
 <figcaption>Figure 2: The Binance hot wallet hack in Iknaio, with one transaction for each pair of addresses. Amounts are totals per pair. Blue marks Binance wallets, red marks attacker wallets, orange marks services such as Tornado Cash, Aave and DEX pools, and a gold frame marks frozen funds.</figcaption>
@@ -134,7 +134,9 @@ The graph in Figure 2 starts at the operator and ends at the wallets that hold t
 
 ## Where the funds are now
 
-On 30 October at 11:00 UTC, most of the stolen funds had not moved since the night of the hack. Four Ethereum wallets hold about 431,000 ETH, about 1 billion USD, and none of them has sent a transaction. The stolen bitcoin also sits unspent at the end of the peel chain. Only on Tron did the attacker start to move funds again: on the morning of 30 October, the TRX went to five new wallets. The last two steps of Figure 2 show these wallets.
+On 30 October at 11:00 UTC, most of the stolen funds had not moved since the night of the hack. Six Ethereum wallets hold about 474,000 ETH, about 1.1 billion USD, and none of them has sent a transaction. The stolen bitcoin also sits unspent at the end of the peel chain. Only on Tron did the attacker start to move funds again: on the morning of 30 October, the TRX went to five new wallets. The last two steps of Figure 2 show these wallets.
+
+On Arbitrum, the attacker moved 8,426 ETH and 74.6 million ARB to a second wallet. At 00:18 UTC on 30 October, the Arbitrum Security Council moved these funds out of that wallet to an address that it controls.
 
 ## Further notes
 
