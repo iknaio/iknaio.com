@@ -2,7 +2,8 @@
  *
  * Markup (in the post):
  *   <figure class="pl-story" data-src="case.json"
- *           data-svg-light="graph-light.svg" data-svg-dark="graph-dark.svg">
+ *           data-svg-light="graph-light.svg" data-svg-dark="graph-dark.svg"
+ *           data-min-width="760">                  (optional: the closest zoom)
  *     <img class="pl-story-fallback" ...>          (shown without JavaScript)
  *     <ol class="pl-story-steps"><li data-label="Split">Caption ...</li> ...</ol>
  *     <figcaption>...</figcaption>
@@ -21,7 +22,7 @@
 
   var SVG = "http://www.w3.org/2000/svg";
   var PATHFINDER = "https://app.iknaio.com/pathfinder/";
-  var MIN_WIDTH = 760; // graph units: the closest zoom
+  var MIN_WIDTH = 760; // graph units: the closest zoom, unless the figure sets data-min-width
   var PAD = 70;
   var ZOOM_MS = 700;
   var STEP_SCROLL = 0.5; // scroll distance of one step, in viewport heights
@@ -81,6 +82,7 @@
     var items = Array.prototype.slice.call(figure.querySelectorAll(".pl-story-steps > li"));
     var nodes = {};
     data.nodes.forEach(function (n) { nodes[n.id] = n; });
+    var minWidth = Number(figure.getAttribute("data-min-width")) || MIN_WIDTH;
     var edges = {};
     data.edges.forEach(function (e) { edges[e.id] = e; });
 
@@ -129,7 +131,7 @@
     /* The view of one step: the addresses it frames (step.view), its
      * transactions and links (the parts of an edge that carry a label, not
      * the lines to other addresses), shaped like the canvas and never closer
-     * than MIN_WIDTH. */
+     * than minWidth. */
     function stepView(step) {
       var parts = [];
       (step.view || step.nodes).forEach(function (id) { parts = parts.concat(Array.prototype.slice.call(svg.querySelectorAll('[data-node="' + id + '"]'))); });
@@ -144,7 +146,7 @@
         box = box ? { x0: Math.min(box.x0, b.x0), y0: Math.min(box.y0, b.y0), x1: Math.max(box.x1, b.x1), y1: Math.max(box.y1, b.y1) } : b;
       });
       var ratio = canvas.clientWidth / canvas.clientHeight || 2.1;
-      var w = Math.max(MIN_WIDTH, box.x1 - box.x0 + 2 * PAD);
+      var w = Math.max(minWidth, box.x1 - box.x0 + 2 * PAD);
       var h = Math.max(box.y1 - box.y0 + 2 * PAD, w / ratio);
       w = Math.max(w, h * ratio);
       var cx = (box.x0 + box.x1) / 2;
