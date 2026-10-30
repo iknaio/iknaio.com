@@ -140,8 +140,6 @@ On 30 October at 11:00 UTC, most of the stolen funds had not moved since the nig
 
 The graph is drawn for this post and follows the layout of Pathfinder. It shows the main routes, not every transaction. Amounts are totals per pair of addresses, and small transfers (gas top-ups, dust from address-poisoning bots) are left out.
 
-The XRP Ledger and Solana are not in Pathfinder. Their figures come from public XRP Ledger and Solana nodes. The EIP-7702 authorizations are part of a transaction field that Pathfinder does not display. Pathfinder shows the transfers they cause.
-
 Binance has not yet published a full root cause. The figures in this post reflect the state of the blockchains on 30 October 2026 at 11:00 UTC.
 
 This post and the tracing behind it were made with internal Iknaio tooling that is not yet part of the Iknaio subscriptions.
