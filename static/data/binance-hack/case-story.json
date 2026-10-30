@@ -91,7 +91,7 @@
   },
   {
    "id": "binance14",
-   "label": "Binance 14",
+   "label": "Binance hot wallet",
    "role": "victim",
    "network": "eth",
    "network_name": "Ethereum",
@@ -99,7 +99,7 @@
   },
   {
    "id": "binance16",
-   "label": "Binance 16",
+   "label": "second hot wallet",
    "role": "victim",
    "network": "eth",
    "network_name": "Ethereum",

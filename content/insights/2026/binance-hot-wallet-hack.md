@@ -25,7 +25,7 @@ posttype: "insight"
 .content .bh-ledger dd small { display: block; font-size: .72rem; font-weight: 400; letter-spacing: 0; color: var(--color-dark-soft); }
 .content .bh-ledger-note { margin: 0; padding: 12px 0 0; border-top: 1px solid var(--color-gray); font-size: .85rem; line-height: 1.6; color: var(--color-dark-soft); text-align: left; }
 .content .bh-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 1.5rem 0; }
-.content .bh-two > div { border: 1px solid var(--color-gray); border-radius: 8px; padding: 16px; }
+.content .bh-two > div { min-width: 0; border: 1px solid var(--color-gray); border-radius: 8px; padding: 16px; }
 .content .bh-two h3 { margin: 0 0 6px; font-size: 1rem; }
 .content .bh-two p { margin: 0; font-size: .95rem; }
 .content .bh-two .bh-tag { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; margin-bottom: 8px; background: var(--color-primary); color: #1a1a1a; }
@@ -55,7 +55,7 @@ posttype: "insight"
 
 On 29 October 2026, between 20:05 and 23:56 UTC, Binance hot wallets on ten blockchains were drained. Binance puts the damage at about 6.3 billion USD [1]. Within hours, Tether and Circle froze 2.6 billion USD of the stolen USDT and USDC on Ethereum, Tron, Avalanche and Polygon. Most of the rest is now held as ETH and BTC, coins without an issuer that could freeze them.
 
-In this post, we explain how the attacker reached ten blockchains from a single entry point, how an Ethereum feature called EIP-7702 let the attacker run its own code on the Binance hot wallet Binance 14 and drain it with one call, and where the Ethereum funds went. Figure 2 follows the funds step by step.
+In this post, we explain how the attacker reached ten blockchains from a single entry point, how an Ethereum feature called EIP-7702 let the attacker run its own code on one Binance hot wallet on Ethereum and drain it with one call, and where the Ethereum funds went. Figure 2 follows the funds step by step.
 
 <section class="bh-ledger" aria-label="The case in numbers">
 <p class="bh-ledger-date">As of <time datetime="2026-10-30T11:00Z">30 October 2026, 11:00 UTC</time> <span class="bh-ledger-block">Ethereum block 26,305,132</span></p>
@@ -74,23 +74,23 @@ A hot wallet is an active wallet of an exchange that manages its daily business,
 On the blockchains, the drains take two forms:
 
 <div class="bh-two">
-<div><span class="bh-tag alt">Other wallets</span><h3>Plain transfers</h3><p>On XRP, Bitcoin, Tron, Solana, Arbitrum, Optimism, Base, Polygon, Avalanche and one Ethereum wallet (Binance 16), the drained wallets sent plain transfers to the attacker, signed with their own keys.</p></div>
-<div><span class="bh-tag">Binance 14</span><h3>EIP-7702 sweeper on Ethereum</h3><p>On Binance 14, the attacker installed its own code with EIP-7702: a sweeper that sends the wallet's funds to the attacker on each call. One call moved ETH and 63 different tokens at once, and later calls swept new deposits. Through Binance 14, the attacker also emptied a Binance USDC wallet that accepts orders from Binance 14.</p></div>
+<div><span class="bh-tag alt">Other wallets</span><h3>Plain transfers</h3><p>On XRP, Bitcoin, Tron, Solana, Arbitrum, Optimism, Base, Polygon, Avalanche and a second Ethereum hot wallet (<code>0xdfd5293d8e347dfe59e90efd55b2956a1343963d</code>), the drained wallets sent plain transfers to the attacker, signed with their own keys.</p></div>
+<div><span class="bh-tag">Ethereum hot wallet</span><h3>EIP-7702 sweeper on Ethereum</h3><p>On the Ethereum hot wallet <code>0x28c6c06298d514db089934071355e5743bf21d60</code>, the attacker installed its own code with EIP-7702: a sweeper that sends the wallet's funds to the attacker on each call. One call moved ETH and 63 different tokens at once, and later calls swept new deposits. Through this wallet, the attacker also emptied a Binance USDC wallet that accepts orders from it.</p></div>
 </div>
 
-The attacker used EIP-7702 only for Binance 14. With the delegation in place, later calls swept new deposits from the wallet until 23:56 UTC.
+The attacker used EIP-7702 only for this one hot wallet. With the delegation in place, later calls swept new deposits from the wallet until 23:56 UTC.
 
 ## Sweeping the Ethereum hot wallet
 
 [EIP-7702](https://eips.ethereum.org/EIPS/eip-7702) is part of Ethereum since May 2025. With it, a wallet can point to the code of a smart contract by signing an authorization. From then on, a call to the wallet runs that code. Only a newer authorization from the same wallet changes this.
 
-Each authorization names one nonce, the number of the wallet's next transaction, and only works at that number. In the 30 minutes before the attack, Binance 14 sent 339 transactions, about one every five seconds. The transaction that installed the code carried 50 authorizations, for 50 nonces in a row.
+Each authorization names one nonce, the number of the wallet's next transaction, and only works at that number. In the 30 minutes before the attack, the hot wallet sent 339 transactions, about one every five seconds. The transaction that installed the code carried 50 authorizations, for 50 nonces in a row.
 
-The authorization list is part of the transaction and can be read from the blockchain. In transaction [`0xad99264d5532ae0dd04b2004eebda05f25657e70dacb764f7ac8d4ccd051298b`](https://etherscan.io/tx/0xad99264d5532ae0dd04b2004eebda05f25657e70dacb764f7ac8d4ccd051298b/advanced#authorizationlist), all 50 entries carry a valid signature of Binance 14, are valid only on Ethereum and point to the same sweeper code. They cover the nonces 18,914,775 to 18,914,824. A Binance 14 withdrawal earlier in the same block used nonce 18,914,808, so the entry for 18,914,809 matched. The next Binance 14 withdrawal used 18,914,810, and the other 49 entries had no effect (Figure 1).
+The authorization list is part of the transaction and can be read from the blockchain. In transaction [`0xad99264d5532ae0dd04b2004eebda05f25657e70dacb764f7ac8d4ccd051298b`](https://etherscan.io/tx/0xad99264d5532ae0dd04b2004eebda05f25657e70dacb764f7ac8d4ccd051298b/advanced#authorizationlist), all 50 entries carry a valid signature of the hot wallet, are valid only on Ethereum and point to the same sweeper code. They cover the nonces 18,914,775 to 18,914,824. A withdrawal of the hot wallet earlier in the same block used nonce 18,914,808, so the entry for 18,914,809 matched. Its next withdrawal used 18,914,810, and the other 49 entries had no effect (Figure 1).
 
 <figure>
 <div class="bh-auth" tabindex="0" role="region" aria-label="Authorization list">
-<p class="bh-auth-head">All 50 entries are signed by <a href="https://app.iknaio.com/pathfinder/eth/address/0x28c6c06298d514db089934071355e5743bf21d60">Binance 14</a> and point to the sweeper code <code>0x63e842b054bd624a465454d533c33f573e9c6fae</code>.</p>
+<p class="bh-auth-head">All 50 entries are signed by the hot wallet <a href="https://app.iknaio.com/pathfinder/eth/address/0x28c6c06298d514db089934071355e5743bf21d60"><code>0x28c6c06298d514db089934071355e5743bf21d60</code></a> and point to the sweeper code <code>0x63e842b054bd624a465454d533c33f573e9c6fae</code>.</p>
 <table>
 <thead><tr><th>Nonce</th><th>Result</th><th>Signature (r)</th></tr></thead>
 <tbody>
@@ -114,12 +114,12 @@ The authorization list is part of the transaction and can be read from the block
 The graph in Figure 2 starts at the operator, the attacker address that deployed the sweeper code and sent the authorizations, and ends at the wallets that hold the ETH today. Scrolling through it follows the case in order. Every address opens in Pathfinder, except those on XRP and Solana.
 
 <figure class="pl-story" data-src="/data/binance-hack/case-story.json" data-svg-light="/data/binance-hack/case-light.svg" data-svg-dark="/data/binance-hack/case-dark.svg" data-min-width="620" data-label="The Binance hot wallet hack, from the Tornado Cash-funded operator to the ETH stashes" data-overview="The whole case, 28 to 30 October 2026. Scroll on, or select a step, to follow the funds in order.">
-<img class="pl-story-fallback" src="/images/insights/binance-hot-wallet-hack/figure-case.png" alt="The Binance hot wallet hack: drains on XRP, Solana, Tron, Bitcoin and Avalanche, the EIP-7702 takeover of Binance 14, the main receiver with its frozen stablecoins, and the routes of the stolen funds into six ETH wallets">
+<img class="pl-story-fallback" src="/images/insights/binance-hot-wallet-hack/figure-case.png" alt="The Binance hot wallet hack: drains on XRP, Solana, Tron, Bitcoin and Avalanche, the EIP-7702 takeover of one Ethereum hot wallet, the main receiver with its frozen stablecoins, and the routes of the stolen funds into six ETH wallets">
 <ol class="pl-story-steps">
 <li data-label="Preparation">On 28 and 29 October, the operator receives three withdrawals from the 0.1 ETH pool of Tornado Cash and 1.08 ETH from a second wallet, which is also funded through Tornado Cash. At 15:59 UTC, it deploys the sweeper code.</li>
 <li data-label="First wave">From 20:05 UTC, Binance wallets on XRP, Solana, Tron, Bitcoin and Avalanche send large amounts to the attacker with plain transfers, signed by their own keys. On Bitcoin, the 18,270 BTC are split into 19 addresses by 20:48 UTC, 17 of them with exactly 1,000 BTC. On Avalanche, five Binance wallets send 2.26 million AVAX and 8.4 million USDT to the same address as the main receiver on Ethereum, from 20:33 UTC. Tether freezes this USDT at 21:07 UTC.</li>
-<li data-label="ETH exploit">At 20:20:59 UTC, the operator hands Binance 14 its 50 signed authorizations. The transaction runs nothing itself. From then on, every call to Binance 14 runs the sweeper code.</li>
-<li data-label="Sweep">At 20:24:23 UTC, one call to Binance 14 moves 167,464 ETH, 1.615 billion USDT and 62 other tokens to the main receiver. Binance 16 follows with a plain signed transfer, and through Binance 14 the operator also empties a Binance USDC wallet that accepts orders from Binance 14. Later calls sweep new deposits until 23:56 UTC. From 22:39 UTC, these go to a second receiver.</li>
+<li data-label="ETH exploit">At 20:20:59 UTC, the operator hands the Ethereum hot wallet its 50 signed authorizations. The transaction runs nothing itself. From then on, every call to the wallet runs the sweeper code.</li>
+<li data-label="Sweep">At 20:24:23 UTC, one call to the hot wallet moves 167,464 ETH, 1.615 billion USDT and 62 other tokens to the main receiver. A second Binance hot wallet follows with a plain signed transfer, and through the first one the operator also empties a Binance USDC wallet that accepts orders from it. Later calls sweep new deposits until 23:56 UTC. From 22:39 UTC, these go to a second receiver.</li>
 <li data-label="Freeze">At 21:01 UTC, Tether freezes the main receiver for USDT, and at 21:04 UTC, Circle freezes its 823 million USDC. The USDT freeze blocks sending but not receiving, so later sweeps bring the frozen USDT to 1,175 million.</li>
 <li data-label="ETH out">Fourteen minutes after the sweep, 195,500 ETH leave the main receiver for a first ETH wallet, and 2,000 ETH follow on 30 October.</li>
 <li data-label="Sell USDT">At 20:30 UTC, 500 million USDT go to a new pass-through wallet. Between 20:34 and 20:50 UTC, it sells 325 million USDT through UniswapX and 1inch orders for about 122,300 ETH, about 2,660 USDT per ETH, while the Chainlink price feed showed 2,240 to 2,310 USD per ETH. At 21:47 UTC, it sends the 122,300 ETH to a second ETH wallet. The other 175 million USDT reach a wallet that Tether freezes at 21:15 UTC.</li>
