@@ -74,7 +74,7 @@ A hot wallet is an active wallet of an exchange that manages its daily business,
 The attacker used two methods:
 
 <div class="bh-two">
-<div><span class="bh-tag alt">Other wallets</span><h3>Ordinary signed transfers</h3><p>On the XRP Ledger, Bitcoin, Tron, Solana, Arbitrum, Optimism, Base, Polygon, Avalanche and one Ethereum wallet (Binance 16), the drained wallets sent plain transfers to the attacker, signed with their own keys.</p></div>
+<div><span class="bh-tag alt">Other wallets</span><h3>Ordinary signed transfers</h3><p>On XRP, Bitcoin, Tron, Solana, Arbitrum, Optimism, Base, Polygon, Avalanche and one Ethereum wallet (Binance 16), the drained wallets sent plain transfers to the attacker, signed with their own keys.</p></div>
 <div><span class="bh-tag">Binance 14</span><h3>EIP-7702 sweeper on Ethereum</h3><p>On Binance 14, the attacker installed its own code with EIP-7702. One call then moved ETH and 63 different tokens at once, and later calls swept new deposits.</p></div>
 </div>
 
@@ -111,13 +111,13 @@ The authorization list is part of the transaction and can be read from the block
 
 ## Following the funds
 
-The graph in Figure 2 starts at the operator and ends at the wallets that hold the ETH today. Scrolling through it follows the case in order. Every address opens in Pathfinder, except those on the XRP Ledger and Solana.
+The graph in Figure 2 starts at the operator and ends at the wallets that hold the ETH today. Scrolling through it follows the case in order. Every address opens in Pathfinder, except those on XRP and Solana.
 
 <figure class="pl-story" data-src="/data/binance-hack/case-story.json" data-svg-light="/data/binance-hack/case-light.svg" data-svg-dark="/data/binance-hack/case-dark.svg" data-min-width="620" data-label="The Binance hot wallet hack, from the Tornado Cash-funded operator to the ETH stashes" data-overview="The whole case, 28 to 30 October 2026. Scroll on, or select a step, to follow the funds in order.">
-<img class="pl-story-fallback" src="/images/insights/binance-hot-wallet-hack/figure-case.png" alt="The Binance hot wallet hack: drains on the XRP Ledger, Solana, Tron, Bitcoin and Avalanche, the EIP-7702 takeover of Binance 14, the main receiver with its frozen stablecoins, and the routes of the stolen funds into six ETH wallets">
+<img class="pl-story-fallback" src="/images/insights/binance-hot-wallet-hack/figure-case.png" alt="The Binance hot wallet hack: drains on XRP, Solana, Tron, Bitcoin and Avalanche, the EIP-7702 takeover of Binance 14, the main receiver with its frozen stablecoins, and the routes of the stolen funds into six ETH wallets">
 <ol class="pl-story-steps">
 <li data-label="Preparation">On 28 and 29 October, the operator receives three withdrawals from the 0.1 ETH pool of Tornado Cash and 1.08 ETH from a second wallet, which is also funded through Tornado Cash. At 15:59 UTC, it deploys the sweeper code.</li>
-<li data-label="First wave">From 20:05 UTC, Binance wallets on the XRP Ledger, Solana, Tron, Bitcoin and Avalanche send their balances to the attacker through ordinary signed transfers. On Bitcoin, the 18,270 BTC are split into 19 addresses by 20:48 UTC, most of them holding 1,000 BTC. On Avalanche, five Binance wallets send 2.26 million AVAX and 8.4 million USDt to the same address as the main receiver on Ethereum, from 20:33 UTC.</li>
+<li data-label="First wave">From 20:05 UTC, Binance wallets on XRP, Solana, Tron, Bitcoin and Avalanche send their balances to the attacker through ordinary signed transfers. On Bitcoin, the 18,270 BTC are split into 19 addresses by 20:48 UTC, most of them holding 1,000 BTC. On Avalanche, five Binance wallets send 2.26 million AVAX and 8.4 million USDt to the same address as the main receiver on Ethereum, from 20:33 UTC.</li>
 <li data-label="ETH exploit">At 20:20:59 UTC, the operator hands Binance 14 its 50 signed authorizations. The transaction runs nothing itself. From then on, every call to Binance 14 runs the sweeper code.</li>
 <li data-label="Sweep">At 20:24:23 UTC, one call to Binance 14 moves 167,464 ETH, 1.615 billion USDT and 62 other tokens to the main receiver. Binance 16 follows, and through Binance 14 the operator also empties a Binance USDC wallet that accepts orders from Binance 14. Later calls sweep new deposits until 23:56 UTC. From 22:39 UTC, these go to a second receiver.</li>
 <li data-label="Freeze">At 21:01 UTC, Tether freezes the main receiver for USDT, and at 21:04 UTC, Circle freezes its 823 million USDC. The USDT freeze blocks sending but not receiving, so later sweeps bring the frozen USDT to 1,175 million.</li>
