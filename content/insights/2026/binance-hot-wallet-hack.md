@@ -2,7 +2,7 @@
 title: "The Binance Hot Wallet Hack, Step by Step"
 date: 2026-10-30
 author: "Thomas Niedermayer"
-draft: true
+draft: false
 description: "On 29 October 2026, Binance hot wallets on ten blockchains sent about 6.3 billion USD to attacker addresses. On Ethereum, the attacker ran its own code on one hot wallet with EIP-7702. We follow the Ethereum funds from the Tornado Cash-funded operator to the wallets that hold the ETH today."
 tags: ["binance", "hack", "ethereum", "eip-7702", "stablecoin-freeze", "case-study"]
 image: "images/insights/binance-hot-wallet-hack/cover.jpg"
