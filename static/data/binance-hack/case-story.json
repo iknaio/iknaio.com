@@ -90,14 +90,6 @@
    "address": "0x7c8601d4645b93cea45f71e118a729332e6b5ca0"
   },
   {
-   "id": "sweeper",
-   "label": "sweeper code",
-   "role": "attacker",
-   "network": "eth",
-   "network_name": "Ethereum",
-   "address": "0x63e842b054bd624a465454d533c33f573e9c6fae"
-  },
-  {
    "id": "binance14",
    "label": "Binance 14",
    "role": "victim",

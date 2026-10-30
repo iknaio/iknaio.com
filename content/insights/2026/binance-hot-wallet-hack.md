@@ -90,7 +90,7 @@ The authorization list is part of the transaction and can be read from the block
 
 <figure>
 <div class="bh-auth" tabindex="0" role="region" aria-label="Authorization list">
-<p class="bh-auth-head">All 50 entries are signed by <a href="https://app.iknaio.com/pathfinder/eth/address/0x28c6c06298d514db089934071355e5743bf21d60">Binance 14</a> and point to the sweeper code <a href="https://app.iknaio.com/pathfinder/eth/address/0x63e842b054bd624a465454d533c33f573e9c6fae"><code>0x63e842…6fae</code></a>.</p>
+<p class="bh-auth-head">All 50 entries are signed by <a href="https://app.iknaio.com/pathfinder/eth/address/0x28c6c06298d514db089934071355e5743bf21d60">Binance 14</a> and point to the sweeper code <code>0x63e842b054bd624a465454d533c33f573e9c6fae</code>.</p>
 <table>
 <thead><tr><th>Nonce</th><th>Result</th><th>Signature (r)</th></tr></thead>
 <tbody>
