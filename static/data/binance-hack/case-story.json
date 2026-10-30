@@ -1,0 +1,683 @@
+{
+ "date": "2026-10-29",
+ "nodes": [
+  {
+   "id": "bin-trx",
+   "label": "Binance hot wallet",
+   "role": "victim",
+   "network": "trx",
+   "network_name": "Tron",
+   "address": "TDqSquXBgUCLYvYC4XZgrprLK589dkhSCf"
+  },
+  {
+   "id": "att-trx",
+   "label": "attacker",
+   "role": "attacker",
+   "network": "trx",
+   "network_name": "Tron",
+   "address": "TG5iBMQPrDzJJAUM8GMVBf1hRaJ1wvzsGi"
+  },
+  {
+   "id": "trx-swap",
+   "label": "swap wallet",
+   "role": "attacker",
+   "network": "trx",
+   "network_name": "Tron",
+   "address": "TPBkSjkCMn2ckrMuAP8n2J1jdjbw76bKN4"
+  },
+  {
+   "id": "trx-stash",
+   "label": "TRX stash",
+   "role": "attacker",
+   "network": "trx",
+   "network_name": "Tron",
+   "address": "TSpe5HC3PRD2svJcr1YoGszhHk2mtkyZ8A"
+  },
+  {
+   "id": "trx-frozen",
+   "label": "frozen wallet",
+   "role": "attacker",
+   "network": "trx",
+   "network_name": "Tron",
+   "address": "TCzBTkqn66yApqbYoPezaEQosM5DAd7Y62"
+  },
+  {
+   "id": "bin-btc",
+   "label": "Binance hot wallet",
+   "role": "victim",
+   "network": "btc",
+   "network_name": "Bitcoin",
+   "address": "bc1qm34lsc65zpw79lxes69zkqmk6ee3ewf0j77s3h"
+  },
+  {
+   "id": "att-btc",
+   "label": "attacker",
+   "role": "attacker",
+   "network": "btc",
+   "network_name": "Bitcoin",
+   "address": "bc1q0mtc2f5agpkvlq6hhahmfr3hlr55kyfjhl2mnm"
+  },
+  {
+   "id": "tornado",
+   "label": "Tornado Cash",
+   "role": "service",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x12d66f87a04a9e220743712ce6d9bb1b5616b8fc"
+  },
+  {
+   "id": "gas-wallet",
+   "label": "gas wallet",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0xe4f9070e1316de2988fc6f869fead8fb99cc74cd"
+  },
+  {
+   "id": "operator",
+   "label": "operator",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x7c8601d4645b93cea45f71e118a729332e6b5ca0"
+  },
+  {
+   "id": "sweeper",
+   "label": "sweeper code",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x63e842b054bd624a465454d533c33f573e9c6fae"
+  },
+  {
+   "id": "binance14",
+   "label": "Binance 14",
+   "role": "victim",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x28c6c06298d514db089934071355e5743bf21d60"
+  },
+  {
+   "id": "binance16",
+   "label": "Binance 16",
+   "role": "victim",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0xdfd5293d8e347dfe59e90efd55b2956a1343963d"
+  },
+  {
+   "id": "binance-usdc",
+   "label": "Binance USDC wallet",
+   "role": "victim",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0xee7ae85f2fe2239e27d9c1e23fffe168d63b4055"
+  },
+  {
+   "id": "receiver",
+   "label": "main receiver",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x5227f603c1ee34ce3c06efe6477003bdfccb2f8c"
+  },
+  {
+   "id": "stash-1",
+   "label": "ETH stash 1",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x8532fa14acaf483729c449b8458aeddb900543d4"
+  },
+  {
+   "id": "stash-4",
+   "label": "ETH stash 4",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x03b0ee5d82990cff1bda48651ac3e436d1a020ea"
+  },
+  {
+   "id": "ena-seller",
+   "label": "ENA seller",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x7f9dc988b46336ad536828fad50fa8fa1e5415e3"
+  },
+  {
+   "id": "hop-9749",
+   "label": "pass-through",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x9749292d74fd460982d0912ea9515ea24736c762"
+  },
+  {
+   "id": "stash-2",
+   "label": "ETH stash 2",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0xc887af690e0301cd4edbbce8f8d31b4ec65b286a"
+  },
+  {
+   "id": "hop-811f",
+   "label": "pass-through",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x811f15855476156ebf86ba3b84fafb8ceaa4e84c"
+  },
+  {
+   "id": "frozen-aa24",
+   "label": "frozen wallet",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0xaa246bf639586a6ba46762d378ce50ca4fc654a0"
+  },
+  {
+   "id": "hop-0ddf",
+   "label": "pass-through",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x0ddf0480016e6bcb2c1f5d190d221fba1320697e"
+  },
+  {
+   "id": "hop-8d53",
+   "label": "pass-through",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x8d53903625b8e839b9df4bd28b0efb1cd6b8639a"
+  },
+  {
+   "id": "aave",
+   "label": "Aave",
+   "role": "service",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x23878914efe38d27c4d67ab83ed1b93a74d4086a"
+  },
+  {
+   "id": "hop-77ed",
+   "label": "pass-through",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x77edef23fbd05921c26fe29fcc3a65e14d2ac3eb"
+  },
+  {
+   "id": "hop-7aa4",
+   "label": "pass-through",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x7aa4d3029e4c6a8e916300014ad95b6d6c03bfd1"
+  },
+  {
+   "id": "hop-ccbe",
+   "label": "pass-through",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0xccbef95633adb5cd2b5038db5a38d77e726ca263"
+  },
+  {
+   "id": "frozen-b171",
+   "label": "frozen wallet",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0xb171ca86f82070282138352ff7111b494060c8c3"
+  },
+  {
+   "id": "side-42cd",
+   "label": "side wallet",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x42cdf00c85005630cc8605731b9364f712077810"
+  },
+  {
+   "id": "stash-3",
+   "label": "ETH stash 3",
+   "role": "attacker",
+   "network": "eth",
+   "network_name": "Ethereum",
+   "address": "0x897c80d1a9729e94460e2bd93178bd5215158df3"
+  }
+ ],
+ "edges": [
+  {
+   "id": "bin-xrp>att-xrp",
+   "from": "bin-xrp",
+   "to": "att-xrp"
+  },
+  {
+   "id": "bin-sol>att-sol",
+   "from": "bin-sol",
+   "to": "att-sol"
+  },
+  {
+   "id": "bin-trx>att-trx",
+   "from": "bin-trx",
+   "to": "att-trx"
+  },
+  {
+   "id": "att-trx>trx-swap",
+   "from": "att-trx",
+   "to": "trx-swap"
+  },
+  {
+   "id": "trx-swap>trx-stash",
+   "from": "trx-swap",
+   "to": "trx-stash"
+  },
+  {
+   "id": "trx-swap>trx-frozen",
+   "from": "trx-swap",
+   "to": "trx-frozen"
+  },
+  {
+   "id": "trx-stash>trx-split",
+   "from": "trx-stash",
+   "to": "trx-split"
+  },
+  {
+   "id": "bin-btc>att-btc",
+   "from": "bin-btc",
+   "to": "att-btc"
+  },
+  {
+   "id": "att-btc>btc-peel",
+   "from": "att-btc",
+   "to": "btc-peel"
+  },
+  {
+   "id": "tornado>operator",
+   "from": "tornado",
+   "to": "operator"
+  },
+  {
+   "id": "gas-wallet>operator",
+   "from": "gas-wallet",
+   "to": "operator"
+  },
+  {
+   "id": "operator>sweeper",
+   "from": "operator",
+   "to": "sweeper"
+  },
+  {
+   "id": "operator>binance14",
+   "from": "operator",
+   "to": "binance14"
+  },
+  {
+   "id": "binance14>sweeper",
+   "from": "binance14",
+   "to": "sweeper"
+  },
+  {
+   "id": "binance14>receiver",
+   "from": "binance14",
+   "to": "receiver"
+  },
+  {
+   "id": "binance16>receiver",
+   "from": "binance16",
+   "to": "receiver"
+  },
+  {
+   "id": "binance-usdc>receiver",
+   "from": "binance-usdc",
+   "to": "receiver"
+  },
+  {
+   "id": "receiver>stash-1",
+   "from": "receiver",
+   "to": "stash-1"
+  },
+  {
+   "id": "receiver>stash-4",
+   "from": "receiver",
+   "to": "stash-4"
+  },
+  {
+   "id": "receiver>ena-seller",
+   "from": "receiver",
+   "to": "ena-seller"
+  },
+  {
+   "id": "ena-seller>stash-2",
+   "from": "ena-seller",
+   "to": "stash-2"
+  },
+  {
+   "id": "receiver>hop-9749",
+   "from": "receiver",
+   "to": "hop-9749"
+  },
+  {
+   "id": "hop-9749>makers",
+   "from": "hop-9749",
+   "to": "makers"
+  },
+  {
+   "id": "makers>hop-9749",
+   "from": "makers",
+   "to": "hop-9749"
+  },
+  {
+   "id": "hop-9749>stash-2",
+   "from": "hop-9749",
+   "to": "stash-2"
+  },
+  {
+   "id": "hop-9749>hop-811f",
+   "from": "hop-9749",
+   "to": "hop-811f"
+  },
+  {
+   "id": "hop-811f>frozen-aa24",
+   "from": "hop-811f",
+   "to": "frozen-aa24"
+  },
+  {
+   "id": "receiver>hop-0ddf",
+   "from": "receiver",
+   "to": "hop-0ddf"
+  },
+  {
+   "id": "hop-0ddf>dex",
+   "from": "hop-0ddf",
+   "to": "dex"
+  },
+  {
+   "id": "hop-0ddf>hop-8d53",
+   "from": "hop-0ddf",
+   "to": "hop-8d53"
+  },
+  {
+   "id": "hop-8d53>aave",
+   "from": "hop-8d53",
+   "to": "aave"
+  },
+  {
+   "id": "aave>hop-8d53",
+   "from": "aave",
+   "to": "hop-8d53"
+  },
+  {
+   "id": "hop-8d53>hop-77ed",
+   "from": "hop-8d53",
+   "to": "hop-77ed"
+  },
+  {
+   "id": "hop-77ed>dex",
+   "from": "hop-77ed",
+   "to": "dex"
+  },
+  {
+   "id": "hop-77ed>hop-7aa4",
+   "from": "hop-77ed",
+   "to": "hop-7aa4"
+  },
+  {
+   "id": "hop-7aa4>dex",
+   "from": "hop-7aa4",
+   "to": "dex"
+  },
+  {
+   "id": "hop-7aa4>hop-ccbe",
+   "from": "hop-7aa4",
+   "to": "hop-ccbe"
+  },
+  {
+   "id": "hop-ccbe>frozen-b171",
+   "from": "hop-ccbe",
+   "to": "frozen-b171"
+  },
+  {
+   "id": "frozen-b171>stash-3",
+   "from": "frozen-b171",
+   "to": "stash-3"
+  },
+  {
+   "id": "side-42cd>stash-3",
+   "from": "side-42cd",
+   "to": "stash-3"
+  }
+ ],
+ "steps": [
+  {
+   "nodes": [
+    "tornado",
+    "gas-wallet",
+    "operator",
+    "sweeper"
+   ],
+   "edges": [
+    "tornado>operator",
+    "gas-wallet>operator",
+    "operator>sweeper"
+   ]
+  },
+  {
+   "nodes": [
+    "bin-xrp",
+    "att-xrp",
+    "bin-sol",
+    "att-sol",
+    "bin-trx",
+    "att-trx",
+    "bin-btc",
+    "att-btc",
+    "btc-peel"
+   ],
+   "edges": [
+    "row-xrp",
+    "row-sol",
+    "row-trx",
+    "row-btc",
+    "bin-xrp>att-xrp",
+    "bin-sol>att-sol",
+    "bin-trx>att-trx",
+    "bin-btc>att-btc",
+    "att-btc>btc-peel"
+   ],
+   "view": [
+    "bin-xrp",
+    "att-xrp",
+    "bin-sol",
+    "att-sol",
+    "bin-trx",
+    "att-trx",
+    "bin-btc",
+    "att-btc",
+    "btc-peel"
+   ]
+  },
+  {
+   "nodes": [
+    "binance14"
+   ],
+   "edges": [
+    "operator>binance14",
+    "binance14>sweeper"
+   ],
+   "view": [
+    "operator",
+    "sweeper",
+    "binance14"
+   ]
+  },
+  {
+   "nodes": [
+    "binance16",
+    "binance-usdc",
+    "receiver"
+   ],
+   "edges": [
+    "binance14>receiver",
+    "binance16>receiver",
+    "binance-usdc>receiver"
+   ],
+   "view": [
+    "binance14",
+    "binance16",
+    "binance-usdc",
+    "receiver"
+   ]
+  },
+  {
+   "nodes": [],
+   "edges": [
+    "frozen-receiver"
+   ],
+   "view": [
+    "receiver"
+   ]
+  },
+  {
+   "nodes": [
+    "stash-1"
+   ],
+   "edges": [
+    "receiver>stash-1"
+   ],
+   "view": [
+    "receiver",
+    "stash-1"
+   ]
+  },
+  {
+   "nodes": [
+    "hop-9749",
+    "makers",
+    "stash-2",
+    "hop-811f",
+    "frozen-aa24"
+   ],
+   "edges": [
+    "receiver>hop-9749",
+    "hop-9749>makers",
+    "makers>hop-9749",
+    "hop-9749>stash-2",
+    "hop-9749>hop-811f",
+    "hop-811f>frozen-aa24",
+    "frozen-aa24"
+   ],
+   "view": [
+    "receiver",
+    "hop-9749",
+    "makers",
+    "stash-2",
+    "hop-811f",
+    "frozen-aa24"
+   ]
+  },
+  {
+   "nodes": [
+    "hop-0ddf",
+    "hop-8d53",
+    "aave",
+    "hop-77ed",
+    "dex",
+    "hop-7aa4"
+   ],
+   "edges": [
+    "receiver>hop-0ddf",
+    "hop-0ddf>dex",
+    "hop-0ddf>hop-8d53",
+    "hop-8d53>aave",
+    "aave>hop-8d53",
+    "hop-8d53>hop-77ed",
+    "hop-77ed>dex",
+    "hop-77ed>hop-7aa4",
+    "hop-7aa4>dex"
+   ],
+   "view": [
+    "hop-0ddf",
+    "hop-8d53",
+    "aave",
+    "hop-77ed",
+    "dex",
+    "hop-7aa4"
+   ]
+  },
+  {
+   "nodes": [
+    "hop-ccbe",
+    "frozen-b171",
+    "stash-3",
+    "side-42cd"
+   ],
+   "edges": [
+    "hop-7aa4>hop-ccbe",
+    "hop-ccbe>frozen-b171",
+    "frozen-b171",
+    "frozen-b171>stash-3",
+    "side-42cd>stash-3",
+    "holds-stash-3"
+   ],
+   "view": [
+    "hop-7aa4",
+    "hop-ccbe",
+    "frozen-b171",
+    "stash-3",
+    "side-42cd"
+   ]
+  },
+  {
+   "nodes": [
+    "stash-4",
+    "ena-seller"
+   ],
+   "edges": [
+    "receiver>stash-4",
+    "receiver>ena-seller",
+    "ena-seller>stash-2",
+    "holds-stash-1",
+    "holds-stash-2",
+    "holds-stash-4"
+   ],
+   "view": [
+    "receiver",
+    "stash-4",
+    "stash-1",
+    "ena-seller",
+    "stash-2"
+   ]
+  },
+  {
+   "nodes": [
+    "trx-swap",
+    "trx-stash",
+    "trx-split",
+    "trx-frozen"
+   ],
+   "edges": [
+    "att-trx>trx-swap",
+    "trx-swap>trx-stash",
+    "trx-swap>trx-frozen",
+    "trx-stash>trx-split",
+    "frozen-tg5",
+    "frozen-tczb",
+    "holds-btc"
+   ],
+   "view": [
+    "att-trx",
+    "trx-swap",
+    "trx-stash",
+    "trx-split",
+    "trx-frozen",
+    "att-btc",
+    "btc-peel"
+   ]
+  }
+ ]
+}
