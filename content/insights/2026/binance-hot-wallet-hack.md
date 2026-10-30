@@ -17,6 +17,7 @@ posttype: "insight"
 .content .bh-ledger-date time { color: var(--color-dark); font-weight: 600; }
 .content .bh-ledger-block { font-variant-numeric: tabular-nums; }
 .content .bh-ledger-block { padding-left: 10px; border-left: 1px solid var(--color-gray); }
+@media (max-width: 479px) { .content .bh-ledger-block { flex-basis: 100%; padding-left: 0; border-left: 0; } }
 .content .bh-ledger dl { margin: 0; }
 .content .bh-ledger dl > div { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--color-gray); }
 .content .bh-ledger dt { font-size: .95rem; color: var(--color-dark-soft); }
@@ -44,10 +45,6 @@ posttype: "insight"
 .content .bh-chip.yes { background: var(--color-primary); color: #1a1a1a; box-shadow: none; }
 .content figure { margin: 1.5rem 0 2rem; }
 .content .bh-two p { text-align: left; }
-.content .bh-ledger dl > div { justify-content: flex-start; }
-.content .bh-ledger dt { flex: 0 0 15rem; }
-.content .bh-ledger dd { text-align: left; }
-@media (max-width: 479px) { .content .bh-ledger dl > div { justify-content: space-between; } .content .bh-ledger dt { flex: 1 1 auto; } .content .bh-ledger dd { text-align: right; } }
 .content .bh-auth-head { margin: 0; padding: 10px 12px; font-size: .85rem; line-height: 1.5; text-align: left; border-bottom: 1px solid var(--color-gray); }
 .content .bh-auth:focus-visible, .pl-story-controls button:focus-visible { outline: 2px solid var(--color-dark); outline-offset: 2px; }
 /* the case graph is wider than the text, so its labels can be read */
