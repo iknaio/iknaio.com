@@ -2264,6 +2264,17 @@ hr {
   background-color: var(--surface-dark);
 }
 
+/* Green buttons keep dark text in both themes (--color-dark flips to light in dark mode). */
+[data-theme="dark"] .btn-primary {
+  color: #1A1A1A;
+  border-color: var(--color-primary);
+}
+
+[data-theme="dark"] .capability-tools a,
+[data-theme="dark"] .post-card-link {
+  color: var(--color-primary);
+}
+
 [data-theme="dark"] .btn-secondary {
   color: var(--text-dark-primary);
   border-color: var(--text-dark-primary);
@@ -2733,7 +2744,7 @@ hr {
 }
 
 .section-dark .social-proof-stat {
-  color: var(--color-white);
+  color: var(--text-dark-primary); /* --color-white turns dark in dark mode */
 }
 
 /* Logo marquee animation */
@@ -3444,6 +3455,10 @@ hr {
   color: var(--color-dark);
   padding: 0 0.15em;
   border-radius: 2px;
+}
+
+[data-theme="dark"] .about-mission-body mark {
+  color: #1A1A1A; /* dark text on the green highlight in both themes */
 }
 
 .about-values-inner {
@@ -4176,11 +4191,11 @@ hr {
 /* Dark testimonial / case-study section (workstream 6) */
 .section-case-study {
   background-color: var(--surface-dark);
-  color: var(--color-gray-light);
+  color: var(--text-dark-primary); /* fixed light text: --color-gray-light turns dark in dark mode */
 }
 
 .section-case-study .section-title {
-  color: var(--color-gray-light);
+  color: var(--text-dark-primary);
 }
 
 .section-case-study .case-study-quote {
@@ -4196,7 +4211,7 @@ hr {
 }
 
 .section-case-study .case-study-quote cite {
-  color: var(--color-gray-light);
+  color: var(--text-dark-primary);
 }
 
 .section-case-study .stat-number {
@@ -4208,7 +4223,7 @@ hr {
 }
 
 .section-case-study .stat-label {
-  color: var(--color-gray-light);
+  color: var(--text-dark-primary);
 }
 
 .section-case-study .case-study-link-wrap {
