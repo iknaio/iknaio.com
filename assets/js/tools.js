@@ -11,7 +11,10 @@
   var bar = section.querySelector('.tools-tabs-bar');
   var tabs = Array.prototype.slice.call(section.querySelectorAll('.tools-tab'));
   var panels = Array.prototype.slice.call(section.querySelectorAll('.tool-panel'));
-  if (!stage || !panels.length || tabs.length !== panels.length) return;
+  if (!panels.length) return;
+  // Pinned mode needs the stage, the tab bar and one tab per product; without them the
+  // products stay stacked, but tab clicks and the active tab still work.
+  var canPin = !!(stage && bar && tabs.length === panels.length);
 
   var NAV = 75.2;          // fixed nav height (matches the CSS)
   var STEP_VH = 0.8;       // scroll distance per product, as a share of the window height
@@ -20,6 +23,12 @@
   var pinned = false;
   var current = -1;
   var step = 0;
+  var observer = null;
+  // While a tab click scrolls to its product, keep that tab active instead of flipping
+  // through the products in between.
+  var target = null;       // { index }
+  var targetTimer = 0;
+  var ticking = false;
 
   function setActive(index) {
     if (index === current) return;
@@ -36,21 +45,39 @@
     return section.getBoundingClientRect().top + window.scrollY;
   }
 
-  // Scroll position at which product i is shown.
+  // Scroll position at which product i is shown: the start of its stretch. Each product has
+  // a stretch of the same length, the last one ending where the stage unpins.
   function positionFor(i) {
-    return sectionTop() - NAV + i * step;
+    return Math.ceil(sectionTop() - NAV + i * step);
+  }
+
+  function clearTarget() {
+    target = null;
+    window.clearTimeout(targetTimer);
   }
 
   function onScroll() {
+    ticking = false;
     if (!pinned) return;
     var scrolled = window.scrollY + NAV - sectionTop();
-    var max = (panels.length - 1) * step;
-    var index = Math.round(Math.min(Math.max(scrolled, 0), max) / step);
+    // +1 absorbs sub-pixel scroll positions at the very start of a stretch.
+    var index = Math.min(Math.max(Math.floor((scrolled + 1) / step), 0), panels.length - 1);
+    if (target) {
+      if (index !== target.index) return;
+      clearTarget();
+    }
     setActive(index);
   }
 
+  // Stacked mode: re-observe the panels so the observer reports which one is in view now.
+  function resyncStacked() {
+    if (!observer) return;
+    panels.forEach(function (p) { observer.unobserve(p); observer.observe(p); });
+  }
+
   function layout() {
-    var want = mqWide.matches && !mqMotion.matches;
+    var wasPinned = pinned;
+    var want = canPin && mqWide.matches && !mqMotion.matches;
     if (want) {
       // Only pin if every product fits in the window below the tabs.
       section.classList.add('tools-pinned');
@@ -62,17 +89,21 @@
     section.classList.toggle('tools-pinned', pinned);
     if (pinned) {
       step = window.innerHeight * STEP_VH;
-      section.style.height = (stage.offsetHeight + (panels.length - 1) * step) + 'px';
-      current = -1;
-      onScroll();
+      section.style.height = (stage.offsetHeight + panels.length * step) + 'px';
+      if (!target) {
+        current = -1;
+        onScroll();
+      }
     } else {
       section.style.height = '';
+      clearTarget();
+      if (wasPinned) resyncStacked();
     }
   }
 
   // Stacked mode: the active tab follows whichever product is in view.
   if ('IntersectionObserver' in window) {
-    var observer = new IntersectionObserver(function (entries) {
+    observer = new IntersectionObserver(function (entries) {
       if (pinned) return;
       var best = null;
       entries.forEach(function (e) {
@@ -84,15 +115,39 @@
   }
 
   tabs.forEach(function (tab, i) {
+    if (!panels[i]) return;
     tab.addEventListener('click', function (e) {
       e.preventDefault();
-      if (pinned) window.scrollTo({ top: positionFor(i), behavior: 'smooth' });
-      else panels[i].scrollIntoView({ behavior: mqMotion.matches ? 'auto' : 'smooth', block: 'start' });
+      if (pinned) {
+        var top = positionFor(i);
+        clearTarget();
+        if (Math.abs(window.scrollY - top) > 2) {
+          target = { index: i };
+          // Fallback for browsers without 'scrollend', or a scroll cut short by the user.
+          targetTimer = window.setTimeout(function () { clearTarget(); onScroll(); }, 1500);
+        }
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      } else {
+        panels[i].scrollIntoView({ behavior: mqMotion.matches ? 'auto' : 'smooth', block: 'start' });
+      }
       setActive(i);
     });
   });
 
-  window.addEventListener('scroll', function () { window.requestAnimationFrame(onScroll); }, { passive: true });
+  window.addEventListener('scroll', function () {
+    if (!pinned || ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(onScroll);
+  }, { passive: true });
+  window.addEventListener('scrollend', function () {
+    if (!target) return;
+    clearTarget();
+    onScroll();
+  });
+  // A wheel, touch or key scroll during a tab-click scroll hands control back to the scroll.
+  ['wheel', 'touchstart', 'keydown'].forEach(function (type) {
+    window.addEventListener(type, function () { if (target) clearTarget(); }, { passive: true });
+  });
   window.addEventListener('resize', layout);
   if (mqWide.addEventListener) {
     mqWide.addEventListener('change', layout);
@@ -103,17 +158,33 @@
   function openFromHash() {
     panels.forEach(function (p, i) {
       if (location.hash === '#' + p.id) {
-        if (pinned) window.scrollTo({ top: positionFor(i), behavior: 'auto' });
+        // 'instant', not 'auto': 'auto' follows html { scroll-behavior: smooth }.
+        if (pinned) {
+          clearTarget();
+          window.scrollTo({ top: positionFor(i), behavior: 'instant' });
+        }
         setActive(i);
       }
     });
   }
 
   layout();
-  // Screenshots load lazily; re-check that products fit once they have.
+  // Screenshots load lazily, often after the window's 'load' event, and only then get their
+  // real height: re-check that every product still fits whenever one arrives.
+  var relayoutQueued = false;
+  function queueLayout() {
+    if (relayoutQueued) return;
+    relayoutQueued = true;
+    window.requestAnimationFrame(function () { relayoutQueued = false; layout(); });
+  }
+  section.querySelectorAll('.tool-screenshot').forEach(function (img) {
+    if (!img.complete) img.addEventListener('load', queueLayout);
+  });
   window.addEventListener('load', function () {
     layout();
     window.requestAnimationFrame(openFromHash);
   });
+  // Later jumps to a tool (back/forward, an edited URL, in-page links) too.
+  window.addEventListener('hashchange', function () { window.requestAnimationFrame(openFromHash); });
   if (document.readyState === 'complete') openFromHash();
 })();
