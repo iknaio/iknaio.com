@@ -4519,6 +4519,39 @@ hr {
   box-sizing: border-box;
 }
 
+/* Pinned "tab scroll" mode (desktop, set by tools.js): the tabs and one product stay fixed
+   under the nav while the page scrolls, and scrolling moves on to the next product, as in
+   the Figma "Tab Scroll animation". On small screens, short windows and with reduced motion
+   the products stack instead (rules above). */
+.tools-pinned .tools-stage {
+  position: sticky;
+  top: 75.2px;
+  height: calc(100vh - 75.2px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.tools-pinned .tools-tabs-bar {
+  position: static;
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.tools-pinned .tool-panel {
+  grid-row: 2;
+  grid-column: 1;
+  min-height: 0;
+  padding: var(--spacing-xl) 0;
+  transition: opacity 350ms var(--easing-default), transform 350ms var(--easing-default), visibility 350ms;
+}
+
+.tools-pinned .tool-panel:not(.active) {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+}
+
 @media (max-width: 960px) {
   .tools-tabs-bar {
     position: static;
