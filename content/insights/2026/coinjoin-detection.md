@@ -1,7 +1,8 @@
 ---
 title: "CoinJoin Detection"
 date: 2026-05-12
-description: "How we spot CoinJoin transactions at Iknaio, and why that matters for blockchain analytics."
+seotitle: "CoinJoin: What It Is and How to Detect It | Iknaio"
+description: "CoinJoin explained: how Wasabi, Whirlpool and JoinMarket mix Bitcoin transactions, how to detect them, and what a CoinJoin means for tracing funds."
 tags: []
 image: "images/insights/coinjoin-detection/cover.png"
 posttype: "insight"

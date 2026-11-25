@@ -1,7 +1,8 @@
 ---
 title: "Bitcoin Address Types"
 date: 2026-04-14
-description: "Bitcoin address types, what they tell an investigator, and how Iknaio uses them."
+seotitle: "Bitcoin Address Types: Legacy vs SegWit, bc1q, P2WPKH | Iknaio"
+description: "Bitcoin addresses starting with 1, 3, bc1q or bc1p: legacy P2PKH vs SegWit P2WPKH, P2SH, P2WSH and Taproot compared, with what each tells an investigator."
 tags: []
 image: "images/insights/address-types/cover.png"
 posttype: "insight"
