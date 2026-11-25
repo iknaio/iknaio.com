@@ -1,7 +1,8 @@
 ---
 title: "CaseConnect 3.0: Spot connected cases faster"
 date: 2026-07-08
-description: "A rebuilt CaseConnect: a faster, clearer interface for adding cases, seeing how they connect, and watching your shared case network grow over time."
+seotitle: "CaseConnect – Case Management for Crypto Investigations | Iknaio"
+description: "CaseConnect is Iknaio's case management tool for crypto investigations: it finds cases that share addresses, clusters or collectors. See what's new in 3.0."
 tags: ["caseconnect", "investigation", "law-enforcement", "ui", "product-update"]
 image: "images/insights/iknaio-caseconnect-3/cover.png"
 posttype: "tech-deep-dive"

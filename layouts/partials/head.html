@@ -12,7 +12,7 @@
   {{ $themeInit := resources.Get "js/theme-init.js" | minify | fingerprint }}
   <script src="{{ $themeInit.RelPermalink }}" integrity="{{ $themeInit.Data.Integrity }}"></script>
 
-  <title>{{ if .IsHome }}{{ .Site.Title }} — Investigate Crypto Money Flows{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <title>{{ if .IsHome }}{{ .Site.Title }} — Investigate Crypto Money Flows{{ else }}{{ with .Params.seotitle }}{{ . }}{{ else }}{{ $.Title }} | {{ $.Site.Title }}{{ end }}{{ end }}</title>
   <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   {{- if .Params.noindex }}
   <meta name="robots" content="noindex">
