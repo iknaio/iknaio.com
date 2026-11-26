@@ -479,7 +479,15 @@ hr {
 
 .theme-toggle-icon {
   display: block;
+  flex-shrink: 0;
 }
+
+/* Keep the theme toggle at full size: on narrow desktop widths (1024-1150px) the
+   nav ran out of room and flexbox shrank the button until the icon disappeared. */
+.theme-toggle {
+  flex-shrink: 0;
+}
+
 
 .theme-toggle-sun {
   display: none;
@@ -733,6 +741,32 @@ hr {
     display: inline-flex;
     order: 1;
     margin-left: var(--spacing-md);
+  }
+}
+
+/* Narrow desktop: tighter nav spacing so links, toggle and both buttons fit
+   without overflowing the header. */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .nav-inner.container {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+
+  .nav-menu,
+  .nav-menu .nav-list {
+    gap: 12px;
+  }
+
+  .nav-menu .nav-link {
+    font-size: 14px;
+  }
+
+  .theme-toggle {
+    margin-right: 0;
+  }
+
+  .nav .nav-app-cta {
+    margin-left: var(--spacing-sm);
   }
 }
 
@@ -1012,9 +1046,6 @@ hr {
     display: none;
 }
 
-[data-theme="dark"] .hero-animation, [data-theme="dark"] .tool-tab-icon {
-  filter: invert(1) hue-rotate(180deg);
-}
 
 @media (min-width: 768px) {
     .hero-animation {
@@ -1089,7 +1120,7 @@ hr {
   left: 50%;
   transform: translateX(-50%);
   background-color: var(--color-primary);
-  color: var(--color-white);
+  color: #2A2A2A; /* brand: dark text on green in both themes (white on green is 1.8:1) */
   font-family: var(--font-primary);
   font-size: 12px;
   font-weight: 600;
@@ -1184,14 +1215,19 @@ hr {
 
 
 .icon-check {
-  color: var(--color-primary);
+  /* Black tick on a soft brand-green circle (20%), matching the post-type pill.
+     A thin green tick alone was 1.8:1 on white. Dark mode uses a green tick (rule below). */
+  color: #2A2A2A;
+  background-color: rgba(43, 221, 150, 0.2);
+  border-radius: 50%;
+  padding: 3px;
+  box-sizing: content-box;
   flex-shrink: 0;
 }
 
 .icon-x {
-  color: var(--color-gray);
+  color: var(--color-dark-soft);
   flex-shrink: 0;
-  opacity: 0.5;
 }
 
 .packages-feature-unavailable {
@@ -1271,12 +1307,16 @@ hr {
 }
 
 .comparison-table .icon-check {
+  color: #2A2A2A;
+}
+
+[data-theme="dark"] .icon-check,
+[data-theme="dark"] .comparison-table .icon-check {
   color: var(--color-primary);
 }
 
 .comparison-table .icon-x {
-  color: var(--color-gray);
-  opacity: 0.5;
+  color: var(--color-dark-soft);
 }
 
 .comparison-table td {
@@ -2068,13 +2108,6 @@ hr {
   max-width: var(--max-width-text);
 }
 
-/* --------------------------------------------------------------------------
-   22. Dark Mode: Nav Logo
-   -------------------------------------------------------------------------- */
-
-[data-theme="dark"] .nav-logo img {
-  filter: brightness(0) invert(1);
-}
 
 /* --------------------------------------------------------------------------
    23. Utilities
@@ -2266,13 +2299,22 @@ hr {
 
 /* Green buttons keep dark text in both themes (--color-dark flips to light in dark mode). */
 [data-theme="dark"] .btn-primary {
-  color: #1A1A1A;
+  color: #2A2A2A;
   border-color: var(--color-primary);
 }
 
-[data-theme="dark"] .capability-tools a,
-[data-theme="dark"] .post-card-link {
+[data-theme="dark"] .capability-tools a {
   color: var(--color-primary);
+}
+
+[data-theme="dark"] .post-card-link {
+  color: var(--text-dark-primary);
+  border-color: var(--text-dark-primary);
+}
+
+[data-theme="dark"] .post-card:hover .post-card-link {
+  background-color: var(--text-dark-primary);
+  color: #2A2A2A;
 }
 
 [data-theme="dark"] .btn-secondary {
@@ -2832,8 +2874,12 @@ hr {
   font-family: var(--font-primary);
   font-weight: 700;
   font-size: var(--text-h2);
-  color: var(--color-primary);
+  color: #2A2A2A; /* was brand green on white (1.8:1) */
   margin-bottom: var(--spacing-sm);
+}
+
+[data-theme="dark"] .capability-name {
+  color: var(--color-primary);
 }
 
 .capability-headline {
@@ -3083,25 +3129,23 @@ hr {
 .post-card-meta {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  flex-wrap: wrap;
   margin-bottom: var(--spacing-sm);
-  font-size: 13px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 500;
+  color: #2A2A2A;
 }
 
-.post-card-kind {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  font-size: 11px;
-  color: var(--color-primary);
+/* Post type and date as one line, as in the Figma "News" design: "Press | June 12, 2024".
+   (Was small green uppercase text: green on white, 1.8:1.) */
+.post-card-kind::after {
+  content: "|";
+  margin: 0 6px;
 }
 
-.post-card-date {
-  color: var(--color-dark-soft);
-}
-
-[data-theme="dark"] .post-card-date {
-  color: var(--text-dark-muted);
+[data-theme="dark"] .post-card-meta {
+  color: var(--text-dark-primary);
 }
 
 .post-card-title {
@@ -3141,16 +3185,29 @@ hr {
   color: var(--text-dark-secondary);
 }
 
+/* "Read more" as an outlined pill, as in the Figma "News" design
+   (was a small blue text link with an arrow). The whole card is the link. */
 .post-card-link {
+  align-self: flex-start;
   margin-top: auto;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-info);
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  border: 1.5px solid var(--color-dark);
+  border-radius: 999px;
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-dark);
   text-decoration: none;
+  transition: background-color var(--duration-base) var(--easing-default),
+              color var(--duration-base) var(--easing-default);
 }
 
-.post-card-link:hover {
-  text-decoration: underline;
+.post-card:hover .post-card-link {
+  background-color: var(--color-dark);
+  color: var(--color-white);
 }
 
 .no-content {
@@ -3458,7 +3515,7 @@ hr {
 }
 
 [data-theme="dark"] .about-mission-body mark {
-  color: #1A1A1A; /* dark text on the green highlight in both themes */
+  color: #2A2A2A; /* dark text on the green highlight in both themes */
 }
 
 .about-values-inner {
@@ -3503,12 +3560,7 @@ hr {
   display: block;
 }
 
-[data-theme="dark"] .about-values-mark {
-  filter: invert(1) hue-rotate(180deg);
-}
-[data-theme="dark"] .about-value-icon {
-  filter: invert(1) hue-rotate(180deg);
-}
+
 
 .about-values-list {
   list-style: none;
@@ -3560,6 +3612,17 @@ hr {
 
 .section-about-contact {
   text-align: center;
+}
+
+/* The block is dark on a light page; in dark mode it turns light so it still stands out. */
+[data-theme="dark"] .section-about-contact {
+  background-color: #F4F4F4;
+  color: #2A2A2A;
+}
+
+[data-theme="dark"] .section-about-contact h2,
+[data-theme="dark"] .section-about-contact .about-contact-subtitle {
+  color: #2A2A2A;
 }
 
 .about-contact-title {
@@ -3836,9 +3899,6 @@ hr {
   background-color: var(--surface-dark);
 }
 
-[data-theme="dark"] .platform-hero-image img {
-  filter: invert(1) hue-rotate(180deg);
-}
 
 .section-platform {
   font-family: "General Sans", "General Sans Placeholder", sans-serif;
@@ -3941,9 +4001,6 @@ hr {
   margin: 0;
 }
 
-[data-theme="dark"] .platform-tool-icon {
-  filter: grayscale(100%) brightness(0) invert(1);
-}
 
 .platform-tool-headline {
   font-family: "General Sans", "General Sans Placeholder", sans-serif;
@@ -4333,15 +4390,18 @@ hr {
   background: var(--surface-dark);
 }
 
+/* Logos on dark: invert the dark artwork instead of flattening it to a silhouette.
+   brightness(0) invert(1) turned filled shapes (the aws circle, the BIS mark) into
+   solid grey blobs. Same treatment as the dark logo strip on the homepage. */
 [data-theme="dark"] .logo-item img,
 [data-theme="dark"] .partner-logo {
-  filter: grayscale(100%) brightness(0) invert(1);
+  filter: grayscale(100%) invert(1) brightness(1.5);
   opacity: 0.7;
 }
 
 [data-theme="dark"] .logo-item img:hover,
 [data-theme="dark"] .partner-logo:hover {
-  filter: grayscale(0%) brightness(1) invert(0);
+  filter: grayscale(0%) invert(1) brightness(1.2);
   opacity: 1;
 }
 
@@ -4363,12 +4423,6 @@ hr {
   opacity: 1;
 }
 
-/* Why-section icons use hardcoded #2A2A2A fills + a brand-green accent.
-   invert(1) flips the dark fill to light, hue-rotate(180deg) round-trips
-   the green hue back to (close to) green so the accent dot stays visible. */
-[data-theme="dark"] .why-icon {
-  filter: invert(1) hue-rotate(180deg);
-}
 
 /* --------------------------------------------------------------------------
    24. Tools Section
@@ -4797,4 +4851,12 @@ hr {
 
 .service-card:hover .service-card-link {
   color: var(--color-primary);
+}
+
+/* Light/dark versions of brand graphics (partial themed-img.html, hero animation):
+   only the one matching the theme is shown. Dark versions are separate files with
+   #2A2A2A swapped for #F4F4F4, so Iknaio Green stays exact on every screen. */
+html:not([data-theme="dark"]) .theme-dark-only,
+[data-theme="dark"] .theme-light-only {
+  display: none !important;
 }

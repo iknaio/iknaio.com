@@ -38,7 +38,7 @@ Every hit arrives with the relationship that produced it, named on the row.
 2. <span class="ui-pill" style="--pill-color:#DE6007">SAME CLUSTER</span> another address in the same cluster is tagged
 3. <span class="ui-pill" style="--pill-color:#5B84DE">INCOMING ADDRESS NEIGHBOR</span> a direct neighbor that sent funds to the address is tagged
 4. <span class="ui-pill" style="--pill-color:#A05BDD">OUTGOING ADDRESS NEIGHBOR</span> a direct neighbor that received funds from the address is tagged
-5. <span class="ui-pill" style="--pill-color:#007F56">INCOMING CLUSTER NEIGHBOR</span> an address in a cluster that sent funds to this cluster is tagged
+5. <span class="ui-pill" style="--pill-color:#0E8A5F">INCOMING CLUSTER NEIGHBOR</span> an address in a cluster that sent funds to this cluster is tagged
 6. <span class="ui-pill" style="--pill-color:#06A6C2">OUTGOING CLUSTER NEIGHBOR</span> an address in a cluster that received funds from this cluster is tagged
 
 A <span class="ui-pill" style="--pill-color:#DD3D2B">DIRECT</span> hit is a statement about the address in front of you. An <span class="ui-pill" style="--pill-color:#06A6C2">OUTGOING CLUSTER NEIGHBOR</span> hit is a statement about the company that address keeps: one transaction hop away, and at cluster level on both ends. Both belong on screen, labeled, so that the investigator decides what each one is worth.

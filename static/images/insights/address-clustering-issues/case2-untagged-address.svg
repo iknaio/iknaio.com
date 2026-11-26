@@ -18,10 +18,10 @@
   <line x1="345" y1="200" x2="600" y2="200" stroke="#1A1A1A" stroke-width="3" marker-end="url(#arrowB)"/>
   <text text-anchor="middle" font-size="18" fill="#1A1A1A"><tspan x="472" y="148">transfer, documented</tspan><tspan x="472" y="172">by screenshot</tspan></text>
 
-  <ellipse cx="880" cy="200" rx="250" ry="120" fill="#EAF8F2" stroke="#21BA8B" stroke-width="2.5" stroke-dasharray="8 6"/>
+  <ellipse cx="880" cy="200" rx="250" ry="120" fill="#EAF8F2" stroke="#2BDD96" stroke-width="2.5" stroke-dasharray="8 6"/>
   <text x="880" y="190" text-anchor="middle" font-size="24" font-weight="bold" fill="#1A1A1A">Service X cluster</text>
-  <text x="880" y="220" text-anchor="middle" font-size="19" fill="#21BA8B" font-weight="bold">tagged as Service X &#10003;</text>
-  <text x="1245" y="205" font-size="20" fill="#21BA8B" font-weight="bold">trace correct</text>
+  <text x="880" y="220" text-anchor="middle" font-size="19" fill="#2BDD96" font-weight="bold">tagged as Service X &#10003;</text>
+  <text x="1245" y="205" font-size="20" fill="#2BDD96" font-weight="bold">trace correct</text>
 
   <!-- divider -->
   <line x1="80" y1="370" x2="1320" y2="370" stroke="#E0E0E0" stroke-width="1.5"/>

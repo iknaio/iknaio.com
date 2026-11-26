@@ -9,9 +9,10 @@
       <img src="{{ . | relURL }}" alt="" loading="lazy" class="insights-hero-image" style="--post-image-object-fit: {{ $first.Params.object_fit | default "cover" }};">
       {{ end }}
       <div class="insights-hero-text">
-        {{ with $first.Date }}
-        <time class="insights-hero-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "January 2, 2006" }}</time>
-        {{ end }}
+        <div class="post-card-meta">
+          <span class="post-card-kind">{{ if eq $first.Params.posttype "news" }}News{{ else if eq $first.Params.posttype "case-study" }}Case Study{{ else if eq $first.Params.posttype "tech-deep-dive" }}Tech Deep Dive{{ else }}Insight{{ end }}</span>
+          <time class="post-card-date" datetime="{{ $first.Date.Format "2006-01-02" }}">{{ $first.Date.Format "January 2, 2006" }}</time>
+        </div>
         <h3 class="insights-hero-title">{{ $first.Title }}</h3>
         {{ with $first.Description }}
         <p class="insights-hero-description">{{ . }}</p>
@@ -53,7 +54,7 @@
           {{ else }}
           <p class="post-card-summary">{{ .Summary | truncate 140 }}</p>
           {{ end }}
-          <span class="post-card-link" aria-hidden="true">Read more &rarr;</span>
+          <span class="post-card-link" aria-hidden="true">Read more</span>
         </div>
       </article>
       {{ end }}

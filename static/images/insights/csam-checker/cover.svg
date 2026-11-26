@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 670" width="1200" height="670">
   <defs>
     <radialGradient id="glow">
-      <stop offset="0%" stop-color="#2ECC8F" stop-opacity="0.13"/>
-      <stop offset="55%" stop-color="#2ECC8F" stop-opacity="0.05"/>
-      <stop offset="100%" stop-color="#2ECC8F" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#2BDD96" stop-opacity="0.13"/>
+      <stop offset="55%" stop-color="#2BDD96" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#2BDD96" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="1200" height="670" fill="#1A1A1A"/>
@@ -35,66 +35,66 @@
   <circle cx="140" cy="335" r="705" fill="none" stroke="#5A5A5A" stroke-width="2" stroke-dasharray="9 7" opacity="0.35"/>
   <circle cx="140" cy="335" r="900" fill="none" stroke="#5A5A5A" stroke-width="2" stroke-dasharray="9 7" opacity="0.26"/>
   <!-- green: an ordinary address. red: one tagged as CSAM-related -->
-  <circle cx="197.3" cy="169.7" r="7" fill="#2ECC8F"/>
-  <circle cx="266.2" cy="193.0" r="9" fill="#2ECC8F"/>
-  <circle cx="287.6" cy="263.4" r="8" fill="#2ECC8F"/>
-  <circle cx="320.7" cy="324.3" r="10" fill="#2ECC8F"/>
-  <circle cx="289.3" cy="386.8" r="7" fill="#2ECC8F"/>
+  <circle cx="197.3" cy="169.7" r="7" fill="#2BDD96"/>
+  <circle cx="266.2" cy="193.0" r="9" fill="#2BDD96"/>
+  <circle cx="287.6" cy="263.4" r="8" fill="#2BDD96"/>
+  <circle cx="320.7" cy="324.3" r="10" fill="#2BDD96"/>
+  <circle cx="289.3" cy="386.8" r="7" fill="#2BDD96"/>
   <circle cx="278.3" cy="457.9" r="18" fill="#F0505A" opacity="0.16"/>
   <circle cx="278.3" cy="457.9" r="8" fill="#F0505A"/>
-  <circle cx="213.3" cy="486.2" r="10" fill="#2ECC8F"/>
-  <circle cx="151.4" cy="528.7" r="7" fill="#2ECC8F"/>
-  <circle cx="338.1" cy="52.5" r="7" fill="#2ECC8F"/>
-  <circle cx="397.2" cy="83.2" r="9" fill="#2ECC8F"/>
+  <circle cx="213.3" cy="486.2" r="10" fill="#2BDD96"/>
+  <circle cx="151.4" cy="528.7" r="7" fill="#2BDD96"/>
+  <circle cx="338.1" cy="52.5" r="7" fill="#2BDD96"/>
+  <circle cx="397.2" cy="83.2" r="9" fill="#2BDD96"/>
   <circle cx="417.5" cy="149.1" r="18" fill="#F0505A" opacity="0.16"/>
   <circle cx="417.5" cy="149.1" r="8" fill="#F0505A"/>
-  <circle cx="462.5" cy="196.4" r="10" fill="#2ECC8F"/>
-  <circle cx="460.0" cy="263.0" r="7" fill="#2ECC8F"/>
-  <circle cx="494.8" cy="321.9" r="8" fill="#2ECC8F"/>
-  <circle cx="474.3" cy="384.7" r="10" fill="#2ECC8F"/>
-  <circle cx="484.1" cy="453.7" r="7" fill="#2ECC8F"/>
-  <circle cx="428.7" cy="499.0" r="9" fill="#2ECC8F"/>
-  <circle cx="406.7" cy="560.1" r="8" fill="#2ECC8F"/>
-  <circle cx="352.7" cy="595.1" r="7" fill="#2ECC8F"/>
-  <circle cx="597.5" cy="87.9" r="7" fill="#2ECC8F"/>
-  <circle cx="635.6" cy="133.4" r="9" fill="#2ECC8F"/>
-  <circle cx="629.5" cy="195.5" r="8" fill="#2ECC8F"/>
-  <circle cx="658.5" cy="246.7" r="10" fill="#2ECC8F"/>
+  <circle cx="462.5" cy="196.4" r="10" fill="#2BDD96"/>
+  <circle cx="460.0" cy="263.0" r="7" fill="#2BDD96"/>
+  <circle cx="494.8" cy="321.9" r="8" fill="#2BDD96"/>
+  <circle cx="474.3" cy="384.7" r="10" fill="#2BDD96"/>
+  <circle cx="484.1" cy="453.7" r="7" fill="#2BDD96"/>
+  <circle cx="428.7" cy="499.0" r="9" fill="#2BDD96"/>
+  <circle cx="406.7" cy="560.1" r="8" fill="#2BDD96"/>
+  <circle cx="352.7" cy="595.1" r="7" fill="#2BDD96"/>
+  <circle cx="597.5" cy="87.9" r="7" fill="#2BDD96"/>
+  <circle cx="635.6" cy="133.4" r="9" fill="#2BDD96"/>
+  <circle cx="629.5" cy="195.5" r="8" fill="#2BDD96"/>
+  <circle cx="658.5" cy="246.7" r="10" fill="#2BDD96"/>
   <circle cx="642.1" cy="304.9" r="17" fill="#F0505A" opacity="0.16"/>
   <circle cx="642.1" cy="304.9" r="7" fill="#F0505A"/>
-  <circle cx="669.4" cy="360.9" r="8" fill="#2ECC8F"/>
-  <circle cx="646.6" cy="415.6" r="10" fill="#2ECC8F"/>
-  <circle cx="660.0" cy="477.0" r="7" fill="#2ECC8F"/>
-  <circle cx="611.7" cy="520.9" r="9" fill="#2ECC8F"/>
+  <circle cx="669.4" cy="360.9" r="8" fill="#2BDD96"/>
+  <circle cx="646.6" cy="415.6" r="10" fill="#2BDD96"/>
+  <circle cx="660.0" cy="477.0" r="7" fill="#2BDD96"/>
+  <circle cx="611.7" cy="520.9" r="9" fill="#2BDD96"/>
   <circle cx="603.7" cy="579.0" r="18" fill="#F0505A" opacity="0.16"/>
   <circle cx="603.7" cy="579.0" r="8" fill="#F0505A"/>
-  <circle cx="563.7" cy="620.6" r="7" fill="#2ECC8F"/>
-  <circle cx="786.2" cy="53.0" r="7" fill="#2ECC8F"/>
-  <circle cx="822.1" cy="104.6" r="9" fill="#2ECC8F"/>
-  <circle cx="814.1" cy="170.0" r="8" fill="#2ECC8F"/>
+  <circle cx="563.7" cy="620.6" r="7" fill="#2BDD96"/>
+  <circle cx="786.2" cy="53.0" r="7" fill="#2BDD96"/>
+  <circle cx="822.1" cy="104.6" r="9" fill="#2BDD96"/>
+  <circle cx="814.1" cy="170.0" r="8" fill="#2BDD96"/>
   <circle cx="842.6" cy="225.7" r="20" fill="#F0505A" opacity="0.16"/>
   <circle cx="842.6" cy="225.7" r="10" fill="#F0505A"/>
-  <circle cx="826.4" cy="287.9" r="7" fill="#2ECC8F"/>
-  <circle cx="854.9" cy="347.3" r="8" fill="#2ECC8F"/>
-  <circle cx="834.3" cy="406.7" r="10" fill="#2ECC8F"/>
-  <circle cx="851.2" cy="470.7" r="7" fill="#2ECC8F"/>
-  <circle cx="806.1" cy="522.4" r="9" fill="#2ECC8F"/>
-  <circle cx="803.5" cy="584.8" r="8" fill="#2ECC8F"/>
-  <circle cx="1004.0" cy="83.1" r="7" fill="#2ECC8F"/>
-  <circle cx="1034.9" cy="144.2" r="9" fill="#2ECC8F"/>
+  <circle cx="826.4" cy="287.9" r="7" fill="#2BDD96"/>
+  <circle cx="854.9" cy="347.3" r="8" fill="#2BDD96"/>
+  <circle cx="834.3" cy="406.7" r="10" fill="#2BDD96"/>
+  <circle cx="851.2" cy="470.7" r="7" fill="#2BDD96"/>
+  <circle cx="806.1" cy="522.4" r="9" fill="#2BDD96"/>
+  <circle cx="803.5" cy="584.8" r="8" fill="#2BDD96"/>
+  <circle cx="1004.0" cy="83.1" r="7" fill="#2BDD96"/>
+  <circle cx="1034.9" cy="144.2" r="9" fill="#2BDD96"/>
   <circle cx="1020.8" cy="214.2" r="18" fill="#F0505A" opacity="0.16"/>
   <circle cx="1020.8" cy="214.2" r="8" fill="#F0505A"/>
-  <circle cx="1044.2" cy="278.3" r="10" fill="#2ECC8F"/>
-  <circle cx="1022.9" cy="344.8" r="7" fill="#2ECC8F"/>
-  <circle cx="1046.7" cy="412.0" r="8" fill="#2ECC8F"/>
-  <circle cx="1021.8" cy="475.9" r="10" fill="#2ECC8F"/>
+  <circle cx="1044.2" cy="278.3" r="10" fill="#2BDD96"/>
+  <circle cx="1022.9" cy="344.8" r="7" fill="#2BDD96"/>
+  <circle cx="1046.7" cy="412.0" r="8" fill="#2BDD96"/>
+  <circle cx="1021.8" cy="475.9" r="10" fill="#2BDD96"/>
   <circle cx="1034.4" cy="546.4" r="17" fill="#F0505A" opacity="0.16"/>
   <circle cx="1034.4" cy="546.4" r="7" fill="#F0505A"/>
-  <circle cx="985.8" cy="602.0" r="9" fill="#2ECC8F"/>
+  <circle cx="985.8" cy="602.0" r="9" fill="#2BDD96"/>
   <!-- the CSAM Checker itself, at the centre of the rings -->
   <circle cx="140" cy="335" r="115" fill="url(#glow)"/>
   <g transform="translate(140 335) scale(4.3) translate(-12 -11.5)" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 2.6 4.5 5.6v6.8c0 4.2 3.6 6.8 7.5 8 3.9-1.2 7.5-3.8 7.5-8V5.6Z" stroke="#FFFFFF" stroke-width="1.75"/>
-    <path d="m8.4 12 2.6 2.6 4.8-5.2" stroke="#2ECC8F" stroke-width="2"/>
+    <path d="m8.4 12 2.6 2.6 4.8-5.2" stroke="#2BDD96" stroke-width="2"/>
   </g>
 </svg>

@@ -8,7 +8,7 @@
     </div>
     {{ with .image }}
     <div class="platform-hero-image">
-      <img src="{{ . | relURL }}" alt="{{ $.Params.hero.alt }}" loading="eager">
+      {{ partial "themed-img.html" (dict "src" . "alt" $.Params.hero.alt "attrs" `loading="eager"`) }}
     </div>
     {{ end }}
   </div>
@@ -32,7 +32,7 @@
     <div class="container">
       <header class="platform-tool-header">
         <div class="platform-tool-title">
-          {{ with .icon }}<img class="platform-tool-icon" src="{{ . | relURL }}" alt="" aria-hidden="true">{{ end }}
+          {{ with .icon }}{{ partial "themed-img.html" (dict "src" . "class" "platform-tool-icon" "alt" "" "attrs" `loading="lazy" aria-hidden="true"`) }}{{ end }}
           <h2 class="platform-tool-name">{{ .name }}</h2>
         </div>
         {{ with .headline }}<p class="platform-tool-headline">{{ . }}</p>{{ end }}
