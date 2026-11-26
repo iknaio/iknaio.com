@@ -17,7 +17,7 @@ tiers:
     audience: "Solo practitioners"
     accounts: "1 seat"
     highlight: true
-    cta_text: "Contact sales"
+    cta_text: "Get started"
     features:
       Pathfinder: true
       "Lite blockchains": true
@@ -31,7 +31,7 @@ tiers:
   - name: Institutional
     audience: "Authorities & Compliance"
     accounts: "Unlimited seats"
-    cta_text: "Contact sales"
+    cta_text: "Request a quote"
     features:
       Pathfinder: true
       "Lite blockchains": true

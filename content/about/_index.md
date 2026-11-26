@@ -46,9 +46,9 @@ values:
       icon: "collaboration"
 
 contact:
-  title: "Contact Us"
-  subtitle: "Get in touch and we will get back to you."
-  cta_text: "Get access"
+  title: "Let's talk"
+  subtitle: "Tell us what you're working on and we'll find the right tools for it."
+  cta_text: "Contact our team"
   cta_url: "contact/"
 
 team:

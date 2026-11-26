@@ -141,10 +141,10 @@ blockchains:
 cta:
   title: "Ready to investigate crypto money flows.<br>More efficiently?"
   actions:
-    - text: "Get access"
+    - text: "Start now"
       url: "contact/"
       style: "primary"
-    - text: "View Packages"
+    - text: "View packages"
       url: "packages/"
       style: "secondary"
 ---
