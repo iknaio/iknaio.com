@@ -1037,6 +1037,16 @@ hr {
   justify-content: center;
 }
 
+/* Left-aligned page hero (Packages), as in the Figma design. */
+.hero--left {
+  text-align: left;
+}
+
+.hero--left .container {
+  align-items: flex-start;
+}
+
+
 /* Tighten spacing between hero and first content section on inner pages */
 .hero + .section {
   padding-top: 0;
@@ -4859,4 +4869,168 @@ hr {
 html:not([data-theme="dark"]) .theme-dark-only,
 [data-theme="dark"] .theme-light-only {
   display: none !important;
+}
+
+/* Left-aligned page hero, kept at the end so it overrides the centred .hero-subtitle. */
+.hero--left .hero-subtitle {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+}
+
+.hero--left .hero-actions {
+  justify-content: flex-start;
+}
+
+/* ==========================================================================
+   Typography (Figma "Website design 22/10/24")
+   1. One section-heading style: Brawler, large, left-aligned; where a section
+      has an intro, it sits in a second column on desktop.
+   2. Larger reading sizes: 18px body on desktop (16px on mobile), card and
+      list text at least 16px, intros 20px.
+   3. Larger product names in the homepage carousel.
+   ========================================================================== */
+
+:root {
+  --text-section: clamp(2rem, 1.2rem + 2.4vw, 3rem); /* 32px mobile -> 48px desktop */
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --text-h2: 28px;
+    --text-h3: 22px;
+  }
+
+  body {
+    font-size: 18px;
+  }
+}
+
+/* 1. Section headings */
+.section-title,
+.cta-title,
+.tools-heading-title,
+.about-mission-title,
+.about-values-title,
+.about-team-title,
+.about-security-title {
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-size: var(--text-section);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.section-title,
+.section-subtitle,
+.section-secondary-audience,
+.about-team-title {
+  text-align: left;
+}
+
+.section-secondary-audience .section-actions {
+  justify-content: flex-start;
+}
+
+.section-subtitle,
+.tools-heading-subtitle {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.section-header {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.section-header .section-title {
+  margin-bottom: var(--spacing-md);
+}
+
+.section-header .section-subtitle {
+  margin: 0;
+  max-width: var(--max-width-text);
+}
+
+@media (min-width: 1024px) {
+  .section-subtitle,
+  .tools-heading-subtitle {
+    font-size: 20px;
+  }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    gap: var(--spacing-3xl);
+    align-items: end;
+  }
+
+  .section-header .section-title {
+    margin-bottom: 0;
+  }
+}
+
+/* 2. Reading sizes: card, list and supporting text at least 16px */
+.post-card-summary,
+.why-item p,
+.service-card-text,
+.team-bio,
+.team-card .team-bio,
+.faq-answer,
+.capability-audience,
+.capability-solution,
+.capability-bullets,
+.product-showcase-body p,
+.product-showcase-bullets,
+.service-fact dt,
+.service-fact dd,
+.packages-trust-text {
+  font-size: 16px;
+}
+
+@media (min-width: 1024px) {
+  .hero-subtitle {
+    font-size: 20px;
+  }
+}
+
+/* 3. Carousel product names: 20px on desktop (16px on smaller screens) */
+@media (min-width: 1024px) {
+  .tools-tab {
+    font-size: 20px;
+    gap: 10px;
+  }
+
+  .tool-tab-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Left-aligned sections line up with the page edge, not a centred text column */
+.section-secondary-audience .container.text-container {
+  max-width: var(--max-width-layout);
+}
+
+.section-secondary-audience .section-body {
+  max-width: var(--max-width-text);
+}
+
+/* Trust strip, Operation Alice case study and "As seen in" stay centred (title, stat, numbers, quote). */
+.section-trust .section-title,
+.section-trust .social-proof-stat,
+.section-case-study .section-title,
+.section-press .section-title {
+  text-align: center;
+}
+
+/* Item titles in the Services page, the Solutions "Three application areas" heading and
+   the end-of-page boxes ("Ready to investigate…") use the same style as the product names on the Platform page (General Sans semibold). */
+.service-panel-name,
+.section-capabilities .section-title,
+.cta-title {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: 0;
 }
