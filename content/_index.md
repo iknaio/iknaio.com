@@ -6,7 +6,7 @@ hero:
   title: "Investigate crypto money flows.<br>More efficiently."
   subtitle: "Automated tools for professionals and authorities,<br> built on a decade of open research."
   cta:
-    text: "Get access"
+    text: "Try for free"
     url: contact/
 
 tools:
@@ -65,9 +65,9 @@ secondary_audience:
   title: "Also for compliance teams and advisors"
   body: "Beyond law-enforcement investigation, Iknaio is used by compliance teams at banks and crypto exchanges for AML screening, and by lawyers, tax advisors, and security consultants for client casework."
   actions:
-    - text: "See compliance use cases"
+    - text: "For compliance teams"
       url: "solutions/#comply"
-    - text: "See advisor use cases"
+    - text: "For advisors"
       url: "solutions/#advise"
 
 why:
@@ -113,10 +113,10 @@ press:
 cta:
   title: "Ready to investigate crypto money flows.<br>More efficiently?"
   actions:
-    - text: "Get access"
+    - text: "Start now"
       url: contact/
       style: primary
-    - text: "View Packages"
+    - text: "View packages"
       url: packages/
       style: secondary
 ---

@@ -23,7 +23,7 @@ services:
       - label: "What you get"
         text: "A written report with figures, tables, and methodology, or a reusable scripted analysis, with the underlying data exportable for the case file."
     actions:
-      - text: "Contact us"
+      - text: "Discuss your case"
         url: "contact/"
         style: "primary"
 
@@ -41,7 +41,7 @@ services:
       - label: "Format"
         text: "On-site or remote. Trainings on the platform, workshops on a topic, Train the Trainer on request."
     actions:
-      - text: "Contact us"
+      - text: "Plan a training"
         url: "contact/"
         style: "primary"
 
@@ -59,14 +59,14 @@ services:
       - label: "What you get"
         text: "A written report on identified wallets, probable custodial accounts, valuation at date of death and reporting date, evidence, and methodology. Assistance with asset transfer where keys are recovered. Expert testimony on request."
     actions:
-      - text: "Contact us"
+      - text: "Request a meeting"
         url: "contact/"
         style: "primary"
 
 cta:
   title: "Not sure which service fits?<br>Talk to us."
   actions:
-    - text: "Contact us"
+    - text: "Let's talk"
       url: "contact/"
       style: "primary"
     - text: "See the platform"
