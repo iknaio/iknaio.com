@@ -43,6 +43,8 @@ tools:
 
           When organization-wide sharing is enabled, colleagues can view which addresses are already under investigation and collaborate, ensuring coordinated efforts and eliminating duplicated work.
 
+          See what changed in the redesigned interface in [CaseConnect 3.0: Spot connected cases faster](/insights/iknaio-caseconnect-3/).
+
   - slug: "quicklock"
     name: "QuickLock"
     icon: "images/platform/icons/quicklock.svg"
