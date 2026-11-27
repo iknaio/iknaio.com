@@ -434,7 +434,8 @@ hr {
 /* Skip link — visually hidden until focused (keyboard accessibility) */
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: 0;
+  transform: translateY(-100%); /* fully hidden whatever its height (a fixed -40px let 3px show once body text became 18px) */
   left: 8px;
   background: var(--color-dark);
   color: var(--color-white);
@@ -448,6 +449,7 @@ hr {
 
 .skip-link:focus {
   top: 8px;
+  transform: none;
 }
 
 /* Theme toggle button in nav */
