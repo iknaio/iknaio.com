@@ -40,20 +40,20 @@
   <div class="container about-values-inner">
     <div class="about-values-header">
       <h2 id="about-values-heading" class="about-values-title">{{ .title }}</h2>
-      <img class="about-values-mark" src="{{ "images/about/values-mark.svg" | relURL }}" alt="" aria-hidden="true">
+      {{ partial "themed-img.html" (dict "src" "images/about/values-mark.svg" "class" "about-values-mark" "alt" "" "attrs" `loading="lazy" aria-hidden="true"`) }}
     </div>
     <ul class="about-values-list">
       {{ range .items }}
       <li class="about-value">
         <div class="about-value-icon" aria-hidden="true">
           {{ if eq .icon "science" }}
-          <img src="{{ "images/icons/backed-by-science-icon.svg" | relURL }}" alt="">
+          {{ partial "themed-img.html" (dict "src" "images/icons/backed-by-science-icon.svg" "alt" "" "attrs" `loading="lazy"`) }}
           {{ else if eq .icon "network" }}
-          <img src="{{ "images/icons/network-icon.svg" | relURL }}" alt="">
+          {{ partial "themed-img.html" (dict "src" "images/icons/network-icon.svg" "alt" "" "attrs" `loading="lazy"`) }}
           {{ else if eq .icon "transparency" }}
-          <img src="{{ "images/icons/transparency-icon.svg" | relURL }}" alt="">
+          {{ partial "themed-img.html" (dict "src" "images/icons/transparency-icon.svg" "alt" "" "attrs" `loading="lazy"`) }}
           {{ else if eq .icon "collaboration" }}
-          <img src="{{ "images/icons/collaboration-icon.svg" | relURL }}" alt="">
+          {{ partial "themed-img.html" (dict "src" "images/icons/collaboration-icon.svg" "alt" "" "attrs" `loading="lazy"`) }}
           {{ end }}
         </div>
         <h3 class="about-value-name">{{ .name }}</h3>

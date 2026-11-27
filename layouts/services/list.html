@@ -8,7 +8,7 @@
     </div>
     {{ with .image }}
     <div class="platform-hero-image">
-      <img src="{{ . | relURL }}" alt="{{ $.Params.hero.alt }}" loading="eager">
+      {{ partial "themed-img.html" (dict "src" . "alt" $.Params.hero.alt "attrs" `loading="eager"`) }}
     </div>
     {{ end }}
   </div>

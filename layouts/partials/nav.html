@@ -1,7 +1,7 @@
 <header class="nav{{ if not .IsHome }} nav--not-home{{ end }}" role="banner">
   <div class="nav-inner container">
     <a href="{{ .Site.Home.RelPermalink }}" class="nav-logo" aria-label="Iknaio home">
-      <img src="{{ "images/logos/iknaio-logo.svg" | relURL }}" alt="Iknaio" class="nav-logo-img" width="180" height="37">
+      {{ partial "themed-img.html" (dict "src" "images/logos/iknaio-logo.svg" "dark" "images/logos/iknaio-logo-white.svg" "class" "nav-logo-img" "alt" "Iknaio" "attrs" `width="180" height="37"`) }}
     </a>
 
     <a href="https://app.iknaio.com" class="btn btn-secondary nav-app-cta">Open Pathfinder</a>

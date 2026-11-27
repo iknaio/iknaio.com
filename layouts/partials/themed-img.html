@@ -1,0 +1,13 @@
+{{- /*
+  Image with a dark-mode version. If a file with "-dark" before the extension exists in
+  static/ (e.g. images/icons/network-icon-dark.svg), both are written and CSS shows the one
+  that matches the theme (.theme-light-only / .theme-dark-only). Only the visible one loads
+  when loading="lazy". Otherwise a single <img> is written.
+  Params: src (required), class, alt, attrs (extra attributes, e.g. `width="48" height="48"`),
+          dark (optional explicit dark-mode file).
+*/ -}}
+{{- $src := .src -}}
+{{- $dark := .dark | default (replaceRE `\.(svg|png)$` "-dark.$1" $src) -}}
+{{- $hasDark := and (ne $dark $src) (fileExists (path.Join "static" $dark)) -}}
+<img src="{{ $src | relURL }}" class="{{ with .class }}{{ . }}{{ end }}{{ if $hasDark }} theme-light-only{{ end }}" alt="{{ .alt }}" {{ with .attrs }}{{ . | safeHTMLAttr }}{{ end }}>
+{{- if $hasDark }}<img src="{{ $dark | relURL }}" class="{{ with .class }}{{ . }}{{ end }} theme-dark-only" alt="{{ .alt }}" {{ with .attrs }}{{ . | safeHTMLAttr }}{{ end }}>{{ end -}}

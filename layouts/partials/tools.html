@@ -13,7 +13,7 @@
         {{ range $i, $tab := .tabs }}
         {{ $slug := (index $.panels $i).name | urlize }}
         <a class="tools-tab{{ if eq $i 0 }} active{{ end }}" href="#tool-{{ $slug }}" data-tool="{{ $slug }}" data-index="{{ $i }}" role="tab" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}">
-          <img src="{{ $tab.icon | relURL }}" alt="" class="tool-tab-icon" loading="lazy" aria-hidden="true">
+          {{ partial "themed-img.html" (dict "src" $tab.icon "class" "tool-tab-icon" "alt" "" "attrs" `loading="lazy" aria-hidden="true"`) }}
           {{ $tab.name }}
         </a>
         {{ end }}

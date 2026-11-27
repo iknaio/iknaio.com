@@ -18,7 +18,7 @@ CX, CY = 140.0, 335.0
 MARGIN = 42
 
 BG    = "#1A1A1A"
-GREEN = "#2ECC8F"
+GREEN = "#2BDD96"  # Iknaio brand green
 RED   = "#F0505A"
 RING  = "#5A5A5A"
 DIM   = "#3A3A3A"
